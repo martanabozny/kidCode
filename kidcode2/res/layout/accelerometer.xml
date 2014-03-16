@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="4">
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/result" android:layout_weight="1"/>
+    <Spinner
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/accels" android:layout_gravity="right"
+            android:entries="@array/accels"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:layout_weight="3">
+        <SeekBar
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/x" android:layout_weight="1" android:max="100"/>
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/y" android:layout_weight="1" android:max="100"/>
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/z" android:layout_weight="1" android:max="100"/>
+    </LinearLayout>
+</LinearLayout>

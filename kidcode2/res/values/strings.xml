@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">kidcode2</string>
+    <string-array name="math_functions">
+        <item>+</item>
+        <item>-</item>
+        <item>x</item>
+        <item>/</item>
+    </string-array>
+
+    <string-array name="accels">
+        <item>x</item>
+        <item>y</item>
+        <item>z</item>
+
+    </string-array>
+</resources>

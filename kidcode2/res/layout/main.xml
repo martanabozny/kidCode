@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="1">
+    <ScrollView
+            android:layout_width="141dp"
+            android:layout_height="match_parent"
+            android:id="@+id/icons">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Math_Button" android:layout_gravity="center_horizontal"
+                    android:onClick="AddMathStrip"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Accelerometer_Button" android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="false" android:longClickable="true"
+                    android:onClick="AddAccelerometerStrip"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Run"
+                    android:id="@+id/run" android:layout_gravity="center_horizontal" android:onClick="runCode"/>
+        </LinearLayout>
+    </ScrollView>
+    <ScrollView
+            android:layout_width="194dp"
+            android:layout_height="match_parent"
+            android:id="@+id/code"
+            android:layout_weight="0.90">
+    </ScrollView>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" android:layout_weight="0.61">
+    </LinearLayout>
+</LinearLayout>
