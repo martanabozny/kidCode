@@ -14,4 +14,11 @@
         <item>z</item>
 
     </string-array>
+
+    <string-array name="string_functions">
+        <item>UPPER</item>
+        <item>lower</item>
+        <item>rear</item>
+
+    </string-array>
 </resources>

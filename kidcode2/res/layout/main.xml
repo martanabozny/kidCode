@@ -14,16 +14,46 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
             <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="78dp"
+                    android:layout_height="58dp"
                     android:id="@+id/Math_Button" android:layout_gravity="center_horizontal"
-                    android:onClick="AddMathStrip"/>
+                    android:onClick="AddMathStrip" android:background="@drawable/math"/>
             <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="77dp"
+                    android:layout_height="57dp"
                     android:id="@+id/Accelerometer_Button" android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="false" android:longClickable="true"
-                    android:onClick="AddAccelerometerStrip"/>
+                    android:onClick="AddAccelerometerStrip" android:background="@drawable/accel"/>
+            <ImageButton
+                    android:layout_width="76dp"
+                    android:layout_height="57dp"
+                    android:id="@+id/srtings_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/string"/>
+            <ImageButton
+                    android:layout_width="77dp"
+                    android:layout_height="58dp"
+                    android:id="@+id/variable_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/variable"/>
+            <ImageButton
+                    android:layout_width="77dp"
+                    android:layout_height="58dp"
+                    android:id="@+id/fotoop_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/fotoop"/>
+            <ImageButton
+                    android:layout_width="76dp"
+                    android:layout_height="56dp"
+                    android:id="@+id/foto_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/foto"/>
+            <ImageButton
+                    android:layout_width="73dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/if_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/if"/>
+            <ImageButton
+                    android:layout_width="85dp"
+                    android:layout_height="64dp"
+                    android:id="@+id/while_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/loop"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
