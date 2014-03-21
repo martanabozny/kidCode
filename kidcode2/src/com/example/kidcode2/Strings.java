@@ -25,7 +25,7 @@ public class Strings extends FunctionStrip {
         this(context, null);
     }
 
-    public void run() {
+    public void run() throws UnknownVariableException {
         Spinner operationSpinner = (Spinner) findViewById(R.id.functions);
         String operation = operationSpinner.getSelectedItem().toString();
         EditText result  = (EditText) findViewById(R.id.result);

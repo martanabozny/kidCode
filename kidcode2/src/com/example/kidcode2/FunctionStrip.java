@@ -3,6 +3,9 @@ package com.example.kidcode2;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by marta on 10.03.14.
@@ -15,10 +18,11 @@ public abstract class FunctionStrip extends LinearLayout {
         super(context, attrs);
     }
 
-    public abstract void run();
+    public abstract void run() throws UnknownVariableException;
 
-    public Variable getVariable(String name, String type) {
+    public Variable getVariable(String name, String type) throws UnknownVariableException {
         FunctionStrip tmp = previous;
+
         while (tmp != null) {
             if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.equals(type)) {
                 return tmp.returnedValue;
@@ -26,6 +30,6 @@ public abstract class FunctionStrip extends LinearLayout {
             tmp = tmp.previous;
         }
 
-        return null;
+        throw new UnknownVariableException(name);
     }
 }

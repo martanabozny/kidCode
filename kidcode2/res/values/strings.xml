@@ -21,4 +21,12 @@
         <item>rear</item>
 
     </string-array>
+
+    <string-array name="variable_types">
+        <item>String</item>
+        <item>int</item>
+        <item>float</item>
+        <item>boolean</item>
+
+    </string-array>
 </resources>

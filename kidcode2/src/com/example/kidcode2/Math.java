@@ -24,7 +24,7 @@ public class Math extends FunctionStrip {
         this(context, null);
     }
 
-    public void run() {
+    public void run() throws UnknownVariableException {
         Spinner function = (Spinner) findViewById(R.id.function);
         String operation = function.getSelectedItem().toString();
         EditText a  = (EditText) findViewById(R.id.a);
@@ -32,15 +32,16 @@ public class Math extends FunctionStrip {
         EditText result  = (EditText) findViewById(R.id.result);
 
         double numbera, numberb;
+
         try {
-            numbera = Integer.parseInt(a.getText().toString());
+            numbera = Double.valueOf(a.getText().toString());
         } catch (Exception e) {
             VarInteger i = (VarInteger) getVariable(a.getText().toString(), "VarInteger");
             numbera = i.value;
         }
 
         try {
-            numberb = Integer.parseInt(b.getText().toString());
+            numberb = Double.valueOf(b.getText().toString());
         } catch (Exception e) {
             VarInteger i = (VarInteger) getVariable(b.getText().toString(), "VarInteger");
             numberb = i.value;

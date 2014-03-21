@@ -62,7 +62,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         result.setText(String.valueOf(x_));
     }
 
-    public void run(){
+    public void run() throws UnknownVariableException {
         Spinner accels = (Spinner)findViewById(R.id.accels);
         String accel = accels.getSelectedItem().toString();
         EditText result  = (EditText) findViewById(R.id.result);
