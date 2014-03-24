@@ -10,14 +10,16 @@ import java.util.ArrayList;
 /**
  * Created by marta on 21.03.14.
  */
-public class SelectVariable extends Dialog {
+public class SelectVariableDialog extends Dialog {
 
     ScrollView scrollView;
     LinearLayout linearLayout;
     EditText editText;
 
-    public SelectVariable(String[] list, Context context) {
+    public SelectVariableDialog(String[] list, Context context) {
         super(context);
+
+        setTitle("Select variable");
 
         scrollView = new ScrollView(context);
         linearLayout = new LinearLayout(context);
