@@ -1,6 +1,8 @@
 package com.example.kidcode2;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -23,6 +25,14 @@ public abstract class FunctionStrip extends LinearLayout {
     public Variable getVariable(String name, String type) throws UnknownVariableException {
         FunctionStrip tmp = previous;
 
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Terefere");
+        builder.setPositiveButton("Ok", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();*/
+
+
         while (tmp != null) {
             if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.equals(type)) {
                 return tmp.returnedValue;
@@ -31,5 +41,24 @@ public abstract class FunctionStrip extends LinearLayout {
         }
 
         throw new UnknownVariableException(name);
+    }
+
+    public String selectVariable(String type){
+        ArrayList list = new ArrayList<String>();
+        FunctionStrip tmp = previous;
+
+        while (tmp != null) {
+            if(tmp.returnedValue.type.equals(type)){
+               list.add(tmp.returnedValue.name);
+            }
+        }
+
+        String variable;
+
+        SelectVariableDialog dialog = new SelectVariableDialog(list, getContext());
+        dialog.show();
+
+
+        return dialog.selection;
     }
 }

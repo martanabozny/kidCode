@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MyActivity extends Activity implements View.OnTouchListener, View.OnDragListener {
+public class MyActivity extends Activity { //implements View.OnTouchListener, View.OnDragListener {
 
     LinearLayout layout;
     /**
@@ -29,17 +29,17 @@ public class MyActivity extends Activity implements View.OnTouchListener, View.O
         layout.setOrientation(LinearLayout.VERTICAL);
         code.addView(layout);
 
-        findViewById(R.id.Math_Button).setOnTouchListener(this);
+        /*findViewById(R.id.Math_Button).setOnTouchListener(this);
         findViewById(R.id.code).setOnDragListener(this);
         findViewById(R.id.icons).setOnDragListener(this);
-
+*/
     }
 
-    public boolean onTouch(View v, MotionEvent e) {
+    /*public boolean onTouch(View v, MotionEvent e) {
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
             View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
             v.startDrag(null, shadowBuilder, v, 0);
-            //v.setVisibility(View.INVISIBLE);
+            v.setVisibility(View.INVISIBLE);
             return true;
         } else {
             return false;
@@ -51,13 +51,13 @@ public class MyActivity extends Activity implements View.OnTouchListener, View.O
         if (e.getAction()==DragEvent.ACTION_DROP) {
             View view = (View) e.getLocalState();
             ViewGroup from = (ViewGroup) view.getParent();
-            //from.removeView(view);
+            from.removeView(view);
             LinearLayout to = (LinearLayout) v;
             to.addView(view);
             view.setVisibility(View.VISIBLE);
         }
         return true;
-    }
+    }*/
     public void AddStringStrip(View view) {
         Strings string = new Strings(this);
         if (layout.getChildCount() > 0)

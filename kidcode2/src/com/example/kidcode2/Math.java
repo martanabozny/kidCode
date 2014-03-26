@@ -3,6 +3,8 @@ package com.example.kidcode2;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,9 +29,10 @@ public class Math extends FunctionStrip {
     public void run() throws UnknownVariableException {
         Spinner function = (Spinner) findViewById(R.id.function);
         String operation = function.getSelectedItem().toString();
-        EditText a  = (EditText) findViewById(R.id.a);
-        EditText b  = (EditText) findViewById(R.id.b);
-        EditText result  = (EditText) findViewById(R.id.result);
+
+        Button result = (Button) findViewById(R.id.result);
+        Button a = (Button) findViewById(R.id.number1);
+        Button b = (Button) findViewById(R.id.number2);
 
         double numbera, numberb;
 
@@ -63,5 +66,27 @@ public class Math extends FunctionStrip {
         returnedValue.name = result.getText().toString();
 
         Toast.makeText(getContext(), "Value: " + numberc, Toast.LENGTH_SHORT).show();
+    }
+
+    public void OnResultClick(View view){
+        Button result = (Button) findViewById(R.id.result);
+        String variable = selectVariable("VarInteger");
+
+        result.setText(variable);
+        returnedValue.name = variable;
+    }
+
+    public void OnNumber2Click(View view){
+        Button number2 = (Button) findViewById(R.id.number2);
+        String variable = selectVariable("VarInteger");
+
+        number2.setText(variable);
+    }
+
+    public void OnNumber1Click(View view){
+        Button number1 = (Button) findViewById(R.id.number1);
+        String variable = selectVariable("VarInteger");
+
+        number1.setText(variable);
     }
 }

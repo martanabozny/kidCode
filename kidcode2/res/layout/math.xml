@@ -5,33 +5,30 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:weightSum="4" android:background="#ff866e">
 
-    <EditText
+    <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
+            android:text="select variable..."
             android:id="@+id/result" android:layout_gravity="center_vertical" android:layout_weight="1"/>
     <TextView
-            android:layout_width="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="="
             android:id="@+id/textView" android:layout_gravity="center_vertical"/>
-    <EditText
+    <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
-            android:id="@+id/a" android:layout_gravity="center_vertical" android:layout_weight="1.5"/>
+            android:text="select variable..."
+            android:id="@+id/number1" android:layout_gravity="center_vertical" android:layout_weight="1.5"/>
     <Spinner
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:id="@+id/function" android:layout_gravity="center_vertical"
             android:spinnerMode="dialog"
             android:entries="@array/math_functions"/>
-    <EditText
+    <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
-            android:id="@+id/b" android:layout_gravity="center_vertical" android:layout_weight="1.5"/>
+            android:text="select variable..."
+            android:id="@+id/number2" android:layout_gravity="center_vertical" android:layout_weight="1.5"/>
 </LinearLayout>
