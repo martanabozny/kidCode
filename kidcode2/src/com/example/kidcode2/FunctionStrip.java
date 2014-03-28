@@ -1,10 +1,13 @@
 package com.example.kidcode2;
 
 import android.app.AlertDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.AttributeSet;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -43,22 +46,30 @@ public abstract class FunctionStrip extends LinearLayout {
         throw new UnknownVariableException(name);
     }
 
-    public String selectVariable(String type){
-        ArrayList list = new ArrayList<String>();
+    public void selectVariable(String type, final Button button){
+        ArrayList<String> list = new ArrayList<String>();
         FunctionStrip tmp = previous;
 
         while (tmp != null) {
-            if(tmp.returnedValue.type.equals(type)){
+
+            if (tmp.returnedValue != null && tmp.returnedValue.type.equals(type)){
                list.add(tmp.returnedValue.name);
             }
+            tmp = tmp.previous;
         }
 
-        String variable;
 
-        SelectVariableDialog dialog = new SelectVariableDialog(list, getContext());
+        Toast.makeText(getContext(), "" + list.toString(), Toast.LENGTH_SHORT).show();
+        final SelectVariableDialog dialog = new SelectVariableDialog(list, getContext());
         dialog.show();
 
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                button.setText(dialog.selection.toString());
+                returnedValue.name = dialog.selection.toString();
+            }
+        });
 
-        return dialog.selection;
     }
 }

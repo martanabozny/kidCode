@@ -5,6 +5,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.*;
 
 import java.util.ArrayList;
@@ -12,22 +15,23 @@ import java.util.ArrayList;
 /**
  * Created by marta on 21.03.14.
  */
-public class SelectVariableDialog extends AlertDialog {
+public class SelectVariableDialog extends Dialog {
 
     ScrollView scrollView;
     LinearLayout linearLayout;
     EditText editText;
     RadioGroup radioGroup;
+    Button ok;
 
     public String selection;
 
-    public SelectVariableDialog(ArrayList list, Context context) {
+    public SelectVariableDialog(ArrayList<String> list, Context context) {
         super(context);
 
         setTitle("Select variable");
-
         scrollView = new ScrollView(context);
         setContentView(scrollView);
+
         radioGroup = new RadioGroup(context);
 
         linearLayout = new LinearLayout(context);
@@ -39,25 +43,36 @@ public class SelectVariableDialog extends AlertDialog {
         linearLayout.addView(editText);
         linearLayout.addView(radioGroup);
 
-        for (int i = 0; i < list.size(); i++) {
+        for (String opis: list) {
             RadioButton radioButton = new RadioButton(context);
-            radioGroup.addView(radioGroup);
-            radioButton.setText(list.get(i).toString());
+
+            /*String opis = "";
+            try {
+                opis = list.get(i).toString();
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+            }*/
+
+            radioButton.setText(opis);
+            radioGroup.addView(radioButton);
         }
 
-        setButton(BUTTON_POSITIVE, "Ok", new OnClickListener() {
+        ok =  new Button(context);
+        ok.setText("ok");
+        ok.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                RadioButton radio = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                selection = radio.getText().toString();
-            }
-        });
+            public void onClick(View view) {
 
-        setButton(BUTTON_NEGATIVE, "Anuluj", new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                selection = "";
+                if(!editText.getText().toString().equals("")){
+                    selection = editText.getText().toString();
+                } else {
+                    int id = radioGroup.getCheckedRadioButtonId();
+                    RadioButton button =(RadioButton) findViewById(id);
+                    selection = button.getText().toString();
+                }
+                dismiss();
             }
         });
+        linearLayout.addView(ok);
     }
 }
