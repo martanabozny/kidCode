@@ -1,17 +1,17 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.*;
+import com.example.kidcode2.R;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarInteger;
 
 /**
  * Created by marta on 16.03.14.
@@ -34,6 +34,14 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
+        final Button result = (Button) findViewById(R.id.result);
+        result.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectVariable("VarInteger", result);
+            }
+        });
     }
 
     public Accelerometer(Context context) {
@@ -57,9 +65,6 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         x.setProgress(x_);
         y.setProgress(y_);
         z.setProgress(z_);
-        EditText result  = (EditText) findViewById(R.id.result);
-
-        result.setText(String.valueOf(x_));
     }
 
     public void run() throws UnknownVariableException {
@@ -76,8 +81,5 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         } else if (accel.contains("z")) {
             ((VarInteger)returnedValue).value = z_;
         }
-
-        Toast.makeText(getContext(), "Value: " + x_, Toast.LENGTH_SHORT).show();
-
     }
 }

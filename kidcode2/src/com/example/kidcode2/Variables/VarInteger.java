@@ -1,4 +1,4 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Variables;
 
 /**
  * Created by marta on 10.03.14.

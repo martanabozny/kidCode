@@ -1,14 +1,14 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
-import android.app.AlertDialog;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.Toast;
+import com.example.kidcode2.SelectVariableDialog;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.Variable;
 
 import java.util.ArrayList;
 

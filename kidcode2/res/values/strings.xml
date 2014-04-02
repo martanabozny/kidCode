@@ -24,9 +24,8 @@
 
     <string-array name="variable_types">
         <item>String</item>
-        <item>int</item>
-        <item>float</item>
-        <item>boolean</item>
+        <item>Integer</item>
+        <item>Image</item>
 
     </string-array>
 </resources>

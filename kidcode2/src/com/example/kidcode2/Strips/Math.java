@@ -1,10 +1,13 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import com.example.kidcode2.R;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarInteger;
 
 /**
  * Created by marta on 10.03.14.

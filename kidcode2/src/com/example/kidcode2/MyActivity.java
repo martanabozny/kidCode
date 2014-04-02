@@ -1,16 +1,13 @@
 package com.example.kidcode2;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
+import com.example.kidcode2.Strips.*;
+import com.example.kidcode2.Strips.Math;
 
 
 public class MyActivity extends Activity { //implements View.OnTouchListener, View.OnDragListener {
@@ -65,8 +62,15 @@ public class MyActivity extends Activity { //implements View.OnTouchListener, Vi
         layout.addView(string);
     }
 
+    public void AddNewVariableStrip(View view) {
+        NewVariable nv = new NewVariable(this);
+        if (layout.getChildCount() > 0)
+            nv.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+        layout.addView(nv);
+    }
+
     public void AddMathStrip(View view) {
-        Math math = new Math(this);
+        com.example.kidcode2.Strips.Math math = new Math(this);
         if (layout.getChildCount() > 0)
             math.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
         layout.addView(math);

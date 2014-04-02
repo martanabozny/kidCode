@@ -1,24 +1,19 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera;
+import com.example.kidcode2.R;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarImage;
+
 import java.io.File;
 import java.io.FileOutputStream;
 

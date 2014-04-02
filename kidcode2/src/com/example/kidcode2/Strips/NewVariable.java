@@ -1,10 +1,14 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.example.kidcode2.R;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarInteger;
+import com.example.kidcode2.Variables.VarString;
 
 /**
  * Created by marta on 20.03.14.
@@ -35,7 +39,7 @@ public class NewVariable extends FunctionStrip {
             returnedValue = new VarString();
             returnedValue.name = _name;
             ((VarString)returnedValue).value = _value;
-        } else if (type.contains("int")){
+        } else if (type.contains("Integer")){
             returnedValue = new VarInteger();
             returnedValue.name = _name;
             ((VarInteger)returnedValue).value = Double.valueOf(_value);

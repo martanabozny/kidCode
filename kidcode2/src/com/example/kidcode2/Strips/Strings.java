@@ -1,4 +1,4 @@
-package com.example.kidcode2;
+package com.example.kidcode2.Strips;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.example.kidcode2.R;
+import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarString;
 
 /**
  * Created by marta on 17.03.14.
