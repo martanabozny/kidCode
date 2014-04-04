@@ -1,21 +1,22 @@
 package com.example.kidcode2;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
+import android.widget.*;
 import com.example.kidcode2.Strips.*;
 import com.example.kidcode2.Strips.Math;
 
 
-public class MyActivity extends Activity { //implements View.OnTouchListener, View.OnDragListener {
+public class MyActivity extends Activity {
 
     LinearLayout layout;
-    /**
-     * Called when the activity is first created.
-     */
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,69 +26,18 @@ public class MyActivity extends Activity { //implements View.OnTouchListener, Vi
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         code.addView(layout);
+        code.setOnDragListener(new MyDragListener());
 
-        /*findViewById(R.id.Math_Button).setOnTouchListener(this);
-        findViewById(R.id.code).setOnDragListener(this);
-        findViewById(R.id.icons).setOnDragListener(this);
-*/
-    }
+        findViewById(R.id.Math_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.Accelerometer_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.While_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.If_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.Foto_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.FotoOp_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.Show_Variable_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.Strings_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.New_Variable_Button).setOnTouchListener(new MyTouchListener());
 
-    /*public boolean onTouch(View v, MotionEvent e) {
-        if (e.getAction() == MotionEvent.ACTION_DOWN) {
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-            v.startDrag(null, shadowBuilder, v, 0);
-            v.setVisibility(View.INVISIBLE);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean onDrag(View v, DragEvent e) {
-        if (e.getAction()==DragEvent.ACTION_DROP) {
-            View view = (View) e.getLocalState();
-            ViewGroup from = (ViewGroup) view.getParent();
-            from.removeView(view);
-            LinearLayout to = (LinearLayout) v;
-            to.addView(view);
-            view.setVisibility(View.VISIBLE);
-        }
-        return true;
-    }*/
-    public void AddStringStrip(View view) {
-        Strings string = new Strings(this);
-        if (layout.getChildCount() > 0)
-            string.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
-        layout.addView(string);
-    }
-
-    public void AddNewVariableStrip(View view) {
-        NewVariable nv = new NewVariable(this);
-        if (layout.getChildCount() > 0)
-            nv.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
-        layout.addView(nv);
-    }
-
-    public void AddMathStrip(View view) {
-        com.example.kidcode2.Strips.Math math = new Math(this);
-        if (layout.getChildCount() > 0)
-            math.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
-        layout.addView(math);
-    }
-
-    public void AddFotoStrip(View view) {
-        Foto foto = new Foto(this);
-        if (layout.getChildCount() > 0)
-            foto.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
-        layout.addView(foto);
-    }
-
-    public void AddAccelerometerStrip(View view) {
-        Accelerometer accelerometer = new Accelerometer(this);
-        if (layout.getChildCount() > 0)
-            accelerometer.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
-        layout.addView(accelerometer);
     }
 
     public void runCode(View view) {
@@ -103,6 +53,77 @@ public class MyActivity extends Activity { //implements View.OnTouchListener, Vi
                 Toast.makeText(this, "Something has gone wrong: " + e.toString(), Toast.LENGTH_SHORT).show();
                 break;
             }
+        }
+    }
+
+    private final class MyTouchListener implements View.OnTouchListener {
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                view.startDrag(data, shadowBuilder, view, 0);
+                //view.setVisibility(View.INVISIBLE);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    class MyDragListener implements View.OnDragListener {
+
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            int action = event.getAction();
+            if(event.getAction() == DragEvent.ACTION_DROP) {
+                FunctionStrip strip = null;
+
+                switch(((View)event.getLocalState()).getId()){
+                    case R.id.Math_Button:
+                        strip = new Math(getApplicationContext());
+                        break;
+
+                    case R.id.Accelerometer_Button:
+                        strip = new Accelerometer(getApplicationContext());
+                        break;
+
+                    case R.id.While_Button:
+                        strip = new While_Strip(getApplicationContext());
+                        break;
+
+                    case R.id.If_Button:
+                        strip = new If_Strip(getApplicationContext());
+                        break;
+
+                    case R.id.Foto_Button:
+                        strip = new Foto(getApplicationContext());
+                        break;
+
+                    case R.id.Strings_Button:
+                        strip = new Strings(getApplicationContext());
+                        break;
+
+                    case R.id.New_Variable_Button:
+                        strip = new NewVariable(getApplicationContext());
+                        break;
+
+                    default:
+                        break;
+                }
+                if (strip == null) {
+                    return true;
+                }
+
+                int index = layout.indexOfChild(v);
+                if (index == -1) {
+                    layout.addView(strip);
+                } else {
+                    layout.addView(strip, index+1);
+                }
+
+                strip.setOnDragListener(new MyDragListener());
+            }
+            return  true;
         }
     }
 }

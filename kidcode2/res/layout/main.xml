@@ -27,37 +27,37 @@
             <ImageButton
                     android:layout_width="76dp"
                     android:layout_height="57dp"
-                    android:id="@+id/srtings_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/Strings_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/string" android:onClick="AddStringStrip"/>
             <ImageButton
                     android:layout_width="77dp"
                     android:layout_height="58dp"
-                    android:id="@+id/show_variable_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/Show_Variable_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/variable"/>
             <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/new_variable_Button" android:onClick="AddNewVariableStrip"
+                    android:id="@+id/New_Variable_Button" android:onClick="AddNewVariableStrip"
                     android:layout_gravity="center_horizontal"/>
             <ImageButton
                     android:layout_width="77dp"
                     android:layout_height="58dp"
-                    android:id="@+id/fotoop_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/FotoOp_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/fotoop"/>
             <ImageButton
                     android:layout_width="76dp"
                     android:layout_height="56dp"
-                    android:id="@+id/foto_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/Foto_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/foto" android:onClick="AddFotoStrip"/>
             <ImageButton
                     android:layout_width="73dp"
                     android:layout_height="55dp"
-                    android:id="@+id/if_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/If_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/condition"/>
             <ImageButton
                     android:layout_width="85dp"
                     android:layout_height="64dp"
-                    android:id="@+id/while_Button" android:layout_gravity="center_horizontal"
+                    android:id="@+id/While_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/loop"/>
             <Button
                     android:layout_width="wrap_content"
@@ -70,6 +70,6 @@
             android:layout_width="194dp"
             android:layout_height="match_parent"
             android:id="@+id/code"
-            android:layout_weight="0.90">
+            android:layout_weight="0.90" android:background="#3366ff">
     </ScrollView>
 </LinearLayout>
