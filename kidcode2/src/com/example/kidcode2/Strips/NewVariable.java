@@ -3,12 +3,15 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.VarString;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by marta on 20.03.14.
@@ -31,6 +34,7 @@ public class NewVariable extends FunctionStrip {
         EditText name  = (EditText) findViewById(R.id.name);
         EditText value  = (EditText) findViewById(R.id.value);
         Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
+
         String type = variables_types.getSelectedItem().toString();
         String _value = value.getText().toString();
         String _name = name.getText().toString();
@@ -45,5 +49,24 @@ public class NewVariable extends FunctionStrip {
             ((VarInteger)returnedValue).value = Double.valueOf(_value);
         }
 
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+
+        try {
+            EditText name  = (EditText) findViewById(R.id.name);
+            EditText value  = (EditText) findViewById(R.id.value);
+            Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
+
+            object.put("variables_types", variables_types.getSelectedItemPosition());
+            object.put("name", name.toString());
+            object.put("value", value.toString());
+            object.put("type", "NewVariable");
+
+        } catch (JSONException e) {
+
+        }
+        return object;
     }
 }

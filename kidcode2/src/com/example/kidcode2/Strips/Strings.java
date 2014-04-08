@@ -9,6 +9,8 @@ import android.widget.Spinner;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarString;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by marta on 17.03.14.
@@ -29,12 +31,13 @@ public class Strings extends FunctionStrip {
     }
 
     public void run() throws UnknownVariableException {
+
         Spinner operationSpinner = (Spinner) findViewById(R.id.functions);
-        String operation = operationSpinner.getSelectedItem().toString();
         EditText result  = (EditText) findViewById(R.id.result);
         String text  = ((EditText) findViewById(R.id.editable_string)).toString();
         CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
 
+        String operation = operationSpinner.getSelectedItem().toString();
         ((VarString) returnedValue).name = result.toString();
 
         if (isVariable.isChecked()) {
@@ -50,5 +53,26 @@ public class Strings extends FunctionStrip {
         }else if(operation.contains("invert")){
             ((VarString)returnedValue).value = new StringBuilder(text).reverse().toString();
         }
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+
+        try {
+            Spinner operationSpinner = (Spinner) findViewById(R.id.functions);
+            EditText result  = (EditText) findViewById(R.id.result);
+            String text  = ((EditText) findViewById(R.id.editable_string)).toString();
+            CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
+
+            object.put("functions", operationSpinner.getSelectedItemPosition());
+            object.put("result", result.toString());
+            object.put("text", text.toString());
+            object.put("isVariable", isVariable.toString());
+            object.put("type", "Strings");
+
+        } catch (JSONException e) {
+
+        }
+        return object;
     }
 }

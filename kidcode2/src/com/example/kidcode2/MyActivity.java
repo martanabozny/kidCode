@@ -10,12 +10,13 @@ import android.view.View;
 import android.widget.*;
 import com.example.kidcode2.Strips.*;
 import com.example.kidcode2.Strips.Math;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class MyActivity extends Activity {
-
     LinearLayout layout;
-
+    Context ctx;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class MyActivity extends Activity {
         findViewById(R.id.Show_Variable_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.Strings_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.New_Variable_Button).setOnTouchListener(new MyTouchListener());
-
+        ctx = this;
     }
 
     public void runCode(View view) {
@@ -80,31 +81,31 @@ public class MyActivity extends Activity {
 
                 switch(((View)event.getLocalState()).getId()){
                     case R.id.Math_Button:
-                        strip = new Math(getApplicationContext());
+                        strip = new Math(ctx);
                         break;
 
                     case R.id.Accelerometer_Button:
-                        strip = new Accelerometer(getApplicationContext());
+                        strip = new Accelerometer(ctx);
                         break;
 
                     case R.id.While_Button:
-                        strip = new While_Strip(getApplicationContext());
+                        strip = new While_Strip(ctx);
                         break;
 
                     case R.id.If_Button:
-                        strip = new If_Strip(getApplicationContext());
+                        strip = new If_Strip(ctx);
                         break;
 
                     case R.id.Foto_Button:
-                        strip = new Foto(getApplicationContext());
+                        strip = new Foto(ctx);
                         break;
 
                     case R.id.Strings_Button:
-                        strip = new Strings(getApplicationContext());
+                        strip = new Strings(ctx);
                         break;
 
                     case R.id.New_Variable_Button:
-                        strip = new NewVariable(getApplicationContext());
+                        strip = new NewVariable(ctx);
                         break;
 
                     default:
@@ -126,4 +127,24 @@ public class MyActivity extends Activity {
             return  true;
         }
     }
+
+    public  void onSaveInstanceState(Bundle bundle){
+        super.onSaveInstanceState(bundle);
+        try {
+            JSONArray array = new JSONArray();
+
+            int count = layout.getChildCount();
+            for (int i = 0; i < count; i++) {
+                FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
+                JSONObject object = strip.toJson();
+                array.put(object);
+            }
+            bundle.putSerializable("strips", array.toString());
+            Toast.makeText(getApplicationContext(), array.toString(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }

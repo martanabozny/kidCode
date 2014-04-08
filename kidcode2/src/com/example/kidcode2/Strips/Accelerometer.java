@@ -12,6 +12,8 @@ import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by marta on 16.03.14.
@@ -81,5 +83,22 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         } else if (accel.contains("z")) {
             ((VarInteger)returnedValue).value = z_;
         }
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+
+        try {
+            Spinner accels = (Spinner)findViewById(R.id.accels);
+            EditText result  = (EditText) findViewById(R.id.result);
+
+            object.put("axis", accels.getSelectedItemPosition());
+            object.put("result", result.getText().toString());
+            object.put("type", "Accelerometer");
+
+        } catch (JSONException e) {
+
+        }
+        return object;
     }
 }

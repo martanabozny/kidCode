@@ -7,12 +7,15 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarImage;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -66,5 +69,18 @@ public class Foto extends FunctionStrip {
         camera.stopPreview();
     }
 
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+
+        try {
+            EditText result  = (EditText) findViewById(R.id.result);
+            object.put("result", result.toString());
+            object.put("type", "Accelerometer");
+
+        } catch (JSONException e) {
+
+        }
+        return object;
+    }
 
 }

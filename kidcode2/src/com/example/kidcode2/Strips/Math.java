@@ -8,6 +8,8 @@ import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by marta on 10.03.14.
@@ -23,8 +25,6 @@ public class Math extends FunctionStrip {
     public Math(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        drawStrip();
-
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.math, this, true);
 
@@ -37,7 +37,12 @@ public class Math extends FunctionStrip {
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", result);
+                try {
+                    selectVariable("VarInteger", result);
+                }
+                catch (Exception e){
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
         number1.setOnClickListener(new OnClickListener() {
@@ -100,41 +105,24 @@ public class Math extends FunctionStrip {
         Toast.makeText(getContext(), "Value: " + numberc, Toast.LENGTH_SHORT).show();
     }
 
-    private void drawStrip(){
-//        LayoutParams paramsResult = new LayoutParams(0, LayoutParams.MATCH_PARENT);
-//        LayoutParams params1 = new LayoutParams(0, LayoutParams.MATCH_PARENT);
-//        LayoutParams params2 = new LayoutParams(0, LayoutParams.MATCH_PARENT);
-//
-//        layout = new LinearLayout(getContext());
-//        result = new Button(getContext());
-//        equalsTo = new TextView(getContext());
-//        number1 = new Button(getContext());
-//        number2 = new Button(getContext());
-//        function = new Spinner(getContext());
-//
-//        layout.setWeightSum(4);
-//        equalsTo.setText("=");
-//        equalsTo.setWidth(20);
-//
-//
-//        function.setMinimumWidth(40);
-//
-//
-//        params1.weight = 1.5f;
-//        params2.weight = 1.5f;
-//        paramsResult.weight = 1.0f;
-//
-//        result.setLayoutParams(paramsResult);
-//        number1.setLayoutParams(params1);
-//        number1.setLayoutParams(params2);
-//
-//
-//        layout.setOrientation(HORIZONTAL);
-//        layout.addView(result);
-//        layout.addView(function);
-//        layout.addView(number1);
-//        layout.addView(number2);
-//
-//        addView(layout);
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+
+        try {
+            Spinner function = (Spinner)findViewById(R.id.function);
+            Button result  = (Button) findViewById(R.id.result);
+            Button a = (Button) findViewById(R.id.number1);
+            Button b = (Button) findViewById(R.id.number2);
+
+            object.put("function", function.getSelectedItemPosition());
+            object.put("result", result.getText().toString());
+            object.put("a", a.getText().toString());
+            object.put("b", b.getText().toString());
+            object.put("type", "Math");
+
+        } catch (JSONException e) {
+
+        }
+        return object;
     }
 }
