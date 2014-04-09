@@ -46,4 +46,8 @@ public class While_Strip extends FunctionStrip {
         }
         return object;
     }
+
+    public void fromJson(JSONObject object){
+
+    }
 }

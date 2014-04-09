@@ -28,6 +28,7 @@ public abstract class FunctionStrip extends LinearLayout {
     public abstract void run() throws UnknownVariableException;
 
     public abstract JSONObject toJson();
+    public abstract void fromJson(JSONObject object);
 
     public Variable getVariable(String name, String type) throws UnknownVariableException {
         FunctionStrip tmp = previous;

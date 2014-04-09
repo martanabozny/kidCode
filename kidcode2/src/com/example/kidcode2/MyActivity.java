@@ -3,14 +3,14 @@ package com.example.kidcode2;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.widget.*;
 import com.example.kidcode2.Strips.*;
 import com.example.kidcode2.Strips.Math;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -39,6 +39,30 @@ public class MyActivity extends Activity {
         findViewById(R.id.Strings_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.New_Variable_Button).setOnTouchListener(new MyTouchListener());
         ctx = this;
+
+        if (savedInstanceState != null) {
+            String strips = savedInstanceState.getString("strips");
+            try {
+                JSONArray list = new JSONArray(strips);
+                for (int i = 0; i < list.length(); i++) {
+                    JSONObject object = list.getJSONObject(i);
+
+                    FunctionStrip fstrip = null;
+
+                    if (object.getString("type").equals("Math"))
+                        fstrip = new Math(ctx);
+                    if (object.getString("type").equals("Strings"))
+                        fstrip = new Strings(ctx);
+                    if (object.getString("type").equals("Accelerometer"))
+                        fstrip = new Accelerometer(ctx);
+
+                    fstrip.fromJson(object);
+                    layout.addView(fstrip);
+                }
+            } catch (JSONException e) {
+
+            }
+        }
     }
 
     public void runCode(View view) {
@@ -128,7 +152,12 @@ public class MyActivity extends Activity {
         }
     }
 
-    public  void onSaveInstanceState(Bundle bundle){
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("abc");
+        return true;
+    }
+
+    public void onSaveInstanceState(Bundle bundle){
         super.onSaveInstanceState(bundle);
         try {
             JSONArray array = new JSONArray();
@@ -145,6 +174,4 @@ public class MyActivity extends Activity {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
     }
-
-
 }

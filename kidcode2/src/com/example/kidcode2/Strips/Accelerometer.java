@@ -101,4 +101,17 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         }
         return object;
     }
+
+    public void fromJson(JSONObject object){
+        Spinner accels = (Spinner)findViewById(R.id.accels);
+        EditText result  = (EditText) findViewById(R.id.result);
+
+        try {
+            accels.setSelection(object.getInt("accels"));
+            result.setText(object.getString("result"));
+
+        } catch (JSONException e) {
+
+        }
+    }
 }

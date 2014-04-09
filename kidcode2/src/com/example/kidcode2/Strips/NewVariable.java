@@ -69,4 +69,19 @@ public class NewVariable extends FunctionStrip {
         }
         return object;
     }
+
+    public void fromJson(JSONObject object){
+        try {
+            EditText name  = (EditText) findViewById(R.id.name);
+            EditText value  = (EditText) findViewById(R.id.value);
+            Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
+
+            name.setText(object.getString("name"));
+            value.setText(object.getString("value"));
+            variables_types.setSelection(object.getInt("variables_types"));
+
+        } catch (JSONException e) {
+
+        }
+    }
 }

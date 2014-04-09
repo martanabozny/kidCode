@@ -3,6 +3,7 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -32,13 +33,15 @@ public class Strings extends FunctionStrip {
 
     public void run() throws UnknownVariableException {
 
-        Spinner operationSpinner = (Spinner) findViewById(R.id.functions);
-        EditText result  = (EditText) findViewById(R.id.result);
-        String text  = ((EditText) findViewById(R.id.editable_string)).toString();
+        Spinner functions = (Spinner) findViewById(R.id.functions);
+        Button result  = (Button) findViewById(R.id.result);
+        Button textButton  = (Button) findViewById(R.id.text);
         CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
 
-        String operation = operationSpinner.getSelectedItem().toString();
-        ((VarString) returnedValue).name = result.toString();
+        String operation = functions.getSelectedItem().toString();
+        ((VarString) returnedValue).name = result.getText().toString();
+
+        String text = textButton.getText().toString();
 
         if (isVariable.isChecked()) {
             VarString variable_name = (VarString) getVariable(text, "VarString");
@@ -59,20 +62,36 @@ public class Strings extends FunctionStrip {
         JSONObject object = new JSONObject();
 
         try {
-            Spinner operationSpinner = (Spinner) findViewById(R.id.functions);
-            EditText result  = (EditText) findViewById(R.id.result);
-            String text  = ((EditText) findViewById(R.id.editable_string)).toString();
+            Spinner functions = (Spinner) findViewById(R.id.functions);
+            Button result  = (Button) findViewById(R.id.result);
+            Button text  = (Button) findViewById(R.id.text);
             CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
 
-            object.put("functions", operationSpinner.getSelectedItemPosition());
+            object.put("functions", functions.getSelectedItemPosition());
             object.put("result", result.toString());
             object.put("text", text.toString());
-            object.put("isVariable", isVariable.toString());
+            object.put("isVariable", isVariable.isChecked());
             object.put("type", "Strings");
 
         } catch (JSONException e) {
 
         }
         return object;
+    }
+
+    public void fromJson(JSONObject object){
+        try {
+            Spinner functions = (Spinner) findViewById(R.id.functions);
+            Button result  = (Button) findViewById(R.id.result);
+            Button text  = (Button) findViewById(R.id.text);
+            CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
+
+            result.setText(object.getString("result"));
+            text.setText(object.getString("text"));
+            functions.setSelection(object.getInt("functions"));
+            isVariable.setChecked(object.getBoolean("isVariable"));
+        } catch (JSONException e) {
+
+        }
     }
 }

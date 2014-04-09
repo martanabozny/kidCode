@@ -125,4 +125,23 @@ public class Math extends FunctionStrip {
         }
         return object;
     }
+
+    public void fromJson(JSONObject object){
+        Spinner function = (Spinner)findViewById(R.id.function);
+        Button result  = (Button) findViewById(R.id.result);
+        Button a = (Button) findViewById(R.id.number1);
+        Button b = (Button) findViewById(R.id.number2);
+
+        try {
+            function.setSelection(object.getInt("function"));
+            result.setText(object.getString("result"));
+            a.setText(object.getString("a"));
+            b.setText(object.getString("b"));
+
+        } catch (JSONException e) {
+
+        }
+    }
+
+
 }

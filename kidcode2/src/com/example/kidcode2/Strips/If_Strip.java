@@ -3,6 +3,7 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import com.example.kidcode2.R;
@@ -45,5 +46,9 @@ public class If_Strip extends FunctionStrip {
 
         }
         return object;
+    }
+
+    public void fromJson(JSONObject object){
+
     }
 }

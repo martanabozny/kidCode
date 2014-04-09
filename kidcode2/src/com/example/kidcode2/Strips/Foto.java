@@ -5,10 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera;
 import com.example.kidcode2.R;
@@ -49,7 +46,7 @@ public class Foto extends FunctionStrip {
             @Override
             public void onPictureTaken(byte[] bytes, Camera camera) {
                 Toast.makeText(getContext(), "Len:" + String.valueOf(bytes.length), Toast.LENGTH_SHORT).show();
-                EditText result = (EditText) findViewById(R.id.result);
+                Button result = (Button) findViewById(R.id.result);
                 ImageView preview = (ImageView) findViewById(R.id.preview);
 
                 returnedValue.name = result.toString();
@@ -73,14 +70,26 @@ public class Foto extends FunctionStrip {
         JSONObject object = new JSONObject();
 
         try {
-            EditText result  = (EditText) findViewById(R.id.result);
-            object.put("result", result.toString());
-            object.put("type", "Accelerometer");
+            Button variable = (Button) findViewById(R.id.result);
+
+            object.put("variable", variable.toString());
+            object.put("type", "Foto");
 
         } catch (JSONException e) {
 
         }
         return object;
+    }
+
+    public void fromJson(JSONObject object){
+        Button variable = (Button) findViewById(R.id.result);;
+
+        try {
+            variable.setText(object.getString("variable"));
+
+        } catch (JSONException e) {
+
+        }
     }
 
 }
