@@ -66,10 +66,8 @@
                     android:id="@+id/run" android:layout_gravity="center_horizontal" android:onClick="runCode"/>
         </LinearLayout>
     </ScrollView>
-    <ScrollView
-            android:layout_width="194dp"
-            android:layout_height="match_parent"
-            android:id="@+id/code"
-            android:layout_weight="0.90" android:background="#3366ff">
-    </ScrollView>
+    <view android:layout_width="fill_parent"
+          android:layout_height="match_parent"
+          class="com.example.kidcode2.MyScrollView" android:id="@+id/code" android:layout_gravity="center_vertical"
+          android:fillViewport="false"/>
 </LinearLayout>

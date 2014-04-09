@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by marta on 08.04.14.
@@ -15,26 +17,22 @@ public class MyMenu extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.m);
+        setContentView(R.layout.menu);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.save:
-                return true;
-            case R.id.open:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    public void OnNewClick(View v) {
+        try {
+            startActivity(new Intent(MyMenu.this, MyActivity.class));
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void OnOpenClick(View v) {
+
+    }
+
+    public void OnLastClick(View v) {
 
     }
 }

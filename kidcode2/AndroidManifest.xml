@@ -7,15 +7,20 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="MyActivity"
-                  android:label="@string/app_name">
+        <activity android:name="MyMenu"
+                  android:label="kidCode">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="Menu"
-                  android:label="@string/app_name">
+
+        <activity android:name="MyActivity"
+                  android:label="kidCode">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
+
     </application>
 </manifest>
