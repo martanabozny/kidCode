@@ -58,8 +58,6 @@ public class MyActivity extends Activity {
         }
     }
 
-
-
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("save");
         menu.add("save as");

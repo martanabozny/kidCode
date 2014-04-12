@@ -1,8 +1,10 @@
 package com.example.kidcode2;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -90,6 +92,7 @@ public class MyScrollView extends ScrollView {
         }
     }
 
+
     class MyDragListener implements View.OnDragListener {
 
         @Override
@@ -101,6 +104,7 @@ public class MyScrollView extends ScrollView {
                 switch(((View)event.getLocalState()).getId()){
                     case R.id.Math_Button:
                         strip = new Math(getContext());
+
                         break;
 
                     case R.id.Accelerometer_Button:
@@ -134,11 +138,16 @@ public class MyScrollView extends ScrollView {
                     return true;
                 }
 
+
                 int index = layout.indexOfChild(v);
                 if (index == -1) {
+                    if (layout.getChildCount() != 0){
+                        strip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+                    }
                     layout.addView(strip);
                 } else {
                     layout.addView(strip, index+1);
+                    strip.previous = (FunctionStrip)v;
                 }
 
                 strip.setOnDragListener(new MyDragListener());

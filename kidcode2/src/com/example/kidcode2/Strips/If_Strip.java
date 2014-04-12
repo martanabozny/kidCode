@@ -3,9 +3,8 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.View;
+import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.Strips.FunctionStrip;
 import com.example.kidcode2.UnknownVariableException;
@@ -24,14 +23,46 @@ public class If_Strip extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.if_strip, this, true);
 
-        returnedValue = new VarString();
+        returnedValue = null;
 
-        EditText condition  = (EditText)findViewById(R.id.condition);
-        //condition.setOnDragListener(new MyDragListener());
+        Spinner condition = (Spinner) this.findViewById(R.id.condition);
+        condition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                condition();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     public If_Strip(Context context) {
         this(context, null);
+    }
+
+    public void condition() {
+        try {
+            Spinner condition = (Spinner)findViewById(R.id.condition);
+            String operation = condition.getSelectedItem().toString();
+            HorizontalScrollView scroll = (HorizontalScrollView)findViewById(R.id.scroll);
+
+            scroll.removeAllViews();
+
+            if (operation.equals("check")){
+               Check check = new check();
+                scroll.addView(check);
+            }
+            else if (operation.equals("compare")){
+                Compare compare = new compare();
+                scroll.addView(compare);
+            }
+        } catch (Exception e) {
+            Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show();
+        }
     }
 
     public void run() throws UnknownVariableException {}

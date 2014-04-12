@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="while"
-            android:id="@+id/textView"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/condition" android:layout_weight="1"/>
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#777777">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText" android:text="while"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="condition..."
+                android:id="@+id/textView"/>
+    </LinearLayout>
+    <view android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          class="com.example.kidcode2.MyScrollView" android:id="@+id/view" android:layout_gravity="right"
+          android:background="#ceccb8"/>
 </LinearLayout>

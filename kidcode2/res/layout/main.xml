@@ -62,8 +62,8 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Run"
-                    android:id="@+id/run" android:layout_gravity="center_horizontal" android:onClick="runCode"/>
+                    android:id="@+id/run" android:layout_gravity="center_horizontal" android:onClick="runCode"
+                    android:background="@drawable/play"/>
         </LinearLayout>
     </ScrollView>
     <view android:layout_width="fill_parent"

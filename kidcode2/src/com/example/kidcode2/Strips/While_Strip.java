@@ -23,10 +23,8 @@ public class While_Strip extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.while_strip, this, true);
 
-        returnedValue = new VarString();
+        returnedValue = null;
 
-        EditText condition  = (EditText)findViewById(R.id.condition);
-        //condition.setOnDragListener(new MyDragListener());
     }
 
     public While_Strip(Context context) {

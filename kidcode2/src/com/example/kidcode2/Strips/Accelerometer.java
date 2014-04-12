@@ -41,7 +41,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", result);
+                selectVariable("VarInteger", result, true);
             }
         });
     }
@@ -72,7 +72,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     public void run() throws UnknownVariableException {
         Spinner accels = (Spinner)findViewById(R.id.accels);
         String accel = accels.getSelectedItem().toString();
-        EditText result  = (EditText) findViewById(R.id.result);
+        Button result  = (Button) findViewById(R.id.result);
 
         returnedValue.name = result.toString();
 
@@ -90,7 +90,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
 
         try {
             Spinner accels = (Spinner)findViewById(R.id.accels);
-            EditText result  = (EditText) findViewById(R.id.result);
+            Button result  = (Button) findViewById(R.id.result);
 
             object.put("axis", accels.getSelectedItemPosition());
             object.put("result", result.getText().toString());
@@ -104,7 +104,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
 
     public void fromJson(JSONObject object){
         Spinner accels = (Spinner)findViewById(R.id.accels);
-        EditText result  = (EditText) findViewById(R.id.result);
+        Button result  = (Button) findViewById(R.id.result);
 
         try {
             accels.setSelection(object.getInt("accels"));

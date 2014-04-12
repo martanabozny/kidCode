@@ -26,6 +26,45 @@
         <item>String</item>
         <item>Integer</item>
         <item>Image</item>
+    </string-array>
 
+    <string-array name="condition">
+        <item>check</item>
+        <item>compare</item>
+    </string-array>
+
+    <string-array name="compare_integer">
+        <item>equals</item>
+        <item>different</item>
+        <item>grather than</item>
+        <item>less than</item>
+    </string-array>
+
+    <string-array name="check_integer">
+        <item>is odd</item>
+        <item>is even</item>
+    </string-array>
+
+
+    <string-array name="compare_String">
+        <item>part of</item>
+        <item>eguals</item>
+        <item>longer</item>
+    </string-array>
+
+    <string-array name="check_String">
+        <item>is lover</item>
+        <item>is upper</item>
+    </string-array>
+
+    <string-array name="compare_Image">
+        <item>part of</item>
+        <item>eguals</item>
+        <item>longer</item>
+    </string-array>
+
+    <string-array name="check_Image">
+        <item>is lover</item>
+        <item>is upper</item>
     </string-array>
 </resources>

@@ -37,24 +37,19 @@ public class Math extends FunctionStrip {
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    selectVariable("VarInteger", result);
-                }
-                catch (Exception e){
-                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
-                }
+                selectVariable("VarInteger", result, true);
             }
         });
         number1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", number1);
+                selectVariable("VarInteger", number1, false);
             }
         });
         number2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", number2);
+                selectVariable("VarInteger", number2, false);
             }
         });
     }
