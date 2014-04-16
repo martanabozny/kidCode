@@ -3,23 +3,49 @@
 <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#cccccc">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:weightSum="4">
+        <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="if"
+                android:id="@+id/textView" android:textColor="@android:color/black"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="variable..."
+                android:id="@+id/variable" android:layout_weight="1"/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/condition"
-                android:entries="@array/condition"
-                android:layout_weight="1"/>
-        <HorizontalScrollView
+                android:entries="@array/condition" android:layout_weight="1"/>
+        <Spinner
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:id="@+id/scroll" android:layout_weight="3"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/function" android:visibility="invisible" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Compare with..."
+                android:id="@+id/compareWith"
+                android:layout_gravity="right" android:visibility="invisible" android:layout_weight="1"/>
     </LinearLayout>
-    <view android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          class="com.example.kidcode2.MyScrollView" android:id="@+id/view" android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <TextView
+                android:layout_width="10dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/textView2" android:background="#cccccc"/>
+        <view android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              class="com.example.kidcode2.MyScrollView" android:id="@+id/MyView" android:layout_gravity="center_horizontal"
+              android:minHeight="40dp"/>
+    </LinearLayout>
 </LinearLayout>

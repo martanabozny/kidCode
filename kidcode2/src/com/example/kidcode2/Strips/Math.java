@@ -11,6 +11,8 @@ import com.example.kidcode2.Variables.VarInteger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by marta on 10.03.14.
  */
@@ -37,19 +39,22 @@ public class Math extends FunctionStrip {
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", result, true);
+                ArrayList list = collectVariables("VarInteger");
+                selectVariable(list, result, true);
             }
         });
         number1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", number1, false);
+                ArrayList list = collectVariables("VarInteger");
+                selectVariable(list, number1, false);
             }
         });
         number2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", number2, false);
+                ArrayList list = collectVariables("VarInteger");
+                selectVariable(list, number2, false);
             }
         });
     }
@@ -132,7 +137,7 @@ public class Math extends FunctionStrip {
             result.setText(object.getString("result"));
             a.setText(object.getString("a"));
             b.setText(object.getString("b"));
-
+            returnedValue.name = object.getString("result");
         } catch (JSONException e) {
 
         }

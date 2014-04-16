@@ -15,6 +15,8 @@ import com.example.kidcode2.Variables.VarInteger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by marta on 16.03.14.
  */
@@ -31,6 +33,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.accelerometer, this, true);
 
+
         returnedValue = new VarInteger();
 
         mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -41,7 +44,8 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectVariable("VarInteger", result, true);
+                ArrayList <String> list = collectVariables("");
+                selectVariable(list, result, true);
             }
         });
     }

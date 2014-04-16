@@ -43,6 +43,8 @@ public class MyActivity extends Activity {
 
 
     public void runCode(View view) {
+        MyScrollView code = (MyScrollView)findViewById(R.id.code);
+        code.runCode();
     }
 
     private final class MyTouchListener implements View.OnTouchListener {

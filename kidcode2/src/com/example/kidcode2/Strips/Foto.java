@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.*;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera;
@@ -16,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by marta on 18.03.14.
@@ -34,6 +36,16 @@ public class Foto extends FunctionStrip {
 
         camera = Camera.open();
         Toast.makeText(this.getContext(), "Jest!", Toast.LENGTH_SHORT).show();
+
+        final Button result = (Button)findViewById(R.id.text);
+
+        result.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList list = collectVariables("");
+                selectVariable(list, result, false);
+            }
+        });
     }
 
     public Foto(Context context) {

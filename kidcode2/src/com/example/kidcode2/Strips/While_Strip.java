@@ -3,9 +3,8 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.View;
+import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarString;
@@ -21,7 +20,7 @@ public class While_Strip extends FunctionStrip {
         super(context, attrs);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.while_strip, this, true);
+        inflater.inflate(R.layout.if_strip, this, true);
 
         returnedValue = null;
 
@@ -31,13 +30,19 @@ public class While_Strip extends FunctionStrip {
         this(context, null);
     }
 
+
     public void run() throws UnknownVariableException {}
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
 
         try {
-            object.put("type", "While_Strip");
+            Spinner condition = (Spinner)findViewById(R.id.condition);
+            HorizontalScrollView scroll = (HorizontalScrollView)findViewById(R.id.scroll);
+            View view = (View)findViewById(R.id.view);
+
+            object.put("condition", condition.getSelectedItemPosition());
+            object.put("type", "If_Strip");
 
         } catch (JSONException e) {
 
@@ -46,6 +51,15 @@ public class While_Strip extends FunctionStrip {
     }
 
     public void fromJson(JSONObject object){
+        Spinner condition = (Spinner)findViewById(R.id.condition);
+        HorizontalScrollView scroll = (HorizontalScrollView)findViewById(R.id.scroll);
+        View view = (View)findViewById(R.id.view);
 
+        try {
+            condition.setSelection(object.getInt("condition"));
+
+        } catch (JSONException e) {
+
+        }
     }
 }

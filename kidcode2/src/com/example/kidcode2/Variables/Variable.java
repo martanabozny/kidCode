@@ -1,5 +1,6 @@
 package com.example.kidcode2.Variables;
 
+import android.view.View;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;

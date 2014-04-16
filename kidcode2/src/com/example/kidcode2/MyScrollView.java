@@ -65,12 +65,16 @@ public class MyScrollView extends ScrollView {
                     fstrip = new Strings(getContext());
                 if (object.getString("type").equals("Accelerometer"))
                     fstrip = new Accelerometer(getContext());
+                if (object.getString("type").equals("If_Strip"))
+                    fstrip = new If_Strip(getContext());
 
                 fstrip.fromJson(object);
                 layout.addView(fstrip);
             }
         } catch (JSONException e) {
 
+        } catch (NullPointerException e) {
+            Toast.makeText(getContext(), "Unsuported strip", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -87,7 +91,7 @@ public class MyScrollView extends ScrollView {
 
             return array.toString();
         } catch (Exception e) {
-            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Cannot json: " + e.toString(), Toast.LENGTH_LONG).show();
             return "";
         }
     }

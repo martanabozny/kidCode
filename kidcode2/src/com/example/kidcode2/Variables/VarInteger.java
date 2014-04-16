@@ -2,14 +2,11 @@ package com.example.kidcode2.Variables;
 
 import android.content.res.Resources;
 import com.example.kidcode2.R;
-import com.example.kidcode2.Strips.FunctionStrip;
-
-import java.util.ArrayList;
 
 /**
  * Created by marta on 10.03.14.
  */
-public class VarInteger extends Variable{
+public class VarInteger extends Variable {
 
     public double value;
 
@@ -33,12 +30,14 @@ public class VarInteger extends Variable{
     }*/
 
     public String[] showCheckMethods() {
-        return Resources.getSystem().getStringArray(R.array.compare_integer);
+        String options[] = {"is odd", "is even"};
+        return options;
     }
 
 
     public String[] showCompareMethods() {
-        return Resources.getSystem().getStringArray(R.array.check_integer);
+        String options[] = {"equals", "different", "less than", "grather than"};
+        return options;
     }
 
     public  boolean compare(Variable v, String operation) {

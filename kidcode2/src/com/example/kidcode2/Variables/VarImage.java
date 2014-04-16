@@ -18,12 +18,14 @@ public class VarImage extends Variable {
     }
 
     public String[] showCheckMethods(){
-        return Resources.getSystem().getStringArray(R.array.compare_Image);
+        String options[] = {};
+        return options;
     }
 
 
     public String[] showCompareMethods(){
-        return Resources.getSystem().getStringArray(R.array.compare_Image);
+        String options[] = {};
+        return options;
     }
 
     public  boolean compare(Variable v, String operation){

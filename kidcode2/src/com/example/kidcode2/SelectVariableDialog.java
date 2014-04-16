@@ -19,7 +19,6 @@ public class SelectVariableDialog extends Dialog {
     EditText editText;
     RadioGroup radioGroup;
     Button ok;
-    Button cancel;
 
     public String selection;
 
@@ -49,7 +48,6 @@ public class SelectVariableDialog extends Dialog {
         }
 
         ok =  new Button(context);
-        cancel = new Button(context);
         ok.setText("ok");
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +64,5 @@ public class SelectVariableDialog extends Dialog {
         });
 
         linearLayout.addView(ok);
-        linearLayout.addView(cancel);
     }
-
-
 }

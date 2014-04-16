@@ -17,12 +17,14 @@ public class VarString extends Variable {
     }
 
     public String[] showCheckMethods(){
-        return Resources.getSystem().getStringArray(R.array.compare_String);
+        String options[] = {"is lower", "is upper"};
+        return options;
     }
 
 
     public String[] showCompareMethods(){
-        return Resources.getSystem().getStringArray(R.array.check_String);
+        String options[] = {"equals", "contains", "longer"};
+        return options;
     }
 
     public  boolean compare(Variable v, String operation){
@@ -38,7 +40,7 @@ public class VarString extends Variable {
     }
 
     public boolean check(String operation){
-        if (operation.equals("is lover")) {
+        if (operation.equals("is lower")) {
             return true;
         } else if (operation.equals("is upper")) {
             return true;

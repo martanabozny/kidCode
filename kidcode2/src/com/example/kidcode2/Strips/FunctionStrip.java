@@ -26,6 +26,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
     public FunctionStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLongClick();
     }
 
     public abstract void run() throws UnknownVariableException;
@@ -37,7 +38,7 @@ public abstract class FunctionStrip extends LinearLayout {
         FunctionStrip tmp = previous;
 
         while (tmp != null) {
-            if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.equals(type)) {
+            if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.contains(type)) {
                 return tmp.returnedValue;
             }
             tmp = tmp.previous;
@@ -46,18 +47,21 @@ public abstract class FunctionStrip extends LinearLayout {
         throw new UnknownVariableException(name);
     }
 
-    public void selectVariable(String type, final Button button, final boolean setReturnedValue) {
+    public ArrayList collectVariables(String type) {
         ArrayList<String> list = new ArrayList<String>();
         FunctionStrip tmp = previous;
 
         while (tmp != null) {
 
-            if (tmp.returnedValue != null && tmp.returnedValue.type.equals(type)){
+            if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type)) {
                list.add(tmp.returnedValue.name);
             }
             tmp = tmp.previous;
         }
+        return list;
+    }
 
+    public void selectVariable(ArrayList list, final Button button, final boolean setReturnedValue){
         final SelectVariableDialog dialog = new SelectVariableDialog(list, getContext());
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -74,5 +78,23 @@ public abstract class FunctionStrip extends LinearLayout {
         dialog.show();
     }
 
+    public void setLongClick() {
+        int count = this.getChildCount();
+        for (int a=0; a < count; a++) {
+            View view = this.getChildAt(a);
+            view.setOnLongClickListener(new OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    setVisibility(GONE);
+                    return true;
+                }
+            });
+        }
+    }
 
+    @Override
+    public void setOnLongClickListener(OnLongClickListener l) {
+        super.setOnLongClickListener(l);
+        this.setVisibility(GONE);
+    }
 }
