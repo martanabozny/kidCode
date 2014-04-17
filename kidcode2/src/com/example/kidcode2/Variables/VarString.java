@@ -41,9 +41,10 @@ public class VarString extends Variable {
 
     public boolean check(String operation){
         if (operation.equals("is lower")) {
-            return true;
+            return value.equals(value.toLowerCase());
+
         } else if (operation.equals("is upper")) {
-            return true;
+            return value.equals(value.toLowerCase());
         }
         return  true;
     }

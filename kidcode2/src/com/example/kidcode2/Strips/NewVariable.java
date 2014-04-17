@@ -48,7 +48,6 @@ public class NewVariable extends FunctionStrip {
             returnedValue.name = _name;
             ((VarInteger)returnedValue).value = Double.valueOf(_value);
         }
-
     }
 
     public JSONObject toJson() {

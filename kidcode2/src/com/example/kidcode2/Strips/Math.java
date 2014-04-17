@@ -101,8 +101,6 @@ public class Math extends FunctionStrip {
 
         ((VarInteger) returnedValue).value = numberc;
         returnedValue.name = result.getText().toString();
-
-        Toast.makeText(getContext(), "Value: " + numberc, Toast.LENGTH_SHORT).show();
     }
 
     public JSONObject toJson() {
@@ -138,6 +136,7 @@ public class Math extends FunctionStrip {
             a.setText(object.getString("a"));
             b.setText(object.getString("b"));
             returnedValue.name = object.getString("result");
+
         } catch (JSONException e) {
 
         }

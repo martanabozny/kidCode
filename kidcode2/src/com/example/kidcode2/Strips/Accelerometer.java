@@ -7,8 +7,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.*;
+import com.example.kidcode2.MyScrollView;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
@@ -46,6 +49,22 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
             public void onClick(View view) {
                 ArrayList <String> list = collectVariables("");
                 selectVariable(list, result, true);
+            }
+        });
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+                
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

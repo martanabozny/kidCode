@@ -3,6 +3,7 @@ package com.example.kidcode2;
 import android.content.ClipData;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.ActionMode;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -60,15 +61,22 @@ public class MyScrollView extends ScrollView {
                 FunctionStrip fstrip = null;
 
                 if (object.getString("type").equals("Math"))
-                    fstrip = new com.example.kidcode2.Strips.Math(getContext());
+                    fstrip = new Math(getContext());
                 if (object.getString("type").equals("Strings"))
                     fstrip = new Strings(getContext());
                 if (object.getString("type").equals("Accelerometer"))
                     fstrip = new Accelerometer(getContext());
-                if (object.getString("type").equals("If_Strip"))
-                    fstrip = new If_Strip(getContext());
+                if (object.getString("type").equals("Condition_Strip"))
+                    fstrip = new Condition_Strip(getContext());
+                if (object.getString("type").equals("NewVariable"))
+                    fstrip = new NewVariable(getContext());
+                if (object.getString("type").equals("ShowVariable"))
+                    fstrip = new ShowVariable(getContext());
 
                 fstrip.fromJson(object);
+                if (layout.getChildCount() != 0) {
+                    fstrip.previous =(FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+                }
                 layout.addView(fstrip);
             }
         } catch (JSONException e) {
@@ -116,11 +124,11 @@ public class MyScrollView extends ScrollView {
                         break;
 
                     case R.id.While_Button:
-                        strip = new While_Strip(getContext());
+                        strip = new Condition_Strip(getContext());
                         break;
 
                     case R.id.If_Button:
-                        strip = new If_Strip(getContext());
+                        strip = new Condition_Strip(getContext());
                         break;
 
                     case R.id.Foto_Button:
@@ -133,6 +141,10 @@ public class MyScrollView extends ScrollView {
 
                     case R.id.New_Variable_Button:
                         strip = new NewVariable(getContext());
+                        break;
+
+                    case R.id.Show_Variable_Button:
+                        strip = new ShowVariable(getContext());
                         break;
 
                     default:

@@ -26,7 +26,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
     public FunctionStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setLongClick();
+
     }
 
     public abstract void run() throws UnknownVariableException;
@@ -78,23 +78,5 @@ public abstract class FunctionStrip extends LinearLayout {
         dialog.show();
     }
 
-    public void setLongClick() {
-        int count = this.getChildCount();
-        for (int a=0; a < count; a++) {
-            View view = this.getChildAt(a);
-            view.setOnLongClickListener(new OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    setVisibility(GONE);
-                    return true;
-                }
-            });
-        }
-    }
 
-    @Override
-    public void setOnLongClickListener(OnLongClickListener l) {
-        super.setOnLongClickListener(l);
-        this.setVisibility(GONE);
-    }
 }
