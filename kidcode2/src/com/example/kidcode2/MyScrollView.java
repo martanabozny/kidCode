@@ -26,6 +26,7 @@ import java.util.ArrayList;
  */
 public class MyScrollView extends ScrollView {
     LinearLayout layout;
+    public FunctionStrip previous = null;
 
     public MyScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -77,7 +78,11 @@ public class MyScrollView extends ScrollView {
                 if (layout.getChildCount() != 0) {
                     fstrip.previous =(FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
                 }
+                else {
+                    fstrip.previous = previous;
+                }
                 layout.addView(fstrip);
+
             }
         } catch (JSONException e) {
 
@@ -159,8 +164,11 @@ public class MyScrollView extends ScrollView {
                 if (index == -1) {
                     if (layout.getChildCount() != 0){
                         strip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+                    } else {
+                        strip.previous = previous;
                     }
                     layout.addView(strip);
+
                 } else {
                     layout.addView(strip, index+1);
                     strip.previous = (FunctionStrip)v;

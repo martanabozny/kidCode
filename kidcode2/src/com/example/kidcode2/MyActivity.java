@@ -68,6 +68,7 @@ public class MyActivity extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().toString().equals("save")) {
+            
             return true;
         } else if (item.getTitle().toString().equals("save as")) {
             return true;

@@ -56,6 +56,10 @@ public class SelectVariableDialog extends Dialog {
                     selection = editText.getText().toString();
                 } else {
                     int id = radioGroup.getCheckedRadioButtonId();
+                    if (id == -1) {
+                        dismiss();
+                        return;
+                    }
                     RadioButton button =(RadioButton) findViewById(id);
                     selection = button.getText().toString();
                 }

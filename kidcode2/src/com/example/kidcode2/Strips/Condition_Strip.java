@@ -25,6 +25,9 @@ public class Condition_Strip extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.condition_strip, this, true);
 
+        MyScrollView scrool = (MyScrollView)findViewById(R.id.MyView);
+        scrool.previous = this;
+
         final Button variable = (Button)findViewById(R.id.variable);
         final Spinner condition = (Spinner)findViewById(R.id.condition);
         final Button compareWith = (Button)findViewById(R.id.compareWith);

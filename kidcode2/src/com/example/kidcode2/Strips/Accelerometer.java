@@ -61,7 +61,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
                 try {
                     ((ViewManager)realThis.getParent()).removeView(realThis);
                     returnedValue = null;
-                
+
                 } catch (Exception e) {
                     Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
