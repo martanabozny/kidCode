@@ -82,6 +82,7 @@ public class MyScrollView extends ScrollView {
                     fstrip.previous = previous;
                 }
                 layout.addView(fstrip);
+                fstrip.setOnDragListener(new MyDragListener());
 
             }
         } catch (JSONException e) {
@@ -121,7 +122,6 @@ public class MyScrollView extends ScrollView {
                 switch(((View)event.getLocalState()).getId()){
                     case R.id.Math_Button:
                         strip = new Math(getContext());
-
                         break;
 
                     case R.id.Accelerometer_Button:
