@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
@@ -55,6 +56,22 @@ public class Math extends FunctionStrip {
             public void onClick(View view) {
                 ArrayList list = collectVariables("VarInteger");
                 selectVariable(list, number2, false);
+            }
+        });
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

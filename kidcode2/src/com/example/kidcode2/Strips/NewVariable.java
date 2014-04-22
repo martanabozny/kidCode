@@ -3,9 +3,12 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
@@ -23,6 +26,22 @@ public class NewVariable extends FunctionStrip {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.new_variable, this, true);
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public NewVariable(Context context) {

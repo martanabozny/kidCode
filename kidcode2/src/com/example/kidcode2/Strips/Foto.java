@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.*;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera;
@@ -44,6 +45,22 @@ public class Foto extends FunctionStrip {
             public void onClick(View view) {
                 ArrayList list = collectVariables("");
                 selectVariable(list, result, false);
+            }
+        });
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -34,6 +34,10 @@
                 android:text="Compare with..."
                 android:id="@+id/compareWith"
                 android:layout_gravity="right" android:visibility="invisible" android:layout_weight="1"/>
+        <Button
+                android:layout_width="29dp"
+                android:layout_height="41dp"
+                android:id="@+id/cancel" android:background="@drawable/bin"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"

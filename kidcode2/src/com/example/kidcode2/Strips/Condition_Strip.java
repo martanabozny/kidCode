@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.*;
 import com.example.kidcode2.MyScrollView;
 import com.example.kidcode2.R;
@@ -49,6 +50,22 @@ public class Condition_Strip extends FunctionStrip {
                     selectVariable(list, compareWith, false);
                 } catch (UnknownVariableException e) {
                     Toast.makeText(getContext(), "Unknown variable: " + e.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         });

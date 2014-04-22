@@ -1,8 +1,10 @@
 package com.example.kidcode2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
@@ -12,6 +14,8 @@ import com.example.kidcode2.Strips.Math;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.FileOutputStream;
 
 
 public class MyActivity extends Activity {
@@ -37,6 +41,14 @@ public class MyActivity extends Activity {
                 code.fromJson(strips);
             } catch (Exception e) {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            try {
+                Toast.makeText(this, "Param: " + getIntent().getStringExtra("strips"), Toast.LENGTH_LONG).show();
+                MyScrollView code = (MyScrollView)findViewById(R.id.code);
+                code.fromJson(getIntent().getStringExtra("strips"));
+            } catch (Exception e) {
+                Toast.makeText(this, "error: " + e.toString(), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -67,11 +79,37 @@ public class MyActivity extends Activity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getTitle().toString().equals("save")) {
-            
+        if (item.getTitle().toString().equals("save as")) {
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Save as");
+            alert.setMessage("File name");
+            final EditText input = new EditText(this);
+            alert.setView(input);
+
+            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String value = input.getText().toString();
+
+                    try {
+                        FileOutputStream fos = openFileOutput(value, Context.MODE_PRIVATE);
+                        MyScrollView code = (MyScrollView)findViewById(R.id.code);
+                        fos.write(code.toJson().getBytes());
+                        fos.close();
+                    } catch (Exception e){
+                        Toast.makeText(getApplicationContext(),"Problem: " + e.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                }
+            });
+            alert.show();
             return true;
-        } else if (item.getTitle().toString().equals("save as")) {
-            return true;
+
         } else {
             return super.onOptionsItemSelected(item);
         }

@@ -3,10 +3,9 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.View;
+import android.view.ViewManager;
+import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarString;
@@ -25,6 +24,22 @@ public class Strings extends FunctionStrip {
         inflater.inflate(R.layout.strings, this, true);
 
         returnedValue = new VarString();
+
+        final Button cancel = (Button) findViewById(R.id.cancel);
+        final View realThis = this;
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((ViewManager)realThis.getParent()).removeView(realThis);
+                    returnedValue = null;
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public Strings(Context context) {

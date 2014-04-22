@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="4" android:background="#ffae6b">
+              android:layout_height="match_parent" android:weightSum="4" android:background="@drawable/math_background">
 
     <Button
             android:layout_width="0dp"
@@ -24,10 +24,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/function" android:layout_gravity="center_vertical"
             android:spinnerMode="dialog"
-            android:entries="@array/math_functions"/>
+            android:entries="@array/math_functions" style="@style/SpinnerAsButton"/>
     <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/number2" android:layout_gravity="center_vertical" android:layout_weight="1.5"
             />
+    <Button
+            android:layout_width="52dp"
+            android:layout_height="55dp"
+            android:id="@+id/cancel" android:background="@drawable/bin"/>
 </LinearLayout>
