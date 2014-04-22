@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="#cccccc">
+        android:background="@drawable/new_variable_background">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="4">
+              android:layout_height="match_parent" android:weightSum="4"
+              android:background="@drawable/show_variable_background">
 
     <Button
             android:layout_width="0dp"
