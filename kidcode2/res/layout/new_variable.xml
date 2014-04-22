@@ -4,11 +4,11 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/show_variable_background">
+        android:background="@drawable/show_variable_background" android:weightSum="4">
     <Spinner
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/variables_types" android:layout_gravity="center_vertical" android:layout_weight="0.5"
+            android:id="@+id/variables_types" android:layout_gravity="center_vertical" android:layout_weight="1"
             android:entries="@array/variable_types"/>
     <EditText
             android:layout_width="wrap_content"
@@ -18,13 +18,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="="
-            android:id="@+id/textView2" android:layout_gravity="center_vertical"/>
+            android:id="@+id/textView2" android:layout_gravity="center_vertical" android:textColor="#000000"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/value" android:layout_gravity="center_vertical" android:layout_weight="1"/>
+            android:id="@+id/value" android:layout_gravity="center_vertical" android:layout_weight="2"/>
     <Button
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="39dp"
+            android:layout_height="43dp"
             android:id="@+id/cancel" android:background="@drawable/bin" android:clickable="true"/>
 </LinearLayout>

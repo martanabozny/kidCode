@@ -54,7 +54,15 @@ public abstract class FunctionStrip extends LinearLayout {
         while (tmp != null) {
 
             if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type)) {
-               list.add(tmp.returnedValue.name);
+                boolean contains = false;
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).toString().equals(tmp.returnedValue.name)) {
+                        contains = true;
+                    }
+                }
+
+                if (!contains)
+                    list.add(tmp.returnedValue.name);
             }
             tmp = tmp.previous;
         }

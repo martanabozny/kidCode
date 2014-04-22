@@ -47,7 +47,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList <String> list = collectVariables("");
+                ArrayList <String> list = collectVariables("VarInteger");
                 selectVariable(list, result, true);
             }
         });

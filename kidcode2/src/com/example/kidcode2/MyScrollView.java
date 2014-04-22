@@ -115,7 +115,7 @@ public class MyScrollView extends ScrollView {
         @Override
         public boolean onDrag(View v, DragEvent event) {
             int action = event.getAction();
-            if(event.getAction() == DragEvent.ACTION_DROP) {
+            if (event.getAction() == DragEvent.ACTION_DROP) {
                 FunctionStrip strip = null;
 
                 switch(((View)event.getLocalState()).getId()){

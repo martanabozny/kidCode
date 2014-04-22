@@ -2,13 +2,11 @@ package com.example.kidcode2.Strips;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
@@ -42,14 +40,35 @@ public class NewVariable extends FunctionStrip {
                 }
             }
         });
+
+        EditText name = (EditText)findViewById(R.id.name);
+        name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                createVariable();
+                return false;
+            }
+        });
+
+        Spinner variable_types = (Spinner) findViewById(R.id.variables_types);
+        variable_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                createVariable();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public NewVariable(Context context) {
         this(context, null);
     }
 
-    public void run() throws UnknownVariableException {
-
+    private void createVariable() {
         EditText name  = (EditText) findViewById(R.id.name);
         EditText value  = (EditText) findViewById(R.id.value);
         Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
@@ -65,8 +84,20 @@ public class NewVariable extends FunctionStrip {
         } else if (type.contains("Integer")){
             returnedValue = new VarInteger();
             returnedValue.name = _name;
-            ((VarInteger)returnedValue).value = Double.valueOf(_value);
+            if (!_value.equals("")) {
+                try {
+                    ((VarInteger)returnedValue).value = Double.valueOf(_value);
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Cannot convert to integer!", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                ((VarInteger)returnedValue).value = 0;
+            }
         }
+    }
+
+    public void run() throws UnknownVariableException {
+        createVariable();
     }
 
     public JSONObject toJson() {

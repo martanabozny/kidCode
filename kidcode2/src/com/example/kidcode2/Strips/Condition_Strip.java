@@ -131,24 +131,21 @@ public class Condition_Strip extends FunctionStrip {
             Button compareWith = (Button)findViewById(R.id.compareWith);
             MyScrollView myView = (MyScrollView)findViewById(R.id.MyView);
 
-            try {
-                object.put("type", "If_Strip");
-            } catch (Exception e) {
-                Toast.makeText(getContext(), "put: " + e.toString(), Toast.LENGTH_LONG).show();
-            }
-
             object.put("variable", variable.getText().toString());
             object.put("function", function.getSelectedItemPosition());
             object.put("condition", condition.getSelectedItemPosition());
             object.put("compareWith", compareWith.getText().toString());
             object.put("code", myView.toJson());
+            object.put("type", "Condition_Strip");
+
         } catch (Exception e) {
-            Toast.makeText(getContext(), "nll: " + e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "blad: " + e.toString(), Toast.LENGTH_LONG).show();
         }
         return object;
     }
 
     public void fromJson(JSONObject object) {
+
         Button variable = (Button)findViewById(R.id.variable);
         Spinner function = (Spinner)findViewById(R.id.function);
         Spinner condition = (Spinner)findViewById(R.id.condition);
@@ -161,6 +158,7 @@ public class Condition_Strip extends FunctionStrip {
             condition.setSelection(object.getInt("condition"));
             compareWith.setText(object.getString("compareWith"));
             myView.fromJson(object.getString("code"));
+            
         } catch (JSONException e) {
 
         }

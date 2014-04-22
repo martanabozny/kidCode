@@ -12,6 +12,8 @@ import com.example.kidcode2.Variables.VarString;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by marta on 17.03.14.
  */
@@ -38,6 +40,26 @@ public class Strings extends FunctionStrip {
                 } catch (Exception e) {
                     Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        final Button result = (Button)findViewById(R.id.result);
+
+        result.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList list = collectVariables("VarString");
+                selectVariable(list, result, true);
+            }
+        });
+
+        final Button textButton = (Button)findViewById(R.id.text);
+
+        textButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList list = collectVariables("VarString");
+                selectVariable(list, textButton, true);
             }
         });
     }
@@ -83,8 +105,8 @@ public class Strings extends FunctionStrip {
             CheckBox isVariable = (CheckBox) findViewById(R.id.is_variable);
 
             object.put("functions", functions.getSelectedItemPosition());
-            object.put("result", result.toString());
-            object.put("text", text.toString());
+            object.put("result", result.getText().toString());
+            object.put("text", text.getText().toString());
             object.put("isVariable", isVariable.isChecked());
             object.put("type", "Strings");
 

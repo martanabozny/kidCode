@@ -116,7 +116,7 @@ public class MyActivity extends Activity {
 
     }
 
-    public void onSaveInstanceState(Bundle bundle){
+    public void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
 
         MyScrollView code = (MyScrollView)findViewById(R.id.code);

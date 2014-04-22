@@ -10,14 +10,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:weightSum="4">
         <TextView
-                android:layout_width="40dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:text="if"
                 android:id="@+id/textView" android:textColor="@android:color/black"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="variable..."
                 android:id="@+id/variable" android:layout_weight="1"/>
         <Spinner
                 android:layout_width="0dp"
@@ -36,8 +35,8 @@
                 android:layout_gravity="right" android:visibility="invisible" android:layout_weight="1"/>
         <Button
                 android:layout_width="29dp"
-                android:layout_height="41dp"
-                android:id="@+id/cancel" android:background="@drawable/bin"/>
+                android:layout_height="48dp"
+                android:id="@+id/cancel" android:background="@drawable/bin" android:layout_weight="0.20"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
