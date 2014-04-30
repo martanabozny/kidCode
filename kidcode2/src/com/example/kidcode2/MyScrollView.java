@@ -170,13 +170,19 @@ public class MyScrollView extends ScrollView {
 
                 int index = layout.indexOfChild(v);
                 if (index == -1) {
-                    if (layout.getChildCount() != 0){
+                    if (layout.getChildCount() != 0) {
+
                         strip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
                     } else {
                         strip.previous = previous;
                     }
                     layout.addView(strip);
                 } else {
+                    if (layout.getChildCount() > index) {
+                        FunctionStrip next = (FunctionStrip) layout.getChildAt(index+1);
+                        next.previous = strip;
+                    }
+
                     layout.addView(strip, index+1);
                     strip.previous = (FunctionStrip)v;
                     strip.previous.makeNormal();
