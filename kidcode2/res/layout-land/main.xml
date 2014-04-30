@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="1" android:background="#ffe5d2">
+    <ScrollView
+            android:layout_width="141dp"
+            android:layout_height="match_parent"
+            android:id="@+id/icons">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"> <!--  android:id="dragLayout" -->
+            <ImageButton
+                    android:layout_width="78dp"
+                    android:layout_height="58dp"
+                    android:id="@+id/Math_Button" android:layout_gravity="center_horizontal"
+                    android:onClick="AddMathStrip" android:background="@drawable/math"/>
+            <ImageButton
+                    android:layout_width="77dp"
+                    android:layout_height="57dp"
+                    android:id="@+id/Accelerometer_Button" android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="false" android:longClickable="true"
+                    android:onClick="AddAccelerometerStrip" android:background="@drawable/accel"/>
+            <ImageButton
+                    android:layout_width="76dp"
+                    android:layout_height="57dp"
+                    android:id="@+id/Strings_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/string" android:onClick="AddStringStrip"/>
+            <ImageButton
+                    android:layout_width="77dp"
+                    android:layout_height="58dp"
+                    android:id="@+id/Show_Variable_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/variable"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/New_Variable_Button" android:onClick="AddNewVariableStrip"
+                    android:layout_gravity="center_horizontal"/>
+            <ImageButton
+                    android:layout_width="77dp"
+                    android:layout_height="58dp"
+                    android:id="@+id/FotoOp_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/fotoop"/>
+            <ImageButton
+                    android:layout_width="76dp"
+                    android:layout_height="56dp"
+                    android:id="@+id/Foto_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/foto" android:onClick="AddFotoStrip"/>
+            <ImageButton
+                    android:layout_width="73dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/If_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/condition"/>
+            <ImageButton
+                    android:layout_width="73dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/While_Button" android:layout_gravity="center_horizontal"
+                    android:background="@drawable/loop"/>
+            <Button
+                    android:layout_width="73dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/run" android:layout_gravity="center_horizontal" android:onClick="runCode"
+                    android:background="@drawable/play"/>
+        </LinearLayout>
+    </ScrollView>
+    <view android:layout_width="fill_parent"
+          android:layout_height="match_parent"
+          class="com.example.kidcode2.MyScrollView" android:id="@+id/code" android:layout_gravity="center_vertical"
+          android:fillViewport="false"/>
+</LinearLayout>

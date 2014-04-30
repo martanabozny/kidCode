@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +27,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
     public FunctionStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        setPadding(0, 0, 0, 10);
     }
 
     public abstract void run() throws UnknownVariableException;
@@ -86,5 +87,11 @@ public abstract class FunctionStrip extends LinearLayout {
         dialog.show();
     }
 
+    public void makeShadow() {
+        setPadding(0, 0, 0, 40);
+    }
 
+    public void makeNormal() {
+        setPadding(0, 0, 0, 10);
+    }
 }

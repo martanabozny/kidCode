@@ -90,8 +90,8 @@ public class ShowVariable extends FunctionStrip {
             Button variable = (Button)findViewById(R.id.variable);
             TextView value_ = (TextView)findViewById(R.id.value);
 
-            object.put("variable", variable.toString());
-            object.put("value_", value_.toString());
+            object.put("variable", variable.getText().toString());
+            object.put("value_", value_.getText().toString());
 
             object.put("type", "ShowVariable");
 
@@ -106,7 +106,7 @@ public class ShowVariable extends FunctionStrip {
             Button variable = (Button)findViewById(R.id.variable);
             TextView value_ = (TextView)findViewById(R.id.value);
 
-            variable.setText(object.getString("name"));
+            variable.setText(object.getString("variable"));
             value_.setText(object.getString("value"));
 
 

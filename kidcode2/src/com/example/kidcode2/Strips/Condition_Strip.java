@@ -33,13 +33,22 @@ public class Condition_Strip extends FunctionStrip {
         final Spinner condition = (Spinner)findViewById(R.id.condition);
         final Button compareWith = (Button)findViewById(R.id.compareWith);
 
-        variable.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList list = collectVariables("");
-                selectVariable(list, variable, false);
-            }
-        });
+        if (this.previous == null) {
+            variable.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getContext(), "Declare some variable first", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+            variable.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ArrayList list = collectVariables("");
+                    selectVariable(list, variable, false);
+                }
+            });
+        }
 
         compareWith.setOnClickListener(new OnClickListener() {
             @Override

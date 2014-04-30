@@ -59,7 +59,7 @@ public class Strings extends FunctionStrip {
             @Override
             public void onClick(View view) {
                 ArrayList list = collectVariables("VarString");
-                selectVariable(list, textButton, true);
+                selectVariable(list, textButton, false);
             }
         });
     }

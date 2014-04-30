@@ -34,7 +34,13 @@ public class MyScrollView extends ScrollView {
         layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         addView(layout);
+
+        Empty_strip empty_strip = new Empty_strip(getContext());
+        empty_strip.setOnDragListener(new MyDragListener());
+        layout.addView(empty_strip);
+
         setOnDragListener(new MyDragListener());
+
     }
 
     public void runCode() {
@@ -53,7 +59,7 @@ public class MyScrollView extends ScrollView {
         }
     }
 
-    public void fromJson(String strips){
+    public void fromJson(String strips) {
         try {
             JSONArray list = new JSONArray(strips);
             for (int i = 0; i < list.length(); i++) {
@@ -73,10 +79,12 @@ public class MyScrollView extends ScrollView {
                     fstrip = new NewVariable(getContext());
                 if (object.getString("type").equals("ShowVariable"))
                     fstrip = new ShowVariable(getContext());
+                if (object.getString("type").equals("Empty_strip"))
+                    fstrip = new Empty_strip(getContext());
 
                 fstrip.fromJson(object);
                 if (layout.getChildCount() != 0) {
-                    fstrip.previous =(FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+                    fstrip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount() - 1);
                 }
                 else {
                     fstrip.previous = previous;
@@ -97,7 +105,7 @@ public class MyScrollView extends ScrollView {
             JSONArray array = new JSONArray();
 
             int count = layout.getChildCount();
-            for (int i = 0; i < count; i++) {
+            for (int i = 1; i < count; i++) {
                 FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
                 JSONObject object = strip.toJson();
                 array.put(object);
@@ -168,13 +176,27 @@ public class MyScrollView extends ScrollView {
                         strip.previous = previous;
                     }
                     layout.addView(strip);
-
                 } else {
                     layout.addView(strip, index+1);
                     strip.previous = (FunctionStrip)v;
+                    strip.previous.makeNormal();
                 }
 
                 strip.setOnDragListener(new MyDragListener());
+            } else if (event.getAction() == DragEvent.ACTION_DRAG_ENTERED) {
+                try {
+                    FunctionStrip strip = (FunctionStrip) v;
+                    strip.makeShadow();
+                } catch (Exception e) {
+
+                }
+            } else if (event.getAction() == DragEvent.ACTION_DRAG_EXITED) {
+                try {
+                    FunctionStrip strip = (FunctionStrip) v;
+                    strip.makeNormal();
+                } catch (Exception e) {
+
+                }
             }
             return  true;
         }
