@@ -45,7 +45,7 @@ public class MyScrollView extends ScrollView {
 
     public void runCode() {
         int count = layout.getChildCount();
-        for (int i = 0; i<count; i++) {
+        for (int i = 0; i < count; i++) {
             FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
             try {
                 strip.run();
@@ -60,6 +60,8 @@ public class MyScrollView extends ScrollView {
     }
 
     public void fromJson(String strips) {
+        layout.removeAllViews();
+
         try {
             JSONArray list = new JSONArray(strips);
             for (int i = 0; i < list.length(); i++) {
@@ -105,7 +107,7 @@ public class MyScrollView extends ScrollView {
             JSONArray array = new JSONArray();
 
             int count = layout.getChildCount();
-            for (int i = 1; i < count; i++) {
+            for (int i = 0; i < count; i++) {
                 FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
                 JSONObject object = strip.toJson();
                 array.put(object);
