@@ -51,7 +51,7 @@ public class MyActivity extends Activity {
                 MyScrollView code = (MyScrollView)findViewById(R.id.code);
                 code.fromJson(savedJSON);
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "MyActivity Scrollview from json: " + e.toString(), Toast.LENGTH_LONG).show();
             }
         }
 
@@ -87,14 +87,13 @@ public class MyActivity extends Activity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("save");
-        menu.add("save as");
+        menu.add("Save");
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getTitle().toString().equals("save as")) {
+        if (item.getTitle().toString().equals("Save")) {
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Save as");
@@ -104,13 +103,7 @@ public class MyActivity extends Activity {
 
             alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                    String value = input.getText().toString();
-                    MyScrollView code = (MyScrollView)findViewById(R.id.code);
-                    SQLiteDatabase db = dataBase.getWritableDatabase();
-                    ContentValues values = new ContentValues();
-                    values.put(DataBase.FeedEntry2.COLUMN_NAME_JSON, code.toJson());
-                    values.put(DataBase.FeedEntry2.COLUMN_FILE_NAME, value);
-                    db.insert(DataBase.FeedEntry2.TABLE_NAME, null, values);
+                    save(input.getText().toString());
                 }
             });
 
@@ -126,6 +119,18 @@ public class MyActivity extends Activity {
             return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    public void save(String fileName) {
+        MyScrollView code = (MyScrollView)findViewById(R.id.code);
+        SQLiteDatabase db = dataBase.getWritableDatabase();
+
+        db.execSQL("DELETE FROM " + DataBase.FeedEntry2.TABLE_NAME + " WHERE " + DataBase.FeedEntry2.COLUMN_FILE_NAME + " = ?", new String[]{fileName});
+
+        ContentValues values = new ContentValues();
+        values.put(DataBase.FeedEntry2.COLUMN_NAME_JSON, code.toJson());
+        values.put(DataBase.FeedEntry2.COLUMN_FILE_NAME, fileName);
+        db.insert(DataBase.FeedEntry2.TABLE_NAME, null, values);
     }
 
     public void onSaveInstanceState(Bundle bundle) {
@@ -179,7 +184,7 @@ public class MyActivity extends Activity {
             MyScrollView code = (MyScrollView)findViewById(R.id.code);
             code.fromJson(json);
         } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "onRestart: " + e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 

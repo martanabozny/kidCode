@@ -39,7 +39,7 @@ public abstract class FunctionStrip extends LinearLayout {
         FunctionStrip tmp = previous;
 
         while (tmp != null) {
-            if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.contains(type)) {
+            if (tmp.returnedValue != null && tmp.returnedValue.name != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.contains(type)) {
                 return tmp.returnedValue;
             }
             tmp = tmp.previous;
@@ -54,7 +54,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
         while (tmp != null) {
 
-            if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type)) {
+            if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type) && tmp.returnedValue.name != null && !tmp.returnedValue.name.equals("")) {
                 boolean contains = false;
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).toString().equals(tmp.returnedValue.name)) {

@@ -97,7 +97,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         String accel = accels.getSelectedItem().toString();
         Button result  = (Button) findViewById(R.id.result);
 
-        returnedValue.name = result.toString();
+        returnedValue.name = result.getText().toString();
 
         if (accel.contains("x")) {
             ((VarInteger)returnedValue).value = x_;

@@ -35,10 +35,10 @@
                     android:id="@+id/Show_Variable_Button" android:layout_gravity="center_horizontal"
                     android:background="@drawable/variable"/>
             <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="77dp"
+                    android:layout_height="58dp"
                     android:id="@+id/New_Variable_Button" android:onClick="AddNewVariableStrip"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal" android:background="@drawable/new_variable"/>
             <ImageButton
                     android:layout_width="77dp"
                     android:layout_height="58dp"

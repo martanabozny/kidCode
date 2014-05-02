@@ -40,7 +40,6 @@ public class MyScrollView extends ScrollView {
         layout.addView(empty_strip);
 
         setOnDragListener(new MyDragListener());
-
     }
 
     public void runCode() {
@@ -75,8 +74,10 @@ public class MyScrollView extends ScrollView {
                     fstrip = new Strings(getContext());
                 if (object.getString("type").equals("Accelerometer"))
                     fstrip = new Accelerometer(getContext());
-                if (object.getString("type").equals("Condition_Strip"))
-                    fstrip = new Condition_Strip(getContext());
+                if (object.getString("type").equals("If_Strip"))
+                    fstrip = new If_Strip(getContext());
+                if (object.getString("type").equals("While_Strip"))
+                    fstrip = new While_Strip(getContext());
                 if (object.getString("type").equals("NewVariable"))
                     fstrip = new NewVariable(getContext());
                 if (object.getString("type").equals("ShowVariable"))
@@ -139,11 +140,11 @@ public class MyScrollView extends ScrollView {
                         break;
 
                     case R.id.While_Button:
-                        strip = new Condition_Strip(getContext());
+                        strip = new While_Strip(getContext());
                         break;
 
                     case R.id.If_Button:
-                        strip = new Condition_Strip(getContext());
+                        strip = new If_Strip(getContext());
                         break;
 
                     case R.id.Foto_Button:

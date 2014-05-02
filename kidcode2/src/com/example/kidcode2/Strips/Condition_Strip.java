@@ -9,6 +9,7 @@ import android.widget.*;
 import com.example.kidcode2.MyScrollView;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.Variable;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,37 +19,36 @@ import java.util.ArrayList;
 /**
  * Created by marta on 17.04.14.
  */
-public class Condition_Strip extends FunctionStrip {
+public abstract class Condition_Strip extends FunctionStrip {
 
     public Condition_Strip(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        returnedValue = new VarInteger();
+        returnedValue.name = "";
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.condition_strip, this, true);
 
         MyScrollView scrool = (MyScrollView)findViewById(R.id.MyView);
-        scrool.previous = this;
+        scrool.previous = this.previous;
 
         final Button variable = (Button)findViewById(R.id.variable);
         final Spinner condition = (Spinner)findViewById(R.id.condition);
         final Button compareWith = (Button)findViewById(R.id.compareWith);
 
-        if (this.previous == null) {
-            variable.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        variable.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList list = collectVariables("");
+
+                if (list.size() == 0) {
                     Toast.makeText(getContext(), "Declare some variable first", Toast.LENGTH_LONG).show();
-                }
-            });
-        } else {
-            variable.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ArrayList list = collectVariables("");
+                } else {
                     selectVariable(list, variable, false);
                 }
-            });
-        }
+            }
+        });
 
         compareWith.setOnClickListener(new OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class Condition_Strip extends FunctionStrip {
                     returnedValue = null;
 
                 } catch (Exception e) {
-                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Cancel on click listener: " + e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -124,7 +124,7 @@ public class Condition_Strip extends FunctionStrip {
             function.setAdapter(arrayAdapter);
             arrayAdapter.notifyDataSetChanged();
         } catch (Exception e) {
-            Toast.makeText(getContext(), e.toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Show condition: " + e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
