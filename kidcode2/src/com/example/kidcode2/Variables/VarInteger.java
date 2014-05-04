@@ -1,6 +1,7 @@
 package com.example.kidcode2.Variables;
 
 import android.content.res.Resources;
+import android.widget.Toast;
 import com.example.kidcode2.R;
 
 /**
@@ -40,15 +41,18 @@ public class VarInteger extends Variable {
         return options;
     }
 
-    public  boolean compare(Variable v, String operation) {
+    public boolean compare(Variable v, String operation) {
         VarInteger varint = (VarInteger) v;
-        if (operation.equals("equals")) {
+        if (operation.contains("equals")) {
             return varint.value == value;
-        } else if (operation.equals("different")) {
+        } else if (operation.contains("different")) {
             return varint.value != value;
-        } else if (operation.equals("less than")) {
-            return value < varint.value;
-        } else if (operation.equals("grather than")) {
+        } else if (operation.contains("less")) {
+            if (value < varint.value)
+                return true;
+            else
+                return false;
+        } else if (operation.contains("grather")) {
             return value > varint.value;
         }
         return true;

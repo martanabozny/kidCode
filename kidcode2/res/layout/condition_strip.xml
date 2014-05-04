@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:baselineAligned="false">
+        android:baselineAligned="false" android:background="@drawable/condition_background">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -34,9 +34,9 @@
                 android:id="@+id/compareWith"
                 android:layout_gravity="right" android:visibility="invisible" android:layout_weight="1"/>
         <Button
-                android:layout_width="29dp"
-                android:layout_height="48dp"
-                android:id="@+id/cancel" android:background="@drawable/bin" android:layout_weight="0.20"/>
+                android:layout_width="26dp"
+                android:layout_height="32dp"
+                android:id="@+id/cancel" android:background="@drawable/bin"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -45,7 +45,7 @@
         <TextView
                 android:layout_width="10dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/textView2" android:background="#cccccc"/>
+                android:id="@+id/textView2"/>
         <view android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               class="com.example.kidcode2.MyScrollView" android:id="@+id/MyView" android:layout_gravity="center_horizontal"
@@ -53,6 +53,6 @@
     </LinearLayout>
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="30dp"
+            android:layout_height="5dp"
             android:id="@+id/spacer"/>
 </LinearLayout>

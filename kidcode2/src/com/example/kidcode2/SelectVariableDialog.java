@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputFilter;
 import android.view.*;
 import android.widget.*;
 
@@ -37,7 +38,8 @@ public class SelectVariableDialog extends Dialog {
 
         scrollView.addView(linearLayout);
         editText = new EditText(context);
-        editText.setHint("New variable...");
+        editText.setHint("New variable or value...");
+
         linearLayout.addView(editText);
         linearLayout.addView(radioGroup);
 

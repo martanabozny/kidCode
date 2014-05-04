@@ -8,24 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
-import com.example.kidcode2.Strips.*;
-import com.example.kidcode2.Strips.Math;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.FileOutputStream;
 import java.sql.SQLException;
 
 
-public class MyActivity extends Activity {
-
+public class CodeActivity extends Activity {
     DataBase dataBase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.code);
 
         findViewById(R.id.Math_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.Accelerometer_Button).setOnTouchListener(new MyTouchListener());
@@ -51,7 +44,7 @@ public class MyActivity extends Activity {
                 MyScrollView code = (MyScrollView)findViewById(R.id.code);
                 code.fromJson(savedJSON);
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "MyActivity Scrollview from json: " + e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "CodeActivity Scrollview from json: " + e.toString(), Toast.LENGTH_LONG).show();
             }
         }
 
@@ -95,24 +88,7 @@ public class MyActivity extends Activity {
 
         if (item.getTitle().toString().equals("Save")) {
 
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Save as");
-            alert.setMessage("File name");
-            final EditText input = new EditText(this);
-            alert.setView(input);
-
-            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    save(input.getText().toString());
-                }
-            });
-
-            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    // Canceled.
-                }
-            });
-            alert.show();
+            showDialog();
             return true;
 
         } else {
@@ -132,6 +108,7 @@ public class MyActivity extends Activity {
         values.put(DataBase.FeedEntry2.COLUMN_FILE_NAME, fileName);
         db.insert(DataBase.FeedEntry2.TABLE_NAME, null, values);
     }
+
 
     public void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
@@ -186,6 +163,27 @@ public class MyActivity extends Activity {
         } catch (Exception e) {
             Toast.makeText(this, "onRestart: " + e.toString(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void showDialog() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Save as");
+        alert.setMessage("File name");
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                save(input.getText().toString());
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+        alert.show();
     }
 
 }

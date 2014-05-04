@@ -11,7 +11,6 @@ import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.Variable;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -19,9 +18,9 @@ import java.util.ArrayList;
 /**
  * Created by marta on 17.04.14.
  */
-public abstract class Condition_Strip extends FunctionStrip {
+public abstract class ConditionStrip extends FunctionStrip {
 
-    public Condition_Strip(Context context, AttributeSet attrs) {
+    public ConditionStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         returnedValue = new VarInteger();
@@ -31,7 +30,7 @@ public abstract class Condition_Strip extends FunctionStrip {
         inflater.inflate(R.layout.condition_strip, this, true);
 
         MyScrollView scrool = (MyScrollView)findViewById(R.id.MyView);
-        scrool.previous = this.previous;
+        scrool.setPrevious(this);
 
         final Button variable = (Button)findViewById(R.id.variable);
         final Spinner condition = (Spinner)findViewById(R.id.condition);
@@ -93,7 +92,7 @@ public abstract class Condition_Strip extends FunctionStrip {
 
     }
 
-    public Condition_Strip(Context context) {
+    public ConditionStrip(Context context) {
         this(context, null);
     }
 
@@ -145,10 +144,9 @@ public abstract class Condition_Strip extends FunctionStrip {
             object.put("condition", condition.getSelectedItemPosition());
             object.put("compareWith", compareWith.getText().toString());
             object.put("code", myView.toJson());
-            object.put("type", "Condition_Strip");
 
         } catch (Exception e) {
-            Toast.makeText(getContext(), "blad: " + e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "toJson: " + e.toString(), Toast.LENGTH_LONG).show();
         }
         return object;
     }
@@ -164,12 +162,13 @@ public abstract class Condition_Strip extends FunctionStrip {
         try {
             variable.setText(object.getString("variable"));
             function.setSelection(object.getInt("function"));
-            condition.setSelection(object.getInt("condition"));
+            showCondition();
             compareWith.setText(object.getString("compareWith"));
             myView.fromJson(object.getString("code"));
+            condition.setSelection(object.getInt("condition"));
             
-        } catch (JSONException e) {
-
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "fromJson: " + e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 }

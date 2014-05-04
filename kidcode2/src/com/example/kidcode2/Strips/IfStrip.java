@@ -1,40 +1,29 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.opengl.Visibility;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.*;
 import com.example.kidcode2.MyScrollView;
 import com.example.kidcode2.R;
-import com.example.kidcode2.SelectVariableDialog;
-import com.example.kidcode2.Strips.FunctionStrip;
 import com.example.kidcode2.UnknownVariableException;
-import com.example.kidcode2.Variables.VarInteger;
-import com.example.kidcode2.Variables.VarString;
 import com.example.kidcode2.Variables.Variable;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * Created by marta on 04.04.14.
  */
-public class If_Strip extends Condition_Strip {
+public class IfStrip extends ConditionStrip {
 
-    public If_Strip(Context context, AttributeSet attrs) {
+    public IfStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         TextView text = (TextView)findViewById(R.id.conditionName);
         text.setText("If");
 
-        this.setBackgroundResource(R.drawable.if_background);
+        findViewById(R.id.MyView).setBackgroundResource(R.drawable.if_background);
     }
 
-    public If_Strip(Context context) {
+    public IfStrip(Context context) {
         this(context, null);
     }
 
@@ -42,7 +31,7 @@ public class If_Strip extends Condition_Strip {
         JSONObject object = super.toJson();
 
         try {
-            object.put("type", "If_Strip");
+            object.put("type", "IfStrip");
 
         } catch (Exception e) {
             Toast.makeText(getContext(), "blad: " + e.toString(), Toast.LENGTH_LONG).show();
@@ -59,14 +48,16 @@ public class If_Strip extends Condition_Strip {
         Spinner condition = (Spinner)findViewById(R.id.condition);
         String conditionString = condition.getSelectedItem().toString();
         Button compareWith = (Button)findViewById(R.id.compareWith);
-        Variable varWith = getVariable(variable.getText().toString(), "");
+        Variable varWith = getVariable(compareWith.getText().toString(), "");
         MyScrollView myView = (MyScrollView)findViewById(R.id.MyView);
 
         boolean result = false;
-        if (conditionString.equals("compare")){
+        if (conditionString.contains("compare")){
             result = var.compare(varWith, functionString);
-        } else if (conditionString.equals("check")) {
+        } else if (conditionString.contains("check")) {
             result = var.check(functionString);
+        } else {
+            Toast.makeText(getContext(), "Nie znam operacji", Toast.LENGTH_LONG).show();
         }
 
         if (result) {

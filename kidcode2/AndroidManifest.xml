@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="MyActivity"
+        <activity android:name=".CodeActivity"
                   android:label="kidCode"
                   android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes"
 

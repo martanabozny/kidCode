@@ -1,6 +1,7 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.VarString;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by marta on 20.03.14.
@@ -41,12 +44,24 @@ public class NewVariable extends FunctionStrip {
             }
         });
 
-        EditText name = (EditText)findViewById(R.id.name);
-        name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        final Button name = (Button)findViewById(R.id.name);
+        name.setOnClickListener(new OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+            public void onClick(View view) {
+
+                ArrayList list = collectVariables("");
+                selectVariable(list, name, true);
                 createVariable();
-                return false;
+            }
+        });
+
+        final Button value = (Button)findViewById(R.id.value);
+        value.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList list = collectVariables("");
+                selectVariable(list, value, false);
+                createVariable();
             }
         });
 
@@ -69,8 +84,8 @@ public class NewVariable extends FunctionStrip {
     }
 
     private void createVariable() {
-        EditText name  = (EditText) findViewById(R.id.name);
-        EditText value  = (EditText) findViewById(R.id.value);
+        Button name  = (Button) findViewById(R.id.name);
+        Button value  = (Button) findViewById(R.id.value);
         Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
 
         String type = variables_types.getSelectedItem().toString();
@@ -87,8 +102,10 @@ public class NewVariable extends FunctionStrip {
             if (!_value.equals("")) {
                 try {
                     ((VarInteger)returnedValue).value = Double.valueOf(_value);
+                    value.setBackgroundResource(android.R.drawable.btn_default);
                 } catch (Exception e) {
-                    Toast.makeText(getContext(), "Cannot convert to integer!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Cannot convert " + _value + " to integer!", Toast.LENGTH_LONG).show();
+                    value.setBackgroundColor(Color.RED);
                 }
             } else {
                 ((VarInteger)returnedValue).value = 0;
@@ -104,14 +121,17 @@ public class NewVariable extends FunctionStrip {
         JSONObject object = new JSONObject();
 
         try {
-            EditText name  = (EditText) findViewById(R.id.name);
-            EditText value  = (EditText) findViewById(R.id.value);
-            Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
+            Button name  = (Button) this.findViewById(R.id.name);
+            Button value  = (Button) this.findViewById(R.id.value);
+            Spinner variables_types = (Spinner) this.findViewById(R.id.variables_types);
 
             object.put("variables_types", variables_types.getSelectedItemPosition());
             object.put("name", name.getText().toString());
             object.put("value", value.getText().toString());
             object.put("type", "NewVariable");
+
+            name.clearFocus();
+            value.clearFocus();
 
         } catch (JSONException e) {
 
@@ -119,16 +139,20 @@ public class NewVariable extends FunctionStrip {
         return object;
     }
 
-    public void fromJson(JSONObject object){
+    public void fromJson(JSONObject object) {
         try {
-            EditText name  = (EditText) findViewById(R.id.name);
-            EditText value  = (EditText) findViewById(R.id.value);
-            Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
+            Button name  = (Button) this.findViewById(R.id.name);
+            Button value  = (Button) this.findViewById(R.id.value);
+            Spinner variables_types = (Spinner) this.findViewById(R.id.variables_types);
+
+            name.clearFocus();
+            value.clearFocus();
 
             name.setText(object.getString("name"));
             value.setText(object.getString("value"));
             variables_types.setSelection(object.getInt("variables_types"));
 
+            createVariable();
         } catch (JSONException e) {
 
         }

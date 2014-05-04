@@ -87,8 +87,8 @@ public class ShowVariable extends FunctionStrip {
         JSONObject object = new JSONObject();
 
         try {
-            Button variable = (Button)findViewById(R.id.variable);
-            TextView value_ = (TextView)findViewById(R.id.value);
+            Button variable = (Button)this.findViewById(R.id.variable);
+            TextView value_ = (TextView)this.findViewById(R.id.value);
 
             object.put("variable", variable.getText().toString());
             object.put("value_", value_.getText().toString());
@@ -103,8 +103,8 @@ public class ShowVariable extends FunctionStrip {
 
     public void fromJson(JSONObject object){
         try {
-            Button variable = (Button)findViewById(R.id.variable);
-            TextView value_ = (TextView)findViewById(R.id.value);
+            Button variable = (Button)this.findViewById(R.id.variable);
+            TextView value_ = (TextView)this.findViewById(R.id.value);
 
             variable.setText(object.getString("variable"));
             value_.setText(object.getString("value"));

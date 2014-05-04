@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -72,6 +73,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
     public void selectVariable(ArrayList list, final Button button, final boolean setReturnedValue){
         final SelectVariableDialog dialog = new SelectVariableDialog(list, getContext());
+
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
@@ -79,6 +81,12 @@ public abstract class FunctionStrip extends LinearLayout {
                     button.setText(dialog.selection.toString());
                     if (setReturnedValue) {
                         returnedValue.name = dialog.selection.toString();
+                        if (!dialog.selection.matches("^[a-zA-Z].*")) {
+                            button.setBackgroundColor(Color.RED);
+                            Toast.makeText(getContext(), "Wrong variable name. Should start with character", Toast.LENGTH_LONG).show();
+                        } else {
+                            button.setBackgroundResource(android.R.drawable.btn_default);
+                        }
                     }
                 }
             }
@@ -94,4 +102,5 @@ public abstract class FunctionStrip extends LinearLayout {
     public void makeNormal() {
         setPadding(0, 0, 0, 10);
     }
+
 }

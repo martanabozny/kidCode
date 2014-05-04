@@ -9,6 +9,7 @@ import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
+import com.example.kidcode2.Variables.Variable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,8 +117,14 @@ public class Math extends FunctionStrip {
             numberc = numbera / numberb;
         }
 
-        ((VarInteger) returnedValue).value = numberc;
-        returnedValue.name = result.getText().toString();
+        try {
+            VarInteger oldVar = (VarInteger)getVariable(result.getText().toString(), "VarInteger");
+            oldVar.value = numberc;
+            returnedValue.name = "";
+        } catch (Exception e) {
+            ((VarInteger) returnedValue).value = numberc;
+            returnedValue.name = result.getText().toString();
+        }
     }
 
     public JSONObject toJson() {
