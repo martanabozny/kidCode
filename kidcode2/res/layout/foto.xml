@@ -9,10 +9,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/text" android:layout_weight="1"/>
-    <ImageView
+    <SurfaceView
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:id="@+id/preview" android:layout_weight="1"/>
+            android:layout_height="100dp"
+            android:id="@+id/frame" android:layout_weight="3"/>
     <Button
             android:layout_width="49dp"
             android:layout_height="43dp"

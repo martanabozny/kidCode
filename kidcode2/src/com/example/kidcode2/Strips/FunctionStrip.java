@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +27,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
     public FunctionStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        setPadding(0, 0, 0, 10);
     }
 
     public abstract void run() throws UnknownVariableException;
@@ -38,7 +39,7 @@ public abstract class FunctionStrip extends LinearLayout {
         FunctionStrip tmp = previous;
 
         while (tmp != null) {
-            if (tmp.returnedValue != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.contains(type)) {
+            if (tmp.returnedValue != null && tmp.returnedValue.name != null && tmp.returnedValue.name.equals(name) && tmp.returnedValue.type.contains(type)) {
                 return tmp.returnedValue;
             }
             tmp = tmp.previous;
@@ -53,7 +54,7 @@ public abstract class FunctionStrip extends LinearLayout {
 
         while (tmp != null) {
 
-            if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type)) {
+            if (tmp.returnedValue != null && tmp.returnedValue.type.contains(type) && tmp.returnedValue.name != null && !tmp.returnedValue.name.equals("")) {
                 boolean contains = false;
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).toString().equals(tmp.returnedValue.name)) {
@@ -86,5 +87,11 @@ public abstract class FunctionStrip extends LinearLayout {
         dialog.show();
     }
 
+    public void makeShadow() {
+        setPadding(0, 0, 0, 40);
+    }
 
+    public void makeNormal() {
+        setPadding(0, 0, 0, 10);
+    }
 }

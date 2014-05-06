@@ -20,6 +20,27 @@ public class While_Strip extends Condition_Strip {
 
     public While_Strip(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TextView text = (TextView)findViewById(R.id.conditionName);
+        text.setText("While");
+
+        this.setBackgroundResource(R.drawable.while_background);
+    }
+
+    public While_Strip(Context context) {
+        this(context, null);
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = super.toJson();
+
+        try {
+            object.put("type", "While_Strip");
+
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "blad: " + e.toString(), Toast.LENGTH_LONG).show();
+        }
+        return object;
     }
 
     public void run() throws UnknownVariableException {

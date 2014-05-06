@@ -97,7 +97,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         String accel = accels.getSelectedItem().toString();
         Button result  = (Button) findViewById(R.id.result);
 
-        returnedValue.name = result.toString();
+        returnedValue.name = result.getText().toString();
 
         if (accel.contains("x")) {
             ((VarInteger)returnedValue).value = x_;
@@ -115,12 +115,12 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
             Spinner accels = (Spinner)findViewById(R.id.accels);
             Button result  = (Button) findViewById(R.id.result);
 
-            object.put("axis", accels.getSelectedItemPosition());
+            object.put("accels", accels.getSelectedItemPosition());
             object.put("result", result.getText().toString());
             object.put("type", "Accelerometer");
 
         } catch (JSONException e) {
-
+            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
         return object;
     }
@@ -132,9 +132,8 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         try {
             accels.setSelection(object.getInt("accels"));
             result.setText(object.getString("result"));
-
+            returnedValue.name = object.getString("result");
         } catch (JSONException e) {
-
         }
     }
 }

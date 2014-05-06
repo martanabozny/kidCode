@@ -27,6 +27,27 @@ public class If_Strip extends Condition_Strip {
 
     public If_Strip(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TextView text = (TextView)findViewById(R.id.conditionName);
+        text.setText("If");
+
+        this.setBackgroundResource(R.drawable.if_background);
+    }
+
+    public If_Strip(Context context) {
+        this(context, null);
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = super.toJson();
+
+        try {
+            object.put("type", "If_Strip");
+
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "blad: " + e.toString(), Toast.LENGTH_LONG).show();
+        }
+        return object;
     }
 
     public void run() throws UnknownVariableException {

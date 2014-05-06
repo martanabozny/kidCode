@@ -34,12 +34,17 @@ public class MyScrollView extends ScrollView {
         layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         addView(layout);
+
+        Empty_strip empty_strip = new Empty_strip(getContext());
+        empty_strip.setOnDragListener(new MyDragListener());
+        layout.addView(empty_strip);
+
         setOnDragListener(new MyDragListener());
     }
 
     public void runCode() {
         int count = layout.getChildCount();
-        for (int i = 0; i<count; i++) {
+        for (int i = 0; i < count; i++) {
             FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
             try {
                 strip.run();
@@ -53,7 +58,9 @@ public class MyScrollView extends ScrollView {
         }
     }
 
-    public void fromJson(String strips){
+    public void fromJson(String strips) {
+        layout.removeAllViews();
+
         try {
             JSONArray list = new JSONArray(strips);
             for (int i = 0; i < list.length(); i++) {
@@ -67,16 +74,20 @@ public class MyScrollView extends ScrollView {
                     fstrip = new Strings(getContext());
                 if (object.getString("type").equals("Accelerometer"))
                     fstrip = new Accelerometer(getContext());
-                if (object.getString("type").equals("Condition_Strip"))
-                    fstrip = new Condition_Strip(getContext());
+                if (object.getString("type").equals("If_Strip"))
+                    fstrip = new If_Strip(getContext());
+                if (object.getString("type").equals("While_Strip"))
+                    fstrip = new While_Strip(getContext());
                 if (object.getString("type").equals("NewVariable"))
                     fstrip = new NewVariable(getContext());
                 if (object.getString("type").equals("ShowVariable"))
                     fstrip = new ShowVariable(getContext());
+                if (object.getString("type").equals("Empty_strip"))
+                    fstrip = new Empty_strip(getContext());
 
                 fstrip.fromJson(object);
                 if (layout.getChildCount() != 0) {
-                    fstrip.previous =(FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
+                    fstrip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount() - 1);
                 }
                 else {
                     fstrip.previous = previous;
@@ -129,11 +140,11 @@ public class MyScrollView extends ScrollView {
                         break;
 
                     case R.id.While_Button:
-                        strip = new Condition_Strip(getContext());
+                        strip = new While_Strip(getContext());
                         break;
 
                     case R.id.If_Button:
-                        strip = new Condition_Strip(getContext());
+                        strip = new If_Strip(getContext());
                         break;
 
                     case R.id.Foto_Button:
@@ -162,19 +173,39 @@ public class MyScrollView extends ScrollView {
 
                 int index = layout.indexOfChild(v);
                 if (index == -1) {
-                    if (layout.getChildCount() != 0){
+                    if (layout.getChildCount() != 0) {
+
                         strip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount()-1);
                     } else {
                         strip.previous = previous;
                     }
                     layout.addView(strip);
-
                 } else {
+                    if (layout.getChildCount() > index) {
+                        FunctionStrip next = (FunctionStrip) layout.getChildAt(index+1);
+                        next.previous = strip;
+                    }
+
                     layout.addView(strip, index+1);
                     strip.previous = (FunctionStrip)v;
+                    strip.previous.makeNormal();
                 }
 
                 strip.setOnDragListener(new MyDragListener());
+            } else if (event.getAction() == DragEvent.ACTION_DRAG_ENTERED) {
+                try {
+                    FunctionStrip strip = (FunctionStrip) v;
+                    strip.makeShadow();
+                } catch (Exception e) {
+
+                }
+            } else if (event.getAction() == DragEvent.ACTION_DRAG_EXITED) {
+                try {
+                    FunctionStrip strip = (FunctionStrip) v;
+                    strip.makeNormal();
+                } catch (Exception e) {
+
+                }
             }
             return  true;
         }

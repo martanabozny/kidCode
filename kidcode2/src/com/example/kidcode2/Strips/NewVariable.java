@@ -109,8 +109,8 @@ public class NewVariable extends FunctionStrip {
             Spinner variables_types = (Spinner) findViewById(R.id.variables_types);
 
             object.put("variables_types", variables_types.getSelectedItemPosition());
-            object.put("name", name.toString());
-            object.put("value", value.toString());
+            object.put("name", name.getText().toString());
+            object.put("value", value.getText().toString());
             object.put("type", "NewVariable");
 
         } catch (JSONException e) {

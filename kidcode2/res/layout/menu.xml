@@ -22,9 +22,4 @@
             android:layout_height="wrap_content"
             android:text="Open"
             android:id="@+id/open" android:layout_gravity="center_horizontal" android:onClick="OnOpenClick"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last"
-            android:id="@+id/last" android:layout_gravity="center_horizontal" android:onClick="OnLastClick"/>
 </LinearLayout>
