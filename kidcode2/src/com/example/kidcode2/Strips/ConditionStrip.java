@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewManager;
 import android.widget.*;
-import com.example.kidcode2.MyScrollView;
-import com.example.kidcode2.R;
-import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.*;
 import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.Variable;
 import org.json.JSONObject;
@@ -127,7 +125,7 @@ public abstract class ConditionStrip extends FunctionStrip {
         }
     }
 
-    public void run() throws UnknownVariableException {}
+    public void run() throws UnknownVariableException, VariableConvertException, StopException {}
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();

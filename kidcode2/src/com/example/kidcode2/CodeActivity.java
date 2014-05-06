@@ -29,6 +29,7 @@ public class CodeActivity extends Activity {
         findViewById(R.id.Show_Variable_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.Strings_Button).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.New_Variable_Button).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.Stop_Button).setOnTouchListener(new MyTouchListener());
 
         String savedJSON = "";
         try {
@@ -63,7 +64,23 @@ public class CodeActivity extends Activity {
 
     public void runCode(View view) {
         MyScrollView code = (MyScrollView)findViewById(R.id.code);
-        code.runCode();
+
+        try {
+            code.runCode();
+        } catch (UnknownVariableException e) {
+            Toast.makeText(this, "Cannot find variable: " + e.toString(), Toast.LENGTH_SHORT).show();
+        } catch (VariableConvertException e) {
+            Toast.makeText(this, "Cannot convert variable: " + e.toString(), Toast.LENGTH_SHORT).show();
+        } catch (StopException e) {
+            Toast.makeText(this, "Program stopped: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(CodeActivity.this, End.class);
+            intent.putExtra("name", e.toString());
+            intent.putExtra("value", e.getValue());
+            startActivity(intent);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Something has gone wrong: " + e.toString(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private final class MyTouchListener implements View.OnTouchListener {

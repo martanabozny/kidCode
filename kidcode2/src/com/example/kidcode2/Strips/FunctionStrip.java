@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.kidcode2.SelectVariableDialog;
+import com.example.kidcode2.StopException;
 import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.VariableConvertException;
 import com.example.kidcode2.Variables.Variable;
 import org.json.JSONObject;
 
@@ -31,7 +33,7 @@ public abstract class FunctionStrip extends LinearLayout {
         setPadding(0, 0, 0, 10);
     }
 
-    public abstract void run() throws UnknownVariableException;
+    public abstract void run() throws UnknownVariableException, VariableConvertException, StopException;
 
     public abstract JSONObject toJson();
     public abstract void fromJson(JSONObject object);

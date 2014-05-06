@@ -12,9 +12,7 @@
         <activity android:name="MyMenu"
                   android:label="kidCode"
                   android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes"
-                  android:screenOrientation="fullSensor"
-                  >
-
+                  android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -23,14 +21,27 @@
 
         <activity android:name=".CodeActivity"
                   android:label="kidCode"
-                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes"
-
-                >
-
+                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".End"
+                  android:label="kidCode"
+                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Open"
+                  android:label="kidCode"
+                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes">
+        <intent-filter>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+    </activity>
 
     </application>
 </manifest>

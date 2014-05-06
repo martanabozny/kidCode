@@ -29,7 +29,7 @@ public class ShowVariable extends FunctionStrip {
         inflater.inflate(R.layout.show_variable, this, true);
 
         final Button variable = (Button)findViewById(R.id.variable);
-        TextView value_ = (TextView)findViewById(R.id.value);
+        Button value_ = (Button)findViewById(R.id.value);
 
         variable.setOnClickListener(new OnClickListener() {
             @Override
@@ -38,6 +38,7 @@ public class ShowVariable extends FunctionStrip {
                 selectVariable(list, variable, false);
             }
         });
+
         final Button cancel = (Button) findViewById(R.id.cancel);
         final View realThis = this;
 
@@ -64,7 +65,7 @@ public class ShowVariable extends FunctionStrip {
 
         try {
             final Button variable = (Button)findViewById(R.id.variable);
-            EditText value_ = (EditText)findViewById(R.id.value);
+            Button value_ = (Button)findViewById(R.id.value);
 
             Variable var = getVariable(variable.getText().toString(), "");
             if (var.type.equals("VarInteger")) {
@@ -88,7 +89,7 @@ public class ShowVariable extends FunctionStrip {
 
         try {
             Button variable = (Button)this.findViewById(R.id.variable);
-            TextView value_ = (TextView)this.findViewById(R.id.value);
+            Button value_ = (Button)this.findViewById(R.id.value);
 
             object.put("variable", variable.getText().toString());
             object.put("value_", value_.getText().toString());
@@ -104,10 +105,10 @@ public class ShowVariable extends FunctionStrip {
     public void fromJson(JSONObject object){
         try {
             Button variable = (Button)this.findViewById(R.id.variable);
-            TextView value_ = (TextView)this.findViewById(R.id.value);
+            Button value_ = (Button)this.findViewById(R.id.value);
 
             variable.setText(object.getString("variable"));
-            value_.setText(object.getString("value"));
+            value_.setText(object.getString("value_"));
 
 
         } catch (JSONException e) {

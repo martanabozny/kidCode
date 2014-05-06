@@ -48,4 +48,14 @@ public class VarString extends Variable {
         }
         return  true;
     }
+
+    public Variable fromString(String string) {
+        VarString varstr = new VarString();
+        varstr.value = string;
+        return varstr;
+    }
+
+    public String toString() {
+        return value;
+    }
 }

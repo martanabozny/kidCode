@@ -3,6 +3,7 @@ package com.example.kidcode2.Variables;
 import android.content.res.Resources;
 import android.widget.Toast;
 import com.example.kidcode2.R;
+import com.example.kidcode2.VariableConvertException;
 
 /**
  * Created by marta on 10.03.14.
@@ -65,5 +66,19 @@ public class VarInteger extends Variable {
             return value % 2 == 0;
         }
         return  true;
+    }
+
+    public Variable fromString(String string) throws VariableConvertException {
+        VarInteger varint = new VarInteger();
+        try {
+            varint.value = Integer.valueOf(string);
+        } catch (Exception e) {
+            throw new VariableConvertException("Cannot convert " + string + " to string");
+        }
+        return varint;
+    }
+
+    public String toString() {
+        return String.valueOf(value);
     }
 }

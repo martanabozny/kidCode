@@ -3,9 +3,7 @@ package com.example.kidcode2.Strips;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.*;
-import com.example.kidcode2.MyScrollView;
-import com.example.kidcode2.R;
-import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.*;
 import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.Variable;
 import org.json.JSONObject;
@@ -40,7 +38,7 @@ public class WhileStrip extends ConditionStrip {
         return object;
     }
 
-    public void run() throws UnknownVariableException {
+    public void run() throws UnknownVariableException, StopException, VariableConvertException {
 
         Button variable = (Button)findViewById(R.id.variable);
         Variable var = getVariable(variable.getText().toString(), "");
@@ -49,19 +47,21 @@ public class WhileStrip extends ConditionStrip {
         Spinner condition = (Spinner)findViewById(R.id.condition);
         String conditionString = condition.getSelectedItem().toString();
         Button compareWith = (Button)findViewById(R.id.compareWith);
-        Variable varWith = getVariable(compareWith.getText().toString(), "");
+        Variable varWith;
+        try {
+            varWith = getVariable(compareWith.getText().toString(), "");
+        } catch (UnknownVariableException e) {
+            varWith = var.fromString(compareWith.getText().toString());
+        }
+
         MyScrollView myView = (MyScrollView)findViewById(R.id.MyView);
 
         boolean result = true;
 
         if (conditionString.contains("compare")){
             result = var.compare(varWith, functionString);
-            Toast.makeText(getContext(), "Wynik compare " + ((VarInteger)var).value + " i " + ((VarInteger)varWith).value + ": " + result, Toast.LENGTH_LONG).show();
         } else if (conditionString.contains("check")) {
             result = var.check(functionString);
-            Toast.makeText(getContext(), "Wynik check: " + result, Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getContext(), "Nie znam operacji", Toast.LENGTH_LONG).show();
         }
 
         int i = 0;
@@ -70,12 +70,8 @@ public class WhileStrip extends ConditionStrip {
 
             if (conditionString.contains("compare")){
                 result = var.compare(varWith, functionString);
-                Toast.makeText(getContext(), "Wynik compare: " + result, Toast.LENGTH_LONG).show();
             } else if (conditionString.contains("check")) {
                 result = var.check(functionString);
-                Toast.makeText(getContext(), "Wynik check: " + result, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getContext(), "Nie znam operacji", Toast.LENGTH_LONG).show();
             }
             i++;
         }

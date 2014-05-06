@@ -40,19 +40,11 @@ public class MyScrollView extends ScrollView {
         previous = strip;
     }
 
-    public void runCode() {
+    public void runCode() throws UnknownVariableException, StopException, VariableConvertException{
         int count = layout.getChildCount();
         for (int i = 0; i < count; i++) {
             FunctionStrip strip = (FunctionStrip) layout.getChildAt(i);
-            try {
-                strip.run();
-            } catch (UnknownVariableException e) {
-                Toast.makeText(getContext(), "Cannot find variable: " + e.toString(), Toast.LENGTH_SHORT).show();
-                break;
-            } catch (Exception e) {
-                Toast.makeText(getContext(), "Something has gone wrong: " + e.toString(), Toast.LENGTH_SHORT).show();
-                break;
-            }
+            strip.run();
         }
     }
 
@@ -82,6 +74,8 @@ public class MyScrollView extends ScrollView {
                     fstrip = new ShowVariable(getContext());
                 if (object.getString("type").equals("EmptyStrip"))
                     fstrip = new EmptyStrip(getContext());
+                if (object.getString("type").equals("StopStrip"))
+                    fstrip = new StopStrip(getContext());
 
                 if (layout.getChildCount() != 0) {
                     fstrip.previous = (FunctionStrip) layout.getChildAt(layout.getChildCount() - 1);
@@ -159,6 +153,9 @@ public class MyScrollView extends ScrollView {
 
                     case R.id.Show_Variable_Button:
                         strip = new ShowVariable(getContext());
+                        break;
+                    case R.id.Stop_Button:
+                        strip = new StopStrip(getContext());
                         break;
 
                     default:

@@ -2,6 +2,7 @@ package com.example.kidcode2.Variables;
 
 import android.view.View;
 import android.widget.LinearLayout;
+import com.example.kidcode2.VariableConvertException;
 
 import java.util.ArrayList;
 
@@ -17,4 +18,6 @@ public abstract class Variable {
     public abstract boolean check(String operation);
     public abstract String[] showCheckMethods();
     public abstract String[] showCompareMethods();
+    public abstract Variable fromString(String string) throws VariableConvertException;
+    public abstract String toString();
 }

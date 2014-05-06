@@ -39,6 +39,10 @@
                              android:layout_gravity="center_horizontal" android:background="@drawable/condition"/>
                 <ImageButton android:layout_width="73dp" android:layout_height="55dp" android:id="@+id/While_Button"
                              android:layout_gravity="center_horizontal" android:background="@drawable/loop"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Stop_Button" android:background="@android:drawable/ic_media_pause"/>
                 <Button android:layout_width="73dp" android:layout_height="55dp" android:id="@+id/run"
                         android:layout_gravity="center_horizontal" android:onClick="runCode"
                         android:background="@drawable/play"/>

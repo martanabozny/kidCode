@@ -12,6 +12,7 @@ import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
 import com.example.kidcode2.Variables.VarInteger;
 import com.example.kidcode2.Variables.VarString;
+import com.example.kidcode2.Variables.Variable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,7 +49,6 @@ public class NewVariable extends FunctionStrip {
         name.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 ArrayList list = collectVariables("");
                 selectVariable(list, name, true);
                 createVariable();
@@ -92,25 +92,17 @@ public class NewVariable extends FunctionStrip {
         String _value = value.getText().toString();
         String _name = name.getText().toString();
 
+
         if (type.contains("String")) {
             returnedValue = new VarString();
-            returnedValue.name = _name;
-            ((VarString)returnedValue).value = _value;
         } else if (type.contains("Integer")){
             returnedValue = new VarInteger();
-            returnedValue.name = _name;
-            if (!_value.equals("")) {
-                try {
-                    ((VarInteger)returnedValue).value = Double.valueOf(_value);
-                    value.setBackgroundResource(android.R.drawable.btn_default);
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), "Cannot convert " + _value + " to integer!", Toast.LENGTH_LONG).show();
-                    value.setBackgroundColor(Color.RED);
-                }
-            } else {
-                ((VarInteger)returnedValue).value = 0;
-            }
         }
+
+        try {
+            returnedValue = returnedValue.fromString(_value);
+        } catch (Exception e) {}
+        returnedValue.name = _name;
     }
 
     public void run() throws UnknownVariableException {

@@ -2,6 +2,7 @@ package com.example.kidcode2.Variables;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.widget.ImageView;
 import com.example.kidcode2.R;
 
 import java.util.ArrayList;
@@ -34,5 +35,14 @@ public class VarImage extends Variable {
 
     public boolean check(String operation){
         return true;
+    }
+
+    public Variable fromString(String string) {
+        VarImage varim = new VarImage();
+        return varim;
+    }
+
+    public String toString() {
+        return "";
     }
 }
