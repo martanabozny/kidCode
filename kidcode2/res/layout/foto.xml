@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="4" android:background="#d993be">
+              android:layout_height="match_parent" android:weightSum="4" android:background="@drawable/foto_background">
 
     <Button
             android:layout_width="0dp"
@@ -11,7 +11,7 @@
             android:id="@+id/text" android:layout_weight="1"/>
     <SurfaceView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:id="@+id/frame" android:layout_weight="3"/>
     <Button
             android:layout_width="49dp"

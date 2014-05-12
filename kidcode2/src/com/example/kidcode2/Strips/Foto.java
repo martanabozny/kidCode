@@ -1,7 +1,9 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.*;
@@ -76,38 +78,22 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     }
 
     public void run() throws UnknownVariableException {
-        camera.stopPreview();
-        camera.takePicture(null, null, new PictureCallback() {
-            @Override
-            public void onPictureTaken(byte[] bytes, Camera camera) {
-                Toast.makeText(getContext(), "Len:" + String.valueOf(bytes.length), Toast.LENGTH_SHORT).show();
-                /*Button result = (Button) findViewById(R.id.result);
-                SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
 
-                returnedValue.name = result.toString();
-                ((VarImage)returnedValue).value = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
-                //frame.setImageBitmap(((VarImage) returnedValue).value);
-                File file = new File(Environment.getExternalStorageDirectory().toString(), "foto.jpg");
-                try {
-                    FileOutputStream fos = new FileOutputStream(file);
-                    fos.write(bytes);
-                    fos.close();
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), "Exception: " + e.toString(), Toast.LENGTH_SHORT).show();
-                }*/
-            }
-        });
-        camera.startPreview();
+        if(camera != null)
+        {
+            camera.takePicture(null, null, myPictureCallback);
+            Toast.makeText(getContext(), "jest zdjecie", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
 
         try {
-            Button variable = (Button) findViewById(R.id.result);
+            Button result = (Button)findViewById(R.id.text);
 
-            object.put("variable", variable.toString());
+            object.put("result", result.getText().toString());
+
             object.put("type", "Foto");
 
         } catch (JSONException e) {
@@ -117,10 +103,10 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     }
 
     public void fromJson(JSONObject object){
-        Button variable = (Button) findViewById(R.id.result);;
+        Button result = (Button) findViewById(R.id.text);;
 
         try {
-            variable.setText(object.getString("variable"));
+            result.setText(object.getString("result"));
 
         } catch (JSONException e) {
 
@@ -138,6 +124,33 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
         return c;
     }
 
+    PictureCallback myPictureCallback = new PictureCallback(){
+
+        public void onPictureTaken(byte[] bytes, Camera arg1) {
+            Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+            Bitmap correctBmp = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
+
+            Button result = (Button) findViewById(R.id.result);
+            returnedValue.name = result.toString();
+            ((VarImage)returnedValue).value = correctBmp;
+
+            File file = new File(Environment.getExternalStorageDirectory().toString(), "foto.jpg");
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(bytes);
+                fos.close();
+            } catch (Exception e) {
+                Toast.makeText(getContext(), "Exception: " + e.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            camera.stopPreview();
+            SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
+            Canvas canvas = new Canvas(correctBmp);
+            frame.draw(canvas);
+        }};
+
+
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         try {
@@ -151,7 +164,7 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-        // empty. Take care of releasing the Camera preview in your activity.
+        //camera.stopPreview();
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {

@@ -28,8 +28,7 @@
         </activity>
 
         <activity android:name=".End"
-                  android:label="kidCode"
-                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes">
+                  android:label="kidCode">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

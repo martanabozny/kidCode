@@ -117,6 +117,7 @@ public class Open extends ListActivity {
             Intent intent = new Intent(Open.this, CodeActivity.class);
             intent.putExtra("strips", json);
             startActivity(intent);
+
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }

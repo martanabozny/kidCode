@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -140,6 +141,7 @@ public class MyScrollView extends ScrollView {
                         break;
 
                     case R.id.Foto_Button:
+
                         strip = new Foto(getContext());
                         break;
 
