@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#000000">
+              android:layout_height="match_parent" android:background="#000000" android:weightSum="1">
 
     <ImageView
             android:layout_width="wrap_content"
@@ -15,11 +15,12 @@
             android:layout_height="80dp"
             android:text="New"
             android:id="@+id/newCode" android:layout_gravity="center_horizontal"
-            android:onClick="OnNewClick" android:background="#ff3f35" android:textColor="#000000"
+            android:onClick="OnNewClick" android:background="@drawable/newbutton_background" android:textColor="#000000"
             android:textSize="30dp" android:layout_marginBottom="20dp"/>
     <Button
-            android:layout_width="wrap_content"
+            android:layout_width="99dp"
             android:layout_height="wrap_content"
             android:text="Open"
-            android:id="@+id/open" android:layout_gravity="center_horizontal" android:onClick="OnOpenClick"/>
+            android:id="@+id/open" android:layout_gravity="center_horizontal" android:onClick="OnOpenClick"
+            android:background="@drawable/openbutton_background" android:layout_weight="0.11"/>
 </LinearLayout>

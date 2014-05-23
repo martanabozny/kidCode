@@ -1,6 +1,7 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,21 +89,34 @@ public class Math extends FunctionStrip {
         Button result = (Button) this.findViewById(R.id.result);
         Button a = (Button) this.findViewById(R.id.number1);
         Button b = (Button) this.findViewById(R.id.number2);
+        a.setBackgroundResource(android.R.drawable.btn_default);
+        b.setBackgroundResource(android.R.drawable.btn_default);
 
         double numbera, numberb;
 
         try {
             numbera = Double.valueOf(a.getText().toString());
         } catch (Exception e) {
-            VarInteger i = (VarInteger) getVariable(a.getText().toString(), "VarInteger");
-            numbera = i.value;
+            try{
+                VarInteger i = (VarInteger) getVariable(a.getText().toString(), "VarInteger");
+                numbera = i.value;
+            } catch (UnknownVariableException e2) {
+                a.setBackgroundColor(Color.RED);
+                throw e2;
+            }
+
         }
 
         try {
             numberb = Double.valueOf(b.getText().toString());
         } catch (Exception e) {
-            VarInteger i = (VarInteger) getVariable(b.getText().toString(), "VarInteger");
-            numberb = i.value;
+            try{
+                VarInteger i = (VarInteger) getVariable(b.getText().toString(), "VarInteger");
+                numberb = i.value;
+            } catch (UnknownVariableException e2) {
+                b.setBackgroundColor(Color.RED);
+                throw e2;
+            }
         }
 
         double numberc = 0;

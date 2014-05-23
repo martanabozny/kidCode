@@ -28,6 +28,7 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
 
     private SurfaceHolder mHolder;
     private Camera camera;
+    Boolean isPictrueTaken = false;
 
 
 
@@ -46,7 +47,7 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
 
         camera = getCameraInstance();
 
-        final Button result = (Button)findViewById(R.id.text);
+        final Button result = (Button)findViewById(R.id.result);
 
         result.setOnClickListener(new OnClickListener() {
             @Override
@@ -78,19 +79,20 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     }
 
     public void run() throws UnknownVariableException {
-
         if(camera != null)
         {
-            camera.takePicture(null, null, myPictureCallback);
-            Toast.makeText(getContext(), "jest zdjecie", Toast.LENGTH_SHORT).show();
+           camera.takePicture(null, null, myPictureCallback);
         }
+
+        while (!isPictrueTaken);
+
     }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
 
         try {
-            Button result = (Button)findViewById(R.id.text);
+            Button result = (Button)findViewById(R.id.result);
 
             object.put("result", result.getText().toString());
 
@@ -103,7 +105,7 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     }
 
     public void fromJson(JSONObject object){
-        Button result = (Button) findViewById(R.id.text);;
+        Button result = (Button) findViewById(R.id.result);;
 
         try {
             result.setText(object.getString("result"));
@@ -127,27 +129,16 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
     PictureCallback myPictureCallback = new PictureCallback(){
 
         public void onPictureTaken(byte[] bytes, Camera arg1) {
-            Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            Toast.makeText(getContext(), String.valueOf(bytes.length), Toast.LENGTH_LONG).show();
 
+            Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
             Bitmap correctBmp = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
 
             Button result = (Button) findViewById(R.id.result);
-            returnedValue.name = result.toString();
+            returnedValue.name = result.getText().toString();
             ((VarImage)returnedValue).value = correctBmp;
 
-            File file = new File(Environment.getExternalStorageDirectory().toString(), "foto.jpg");
-            try {
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(bytes);
-                fos.close();
-            } catch (Exception e) {
-                Toast.makeText(getContext(), "Exception: " + e.toString(), Toast.LENGTH_SHORT).show();
-            }
-
-            camera.stopPreview();
-            SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
-            Canvas canvas = new Canvas(correctBmp);
-            frame.draw(canvas);
+            isPictrueTaken = true;
         }};
 
 

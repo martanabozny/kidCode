@@ -10,32 +10,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:weightSum="4">
         <TextView
-                android:layout_width="60dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:text="condition"
                 android:id="@+id/conditionName" android:textColor="@android:color/black"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/variable" android:layout_weight="1"/>
+                android:id="@+id/variable" android:layout_weight="0.7"/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/condition"
-                android:entries="@array/condition" android:layout_weight="1"/>
+                android:entries="@array/condition" android:layout_weight="1.3"/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/function" android:visibility="invisible" android:layout_weight="1"/>
+                android:id="@+id/function" android:visibility="invisible" android:layout_weight="1.3"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Compare with..."
                 android:id="@+id/compareWith"
-                android:layout_gravity="right" android:visibility="invisible" android:layout_weight="1"/>
+                android:layout_gravity="right" android:visibility="invisible" android:layout_weight="0.7"/>
         <Button
-                android:layout_width="26dp"
-                android:layout_height="32dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:id="@+id/cancel" android:background="@drawable/bin"/>
     </LinearLayout>
     <LinearLayout

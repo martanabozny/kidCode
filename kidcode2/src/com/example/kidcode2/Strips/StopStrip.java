@@ -71,18 +71,6 @@ public class StopStrip extends FunctionStrip {
 
         Variable var = getVariable(result.getText().toString(), "");
 
-//        if (var.type.equals("VarInteger")) {
-//                String value = (String.valueOf(((VarInteger)var).value));
-//
-//            }
-//            if (var.type.equals("VarString")) {
-//                String value = (String.valueOf(((VarString)var).value));
-//            }
-//            if (var.type.equals("VarImage")) {
-//                String value = (String.valueOf(((VarImage)var).value));
-//            }
-//        String name = var.name;
-
         throw new StopException(var);
     }
 

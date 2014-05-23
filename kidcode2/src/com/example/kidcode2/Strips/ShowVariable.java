@@ -1,6 +1,7 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,6 @@ public class ShowVariable extends FunctionStrip {
         inflater.inflate(R.layout.show_variable, this, true);
 
         final Button variable = (Button)findViewById(R.id.variable);
-        Button value_ = (Button)findViewById(R.id.value);
 
         variable.setOnClickListener(new OnClickListener() {
             @Override
@@ -65,18 +65,12 @@ public class ShowVariable extends FunctionStrip {
 
         try {
             final Button variable = (Button)findViewById(R.id.variable);
-            Button value_ = (Button)findViewById(R.id.value);
+            ImageView value_ = (ImageView)findViewById(R.id.value);
 
             Variable var = getVariable(variable.getText().toString(), "");
-            if (var.type.equals("VarInteger")) {
-                value_.setText(String.valueOf(((VarInteger)var).value));
-            }
-            if (var.type.equals("VarString")) {
-                value_.setText(String.valueOf(((VarString)var).value));
-            }
-            if (var.type.equals("VarImage")) {
-                    value_.setText(String.valueOf(((VarImage)var).value));
-            }
+            Bitmap map = var.toImage();
+            value_.setImageBitmap(Bitmap.createScaledBitmap(map, 240, 240, false));
+
 
 
         } catch (UnknownVariableException e) {
@@ -89,13 +83,10 @@ public class ShowVariable extends FunctionStrip {
 
         try {
             Button variable = (Button)this.findViewById(R.id.variable);
-            Button value_ = (Button)this.findViewById(R.id.value);
+
 
             object.put("variable", variable.getText().toString());
-            object.put("value_", value_.getText().toString());
-
             object.put("type", "ShowVariable");
-
         } catch (JSONException e) {
 
         }
@@ -105,12 +96,7 @@ public class ShowVariable extends FunctionStrip {
     public void fromJson(JSONObject object){
         try {
             Button variable = (Button)this.findViewById(R.id.variable);
-            Button value_ = (Button)this.findViewById(R.id.value);
-
             variable.setText(object.getString("variable"));
-            value_.setText(object.getString("value_"));
-
-
         } catch (JSONException e) {
 
         }

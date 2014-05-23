@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/result" android:layout_weight="1"/>
     <Button
-            android:layout_width="50dp"
-            android:layout_height="44dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/cancel" android:background="@drawable/bin"/>
 </LinearLayout>

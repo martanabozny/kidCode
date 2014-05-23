@@ -8,13 +8,13 @@
     <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/text" android:layout_weight="1"/>
+            android:id="@+id/result" android:layout_weight="1"/>
     <SurfaceView
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:id="@+id/frame" android:layout_weight="3"/>
     <Button
-            android:layout_width="49dp"
-            android:layout_height="43dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/cancel" android:background="@drawable/bin"/>
 </LinearLayout>

@@ -68,11 +68,11 @@ public class CodeActivity extends Activity {
         try {
             code.runCode();
         } catch (UnknownVariableException e) {
-            Toast.makeText(this, "Cannot find variable: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cannot find variable " + e.toString(), Toast.LENGTH_SHORT).show();
         } catch (VariableConvertException e) {
-            Toast.makeText(this, "Cannot convert variable: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cannot convert variable " + e.toString(), Toast.LENGTH_SHORT).show();
         } catch (StopException e) {
-            Toast.makeText(this, "Program stopped: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Program stopped " + e.toString(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(CodeActivity.this, End.class);
             intent.putExtra("name", e.toString());
             intent.putExtra("value", e.getValue());
@@ -198,6 +198,30 @@ public class CodeActivity extends Activity {
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Canceled.
+            }
+        });
+        alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Save changes?");
+        alert.setMessage("File name");
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                save(input.getText().toString());
+                finish();
+            }
+        });
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                finish();
             }
         });
         alert.show();

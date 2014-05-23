@@ -159,12 +159,15 @@ public abstract class ConditionStrip extends FunctionStrip {
 
         try {
             variable.setText(object.getString("variable"));
-            function.setSelection(object.getInt("function"));
-            showCondition();
             compareWith.setText(object.getString("compareWith"));
             myView.fromJson(object.getString("code"));
             condition.setSelection(object.getInt("condition"));
-            
+            showCondition();
+            Toast.makeText(getContext(), "index: " + function.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+
+            function.getAdapter().notify();
+            function.setSelection(object.getInt("function"));
+            Toast.makeText(getContext(), "index: " + function.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(getContext(), "fromJson: " + e.toString(), Toast.LENGTH_LONG).show();
         }

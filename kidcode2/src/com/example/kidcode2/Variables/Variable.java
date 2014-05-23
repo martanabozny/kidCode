@@ -1,5 +1,6 @@
 package com.example.kidcode2.Variables;
 
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.example.kidcode2.VariableConvertException;
@@ -20,4 +21,5 @@ public abstract class Variable {
     public abstract String[] showCompareMethods();
     public abstract Variable fromString(String string) throws VariableConvertException;
     public abstract String toString();
+    public abstract Bitmap toImage();
 }

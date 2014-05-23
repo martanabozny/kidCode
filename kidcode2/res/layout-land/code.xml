@@ -6,9 +6,14 @@
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:weightSum="1" android:background="#ffe5d2">
     <ScrollView
-            android:layout_width="94dp"
+            android:layout_width="109dp"
             android:layout_height="match_parent"
-            android:id="@+id/icons">
+            android:fadeScrollbars="false"
+
+            android:scrollbarSize="15dp"
+            android:id="@+id/icons"
+            android:scrollbarThumbVertical="@drawable/while_background"
+            android:scrollbarThumbHorizontal="@drawable/while_background" >
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"

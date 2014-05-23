@@ -45,4 +45,9 @@ public class VarImage extends Variable {
     public String toString() {
         return "";
     }
+
+    @Override
+    public Bitmap toImage() {
+        return value;
+    }
 }

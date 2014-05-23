@@ -9,7 +9,14 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="99dp">
-        <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="79dp" android:id="@+id/scrollView">
+        <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:fadeScrollbars="false"
+                android:layout_height="79dp"
+                android:id="@+id/scrollView"
+                android:scrollbarSize="20dp"
+                android:scrollbarThumbVertical="@drawable/while_background"
+                android:scrollbarThumbHorizontal="@drawable/while_background">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"

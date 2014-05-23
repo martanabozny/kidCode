@@ -1,6 +1,7 @@
 package com.example.kidcode2.Strips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.*;
 import com.example.kidcode2.*;
@@ -47,11 +48,19 @@ public class IfStrip extends ConditionStrip {
         Spinner condition = (Spinner)findViewById(R.id.condition);
         String conditionString = condition.getSelectedItem().toString();
         Button compareWith = (Button)findViewById(R.id.compareWith);
+        compareWith.setBackgroundResource(android.R.drawable.btn_default);
         Variable varWith;
         try {
             varWith = getVariable(compareWith.getText().toString(), "");
         } catch (UnknownVariableException e) {
+            try {
             varWith = var.fromString(compareWith.getText().toString());
+            } catch (VariableConvertException e2) {
+                compareWith.setBackgroundColor(Color.RED);
+                throw e2;
+
+            }
+
         }
 
         MyScrollView myView = (MyScrollView)findViewById(R.id.MyView);

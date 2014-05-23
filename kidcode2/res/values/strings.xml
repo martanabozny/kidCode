@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">kidcode2</string>
+
     <string-array name="math_functions">
         <item>+</item>
         <item>-</item>
@@ -18,7 +19,14 @@
     <string-array name="string_functions">
         <item>UPPER</item>
         <item>lower</item>
-        <item>rear</item>
+        <item>reverse</item>
+
+    </string-array>
+
+    <string-array name="image_functions">
+        <item>UPPER</item>
+        <item>lower</item>
+        <item>reverse</item>
 
     </string-array>
 

@@ -8,6 +8,7 @@ import android.view.ViewManager;
 import android.widget.*;
 import com.example.kidcode2.R;
 import com.example.kidcode2.UnknownVariableException;
+import com.example.kidcode2.Variables.VarImage;
 import com.example.kidcode2.Variables.VarString;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,15 +18,15 @@ import java.util.ArrayList;
 /**
  * Created by marta on 17.03.14.
  */
-public class Strings extends FunctionStrip {
+public class FotoOp extends FunctionStrip {
 
-    public Strings(Context context, AttributeSet attrs) {
+    public FotoOp(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.strings, this, true);
+        inflater.inflate(R.layout.fotoop, this, true);
 
-        returnedValue = new VarString();
+        returnedValue = new VarImage();
 
         final Button cancel = (Button) findViewById(R.id.cancel);
         final View realThis = this;
@@ -48,23 +49,23 @@ public class Strings extends FunctionStrip {
         result.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList list = collectVariables("VarString");
+                ArrayList list = collectVariables("VarImage");
                 selectVariable(list, result, true);
             }
         });
 
-        final Button textButton = (Button)findViewById(R.id.text);
+        final Button Variable = (Button)findViewById(R.id.Variable);
 
-        textButton.setOnClickListener(new OnClickListener() {
+        Variable.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList list = collectVariables("VarString");
-                selectVariable(list, textButton, false);
+                ArrayList list = collectVariables("VarImage");
+                selectVariable(list, Variable, false);
             }
         });
     }
 
-    public Strings(Context context) {
+    public FotoOp(Context context) {
         this(context, null);
     }
 
@@ -90,7 +91,7 @@ public class Strings extends FunctionStrip {
             ((VarString)returnedValue).value = text.toUpperCase();
         }else if(operation.contains("lower")){
             ((VarString)returnedValue).value = text.toLowerCase();
-        }else if(operation.contains("reverse")){
+        }else if(operation.contains("invert")){
             ((VarString)returnedValue).value = new StringBuilder(text).reverse().toString();
         }
     }

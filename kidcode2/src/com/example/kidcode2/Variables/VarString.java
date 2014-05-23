@@ -1,6 +1,10 @@
 package com.example.kidcode2.Variables;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import com.example.kidcode2.R;
 
 import java.util.ArrayList;
@@ -57,5 +61,21 @@ public class VarString extends Variable {
 
     public String toString() {
         return value;
+    }
+
+    @Override
+    public Bitmap toImage() {
+        Paint paint = new Paint();
+        paint.setTextSize(10);
+        paint.setColor(Color.BLACK);
+        paint.setTextAlign(Paint.Align.CENTER);
+
+        int width = (int) (paint.measureText(value) + 0.5f); // round
+        float baseline = (int) (-paint.ascent() + 0.5f); // ascent() is negative
+        int height = (int) (baseline + paint.descent() + 0.5f);
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(image);
+        canvas.drawText(value, 0, baseline, paint);
+        return image;
     }
 }

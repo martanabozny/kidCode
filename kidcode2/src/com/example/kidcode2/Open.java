@@ -1,12 +1,18 @@
 package com.example.kidcode2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +53,25 @@ public class Open extends ListActivity {
         adapter = new MyArrayAdapter(this, list);
         setListAdapter(adapter);
         updateList();
+
+        EditText search = (EditText)findViewById(R.id.search);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                adapter.getFilter().filter(charSequence.toString().toLowerCase());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private void updateList() {
@@ -67,28 +92,25 @@ public class Open extends ListActivity {
 
     class MyArrayAdapter extends ArrayAdapter<String> {
         Context context;
-        ArrayList<String> values;
 
         public MyArrayAdapter(Context context, ArrayList<String> values) {
             super(context, R.layout.element, values);
             this.context = context;
-            this.values = values;
         }
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.element, parent, false);
 
             Button fileName = (Button) rowView.findViewById(R.id.fileName);
-            fileName.setText(values.get(position));
+            fileName.setText(getItem(position));
 
             fileName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openStrips(values.get(position));
+                    openStrips(getItem(position));
                 }
             });
 
@@ -96,7 +118,22 @@ public class Open extends ListActivity {
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    deleteStrips(values.get(position));
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                    alert.setMessage("Delete selected item?");
+
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            deleteStrips(getItem(position));
+                        }
+                    });
+
+                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            // Canceled.
+                        }
+                    });
+                    alert.show();
                 }
             });
 
