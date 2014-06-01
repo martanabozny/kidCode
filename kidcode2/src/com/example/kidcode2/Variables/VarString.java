@@ -66,9 +66,8 @@ public class VarString extends Variable {
     @Override
     public Bitmap toImage() {
         Paint paint = new Paint();
-        paint.setTextSize(10);
+        paint.setTextSize(25);
         paint.setColor(Color.BLACK);
-        paint.setTextAlign(Paint.Align.CENTER);
 
         int width = (int) (paint.measureText(value) + 0.5f); // round
         float baseline = (int) (-paint.ascent() + 0.5f); // ascent() is negative

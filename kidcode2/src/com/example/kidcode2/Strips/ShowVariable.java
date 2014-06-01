@@ -69,7 +69,7 @@ public class ShowVariable extends FunctionStrip {
 
             Variable var = getVariable(variable.getText().toString(), "");
             Bitmap map = var.toImage();
-            value_.setImageBitmap(Bitmap.createScaledBitmap(map, 240, 240, false));
+            value_.setImageBitmap(map);
 
 
 

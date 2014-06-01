@@ -200,4 +200,8 @@ public class MyScrollView extends ScrollView {
             return  true;
         }
     }
+
+    public void clear() {
+        layout.removeAllViews();
+    }
 }

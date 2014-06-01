@@ -90,14 +90,13 @@ public class VarInteger extends Variable {
     @Override
     public Bitmap toImage() {
         Paint paint = new Paint();
-        paint.setTextSize(20);
+        paint.setTextSize(25);
         paint.setColor(Color.BLACK);
-        paint.setTextAlign(Paint.Align.LEFT);
 
         int width = (int) (paint.measureText(String.valueOf(value)) + 0.5f); // round
         float baseline = (int) (-paint.ascent() + 0.5f); // ascent() is negative
         int height = (int) (baseline + paint.descent() + 0.5f);
-        Bitmap image = Bitmap.createBitmap(100, 30, Bitmap.Config.ARGB_8888);
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(image);
         canvas.drawText(String.valueOf(value), 0, baseline, paint);
         return image;

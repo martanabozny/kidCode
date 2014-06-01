@@ -14,9 +14,10 @@
                 android:fadeScrollbars="false"
                 android:layout_height="79dp"
                 android:id="@+id/scrollView"
-                android:scrollbarSize="20dp"
+                android:scrollbarSize="15dp"
                 android:scrollbarThumbVertical="@drawable/while_background"
-                android:scrollbarThumbHorizontal="@drawable/while_background">
+                android:scrollbarThumbHorizontal="@drawable/while_background"
+                android:scrollbarTrackHorizontal="@drawable/bartrack_background">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"

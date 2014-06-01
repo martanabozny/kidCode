@@ -10,10 +10,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <application android:label="@string/app_name" android:icon="@drawable/logo_small">
+    <application android:label="@string/app_name" android:icon="@drawable/icon">
         <activity android:name="MyMenu"
                   android:label="kidCode"
-                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes"
+                  android:theme="@android:style/Theme.Holo"
                   android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,7 +23,7 @@
 
         <activity android:name=".CodeActivity"
                   android:label="kidCode"
-                  android:theme="@android:style/Theme.NoTitleBar.OverlayActionModes">
+                  android:theme="@android:style/Theme.Holo">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

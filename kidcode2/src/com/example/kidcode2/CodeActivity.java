@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -96,7 +97,38 @@ public class CodeActivity extends Activity {
         }
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.save:
+                showDialog();
+                return true;
+            case R.id.clear:
+                MyScrollView code = (MyScrollView)findViewById(R.id.code);
+                code.clear();
+                return true;
+            case R.id.files:
+                startActivity(new Intent(CodeActivity.this, Open.class));
+                finish();
+                return true;
+            case R.id.help:
+                //tu otworzymy stronę
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /*public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("Save");
         return true;
     }
@@ -112,7 +144,7 @@ public class CodeActivity extends Activity {
             return super.onOptionsItemSelected(item);
         }
 
-    }
+    }*/
 
     public void save(String fileName) {
         MyScrollView code = (MyScrollView)findViewById(R.id.code);
@@ -183,48 +215,61 @@ public class CodeActivity extends Activity {
     }
 
     public void showDialog() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Save as");
-        alert.setMessage("File name");
         final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                save(input.getText().toString());
-            }
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-            }
-        });
+        final AlertDialog alert = new AlertDialog.Builder(this)
+                .setTitle("Save changes?")
+                .setMessage("File name")
+                .setView(input)
+                .setPositiveButton("Yes", null)
+                .setNegativeButton("No", null)
+                .create();
         alert.show();
+
+        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
+                    input.setBackgroundColor(Color.RED);
+
+                } else {
+                    save(input.getText().toString());
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Save changes?");
-        alert.setMessage("File name");
         final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                save(input.getText().toString());
-                finish();
-            }
-        });
-
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                finish();
-            }
-        });
+        final AlertDialog alert = new AlertDialog.Builder(this)
+                .setTitle("Save changes?")
+                .setMessage("File name")
+                .setView(input)
+                .setPositiveButton("Yes", null)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .create();
         alert.show();
+
+        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
+                    input.setBackgroundColor(Color.RED);
+
+                } else {
+                    save(input.getText().toString());
+                    finish();
+                }
+            }
+        });
     }
 
 }

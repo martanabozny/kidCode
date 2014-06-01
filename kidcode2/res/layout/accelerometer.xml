@@ -28,15 +28,15 @@
         <SeekBar
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/x" android:layout_weight="1" android:max="100" android:thumb="@drawable/ic_launcher"/>
+                android:id="@+id/x" android:layout_weight="1" android:max="100" android:thumb="@drawable/x"/>
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/y" android:layout_weight="1" android:max="100"/>
+                android:id="@+id/y" android:layout_weight="1" android:max="100" android:thumb="@drawable/y"/>
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/z" android:layout_weight="1" android:max="100"/>
+                android:id="@+id/z" android:layout_weight="1" android:max="100" android:thumb="@drawable/z"/>
     </LinearLayout>
     <Button
             style="?android:attr/buttonStyleSmall"

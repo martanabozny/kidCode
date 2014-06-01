@@ -72,6 +72,8 @@ public class Open extends ListActivity {
 
             }
         });
+
+
     }
 
     private void updateList() {
@@ -152,8 +154,10 @@ public class Open extends ListActivity {
             String json = c.getString(c.getColumnIndexOrThrow(DataBase.FeedEntry2.COLUMN_NAME_JSON));
 
             Intent intent = new Intent(Open.this, CodeActivity.class);
+
             intent.putExtra("strips", json);
             startActivity(intent);
+
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();

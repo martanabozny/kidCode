@@ -27,8 +27,8 @@ import java.util.ArrayList;
 public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
 
     private SurfaceHolder mHolder;
-    private Camera camera;
     Boolean isPictrueTaken = false;
+    Camera camera;
 
 
 
@@ -40,12 +40,15 @@ public class Foto extends FunctionStrip implements SurfaceHolder.Callback{
 
         returnedValue = new VarImage();
 
-        SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
+        final SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
         mHolder = frame.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
+
         camera = getCameraInstance();
+
+
 
         final Button result = (Button)findViewById(R.id.result);
 
