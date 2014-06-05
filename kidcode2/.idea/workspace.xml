@@ -114,35 +114,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="b5004f05-0b30-43cf-a1e5-42a9ec64a408" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/y.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/z.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/src/main/java/Biblioteka/Bib.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bartrack_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/biblioteka.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/main_activity_actions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../biblioteka/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/CodeActivity.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/CodeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/Strips/Foto.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/Strips/Foto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/MyScrollView.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/MyScrollView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/Open.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/Open.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/Strips/ShowVariable.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/Strips/ShowVariable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarInteger.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarInteger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarString.java" afterPath="$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/accelerometer.xml" afterPath="$PROJECT_DIR$/res/layout/accelerometer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/code.xml" afterPath="$PROJECT_DIR$/res/layout/code.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout-land/code.xml" afterPath="$PROJECT_DIR$/res/layout-land/code.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/accel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/bin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/condition.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/end_strip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/foto.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/fotoop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/logo_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/loop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/math.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/new_variable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/string.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/variable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/y.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/z.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/FunctionStrip.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Math.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/codeactivity.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/kidcode3.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kidcode2.iws" />
@@ -224,10 +233,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Foto.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Foto.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Foto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="8" selection-start="1393" selection-end="1393" vertical-scroll-proportion="-0.46721312" vertical-offset="720" max-vertical-offset="2610">
+            <state line="89" column="32" selection-start="2580" selection-end="2580" vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="3015">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/CodeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="53" selection-start="4064" selection-end="4085" vertical-scroll-proportion="0.0" vertical-offset="1545" max-vertical-offset="4200">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyMenu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/MyMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="63" selection-start="1071" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="795">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Open.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Open.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="4" selection-start="962" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="2730">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Math.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Math.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="164" column="25" selection-start="5521" selection-end="5538" vertical-scroll-proportion="0.0" vertical-offset="1837" max-vertical-offset="2460">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="19" selection-start="712" selection-end="1124" vertical-scroll-proportion="0.3611557" vertical-offset="90" max-vertical-offset="810">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Accelerometer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Accelerometer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="0" selection-start="901" selection-end="1166" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="2175">
               <folding />
             </state>
           </provider>
@@ -578,19 +641,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -616,6 +666,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -758,7 +821,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1372" height="745" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -777,7 +840,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -810,13 +873,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/res/layout/end.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/ConditionStrip.java">
@@ -890,80 +953,73 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/stop_strip.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/new_variable.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/new_variable.xml">
       <provider editor-type-id="text-editor">
         <state line="35" column="26" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="720">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/foto.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/foto.xml">
       <provider editor-type-id="text-editor">
         <state line="10" column="35" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="375">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/condition_strip.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/condition_strip.xml">
       <provider editor-type-id="text-editor">
         <state line="31" column="41" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="930">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/open.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/open.xml">
       <provider editor-type-id="text-editor">
         <state line="19" column="67" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="465">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/show_variable.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/show_variable.xml">
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="8" selection-start="3087" selection-end="3143" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="2460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/element.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/element.xml">
       <provider editor-type-id="text-editor">
         <state line="13" column="59" selection-start="643" selection-end="643" vertical-scroll-proportion="-4.32" vertical-offset="87" max-vertical-offset="390">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/newbutton_background.xml">
@@ -987,33 +1043,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout-land/menu.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/menu.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/menu.xml">
       <provider editor-type-id="text-editor">
         <state line="8" column="28" selection-start="355" selection-end="355" vertical-scroll-proportion="-3.64" vertical-offset="29" max-vertical-offset="465">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fotoop.xml">
-      <provider editor-type-id="android-designer">
+      <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fotoop.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="957" selection-end="957" vertical-scroll-proportion="-2.8431373" vertical-offset="155" max-vertical-offset="540">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Strings.java">
@@ -1024,23 +1080,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/strings.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="34" column="86" selection-start="1536" selection-end="1610" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="675">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/math.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/math.xml">
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/bartrack_background.xml">
@@ -1049,40 +1105,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/accelerometer.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="22" column="76" selection-start="1006" selection-end="1011" vertical-scroll-proportion="-5.64" vertical-offset="189" max-vertical-offset="780">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout-land/code.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-land/code.xml">
       <provider editor-type-id="text-editor">
         <state line="10" column="42" selection-start="448" selection-end="448" vertical-scroll-proportion="-4.8" vertical-offset="30" max-vertical-offset="1980">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/code.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="19" column="50" selection-start="909" selection-end="909" vertical-scroll-proportion="-6.52" vertical-offset="122" max-vertical-offset="1020">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Accelerometer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="47" selection-start="2639" selection-end="2639" vertical-scroll-proportion="0.3644068" vertical-offset="726" max-vertical-offset="1815">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -1141,29 +1180,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="65" selection-start="3188" selection-end="3226" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1425">
           <folding>
-            <element signature="e#2725#3575#0" expanded="true" />
-            <element signature="e#3564#3565#0" expanded="true" />
+            <element signature="e#2725#3575#0" expanded="false" />
+            <element signature="e#3564#3565#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="58" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="810">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/MyScrollView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="204" column="32" selection-start="7223" selection-end="7223" vertical-scroll-proportion="0.0" vertical-offset="2392" max-vertical-offset="3015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/MyMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="63" selection-start="1071" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="585">
           <folding />
         </state>
       </provider>
@@ -1175,23 +1200,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Open.java">
+    <entry file="file://$PROJECT_DIR$/res/layout/code.xml">
+      <provider editor-type-id="text-editor">
+        <state line="19" column="50" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Foto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="0" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.085072234" vertical-offset="1597" max-vertical-offset="2220">
+        <state line="89" column="32" selection-start="2580" selection-end="2580" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="2610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Accelerometer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="901" selection-end="1166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1815">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/CodeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="29" selection-start="9825" selection-end="9825" vertical-scroll-proportion="0.7295082" vertical-offset="3275" max-vertical-offset="3885">
+        <state line="103" column="53" selection-start="4064" selection-end="4085" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="3885">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Foto.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/MyMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="8" selection-start="1393" selection-end="1393" vertical-scroll-proportion="-0.46721312" vertical-offset="720" max-vertical-offset="2610">
+        <state line="38" column="63" selection-start="1071" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Open.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="4" selection-start="962" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2220">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="164" column="25" selection-start="5521" selection-end="5538" vertical-scroll-proportion="0.0" vertical-offset="1837" max-vertical-offset="2460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="19" selection-start="712" selection-end="1124" vertical-scroll-proportion="0.3611557" vertical-offset="90" max-vertical-offset="810">
           <folding />
         </state>
       </provider>
