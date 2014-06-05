@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.martas.kidcode.Strips.*;
 import com.martas.kidcode.Strips.Math;
 import org.json.JSONObject;
@@ -23,6 +20,7 @@ import java.util.List;
 public class CodeActivity extends Activity {
     String[] tab = {"{\"type\": \"Math\", \"a\": \"1\", \"b\": \"2\", \"name\": \"x\"}", "{\"type\": \"Math\", \"a\": \"1\", \"b\": \"2\", \"name\": \"x\"}"};
     MySimpleArrayAdapter adapter;
+    Boolean addClicked = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +31,12 @@ public class CodeActivity extends Activity {
 
         adapter = new MySimpleArrayAdapter(this, tab);
         lv.setAdapter(adapter);
+    }
+
+    public void add(View view) {
+        addClicked = !addClicked;
+        adapter.notifyDataSetChanged();
+
     }
 
 
@@ -60,8 +64,22 @@ public class CodeActivity extends Activity {
             } else {
                 return null;
             }
+
             strip.fromJson(obj);
-            return strip.getPreview(context);
+
+            if (addClicked) {
+                LinearLayout layout = new LinearLayout(context);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                Button plus = new Button(context);
+                plus.setText("+");
+
+                layout.addView(strip.getPreview(context));
+                layout.addView(plus);
+                return layout;
+            } else {
+                return strip.getPreview(context);
+            }
         }
     }
 
