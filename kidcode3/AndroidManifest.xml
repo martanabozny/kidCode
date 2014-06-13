@@ -12,5 +12,25 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".Buttons"
+                  android:label="kidCode"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="fullSensor">
+            <intent-filter>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Setup"
+                  android:label="kidCode"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="fullSensor">
+            <intent-filter>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

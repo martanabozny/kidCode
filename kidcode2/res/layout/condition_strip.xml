@@ -10,14 +10,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:weightSum="4">
         <TextView
-                android:layout_width="20dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:text="condition"
                 android:id="@+id/conditionName" android:textColor="@android:color/black"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/variable" android:layout_weight="0.7"/>
+                android:id="@+id/variable" android:layout_weight="0.7" android:textColor="#000000"/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -31,7 +31,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/compareWith"
-                android:layout_gravity="right" android:visibility="invisible" android:layout_weight="0.7"/>
+                android:layout_gravity="right" android:visibility="invisible" android:layout_weight="0.7"
+                android:textColor="#000000"/>
         <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"

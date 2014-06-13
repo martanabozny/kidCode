@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
-import com.martas.kidcode.Buttons;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import com.martas.kidcode.Setup;
@@ -21,7 +20,7 @@ import java.util.Map;
 /**
  * Created by marta on 01.06.14.
  */
-public class Math extends FunctionStrip {
+public class ShowVariable extends FunctionStrip {
     private String a = "0";
     private String b ="0";
 
@@ -29,7 +28,7 @@ public class Math extends FunctionStrip {
     public View getButton(final Context context, final int position) {
 
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.math);
+        button.setBackgroundResource(R.drawable.variable);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,11 +40,12 @@ public class Math extends FunctionStrip {
         });
         return button;
     }
+
     public View getPreview(Context context) {
-        TextView view = new TextView(context);
-        view.setText("" + name + " = " + a + " + " + b);
+
         return view;
     }
+
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.math, null);

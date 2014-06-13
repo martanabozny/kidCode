@@ -14,7 +14,7 @@ public abstract class FunctionStrip extends Object {
     protected String name= "";
 
 
-    public abstract View getButton(Context context);
+    public abstract View getButton(Context context, int position);
     public abstract View getPreview(Context context);
     public abstract View getSetup(Context context, Map<String, String> previousVariables);
     public abstract JSONObject toJson();

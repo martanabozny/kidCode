@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">kidcode</string>
+
+    <string-array name="math_functions">
+        <item>+</item>
+        <item>-</item>
+        <item>x</item>
+        <item>/</item>
+    </string-array>
+
+    <string-array name="accels">
+        <item>x</item>
+        <item>y</item>
+        <item>z</item>
+
+    </string-array>
+
+    <string-array name="string_functions">
+        <item>UPPER</item>
+        <item>lower</item>
+        <item>reverse</item>
+
+    </string-array>
+
+    <string-array name="image_functions">
+        <item>UPPER</item>
+        <item>lower</item>
+        <item>reverse</item>
+
+    </string-array>
+
+    <string-array name="variable_types">
+        <item>String</item>
+        <item>Integer</item>
+        <item>Image</item>
+    </string-array>
+
+    <string-array name="condition">
+        <item>select...</item>
+        <item>check</item>
+        <item>compare</item>
+    </string-array>
+
 </resources>
