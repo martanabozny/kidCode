@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" style="@android:style/Theme.DeviceDefault.Dialog">
+              android:layout_height="fill_parent" style="@android:style/Theme.DeviceDefault.Dialog">
 
     <LinearLayout
             android:orientation="vertical"
@@ -21,7 +21,8 @@
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/name" android:layout_weight="0.5" android:editable="true"/>
+                    android:id="@+id/name" android:layout_weight="0.5" android:editable="true"
+                    android:clickable="false"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -32,9 +33,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/value" android:layout_weight="1.5" android:editable="true"/>
         </LinearLayout>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:id="@+id/imageView" android:background="@drawable/end_strip"/>
     </LinearLayout>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" android:background="@drawable/end_strip"/>
 </LinearLayout>

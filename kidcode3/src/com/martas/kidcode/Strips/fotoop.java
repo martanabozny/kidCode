@@ -22,7 +22,9 @@ import java.util.Map;
  * Created by marta on 01.06.14.
  */
 public class fotoop extends FunctionStrip {
-    private String variablem = "";
+
+    private String functionText = "";
+    private String variableText = "";
 
 
 
@@ -43,7 +45,8 @@ public class fotoop extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-
+        TextView view = new TextView(context);
+        view.setText("" + name + " = " + variableText + "." + functionText);
         return view;
     }
 
@@ -54,6 +57,7 @@ public class fotoop extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView variable = (AutoCompleteTextView)view.findViewById(R.id.variable);
         Spinner function = (Spinner)view.findViewById(R.id.function);
+        functionText = function.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,7 +84,7 @@ public class fotoop extends FunctionStrip {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                variablem = charSequence.toString();
+                variableText = charSequence.toString();
             }
 
             @Override
@@ -95,7 +99,8 @@ public class fotoop extends FunctionStrip {
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("variable", variablem);
+            object.put("variable", variableText);
+            object.put("function", functionText);
             object.put("type", "fotoop");
             object.put("name", name);
 
@@ -106,7 +111,8 @@ public class fotoop extends FunctionStrip {
     }
     public void fromJson(JSONObject object) {
         try {
-            a = object.get("variable").toString();
+            functionText = object.get("function").toString();
+            variableText = object.get("variable").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

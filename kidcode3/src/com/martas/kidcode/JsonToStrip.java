@@ -15,6 +15,20 @@ public class JsonToStrip {
                 return new Math();
             } else if (type.equals("Empty")) {
                 return new Empty();
+            } else if (type.equals("foto")) {
+                return new foto();
+            } else if (type.equals("fotoop")) {
+                return new fotoop();
+            } else if (type.equals("accelerometer")) {
+                return new accelerometer();
+            } else if (type.equals("NewVariable")) {
+                return new NewVariable();
+            } else if (type.equals("ShowVariable")) {
+                return new ShowVariable();
+            } else if (type.equals("Stop")) {
+                return new Stop();
+            } else if (type.equals("strings")) {
+                return new strings();
             } else {
                 return null;
             }

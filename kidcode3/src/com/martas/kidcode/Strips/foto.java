@@ -2,9 +2,12 @@ package com.martas.kidcode.Strips;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -22,6 +25,9 @@ import java.util.Map;
  */
 public class foto extends FunctionStrip {
 
+    private SurfaceHolder mHolder;
+    Boolean isPictrueTaken = false;
+    Camera camera;
 
     public View getButton(final Context context, final int position) {
 
@@ -40,7 +46,8 @@ public class foto extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-
+        TextView view = new TextView(context);
+        view.setText("" + name + " = ");
         return view;
     }
 
@@ -49,6 +56,11 @@ public class foto extends FunctionStrip {
         View view = inflater.inflate(R.layout.foto, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        final SurfaceView frame = (SurfaceView)view.findViewById(R.id.frame);
+        mHolder = frame.getHolder();
+        //mHolder.addCallback(this);
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        camera = getCameraInstance();
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -93,5 +105,16 @@ public class foto extends FunctionStrip {
     }
     public Map<String, String> run(Map<String, String> previousVariables) {
         return  null;
+    }
+
+    public static Camera getCameraInstance(){
+        Camera c = null;
+        try {
+            c = Camera.open();
+        }
+        catch (Exception e){
+
+        }
+        return c;
     }
 }

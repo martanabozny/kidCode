@@ -23,11 +23,10 @@ import java.util.Map;
 public class Stop extends FunctionStrip {
 
 
-
     public View getButton(final Context context, final int position) {
 
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.math);
+        button.setBackgroundResource(R.drawable.stop);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,11 +38,13 @@ public class Stop extends FunctionStrip {
         });
         return button;
     }
+
     public View getPreview(Context context) {
         TextView view = new TextView(context);
-        view.setText("" + name + " = " + a + " + " + b);
+        view.setText("Show as program result:" + name );
         return view;
     }
+
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.math, null);
@@ -65,14 +66,15 @@ public class Stop extends FunctionStrip {
             public void afterTextChanged(Editable editable) {
 
             }});
+        return view;
+    }
 
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("a", a);
-            object.put("b", b);
-            object.put("type", "Math");
+
+            object.put("type", "Stop");
             object.put("name", name);
 
         } catch (JSONException e) {
@@ -82,8 +84,7 @@ public class Stop extends FunctionStrip {
     }
     public void fromJson(JSONObject object) {
         try {
-            a = object.get("a").toString();
-            b = object.get("b").toString();
+
             name = object.get("name").toString();
 
         } catch (JSONException e) {

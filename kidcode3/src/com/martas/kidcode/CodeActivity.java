@@ -1,14 +1,13 @@
 package com.martas.kidcode;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListFragment;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import com.martas.kidcode.Strips.*;
 import com.martas.kidcode.Strips.Math;
@@ -82,6 +81,100 @@ public class CodeActivity extends Activity {
 
         ed.putString("strips", jarray.toString());
         ed.commit();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Save");
+        menu.add("clear");
+        menu.add("files");
+        menu.add("help");
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().toString().equals("Save")) {
+            showDialog();
+            return true;
+        }else if (item.getTitle().toString().equals("clear")){
+            return true;
+        } else if (item.getTitle().toString().equals("files")){
+            return true;
+        }else if (item.getTitle().toString().equals("help")){
+            return true;
+        }else
+            return super.onOptionsItemSelected(item);
+        }
+
+
+
+    public void save(String fileName) {
+       /* MyScrollView code = (MyScrollView)findViewById(R.id.code);
+        SQLiteDatabase db = dataBase.getWritableDatabase();
+
+        db.execSQL("DELETE FROM " + DataBase.FeedEntry2.TABLE_NAME + " WHERE " + DataBase.FeedEntry2.COLUMN_FILE_NAME + " = ?", new String[]{fileName});
+
+        ContentValues values = new ContentValues();
+        values.put(DataBase.FeedEntry2.COLUMN_NAME_JSON, code.toJson());
+        values.put(DataBase.FeedEntry2.COLUMN_FILE_NAME, fileName);
+        db.insert(DataBase.FeedEntry2.TABLE_NAME, null, values);*/
+    }
+
+    public void showDialog() {
+        final EditText input = new EditText(this);
+        final AlertDialog alert = new AlertDialog.Builder(this)
+                .setTitle("Save changes?")
+                .setMessage("File name")
+                .setView(input)
+                .setPositiveButton("Yes", null)
+                .setNegativeButton("No", null)
+                .create();
+        alert.show();
+
+        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
+                    input.setBackgroundColor(Color.RED);
+
+                } else {
+                    save(input.getText().toString());
+                    finish();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        final EditText input = new EditText(this);
+        final AlertDialog alert = new AlertDialog.Builder(this)
+                .setTitle("Save changes?")
+                .setMessage("File name")
+                .setView(input)
+                .setPositiveButton("Yes", null)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .create();
+        alert.show();
+
+        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
+                    input.setBackgroundColor(Color.RED);
+
+                } else {
+                    save(input.getText().toString());
+                    finish();
+                }
+            }
+        });
     }
 
 

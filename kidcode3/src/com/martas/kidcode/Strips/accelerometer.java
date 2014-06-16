@@ -10,10 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import com.martas.kidcode.Setup;
@@ -26,10 +23,11 @@ import java.util.Map;
  * Created by marta on 01.06.14.
  */
 public class accelerometer extends FunctionStrip implements SensorEventListener {
-
+    private String accel = "";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     int x_,y_,z_;
+    View view;
 
 
 
@@ -48,9 +46,15 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
         });
         return button;
     }
+
     public View getPreview(Context context) {
-        TextView view = new TextView(context);
-        view.setText("" + name + " = " + a + " + " + b);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.accelerometerpreview, null);
+
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
         return view;
     }
 
@@ -59,28 +63,28 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public void onSensorChanged(SensorEvent event){
-        SeekBar x = (SeekBar)findViewById(R.id.x);
-        SeekBar y = (SeekBar)findViewById(R.id.y);
-        SeekBar z = (SeekBar)findViewById(R.id.z);
 
-        x_ = (int)(event.values[0]*5 + 50);
-        y_ = (int)(event.values[1]*5 + 50);
-        z_ = (int)(event.values[2]*5 + 50);
+        SeekBar value = (SeekBar)view.findViewById(R.id.value);
 
-        x.setProgress(x_);
-        y.setProgress(y_);
-        z.setProgress(z_);
+        if(accel.equals("x")){
+            x_ = (int)(event.values[0]*5 + 50);
+            value.setProgress(x_);
+        } else if (accel.equals("y")) {
+            y_ = (int)(event.values[1]*5 + 50);
+            value.setProgress(y_);
+        } else if (accel.equals("z")) {
+            z_ = (int)(event.values[2]*5 + 50);
+            value.setProgress(z_);
+        }
     }
+
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.accelerometer, null);
 
-        mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-
+        Spinner acceles = (Spinner)view.findViewById(R.id.accels);
+        accel = acceles.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,13 +103,15 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
             }
         });
 
+        return view;
+    }
+
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("a", a);
-            object.put("b", b);
-            object.put("type", "Math");
+            object.put("accel", accel);
+            object.put("type", "accelerometer");
             object.put("name", name);
 
         } catch (JSONException e) {
@@ -115,8 +121,7 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
     }
     public void fromJson(JSONObject object) {
         try {
-            a = object.get("a").toString();
-            b = object.get("b").toString();
+            accel= object.get("function").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

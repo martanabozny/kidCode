@@ -6,9 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import com.martas.kidcode.Setup;
@@ -21,8 +19,6 @@ import java.util.Map;
  * Created by marta on 01.06.14.
  */
 public class ShowVariable extends FunctionStrip {
-    private String a = "0";
-    private String b ="0";
 
 
     public View getButton(final Context context, final int position) {
@@ -42,17 +38,16 @@ public class ShowVariable extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-
+        TextView view = new TextView(context);
+        view.setText("" + name + " = ");
         return view;
     }
 
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.math, null);
+        View view = inflater.inflate(R.layout.show_variable, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
-        AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -71,48 +66,13 @@ public class ShowVariable extends FunctionStrip {
             }
         });
 
-        a_text.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                a = charSequence.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        b_text.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                b = charSequence.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         return view;
     }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("a", a);
-            object.put("b", b);
-            object.put("type", "Math");
+            object.put("type", "ShowVariable");
             object.put("name", name);
 
         } catch (JSONException e) {
@@ -122,8 +82,6 @@ public class ShowVariable extends FunctionStrip {
     }
     public void fromJson(JSONObject object) {
         try {
-            a = object.get("a").toString();
-            b = object.get("b").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

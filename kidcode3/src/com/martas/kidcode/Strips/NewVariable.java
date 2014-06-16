@@ -19,8 +19,9 @@ import java.util.Map;
  * Created by marta on 01.06.14.
  */
 public class NewVariable extends FunctionStrip {
+
     private String value = "";
-    private String b ="0";
+    private String functionText = "";
 
 
     public View getButton(final Context context, final int position) {
@@ -40,7 +41,8 @@ public class NewVariable extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-
+        TextView view = new TextView(context);
+        view.setText("" + functionText + " " + name + " = " + value);
         return view;
     }
 
@@ -50,7 +52,8 @@ public class NewVariable extends FunctionStrip {
 
         EditText result = (EditText)view.findViewById(R.id.result);
         EditText value = (EditText)view.findViewById(R.id.value);
-        Spinner kind = (Spinner)view.findViewById(R.id.kind);
+        Spinner function = (Spinner)view.findViewById(R.id.kind);
+        functionText = function.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,7 +72,6 @@ public class NewVariable extends FunctionStrip {
             }
         });
 
-
         return view;
     }
 
@@ -77,6 +79,7 @@ public class NewVariable extends FunctionStrip {
         JSONObject object = new JSONObject();
         try {
             object.put("value", value);
+            object.put("functionText", functionText);
             object.put("type", "NewVariable");
             object.put("name", name);
 
@@ -88,6 +91,7 @@ public class NewVariable extends FunctionStrip {
     public void fromJson(JSONObject object) {
         try {
             value = object.get("value").toString();
+            functionText = object.get("functionText").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

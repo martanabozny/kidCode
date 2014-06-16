@@ -7,29 +7,29 @@
         android:weightSum="2">
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp" android:weightSum="2" android:layout_weight="0.3">
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:weightSum="2" android:layout_weight="0.5">
         <AutoCompleteTextView
-                android:layout_width="500dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/result" android:layout_weight="1"/>
         <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText" android:text="="/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/accels" android:layout_weight="1"
-                android:entries="@array/accels"/>
+                android:entries="@array/accels" android:focusable="false"/>
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp"
-                  android:layout_weight="1.7" android:id="@+id/linearLayout">
-        <SeekBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/x"
-                 android:layout_weight="1" android:max="100" android:thumb="@drawable/x"/>
-        <SeekBar android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/y"
-                 android:layout_weight="1" android:max="100" android:thumb="@drawable/y"/>
-        <SeekBar android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/z"
-                 android:layout_weight="1" android:max="100" android:thumb="@drawable/z"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0dp"
+                  android:id="@+id/linearLayout" android:layout_weight="1.5">
+        <SeekBar android:layout_width="fill_parent" android:layout_height="80dp" android:id="@+id/x"
+                 android:max="100" android:thumb="@drawable/x"/>
+        <SeekBar android:layout_width="match_parent" android:layout_height="80dp" android:id="@+id/y"
+                 android:max="100" android:thumb="@drawable/y" android:indeterminate="false"/>
+        <SeekBar android:layout_width="match_parent" android:layout_height="80dp" android:id="@+id/z"
+                 android:max="100" android:thumb="@drawable/z"/>
     </LinearLayout>
 </LinearLayout>

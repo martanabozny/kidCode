@@ -24,6 +24,7 @@ import java.util.Map;
 public class strings extends FunctionStrip {
 
     private String text = "";
+    private String functionText = "";
 
     public View getButton(final Context context, final int position) {
 
@@ -42,9 +43,11 @@ public class strings extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-
+        TextView view = new TextView(context);
+        view.setText("" + name + " = " + text + "." + functionText);
         return view;
     }
+
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.strings, null);
@@ -52,7 +55,7 @@ public class strings extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
         Spinner function = (Spinner)view.findViewById(R.id.function);
-        int functiontext = function.getSelectedItemPosition();
+        functionText = function.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,7 +82,7 @@ public class strings extends FunctionStrip {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                text = charSequence.toString();
+                functionText = charSequence.toString();
             }
 
             @Override
@@ -95,6 +98,7 @@ public class strings extends FunctionStrip {
         JSONObject object = new JSONObject();
         try {
             object.put("text", text);
+            object.put("functionText", functionText);
             object.put("type", "strings");
             object.put("name", name);
 
@@ -106,6 +110,7 @@ public class strings extends FunctionStrip {
     public void fromJson(JSONObject object) {
         try {
             text = object.get("text").toString();
+            functionText = object.get("functionText").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {
