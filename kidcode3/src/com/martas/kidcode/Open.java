@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
@@ -19,13 +17,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import org.apache.http.util.ByteArrayBuffer;
 
+import java.io.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -78,7 +73,6 @@ public class Open extends ListActivity {
         }
 
         if (kidCodeDir != null) {
-            Toast.makeText(getApplicationContext(), kidCodeDir.getPath(), Toast.LENGTH_LONG).show();
             list.clear();
             for (File f : kidCodeDir.listFiles()) {
                 if (f.isFile()){
@@ -142,32 +136,29 @@ public class Open extends ListActivity {
     }
 
     public void openStrips(String filename) {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/";
         try {
-            SharedPreferences.Editor ed = mPrefs.edit();
-            ed.putString("name",filename );
+            String strips = "";
+            File input = new File(path + filename);
+            FileInputStream inputStream = new FileInputStream(input);
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
 
-            String eol = System.getProperty("line.separator");
-            BufferedReader input = null;
-            String line= "";
-            try {
-                input = new BufferedReader(new InputStreamReader(openFileInput(filename)));
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
 
-                StringBuffer buffer = new StringBuffer();
-                while ((line = input.readLine()) != null) {
-                    buffer.append(line + eol);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (input != null) {
-                    try {
-                        input.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                inputStream.close();
+                strips = stringBuilder.toString();
             }
-            ed.putString("json",line);
+
+
+            SharedPreferences.Editor ed = mPrefs.edit();
+            ed.putString("name",filename);
+            ed.putString("strips", strips);
             ed.commit();
 
             Intent intent = new Intent(Open.this, CodeActivity.class);
@@ -180,9 +171,10 @@ public class Open extends ListActivity {
 
     public void deleteStrips(String filename) {
         try {
-
-            //File file = new File(selectedFilePath);
-           // boolean deleted = file.delete();
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/" + filename;
+            File file = new File(path);
+            file.delete();
+            updateList();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }

@@ -28,8 +28,7 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
     private Sensor mAccelerometer;
     int x_,y_,z_;
     View view;
-
-
+    SeekBar value;
 
     public View getButton(final Context context, final int position) {
 
@@ -48,23 +47,41 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public View getPreview(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.accelerometerpreview, null);
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView result = new TextView(context);
+        result.setText(name + "=");
+        value = new SeekBar(context);
+        layout.addView(result);
+        layout.addView(value);
 
         mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        return view;
+        return layout;
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
-    public void onSensorChanged(SensorEvent event){
+    public void onSensorChanged(SensorEvent event) {
+        Spinner spinner = (Spinner)view.findViewById(R.id.accels);
+        if (spinner != null) {
+            SeekBar x = (SeekBar) view.findViewById(R.id.x);
+            SeekBar y = (SeekBar) view.findViewById(R.id.y);
+            SeekBar z = (SeekBar) view.findViewById(R.id.z);
 
-        SeekBar value = (SeekBar)view.findViewById(R.id.value);
+            x_ = (int)(event.values[0]*5 + 50);
+            y_ = (int)(event.values[1]*5 + 50);
+            z_ = (int)(event.values[2]*5 + 50);
+
+            x.setProgress(x_);
+            y.setProgress(y_);
+            z.setProgress(z_);
+
+        } else {
 
         if(accel.equals("x")){
             x_ = (int)(event.values[0]*5 + 50);
@@ -76,11 +93,16 @@ public class accelerometer extends FunctionStrip implements SensorEventListener 
             z_ = (int)(event.values[2]*5 + 50);
             value.setProgress(z_);
         }
+        }
     }
 
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.accelerometer, null);
+        view = inflater.inflate(R.layout.accelerometer, null);
+
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         Spinner acceles = (Spinner)view.findViewById(R.id.accels);

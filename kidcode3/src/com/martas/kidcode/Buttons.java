@@ -18,9 +18,13 @@ public class Buttons extends Activity {
         super.onCreate(savedInstanceState);
 
         int position = Integer.valueOf(getIntent().getStringExtra("position"));
-        GridLayout layout = new GridLayout(getApplicationContext());
+
+        /*GridLayout layout = new GridLayout(getApplicationContext());
         layout.setRowCount(3);
-        layout.setColumnCount(3);
+        layout.setColumnCount(3);*/
+
+        LinearLayout layout = new LinearLayout(getApplicationContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout layout1 = new LinearLayout(getApplicationContext());
         layout1.setOrientation(LinearLayout.HORIZONTAL);

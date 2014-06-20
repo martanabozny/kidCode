@@ -7,6 +7,7 @@ import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.*;
 import android.widget.*;
 import com.martas.kidcode.Strips.*;
@@ -14,6 +15,9 @@ import com.martas.kidcode.Strips.Math;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +89,7 @@ public class CodeActivity extends Activity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("Save");
+        menu.add("Save as");
         menu.add("clear");
         menu.add("files");
         menu.add("help");
@@ -93,11 +98,25 @@ public class CodeActivity extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().toString().equals("Save")) {
-            showDialog();
+            save();
+            return true;
+        } else if (item.getTitle().toString().equals("Save as")){
+            JSONArray jarray = new JSONArray();
+            for (int i = 1; i < list.size(); i++) {
+                jarray.put(list.get(i));
+            }
+            String newJson = jarray.toString();
+            SharedPreferences.Editor ed = mPrefs.edit();
+            ed.putString("strips", newJson);
+            ed.commit();
+            Intent intent = new Intent(CodeActivity.this, Save.class);
+            startActivity(intent);
             return true;
         }else if (item.getTitle().toString().equals("clear")){
+            list.clear();
             return true;
         } else if (item.getTitle().toString().equals("files")){
+            startActivity(new Intent(CodeActivity.this, Open.class));
             return true;
         }else if (item.getTitle().toString().equals("help")){
             return true;
@@ -105,76 +124,60 @@ public class CodeActivity extends Activity {
             return super.onOptionsItemSelected(item);
         }
 
+    public void save() {
+        JSONArray jarray = new JSONArray();
+        for (int i = 1; i < list.size(); i++) {
+            jarray.put(list.get(i));
+        }
+        String newJson = jarray.toString();
 
+        String name = mPrefs.getString("name", "");
 
-    public void save(String fileName) {
-       /* MyScrollView code = (MyScrollView)findViewById(R.id.code);
-        SQLiteDatabase db = dataBase.getWritableDatabase();
+        if (name.equals("")) {
+            SharedPreferences.Editor ed = mPrefs.edit();
+            ed.putString("strips", newJson);
+            ed.commit();
+            Intent intent = new Intent(CodeActivity.this, Save.class);
+            startActivity(intent);
+        } else {
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/";
+            String eol = System.getProperty("line.separator");
+            BufferedWriter writer = null;
+            try {
+                writer = new BufferedWriter(new OutputStreamWriter(openFileOutput(path + name, Context.MODE_PRIVATE)));
+                writer.write(newJson);
 
-        db.execSQL("DELETE FROM " + DataBase.FeedEntry2.TABLE_NAME + " WHERE " + DataBase.FeedEntry2.COLUMN_FILE_NAME + " = ?", new String[]{fileName});
-
-        ContentValues values = new ContentValues();
-        values.put(DataBase.FeedEntry2.COLUMN_NAME_JSON, code.toJson());
-        values.put(DataBase.FeedEntry2.COLUMN_FILE_NAME, fileName);
-        db.insert(DataBase.FeedEntry2.TABLE_NAME, null, values);*/
-    }
-
-    public void showDialog() {
-        final EditText input = new EditText(this);
-        final AlertDialog alert = new AlertDialog.Builder(this)
-                .setTitle("Save changes?")
-                .setMessage("File name")
-                .setView(input)
-                .setPositiveButton("Yes", null)
-                .setNegativeButton("No", null)
-                .create();
-        alert.show();
-
-        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
-                    input.setBackgroundColor(Color.RED);
-
-                } else {
-                    save(input.getText().toString());
-                    finish();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        });
+        }
     }
 
     @Override
     public void onBackPressed() {
-        final EditText input = new EditText(this);
-        final AlertDialog alert = new AlertDialog.Builder(this)
-                .setTitle("Save changes?")
-                .setMessage("File name")
-                .setView(input)
-                .setPositiveButton("Yes", null)
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+
+        new AlertDialog.Builder(this)
+                .setMessage("Save changes?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        save();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }
                 })
-                .create();
-        alert.show();
-
-        Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!input.getText().toString().matches("^[a-zA-Z].*")) {
-                    input.setBackgroundColor(Color.RED);
-
-                } else {
-                    save(input.getText().toString());
-                    finish();
-                }
-            }
-        });
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 
@@ -204,6 +207,9 @@ public class CodeActivity extends Activity {
                 layout.setOrientation(LinearLayout.VERTICAL);
 
                 Button plus = new Button(context);
+                plus.setHeight(90);
+                plus.setWidth(90);
+                plus.setBackgroundColor(Color.GREEN);
                 plus.setText("+");
                 plus.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -224,6 +230,9 @@ public class CodeActivity extends Activity {
                 layout.setOrientation(LinearLayout.HORIZONTAL);
 
                 Button remove = new Button(context);
+                remove.setHeight(90);
+                remove.setWidth(90);
+                remove.setBackgroundColor(Color.BLUE);
                 remove.setText("-");
                 remove.setOnClickListener(new View.OnClickListener() {
                     @Override

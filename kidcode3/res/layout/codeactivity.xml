@@ -4,38 +4,31 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:weightSum="3">
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" android:weightSum="1" android:layout_weight="0.3">
-        <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/remove" android:onClick="delete"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView" android:layout_weight="1"/>
-        <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/add" android:layout_gravity="right" android:onClick="add"/>
-    </LinearLayout>
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/button" android:visibility="invisible"/>
+        android:weightSum="2">
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:id="@+id/Code" android:layout_weight="2.2"/>
-    <ImageButton
-            android:layout_width="120dp"
-            android:layout_height="0dp"
-            android:id="@+id/imageButton" android:background="@drawable/play" android:layout_weight="0.5"
-            android:layout_gravity="center_horizontal"/>
+            android:id="@+id/Code" android:layout_weight="1.7"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" android:layout_weight="0.3" android:weightSum="3">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:id="@+id/remove" android:onClick="delete" android:background="#a7d7d1"
+                android:textColor="#000000" android:layout_weight="0.8"/>
+        <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageButton" android:background="@drawable/play"
+                android:layout_gravity="center_horizontal" android:layout_weight="1.4"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:id="@+id/add" android:layout_gravity="right" android:onClick="add"
+                android:background="#94d794" android:textColor="#000000" android:layout_weight="0.8"/>
+    </LinearLayout>
 </LinearLayout>

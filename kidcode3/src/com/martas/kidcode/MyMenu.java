@@ -23,10 +23,14 @@ public class MyMenu extends Activity {
 
     public void OnNewClick(View v) {
         try {
-            SharedPreferences.Editor ed = mPrefs.edit();
-            ed.putString("name", "");
-            ed.commit();
-            startActivity(new Intent(MyMenu.this, CodeActivity.class));
+            mPrefs = getSharedPreferences("strips", MODE_PRIVATE);
+            if (mPrefs != null) {
+                SharedPreferences.Editor ed = mPrefs.edit();
+                ed.putString("name", "");
+                ed.putString("strips","");
+                ed.commit();
+                startActivity(new Intent(MyMenu.this, CodeActivity.class));
+            }
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }

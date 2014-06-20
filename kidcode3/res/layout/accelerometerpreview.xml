@@ -5,7 +5,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:weightSum="2">
-    <AutoCompleteTextView
+    <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/result" android:layout_weight="0.3"/>

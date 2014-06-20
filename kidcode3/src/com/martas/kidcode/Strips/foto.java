@@ -58,7 +58,7 @@ public class foto extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         final SurfaceView frame = (SurfaceView)view.findViewById(R.id.frame);
         mHolder = frame.getHolder();
-        //mHolder.addCallback(this);
+        mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         camera = getCameraInstance();
 
