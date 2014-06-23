@@ -5,6 +5,7 @@ import android.view.View;
 import org.json.JSONObject;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -19,6 +20,6 @@ public abstract class FunctionStrip extends Object {
     public abstract View getSetup(Context context, Map<String, String> previousVariables);
     public abstract JSONObject toJson();
     public abstract void fromJson(JSONObject object);
-    public abstract Map<String, String> run(Map<String, String> previousVariables);
+    public abstract HashMap<String, String> run(Map<String, String> previousVariables);
 
 }

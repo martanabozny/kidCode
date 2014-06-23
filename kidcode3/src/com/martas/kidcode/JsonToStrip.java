@@ -20,7 +20,7 @@ public class JsonToStrip {
             } else if (type.equals("fotoop")) {
                 return new fotoop();
             } else if (type.equals("accelerometer")) {
-                return new accelerometer();
+                return new Accelerometer();
             } else if (type.equals("NewVariable")) {
                 return new NewVariable();
             } else if (type.equals("ShowVariable")) {

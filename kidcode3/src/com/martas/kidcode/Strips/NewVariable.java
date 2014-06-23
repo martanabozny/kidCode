@@ -13,6 +13,7 @@ import com.martas.kidcode.Setup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -98,7 +99,7 @@ public class NewVariable extends FunctionStrip {
 
         }
     }
-    public Map<String, String> run(Map<String, String> previousVariables) {
+    public HashMap<String, String> run(Map<String, String> previousVariables) {
         return  null;
     }
 }

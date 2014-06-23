@@ -1,10 +1,7 @@
 package com.martas.kidcode;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.*;
 import com.martas.kidcode.Strips.*;
 import com.martas.kidcode.Strips.Math;
@@ -19,17 +16,30 @@ public class Buttons extends Activity {
 
         int position = Integer.valueOf(getIntent().getStringExtra("position"));
 
-        /*GridLayout layout = new GridLayout(getApplicationContext());
-        layout.setRowCount(3);
-        layout.setColumnCount(3);*/
+        GridLayout layout = new GridLayout(getApplicationContext());
+        layout.addView(new Math().getButton(this, position));
+        layout.addView(new Accelerometer().getButton(this, position));
+        layout.addView(new foto().getButton(this, position));
+        layout.addView(new fotoop().getButton(this, position));
+        layout.addView(new NewVariable().getButton(this, position));
+        layout.addView(new ShowVariable().getButton(this, position));
+        layout.addView(new Stop().getButton(this, position));
+        layout.addView(new strings().getButton(this, position));
+        layout.setOrientation(GridLayout.HORIZONTAL);
 
-        LinearLayout layout = new LinearLayout(getApplicationContext());
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            layout.getChildAt(i).setMinimumWidth(30);
+        }
+        layout.setRowCount(layout.getChildCount()/3);
+        layout.setColumnCount(3);
+
+        /*LinearLayout layout = new LinearLayout(getpplicationContext());
         layout.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout layout1 = new LinearLayout(getApplicationContext());
         layout1.setOrientation(LinearLayout.HORIZONTAL);
         layout1.addView(new Math().getButton(this, position));
-        layout1.addView(new accelerometer().getButton(this, position));
+        layout1.addView(new Accelerometer().getButton(this, position));
         layout1.addView(new foto().getButton(this, position));
 
         LinearLayout layout2 = new LinearLayout(getApplicationContext());
@@ -45,7 +55,7 @@ public class Buttons extends Activity {
 
         layout.addView(layout1);
         layout.addView(layout2);
-        layout.addView(layout3);
+        layout.addView(layout3);*/
         setContentView(layout);
 
 

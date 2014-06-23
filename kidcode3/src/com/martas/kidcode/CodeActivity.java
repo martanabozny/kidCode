@@ -19,6 +19,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -63,14 +64,20 @@ public class CodeActivity extends Activity {
 
     public void add(View view) {
         addClicked = !addClicked;
-        deleteClicked = false;
-        adapter.notifyDataSetChanged();
+        if (addClicked) {
+            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_ADD);
+        } else {
+            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_NORMAL);
+        }
     }
 
     public void delete(View view) {
         deleteClicked = !deleteClicked;
-        addClicked = false;
-        adapter.notifyDataSetChanged();
+        if (deleteClicked) {
+            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_DELETE);
+        } else {
+            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_NORMAL);
+        }
     }
 
     protected void onPause() {
@@ -180,74 +187,18 @@ public class CodeActivity extends Activity {
                 .show();
     }
 
-
-    public class MySimpleArrayAdapter extends ArrayAdapter<String> {
-        private final Context context;
-
-        public MySimpleArrayAdapter(Context context, ArrayList<String> list) {
-            super(context, R.layout.codeactivity, list);
-            this.context = context;
-        }
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            JSONObject obj;
+    public void run(View view) {
+        HashMap<String,String> results = new HashMap<String, String>();
+        for(int i =0; i<list.size(); i++) {
             try {
-                obj = new JSONObject(getItem(position));
+                JSONObject strip = new JSONObject(list.get(i));
+                FunctionStrip fstrip = JsonToStrip.fromJson(strip);
+                HashMap<String,String> result = fstrip.run(results);
+
             } catch (Exception e) {
-                return  null;
-            }
 
-            FunctionStrip strip = JsonToStrip.fromJson(obj);
-
-            strip.fromJson(obj);
-
-            if (addClicked) {
-
-                LinearLayout layout = new LinearLayout(context);
-                layout.setOrientation(LinearLayout.VERTICAL);
-
-                Button plus = new Button(context);
-                plus.setHeight(90);
-                plus.setWidth(90);
-                plus.setBackgroundColor(Color.GREEN);
-                plus.setText("+");
-                plus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(CodeActivity.this, Buttons.class);
-                        intent.putExtra("position", String.valueOf(position));
-                        startActivity(intent);
-
-                    }
-                });
-
-                layout.addView(strip.getPreview(context));
-                layout.addView(plus);
-                return layout;
-
-            } else if (deleteClicked && position != 0) {
-                LinearLayout layout = new LinearLayout(context);
-                layout.setOrientation(LinearLayout.HORIZONTAL);
-
-                Button remove = new Button(context);
-                remove.setHeight(90);
-                remove.setWidth(90);
-                remove.setBackgroundColor(Color.BLUE);
-                remove.setText("-");
-                remove.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        list.remove(position);
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-
-                layout.addView(strip.getPreview(context));
-                layout.addView(remove);
-                return layout;
-            } else {
-                return strip.getPreview(context);
             }
         }
     }
+
 }

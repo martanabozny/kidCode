@@ -1,21 +1,13 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
-import com.martas.kidcode.Buttons;
 import com.martas.kidcode.FunctionStrip;
-import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -52,7 +44,7 @@ public class Empty extends FunctionStrip {
     public void fromJson(JSONObject object) {
 
     }
-    public Map<String, String> run(Map<String, String> previousVariables) {
+    public HashMap<String, String> run(Map<String, String> previousVariables) {
         return  null;
     }
 }
