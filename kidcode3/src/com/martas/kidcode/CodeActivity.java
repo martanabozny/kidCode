@@ -194,6 +194,15 @@ public class CodeActivity extends Activity {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                 HashMap<String,String> result = fstrip.run(results);
+                results.putAll(result);
+            } catch (StopException e) {
+                Intent intent = new Intent(CodeActivity.this, End.class);
+                intent.putExtra("result", e.result);
+                intent.putExtra("value", e.value);
+                startActivity(intent);
+            } catch (VariableLackException e){
+
+            } catch(ConvertException e) {
 
             } catch (Exception e) {
 

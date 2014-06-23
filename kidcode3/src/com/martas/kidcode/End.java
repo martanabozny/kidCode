@@ -14,7 +14,7 @@ public class End extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.end);
 
-        String name = getIntent().getStringExtra("name");
+        String name = getIntent().getStringExtra("result");
         String value = getIntent().getStringExtra("value");
 
         EditText name_ = (EditText)findViewById(R.id.name);

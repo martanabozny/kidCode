@@ -99,7 +99,7 @@ public class NewVariable extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Map<String, String> previousVariables) {
+    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
         return  null;
     }
 }

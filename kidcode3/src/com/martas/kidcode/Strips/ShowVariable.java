@@ -89,7 +89,7 @@ public class ShowVariable extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Map<String, String> previousVariables) {
+    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
         return  null;
     }
 }

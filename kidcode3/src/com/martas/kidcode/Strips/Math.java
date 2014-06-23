@@ -7,9 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
-import com.martas.kidcode.FunctionStrip;
-import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import com.martas.kidcode.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +20,7 @@ import java.util.Map;
 public class Math extends FunctionStrip {
     private String a = "0";
     private String b ="0";
+    private String function = "";
 
 
     public View getButton(final Context context, final int position) {
@@ -51,7 +50,8 @@ public class Math extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
         AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);
-
+        Spinner spinner = (Spinner)view.findViewById(R.id.function);
+        function = spinner.getSelectedItem().toString();
         result.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -128,7 +128,21 @@ public class Math extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Map<String, String> previousVariables) {
-        return  null;
+    public HashMap<String, String> run(HashMap<String, String> previousVariables) throws ConvertException,VariableLackException{
+        int aint = variableToInt(a, previousVariables);
+        int bint = variableToInt(b, previousVariables);
+        int result = 0;
+        if (function.contains("+")) {
+            result = aint + bint;
+        } else if (function.contains("-")) {
+            result = aint - bint;
+        } else if (function.contains("/")) {
+            result = aint / bint;
+        } else if (function.contains("*")) {
+            result = aint * bint;
+        }
+        HashMap<String, String> r = new HashMap<String, String>();
+        r.put(name, "" + result);
+        return r;
     }
 }

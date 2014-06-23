@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.martas.kidcode.FunctionStrip;
-import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import com.martas.kidcode.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -92,7 +90,11 @@ public class Stop extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Map<String, String> previousVariables) {
-        return  null;
+    public HashMap<String, String> run(HashMap<String, String> previousVariables) throws StopException,VariableLackException {
+        String value = previousVariables.get(name);
+        if (value == null) {
+            throw new VariableLackException();
+        }
+        throw new StopException(name, value);
     }
 }
