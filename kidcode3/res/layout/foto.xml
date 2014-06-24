@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:weightSum="2">
-    <AutoCompleteTextView
-            android:layout_width="0dp"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/result" android:layout_weight="0.4"/>
-    <SurfaceView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/frame" android:layout_weight="1.6" android:visibility="gone"/>
+            android:id="@+id/result" android:hint="Variable name"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Open image"
+                android:id="@+id/open" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Take picture"
+                android:id="@+id/newPicture" android:layout_weight="1"/>
+    </LinearLayout>
     <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/preview" android:layout_gravity="center_vertical" android:layout_weight="1.6"/>
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView" android:adjustViewBounds="true"/>
 </LinearLayout>

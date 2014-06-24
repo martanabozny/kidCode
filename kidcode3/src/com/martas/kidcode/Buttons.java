@@ -16,7 +16,7 @@ public class Buttons extends Activity {
 
         int position = Integer.valueOf(getIntent().getStringExtra("position"));
 
-        GridLayout layout = new GridLayout(getApplicationContext());
+       /* GridLayout layout = new GridLayout(getApplicationContext());
         layout.addView(new Math().getButton(this, position));
         layout.addView(new Accelerometer().getButton(this, position));
         layout.addView(new foto().getButton(this, position));
@@ -31,31 +31,37 @@ public class Buttons extends Activity {
             layout.getChildAt(i).setMinimumWidth(30);
         }
         layout.setRowCount(layout.getChildCount()/3);
-        layout.setColumnCount(3);
+        layout.setColumnCount(3);*/
 
-        /*LinearLayout layout = new LinearLayout(getpplicationContext());
+        LinearLayout layout = new LinearLayout(getApplicationContext());
         layout.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout layout1 = new LinearLayout(getApplicationContext());
         layout1.setOrientation(LinearLayout.HORIZONTAL);
-        layout1.addView(new Math().getButton(this, position));
+        Button math = (Button)new Math().getButton(this, position);
+        layout1.addView(math);
         layout1.addView(new Accelerometer().getButton(this, position));
-        layout1.addView(new foto().getButton(this, position));
+
 
         LinearLayout layout2 = new LinearLayout(getApplicationContext());
         layout2.setOrientation(LinearLayout.HORIZONTAL);
         layout2.addView(new fotoop().getButton(this, position));
         layout2.addView(new NewVariable().getButton(this, position));
-        layout2.addView(new ShowVariable().getButton(this, position));
+
 
         LinearLayout layout3 = new LinearLayout(getApplicationContext());
         layout3.setOrientation(LinearLayout.HORIZONTAL);
         layout3.addView(new Stop().getButton(this, position));
         layout3.addView(new strings().getButton(this, position));
 
+        LinearLayout layout4 = new LinearLayout(getApplicationContext());
+        layout4.addView(new foto().getButton(this, position));
+        layout4.addView(new ShowVariable().getButton(this, position));
+
         layout.addView(layout1);
         layout.addView(layout2);
-        layout.addView(layout3);*/
+        layout.addView(layout3);
+        layout.addView(layout4);
         setContentView(layout);
 
 
