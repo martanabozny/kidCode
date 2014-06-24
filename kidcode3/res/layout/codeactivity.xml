@@ -22,8 +22,8 @@
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton" android:background="@drawable/play"
-                android:layout_gravity="center_horizontal" android:layout_weight="1.4"/>
+                android:id="@+id/play" android:background="@drawable/play"
+                android:layout_gravity="center_horizontal" android:layout_weight="1.4" android:onClick="run"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"

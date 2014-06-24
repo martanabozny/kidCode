@@ -8,7 +8,7 @@
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Show me as my programm result:"
+            android:text="Show me as my program result:"
             android:id="@+id/textView" android:focusable="false" android:layout_weight="1"/>
     <AutoCompleteTextView
             android:layout_width="0dp"

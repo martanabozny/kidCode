@@ -105,6 +105,8 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
+        EditText sign = (EditText)view.findViewById(R.id.sign);
+        sign.setEnabled(false);
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         Spinner acceles = (Spinner)view.findViewById(R.id.accels);
         accel = acceles.getSelectedItem().toString();

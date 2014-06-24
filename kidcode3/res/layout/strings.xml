@@ -12,7 +12,7 @@
     <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:text="=" android:textColor="#fffede"/>
+            android:id="@+id/sign" android:text="=" android:textColor="#fffede"/>
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -46,7 +46,7 @@ public class Stop extends FunctionStrip {
 
     public View getSetup(Context context, Map<String, String> previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.math, null);
+        View view = inflater.inflate(R.layout.stop, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
 

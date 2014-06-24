@@ -16,7 +16,7 @@
         <EditText
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText" android:text="="/>
+                android:id="@+id/sign" android:text="="/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

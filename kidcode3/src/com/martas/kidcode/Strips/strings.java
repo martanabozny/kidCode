@@ -6,10 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import com.martas.kidcode.Setup;
@@ -24,7 +21,7 @@ import java.util.Map;
  */
 public class strings extends FunctionStrip {
 
-    private String text = "";
+    private String newText = "";
     private String functionText = "";
 
     public View getButton(final Context context, final int position) {
@@ -45,7 +42,7 @@ public class strings extends FunctionStrip {
 
     public View getPreview(Context context) {
         TextView view = new TextView(context);
-        view.setText("" + name + " = " + text + "." + functionText);
+        view.setText("" + name + " = " + newText + "." + functionText);
         return view;
     }
 
@@ -53,6 +50,8 @@ public class strings extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.strings, null);
 
+        EditText sign = (EditText)view.findViewById(R.id.sign);
+        sign.setEnabled(false);
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
         Spinner function = (Spinner)view.findViewById(R.id.function);
@@ -83,7 +82,7 @@ public class strings extends FunctionStrip {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                functionText = charSequence.toString();
+                newText = charSequence.toString();
             }
 
             @Override
@@ -98,7 +97,7 @@ public class strings extends FunctionStrip {
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("text", text);
+            object.put("text", newText);
             object.put("functionText", functionText);
             object.put("type", "strings");
             object.put("name", name);
@@ -110,7 +109,7 @@ public class strings extends FunctionStrip {
     }
     public void fromJson(JSONObject object) {
         try {
-            text = object.get("text").toString();
+            newText = object.get("text").toString();
             functionText = object.get("functionText").toString();
             name = object.get("name").toString();
 
@@ -119,6 +118,27 @@ public class strings extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(HashMap<String, String> previousVariables) {
-        return  null;
+        String result = "";
+        String var = previousVariables.get(newText);
+        if (var != null) {
+            if (functionText.contains("UPPER")){
+                result = var.toUpperCase();
+            }else if(functionText.contains("lower")){
+                result = var.toLowerCase();
+            }else if(functionText.contains("reverse")){
+                result = new StringBuilder(var).reverse().toString();
+            }
+        } else {
+            if (functionText.contains("UPPER")){
+                result = newText.toUpperCase();
+            }else if(functionText.contains("lower")){
+                result = newText.toLowerCase();
+            }else if(functionText.contains("reverse")){
+                result = new StringBuilder(newText).reverse().toString();
+            }
+        }
+        HashMap<String, String> r = new HashMap<String, String>();
+        r.put(name, "" + result);
+        return r;
     }
 }

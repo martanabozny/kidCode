@@ -12,5 +12,9 @@
     <SurfaceView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/frame" android:layout_weight="1.6"/>
+            android:id="@+id/frame" android:layout_weight="1.6" android:visibility="gone"/>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/preview" android:layout_gravity="center_vertical" android:layout_weight="1.6"/>
 </LinearLayout>

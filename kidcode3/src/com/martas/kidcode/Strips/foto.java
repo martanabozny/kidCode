@@ -2,6 +2,12 @@ package com.martas.kidcode.Strips;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,9 +15,7 @@ import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import com.martas.kidcode.Setup;
@@ -30,6 +34,9 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
     private SurfaceHolder mHolder;
     Boolean isPictrueTaken = false;
     Camera camera;
+    Bitmap pictrue;
+    SurfaceView frame;
+    ImageView preview;
 
     public View getButton(final Context context, final int position) {
 
@@ -38,7 +45,7 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,Setup.class);
+                Intent intent = new Intent(context, Setup.class);
                 intent.putExtra("strip", toJson().toString());
                 intent.putExtra("position", String.valueOf(position));
                 context.startActivity(intent);
@@ -58,10 +65,13 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
         View view = inflater.inflate(R.layout.foto, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        final SurfaceView frame = (SurfaceView)view.findViewById(R.id.frame);
+        frame = (SurfaceView)view.findViewById(R.id.frame);
+        preview = (ImageView)view.findViewById(R.id.preview);
+        preview.setVisibility(View.GONE);
         mHolder = frame.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
         camera = getCameraInstance();
 
         result.addTextChangedListener(new TextWatcher() {
@@ -80,9 +90,34 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
 
             }
         });
+        frame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(camera != null)
+                {
+                    camera.takePicture(null, null, myPictureCallback);
+                }
+            }
+        });
 
         return view;
     }
+
+    Camera.PictureCallback myPictureCallback = new Camera.PictureCallback(){
+
+        public void onPictureTaken(byte[] bytes, Camera arg1) {
+            Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            Bitmap correctBmp = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
+            pictrue = correctBmp;
+            camera.stopPreview();
+            camera.setPreviewCallback(null);
+            camera.release();
+            camera=null;
+            frame.setVisibility(View.GONE);
+            preview.setVisibility(View.VISIBLE);
+            preview.setImageBitmap(correctBmp);
+
+        }};
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
@@ -123,17 +158,22 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         try {
-
+            if (camera != null){
             camera.setPreviewDisplay(holder);
             camera.startPreview();
-
+            }
         } catch (IOException e) {
 
         }
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-        //camera.stopPreview();
+        if (camera != null){
+        camera.stopPreview();
+        camera.setPreviewCallback(null);
+        camera.release();
+        camera=null;
+        }
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
@@ -165,4 +205,6 @@ public class foto extends FunctionStrip implements SurfaceHolder.Callback {
 
         }
     }
+
+
 }

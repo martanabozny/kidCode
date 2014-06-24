@@ -47,6 +47,8 @@ public class Math extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.math, null);
 
+        EditText sign = (EditText)view.findViewById(R.id.sign);
+        sign.setEnabled(false);
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
         AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);

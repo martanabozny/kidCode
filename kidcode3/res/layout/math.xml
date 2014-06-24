@@ -12,7 +12,8 @@
     <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:text="=" android:textColor="#fffede"/>
+            android:id="@+id/preview" android:text="=" android:textColor="#fffede" android:autoText="false"
+            android:editable="false" android:clickable="false" android:enabled="false"/>
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
