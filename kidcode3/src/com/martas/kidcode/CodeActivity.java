@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.martas.kidcode.Strips.*;
@@ -193,19 +194,27 @@ public class CodeActivity extends Activity {
             try {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
+                fstrip.fromJson(strip);
                 HashMap<String,String> result = fstrip.run(results);
-                results.putAll(result);
+                if (result != null) {
+                    results.putAll(result);
+                }
             } catch (StopException e) {
                 Intent intent = new Intent(CodeActivity.this, End.class);
                 intent.putExtra("result", e.result);
                 intent.putExtra("value", e.value);
                 startActivity(intent);
+                break;
             } catch (VariableLackException e){
-
+                Toast.makeText(getApplicationContext(), "No variable!", Toast.LENGTH_LONG).show();
+                break;
             } catch(ConvertException e) {
-
+                Toast.makeText(getApplicationContext(), "Cannot convert variable!", Toast.LENGTH_LONG).show();
+                break;
             } catch (Exception e) {
-
+                Toast.makeText(getApplicationContext(), "Something is wrong!", Toast.LENGTH_LONG).show();
+                Log.e("CodeActivity.run", e.toString());
+                break;
             }
         }
     }

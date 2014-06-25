@@ -3,11 +3,13 @@ package com.martas.kidcode;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -63,7 +65,17 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), Buttons.class);
+                    JSONArray variableList = new JSONArray();
+                    for (int i = 0; i <= position; i++) {
+                        try {
+                            JSONObject strip = new JSONObject(getItem(i).toString());
+                            variableList.put(0, strip.getString("name"));
+                        } catch (Exception e) {
+                            Log.e("MySimpleAdapter.getView", e.toString());
+                        }
+                    }
                     intent.putExtra("position", String.valueOf(position));
+                    intent.putExtra("variables", variableList.toString());
                     getContext().startActivity(intent);
 
                 }

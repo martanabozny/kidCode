@@ -1,7 +1,6 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -10,11 +9,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.martas.kidcode.*;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by marta on 01.06.14.
@@ -22,19 +21,9 @@ import java.util.Map;
 public class Stop extends FunctionStrip {
 
 
-    public View getButton(final Context context, final int position) {
-
-        ImageButton button = new ImageButton(context);
+    public View getButton(final Context context, final int position, JSONArray variables) {
+        ImageButton button = getMyButton(context, position, variables);
         button.setBackgroundResource(R.drawable.stop);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                context.startActivity(intent);
-            }
-        });
         return button;
     }
 
@@ -44,7 +33,7 @@ public class Stop extends FunctionStrip {
         return view;
     }
 
-    public View getSetup(Context context, Map<String, String> previousVariables) {
+    public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.stop, null);
 

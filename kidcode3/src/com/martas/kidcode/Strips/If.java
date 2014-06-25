@@ -142,7 +142,7 @@
 //        try {
 //            object.put("text", text);
 //            object.put("functionText", functionText);
-//            object.put("type", "strings");
+//            object.put("type", "Strings");
 //            object.put("name", name);
 //
 //        } catch (JSONException e) {

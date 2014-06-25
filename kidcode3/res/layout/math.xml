@@ -8,12 +8,14 @@
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/result" android:layout_weight="1"/>
+            android:id="@+id/result"
+            android:layout_weight="1"
+            android:autoText="true"/>
     <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/preview" android:text="=" android:textColor="#fffede" android:autoText="false"
-            android:editable="false" android:clickable="false" android:enabled="false"/>
+            android:id="@+id/sign" android:text="=" android:textColor="#fffede" android:autoText="false"
+            android:editable="true" android:clickable="false" android:enabled="false"/>
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -22,7 +24,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:id="@+id/function" android:focusableInTouchMode="false"
-            android:entries="@array/math_functions"/>/>
+            android:entries="@array/math_functions"/>
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

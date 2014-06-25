@@ -1,7 +1,8 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,36 +13,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by marta on 01.06.14.
  */
-public class fotoop extends FunctionStrip {
+public class Fotoop extends FunctionStrip {
 
     private String functionText = "";
     private String variableText = "";
+    Bitmap newFoto;
 
 
 
-    public View getButton(final Context context, final int position) {
-
-        ImageButton button = new ImageButton(context);
+    public View getButton(final Context context, final int position, final JSONArray variables) {
+        ImageButton button = getMyButton(context, position, variables);
         button.setBackgroundResource(R.drawable.fotoop);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                context.startActivity(intent);
-            }
-        });
         return button;
     }
 
@@ -51,7 +44,7 @@ public class fotoop extends FunctionStrip {
         return view;
     }
 
-    public View getSetup(Context context, Map<String, String> previousVariables) {
+    public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.fotoop, null);
 
@@ -102,7 +95,7 @@ public class fotoop extends FunctionStrip {
         try {
             object.put("variable", variableText);
             object.put("function", functionText);
-            object.put("type", "fotoop");
+            object.put("type", "Fotoop");
             object.put("name", name);
 
         } catch (JSONException e) {
@@ -121,6 +114,28 @@ public class fotoop extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(HashMap<String, String> previousVariables) {
-        return  null;
+
+        String var = previousVariables.get(variableText);
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/fotos";
+        String eol = System.getProperty("line.separator");
+        BufferedWriter writer = null;
+        try {
+            //writer = new BufferedWriter(new OutputStreamWriter(openFileOutput(path + name, Context.MODE_PRIVATE)));
+            //writer.write(newFoto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        HashMap<String, String> r = new HashMap<String, String>();
+        r.put(name, "" + newFoto);
+        return r;
     }
 }

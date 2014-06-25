@@ -1,50 +1,26 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.hardware.Camera;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by marta on 01.06.14.
  */
-public class foto extends FunctionStrip {
-    public View getButton(final Context context, final int position) {
-        ImageButton button = new ImageButton(context);
+public class Foto extends FunctionStrip {
+    public View getButton(final Context context, final int position, final JSONArray variables) {
+        ImageButton button = getMyButton(context, position, variables);
         button.setBackgroundResource(R.drawable.foto);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                context.startActivity(intent);
-            }
-        });
         return button;
     }
 
@@ -54,7 +30,7 @@ public class foto extends FunctionStrip {
         return view;
     }
 
-    public View getSetup(Context context, Map<String, String> previousVariables) {
+    public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.foto, null);
 
@@ -82,7 +58,7 @@ public class foto extends FunctionStrip {
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("type", "foto");
+            object.put("type", "Foto");
             object.put("name", name);
         } catch (JSONException e) {
 

@@ -1,42 +1,31 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by marta on 01.06.14.
  */
-public class strings extends FunctionStrip {
+public class Strings extends FunctionStrip {
 
     private String newText = "";
     private String functionText = "";
 
-    public View getButton(final Context context, final int position) {
-
-        ImageButton button = new ImageButton(context);
+    public View getButton(final Context context, final int position, JSONArray variables) {
+        ImageButton button = getMyButton(context, position, variables);
         button.setBackgroundResource(R.drawable.string);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                context.startActivity(intent);
-            }
-        });
         return button;
     }
 
@@ -46,15 +35,17 @@ public class strings extends FunctionStrip {
         return view;
     }
 
-    public View getSetup(Context context, Map<String, String> previousVariables) {
+    public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.strings, null);
 
-        EditText sign = (EditText)view.findViewById(R.id.sign);
-        sign.setEnabled(false);
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
-        Spinner function = (Spinner)view.findViewById(R.id.function);
+
+        addAutocomplete(context, result, previousVariables);
+        addAutocomplete(context, text, previousVariables);
+
+        final Spinner function = (Spinner)view.findViewById(R.id.function);
         functionText = function.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
@@ -91,6 +82,18 @@ public class strings extends FunctionStrip {
             }
         });
 
+        function.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                functionText = function.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         return view;
     }
 
@@ -99,7 +102,7 @@ public class strings extends FunctionStrip {
         try {
             object.put("text", newText);
             object.put("functionText", functionText);
-            object.put("type", "strings");
+            object.put("type", "Strings");
             object.put("name", name);
 
         } catch (JSONException e) {

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 import com.martas.kidcode.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -19,6 +22,7 @@ import java.io.IOException;
 public class Camera extends Activity implements SurfaceHolder.Callback {
     private SurfaceHolder mHolder;
     android.hardware.Camera camera;
+    String filename;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,9 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         camera = getCameraInstance();
+
+        Intent intent = getIntent();
+        filename = intent.getStringExtra("filename");
     }
 
     android.hardware.Camera.PictureCallback myPictureCallback = new android.hardware.Camera.PictureCallback(){
@@ -38,6 +45,18 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         public void onPictureTaken(byte[] bytes, android.hardware.Camera arg1) {
             Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
             Bitmap picture = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
+
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/";
+            File f = new File(path);
+            f.mkdir();
+
+            try {
+                FileOutputStream fos = new FileOutputStream(path + "/" + filename);
+                picture.compress(Bitmap.CompressFormat.PNG, 1, fos);
+                fos.close();
+            } catch (Exception e) {
+
+            }
 
             camera.stopPreview();
             camera.setPreviewCallback(null);

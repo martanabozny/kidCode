@@ -1,7 +1,6 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,12 +12,11 @@ import android.view.View;
 import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
-import com.martas.kidcode.Setup;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by marta on 01.06.14.
@@ -31,19 +29,9 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     View view;
     SeekBar value;
 
-    public View getButton(final Context context, final int position) {
-
-        ImageButton button = new ImageButton(context);
+    public View getButton(final Context context, final int position, final JSONArray variables) {
+        ImageButton button = getMyButton(context, position, variables);
         button.setBackgroundResource(R.drawable.accel);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                context.startActivity(intent);
-            }
-        });
         return button;
     }
 
@@ -97,7 +85,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         }
     }
 
-    public View getSetup(Context context, Map<String, String> previousVariables) {
+    public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.accelerometer, null);
 

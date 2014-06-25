@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -36,12 +38,12 @@ public class Setup extends Activity {
             JSONObject obj = new JSONObject(strip);
             fstrip = JsonToStrip.fromJson(obj);
 
-            Map<String, String> params = new HashMap<String, String>();
-
             FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
-            frame.addView(fstrip.getSetup(this, params));
-        } catch (Exception e){
-
+            JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
+            Log.e("Setup.onCreate", variables.toString());
+            frame.addView(fstrip.getSetup(this, variables));
+        } catch (Exception e) {
+            Log.e("Setup.onCreate", e.toString());
         }
 
     }
