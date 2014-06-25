@@ -57,7 +57,7 @@ public abstract class FunctionStrip extends Object {
     public abstract View getSetup(Context context, JSONArray previousVariables);
     public abstract JSONObject toJson();
     public abstract void fromJson(JSONObject object);
-    public abstract HashMap<String, String> run(HashMap<String, String> previousVariables) throws StopException,VariableLackException,ConvertException;
+    public abstract HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException,VariableLackException,ConvertException;
 
     public int variableToInt(String variable, HashMap<String,String> map) throws  VariableLackException,ConvertException {
         try {

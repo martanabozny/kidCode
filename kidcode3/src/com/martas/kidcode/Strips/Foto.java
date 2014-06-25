@@ -73,7 +73,7 @@ public class Foto extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         return  null;
     }
 }

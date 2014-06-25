@@ -1,12 +1,10 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.hardware.*;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -22,12 +20,20 @@ import java.util.HashMap;
  * Created by marta on 01.06.14.
  */
 public class Accelerometer extends FunctionStrip implements SensorEventListener {
-    private String accel = "";
+    private String accel = "x";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     int x_,y_,z_;
     View view;
-    SeekBar value;
+    boolean has_result = false;
+
+    enum Mode {
+        SETUP,
+        PREVIEW,
+        HIDDEN,
+    }
+
+    Mode mode = Mode.HIDDEN;
 
     public View getButton(final Context context, final int position, final JSONArray variables) {
         ImageButton button = getMyButton(context, position, variables);
@@ -36,19 +42,19 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public View getPreview(Context context) {
-        LinearLayout layout = new LinearLayout(context);
-        layout.setOrientation(LinearLayout.HORIZONTAL);
-        TextView result = new TextView(context);
-        result.setText(name + "=");
-        value = new SeekBar(context);
-        layout.addView(result);
-        layout.addView(value);
+        mode = Mode.PREVIEW;
+
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.accelerometerpreview, null);
+
+        TextView result = (TextView)view.findViewById(R.id.result);
+        result.setText(name);
 
         mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        return layout;
+        return view;
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -56,36 +62,36 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public void onSensorChanged(SensorEvent event) {
-        Spinner spinner = (Spinner)view.findViewById(R.id.accels);
-        if (spinner != null) {
+        x_ = (int)(event.values[0]*5 + 50);
+        y_ = (int)(event.values[1]*5 + 50);
+        z_ = (int)(event.values[2]*5 + 50);
+
+        has_result = true;
+
+        if (mode == Mode.SETUP) {
+            Spinner spinner = (Spinner)view.findViewById(R.id.accels);
             SeekBar x = (SeekBar) view.findViewById(R.id.x);
             SeekBar y = (SeekBar) view.findViewById(R.id.y);
             SeekBar z = (SeekBar) view.findViewById(R.id.z);
 
-            x_ = (int)(event.values[0]*5 + 50);
-            y_ = (int)(event.values[1]*5 + 50);
-            z_ = (int)(event.values[2]*5 + 50);
-
             x.setProgress(x_);
             y.setProgress(y_);
             z.setProgress(z_);
-
-        } else {
-
-        if(accel.equals("x")){
-            x_ = (int)(event.values[0]*5 + 50);
-            value.setProgress(x_);
-        } else if (accel.equals("y")) {
-            y_ = (int)(event.values[1]*5 + 50);
-            value.setProgress(y_);
-        } else if (accel.equals("z")) {
-            z_ = (int)(event.values[2]*5 + 50);
-            value.setProgress(z_);
-        }
+        } else if (mode == Mode.PREVIEW) {
+            SeekBar value = (SeekBar)view.findViewById(R.id.value);
+            if(accel.equals("x")) {
+                value.setProgress(x_);
+            } else if (accel.equals("y")) {
+                value.setProgress(y_);
+            } else if (accel.equals("z")) {
+                value.setProgress(z_);
+            }
         }
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
+        mode = Mode.SETUP;
+
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.accelerometer, null);
 
@@ -93,10 +99,23 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        EditText sign = (EditText)view.findViewById(R.id.sign);
-        sign.setEnabled(false);
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        Spinner acceles = (Spinner)view.findViewById(R.id.accels);
+        addAutocomplete(context, result, previousVariables);
+
+        final Spinner acceles = (Spinner)view.findViewById(R.id.accels);
+
+        acceles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                accel = acceles.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         accel = acceles.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
@@ -134,14 +153,38 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
     public void fromJson(JSONObject object) {
         try {
-            accel= object.get("function").toString();
+            accel = object.get("accel").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
-        return  null;
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+
+        while (!has_result) {
+            Log.e("run", "sleep");
+            try {
+                Thread.sleep(100, 0);
+            } catch (Exception e) {
+
+            }
+        }
+
+        HashMap<String, String> r = new HashMap<String, String>();
+        if(accel.equals("x")) {
+            r.put(name, "" + x_);
+        } else if (accel.equals("y")) {
+            r.put(name, "" + y_);
+        } else if (accel.equals("z")) {
+            r.put(name, "" + z_);
+        }
+
+        Log.e("Accel.run", r.get(name));
+
+        return r;
     }
 }

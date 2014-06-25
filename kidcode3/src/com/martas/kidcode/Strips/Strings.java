@@ -3,7 +3,6 @@ package com.martas.kidcode.Strips;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -120,7 +119,7 @@ public class Strings extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         String result = "";
         String var = previousVariables.get(newText);
         if (var != null) {

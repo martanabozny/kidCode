@@ -113,7 +113,7 @@ public class Fotoop extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
 
         String var = previousVariables.get(variableText);
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/fotos";

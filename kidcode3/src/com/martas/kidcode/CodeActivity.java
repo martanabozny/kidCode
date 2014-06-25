@@ -2,17 +2,13 @@ package com.martas.kidcode;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListFragment;
 import android.content.*;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.martas.kidcode.Strips.*;
-import com.martas.kidcode.Strips.Math;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,7 +17,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by marta on 01.06.14.
@@ -195,7 +190,7 @@ public class CodeActivity extends Activity {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                 fstrip.fromJson(strip);
-                HashMap<String,String> result = fstrip.run(results);
+                HashMap<String,String> result = fstrip.run(getApplicationContext(), results);
                 if (result != null) {
                     results.putAll(result);
                 }

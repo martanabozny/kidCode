@@ -42,7 +42,7 @@ public class Empty extends FunctionStrip {
     public void fromJson(JSONObject object) {
 
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         return null;
     }
 }

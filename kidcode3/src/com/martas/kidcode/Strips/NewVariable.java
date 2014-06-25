@@ -104,7 +104,7 @@ public class NewVariable extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
 
         HashMap<String, String> r = new HashMap<String, String>();
         r.put(name, "" + valueText);

@@ -79,7 +79,7 @@ public class Stop extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) throws StopException,VariableLackException {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException,VariableLackException {
         String value = previousVariables.get(name);
         if (value == null) {
             throw new VariableLackException();

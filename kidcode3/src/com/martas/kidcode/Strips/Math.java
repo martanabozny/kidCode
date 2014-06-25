@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -138,7 +137,7 @@ public class Math extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(HashMap<String, String> previousVariables) throws ConvertException,VariableLackException{
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws ConvertException,VariableLackException{
         int aint = variableToInt(a, previousVariables);
         int bint = variableToInt(b, previousVariables);
         Log.e("Math.run", "a: " + aint);
