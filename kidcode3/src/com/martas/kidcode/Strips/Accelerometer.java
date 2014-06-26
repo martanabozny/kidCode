@@ -161,10 +161,6 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         }
     }
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
-        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
-
         while (!has_result) {
             Log.e("run", "sleep");
             try {

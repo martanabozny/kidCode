@@ -3,6 +3,7 @@ package com.martas.kidcode;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
             Button plus = new Button(context);
             plus.setHeight(90);
             plus.setWidth(90);
-            plus.setBackgroundColor(Color.GREEN);
+            plus.setBackgroundResource(R.drawable.plusbutton_background);
             plus.setText("+");
             plus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,7 +93,8 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
             Button remove = new Button(context);
             remove.setHeight(90);
             remove.setWidth(90);
-            remove.setBackgroundColor(Color.BLUE);
+
+            remove.setBackgroundResource(R.drawable.minusbutton_background);
             remove.setText("-");
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,8 +104,15 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
                 }
             });
 
-            layout.addView(strip.getPreview(context));
+
+            View preview = strip.getPreview(context);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.weight = 2;
+            preview.setLayoutParams(lp);
+            
+            layout.addView(preview);
             layout.addView(remove);
+            layout.setWeightSum(2);
             return layout;
         } else {
             return strip.getPreview(context);
