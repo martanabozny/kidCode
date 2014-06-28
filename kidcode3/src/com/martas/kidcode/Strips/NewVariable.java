@@ -97,7 +97,7 @@ public class NewVariable extends FunctionStrip {
     public void fromJson(JSONObject object) {
         try {
             valueText = object.get("value").toString();
-            kind = object.get("functionText").toString();
+            kind = object.get("kind").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

@@ -23,8 +23,7 @@ public class JsonToStrip {
                 return new Accelerometer();
             } else if (type.equals("NewVariable")) {
                 return new NewVariable();
-            } else if (type.equals("ShowVariable")) {
-                return new ShowVariable();
+
             } else if (type.equals("Stop")) {
                 return new Stop();
             } else if (type.equals("Strings")) {

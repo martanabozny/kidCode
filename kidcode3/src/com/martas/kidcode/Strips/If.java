@@ -49,8 +49,7 @@
 //        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        View view = inflater.inflate(R.layout.condition, null);
 //
-//        TextView conditionName = (TextView)view.findViewById(R.id.conditionName);
-//        conditionName.setText("if");
+//
 //        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
 //        AutoCompleteTextView compareWith = (AutoCompleteTextView)view.findViewById(R.id.compareWith);
 //        Spinner condition = (Spinner)view.findViewById(R.id.condition);
@@ -92,7 +91,10 @@
 //        condition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                showCondition();
+//                if (i == 0} {
+                     //Spinner functions = (Spinner)view.findViewById(R.id.function);
+                     //function.set
+//                }
 //            }
 //
 //            @Override

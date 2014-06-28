@@ -24,9 +24,11 @@
     </string-array>
 
     <string-array name="image_functions">
-        <item>UPPER</item>
-        <item>lower</item>
-        <item>reverse</item>
+        <item>get height</item>
+        <item>get weight</item>
+        <item>convert to black and white</item>
+        <item>negative</item>
+        <item>set as wallpaper</item>
 
     </string-array>
 

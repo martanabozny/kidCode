@@ -41,7 +41,7 @@ public class Buttons extends Activity {
         list.add(new Foto().getButton(this, position, variables));
         list.add(new Fotoop().getButton(this, position, variables));
         list.add(new NewVariable().getButton(this, position, variables));
-        list.add(new ShowVariable().getButton(this, position, variables));
+
         list.add(new Stop().getButton(this, position, variables));
         list.add(new Strings().getButton(this, position, variables));
 

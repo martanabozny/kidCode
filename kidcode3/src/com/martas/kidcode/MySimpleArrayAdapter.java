@@ -109,7 +109,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.weight = 2;
             preview.setLayoutParams(lp);
-            
+
             layout.addView(preview);
             layout.addView(remove);
             layout.setWeightSum(2);

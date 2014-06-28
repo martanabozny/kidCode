@@ -7,10 +7,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import org.json.JSONArray;
@@ -19,6 +17,8 @@ import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -53,6 +53,7 @@ public class Fotoop extends FunctionStrip {
         Spinner function = (Spinner)view.findViewById(R.id.function);
         functionText = function.getSelectedItem().toString();
 
+
         result.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -86,6 +87,8 @@ public class Fotoop extends FunctionStrip {
 
             }
         });
+
+
 
         return view;
     }
