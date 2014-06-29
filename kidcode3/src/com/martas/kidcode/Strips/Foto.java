@@ -1,6 +1,7 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -14,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
+import com.martas.kidcode.Camera;
 import com.martas.kidcode.FunctionStrip;
+import com.martas.kidcode.Open;
 import com.martas.kidcode.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,12 +65,18 @@ public class Foto extends FunctionStrip {
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.foto, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         GridView fotos = (GridView)view.findViewById(R.id.fotos);
+        Button takePicture = (Button)view.findViewById(R.id.newPicture);
+        takePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePictureClicked(view);
+            }
+        });
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,22 +97,38 @@ public class Foto extends FunctionStrip {
         addAutocomplete(context, result, previousVariables);
 
         ArrayList<String> list = new ArrayList<String>();
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera";
         ImagesAdapter adapter = new ImagesAdapter(context, list);
         fotos.setAdapter(adapter);
         fotos.setNumColumns(context.getResources().getDisplayMetrics().widthPixels / 200);
-        Log.e("blad",path);
 
-        File input = new File(path);
-        for (File f : input.listFiles()) {
-            if (f.isFile()){
-                String name = f.getName();
-                list.add(path+ "/" + name);
-                Log.e("plik", name);
+        File kidcode_files = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
+        File camera_files = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera");
+        if (kidcode_files != null && kidcode_files.exists()) {
+            for (File f : kidcode_files.listFiles()) {
+                if (f.isFile()){
+                    String name = f.getName();
+                    list.add(kidcode_files.getAbsolutePath() + "/" + name);
+                    Log.e("plik", name);
+                }
             }
         }
+
+        if (camera_files != null && camera_files.exists()) {
+            for (File f : camera_files.listFiles()) {
+                if (f.isFile()){
+                    String name = f.getName();
+                    list.add(camera_files.getAbsolutePath() + "/" + name);
+                    Log.e("plik", name);
+                }
+            }
+        }
+
         adapter.notifyDataSetChanged();
         return view;
+    }
+
+    public void takePictureClicked(View view) {
+        view.getContext().startActivity(new Intent(view.getContext(), Camera.class));
     }
 
     class ImagesAdapter extends ArrayAdapter<String> {

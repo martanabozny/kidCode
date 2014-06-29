@@ -1,7 +1,7 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.graphics.*;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -88,8 +89,6 @@ public class Fotoop extends FunctionStrip {
             }
         });
 
-
-
         return view;
     }
 
@@ -117,28 +116,45 @@ public class Fotoop extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
-
         String var = previousVariables.get(variableText);
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/fotos";
-        String eol = System.getProperty("line.separator");
-        BufferedWriter writer = null;
-        try {
-            //writer = new BufferedWriter(new OutputStreamWriter(openFileOutput(path + name, Context.MODE_PRIVATE)));
-            //writer.write(newFoto);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeFile(var, options);
+
+        String result = "";
+
+        if (functionText.contains("get height")) {
+            result = "" + bitmap.getHeight();
+        } else if(functionText.contains("get weight")){
+            result = "" + bitmap.getWidth();
+        }else if(functionText.contains("convert to black and white")) {
+            ColorMatrix colorMatrix = new ColorMatrix();
+            colorMatrix.setSaturation(0);
+            ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
+            Bitmap blackAndWhiteBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+            Paint paint = new Paint();
+            paint.setColorFilter(colorMatrixFilter);
+            Canvas canvas = new Canvas(blackAndWhiteBitmap);
+            canvas.drawBitmap(blackAndWhiteBitmap, 0, 0, paint);
+            //return blackAndWhiteBitmap;
+            return null;
+        } else if(functionText.contains("negative")) {
+            ColorMatrix negativeMatrix =new ColorMatrix();
+            float[] negMat={-1, 0, 0, 0, 255, 0, -1, 0, 0, 255, 0, 0, -1, 0, 255, 0, 0, 0, 1, 0 };
+            negativeMatrix.set(negMat);
+            final ColorMatrixColorFilter colorFilter= new ColorMatrixColorFilter(negativeMatrix);
+            Bitmap rBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+            Paint paint=new Paint();
+            paint.setColorFilter(colorFilter);
+            Canvas myCanvas =new Canvas(rBitmap);
+            myCanvas.drawBitmap(rBitmap, 0, 0, paint);
+            //return rBitmap;
+            return null;
         }
 
         HashMap<String, String> r = new HashMap<String, String>();
-        r.put(name, "" + newFoto);
+        r.put(name, result);
         return r;
     }
 }

@@ -44,6 +44,7 @@ public class Setup extends Activity {
             frame.addView(fstrip.getSetup(this, variables));
         } catch (Exception e) {
             Log.e("Setup.onCreate", e.toString());
+            Log.e("Setup.onCreate", Log.getStackTraceString(e));
         }
 
     }

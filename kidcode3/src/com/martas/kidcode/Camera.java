@@ -15,6 +15,8 @@ import com.martas.kidcode.R;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by marta on 24.06.14.
@@ -22,14 +24,14 @@ import java.io.IOException;
 public class Camera extends Activity implements SurfaceHolder.Callback {
     private SurfaceHolder mHolder;
     android.hardware.Camera camera;
-    String filename;
+    String filename = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.codeactivity);
+        setContentView(R.layout.camera);
 
-        SurfaceView frame = (SurfaceView)findViewById(R.id.preview);
+        SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
         mHolder = frame.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -37,7 +39,6 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         camera = getCameraInstance();
 
         Intent intent = getIntent();
-        filename = intent.getStringExtra("filename");
     }
 
     android.hardware.Camera.PictureCallback myPictureCallback = new android.hardware.Camera.PictureCallback(){
@@ -45,15 +46,26 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         public void onPictureTaken(byte[] bytes, android.hardware.Camera arg1) {
             Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
             Bitmap picture = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
-
             String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/";
             File f = new File(path);
-            f.mkdir();
+
+            if (!f.exists()) {
+                f.mkdir();
+            }
 
             try {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                filename = "kidcode-" + sdf.format(cal.getTime());
                 FileOutputStream fos = new FileOutputStream(path + "/" + filename);
-                picture.compress(Bitmap.CompressFormat.PNG, 1, fos);
+                picture.compress(Bitmap.CompressFormat.JPEG, 90, fos);
                 fos.close();
+
+                SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
+                frame.setVisibility(View.GONE);
+                ImageView img = (ImageView)findViewById(R.id.preview);
+                img.setImageBitmap(picture);
             } catch (Exception e) {
 
             }
@@ -73,6 +85,10 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
 
         }
         return c;
+    }
+
+    public  void okClicked(View view){
+        finish();
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
