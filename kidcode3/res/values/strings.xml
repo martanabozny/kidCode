@@ -28,14 +28,18 @@
         <item>get weight</item>
         <item>convert to black and white</item>
         <item>negative</item>
-
-
     </string-array>
 
     <string-array name="variable_types">
         <item>String</item>
         <item>Integer</item>
         <item>Image</item>
+    </string-array>
+
+    <string-array name="figures">
+        <item>eclipse</item>
+        <item>triangle</item>
+        <item>rectangle</item>
     </string-array>
 
     <string-array name="condition">

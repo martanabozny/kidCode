@@ -1,5 +1,6 @@
 package com.martas.kidcode;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,9 +19,11 @@ import java.util.ArrayList;
 /**
  * Created by marta on 20.06.14.
  */
-public class MySimpleArrayAdapter extends ArrayAdapter<String> {
+public class CodeListAdapter extends ArrayAdapter<String> {
+
     private final Context context;
     ArrayList<String> list;
+
     enum Mode {
         MODE_NORMAL,
         MODE_ADD,
@@ -28,7 +31,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     }
     private Mode mode = Mode.MODE_NORMAL;
 
-    public MySimpleArrayAdapter(Context context, ArrayList<String> list) {
+    public CodeListAdapter(Context context, ArrayList<String> list) {
         super(context, R.layout.codeactivity, list);
         this.list = list;
         this.context = context;
@@ -77,8 +80,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
                     }
                     intent.putExtra("position", String.valueOf(position));
                     intent.putExtra("variables", variableList.toString());
-                    getContext().startActivity(intent);
-
+                    ((Activity)getContext()).startActivityForResult(intent, 1);
                 }
             });
 
@@ -106,6 +108,14 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 
 
             View preview = strip.getPreview(context);
+
+            preview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), Setup.class);
+
+                }
+            });
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.weight = 2;
             preview.setLayoutParams(lp);

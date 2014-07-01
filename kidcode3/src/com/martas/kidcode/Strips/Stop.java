@@ -21,8 +21,8 @@ import java.util.HashMap;
 public class Stop extends FunctionStrip {
 
 
-    public View getButton(final Context context, final int position, JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.stop);
         return button;
     }

@@ -22,8 +22,8 @@ public class Strings extends FunctionStrip {
     private String newText = "";
     private String functionText = "";
 
-    public View getButton(final Context context, final int position, JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.string);
         return button;
     }

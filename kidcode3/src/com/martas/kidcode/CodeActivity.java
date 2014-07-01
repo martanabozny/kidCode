@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class CodeActivity extends Activity {
     private SharedPreferences mPrefs;
     ArrayList<String> list = new ArrayList<String>();
-    MySimpleArrayAdapter adapter;
+    CodeListAdapter adapter;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
 
@@ -54,26 +54,32 @@ public class CodeActivity extends Activity {
 
         ListView lv = (ListView) findViewById(R.id.Code);
 
-        adapter = new MySimpleArrayAdapter(this, list);
+        adapter = new CodeListAdapter(this, list);
         lv.setAdapter(adapter);
     }
 
     public void add(View view) {
         addClicked = !addClicked;
         if (addClicked) {
-            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_ADD);
+            adapter.setMode(CodeListAdapter.Mode.MODE_ADD);
         } else {
-            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_NORMAL);
+            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
         }
     }
 
     public void delete(View view) {
         deleteClicked = !deleteClicked;
         if (deleteClicked) {
-            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_DELETE);
+            adapter.setMode(CodeListAdapter.Mode.MODE_DELETE);
         } else {
-            adapter.setMode(MySimpleArrayAdapter.Mode.MODE_NORMAL);
+            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
         }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        int position = Integer.parseInt(data.getStringExtra("position"));
+        list.add(position+1, data.getStringExtra("strip"));
+        adapter.notifyDataSetChanged();
     }
 
     protected void onPause() {

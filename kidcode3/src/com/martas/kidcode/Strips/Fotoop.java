@@ -2,12 +2,10 @@ package com.martas.kidcode.Strips;
 
 import android.content.Context;
 import android.graphics.*;
-import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
@@ -15,11 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -33,8 +26,8 @@ public class Fotoop extends FunctionStrip {
 
 
 
-    public View getButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.fotoop);
         return button;
     }

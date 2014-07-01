@@ -15,8 +15,8 @@ import java.util.HashMap;
  */
 public class Empty extends FunctionStrip {
 
-    public View getButton(final Context context, final int position, JSONArray variables) {
-       TextView text = new TextView(context);
+    public ImageButton getButton(final Context context) {
+        ImageButton text = new ImageButton(context);
         return text;
     }
     public View getPreview(Context context) {

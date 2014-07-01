@@ -35,8 +35,8 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
 
     Mode mode = Mode.HIDDEN;
 
-    public View getButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.accel);
         return button;
     }

@@ -12,16 +12,16 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" android:weightSum="1">
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OK"
-                android:id="@+id/ok" android:onClick="okClicked"/>
+                android:id="@+id/ok" android:onClick="okClicked" android:layout_weight="0.5"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cancle"
-                android:id="@+id/cancel" android:longClickable="false"/>
+                android:text="Cancel"
+                android:id="@+id/cancel" android:longClickable="false" android:layout_weight="0.5"/>
     </LinearLayout>
 </LinearLayout>

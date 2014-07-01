@@ -23,8 +23,8 @@ public class Math extends FunctionStrip {
     private String function = "+";
 
 
-    public View getButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.math);
         return button;
     }
@@ -101,6 +101,7 @@ public class Math extends FunctionStrip {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 function = spinner.getSelectedItem().toString();
+                Log.e("kidcode", function);
                 Log.d("Math.itemListener", "Selected function: " + function);
             }
 
@@ -149,7 +150,7 @@ public class Math extends FunctionStrip {
             result = aint - bint;
         } else if (function.contains("/")) {
             result = aint / bint;
-        } else if (function.contains("*")) {
+        } else if (function.contains("x")) {
             result = aint * bint;
         }
         Log.e("Math.run", "" + result);

@@ -4,20 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.*;
 import com.martas.kidcode.Camera;
 import com.martas.kidcode.FunctionStrip;
-import com.martas.kidcode.Open;
 import com.martas.kidcode.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,8 +30,8 @@ public class Foto extends FunctionStrip {
     String path = "";
     View view;
 
-    public View getButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.foto);
         return button;
     }
@@ -107,8 +103,7 @@ public class Foto extends FunctionStrip {
             for (File f : kidcode_files.listFiles()) {
                 if (f.isFile()){
                     String name = f.getName();
-                    list.add(kidcode_files.getAbsolutePath() + "/" + name);
-                    Log.e("plik", name);
+                    list.add(0, kidcode_files.getAbsolutePath() + "/" + name);
                 }
             }
         }
@@ -118,7 +113,6 @@ public class Foto extends FunctionStrip {
                 if (f.isFile()){
                     String name = f.getName();
                     list.add(camera_files.getAbsolutePath() + "/" + name);
-                    Log.e("plik", name);
                 }
             }
         }

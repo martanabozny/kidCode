@@ -19,25 +19,6 @@ import java.util.Map;
  */
 public abstract class FunctionStrip extends Object {
     protected String name= "";
-
-    protected ImageButton getMyButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = new ImageButton(context);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Setup.class);
-                intent.putExtra("strip", toJson().toString());
-                intent.putExtra("position", String.valueOf(position));
-                intent.putExtra("variables", variables.toString());
-                context.startActivity(intent);
-            }
-        });
-        button.setAdjustViewBounds(false);
-        button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        button.setPadding(5, 5, 5, 5);
-        return button;
-    }
-
     protected void addAutocomplete(Context context, AutoCompleteTextView field, JSONArray previousVariables) {
         ArrayList<String> variables = new ArrayList<String>();
         for (int i = 0; i < previousVariables.length(); i++) {
@@ -52,7 +33,11 @@ public abstract class FunctionStrip extends Object {
         field.performCompletion();
     }
 
-    public abstract View getButton(Context context, int position, JSONArray variables);
+    public void onActivityResult(Intent i) {
+
+    }
+
+    public abstract ImageButton getButton(Context context);
     public abstract View getPreview(Context context);
     public abstract View getSetup(Context context, JSONArray previousVariables);
     public abstract JSONObject toJson();

@@ -1,8 +1,13 @@
 package com.martas.kidcode;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.io.File;
+import java.net.URI;
 
 /**
  * Created by marta on 05.05.14.
@@ -24,5 +29,12 @@ public class End extends Activity {
         value_.setKeyListener(null);
         value_.setText(value);
 
+        File f = new File(value);
+        if (f.exists()) {
+            if (value.endsWith(".jpg") || value.endsWith(".JPG")) {
+                ImageView img = (ImageView)findViewById(R.id.image);
+                img.setImageURI(Uri.fromFile(f));
+            }
+        }
     }
 }

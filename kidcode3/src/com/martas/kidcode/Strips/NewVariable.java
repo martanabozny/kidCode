@@ -23,8 +23,8 @@ public class NewVariable extends FunctionStrip {
     private String kind = "";
 
 
-    public View getButton(final Context context, final int position, final JSONArray variables) {
-        ImageButton button = getMyButton(context, position, variables);
+    public ImageButton getButton(final Context context) {
+        ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.new_variable);
         return button;
     }

@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import com.martas.kidcode.R;
 
 import java.io.File;
@@ -32,6 +34,12 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         setContentView(R.layout.camera);
 
         SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
+        frame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camera.takePicture(null, null, myPictureCallback);
+            }
+        });
         mHolder = frame.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -46,8 +54,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         public void onPictureTaken(byte[] bytes, android.hardware.Camera arg1) {
             Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
             Bitmap picture = Bitmap.createBitmap(bitmapPicture, 0, 0, bitmapPicture.getWidth(), bitmapPicture.getHeight(), null, true);
-            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/";
-            File f = new File(path);
+            File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
 
             if (!f.exists()) {
                 f.mkdir();
@@ -55,25 +62,26 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
 
             try {
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
                 filename = "kidcode-" + sdf.format(cal.getTime());
-                FileOutputStream fos = new FileOutputStream(path + "/" + filename);
-                picture.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+                File output = new File(f.getAbsolutePath() + "/" + filename + ".jpg");
+                Log.e("kidcode", output.getAbsolutePath());
+                output.createNewFile();
+
+                FileOutputStream fos = new FileOutputStream(output);
+                //picture.compress(Bitmap.CompressFormat.JPEG, 1, fos);
+                fos.write(bytes);
                 fos.close();
 
                 SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
                 frame.setVisibility(View.GONE);
                 ImageView img = (ImageView)findViewById(R.id.preview);
+                img.setVisibility(View.VISIBLE);
                 img.setImageBitmap(picture);
             } catch (Exception e) {
-
+                Log.e("kidcode", Log.getStackTraceString(e));
             }
-
-            camera.stopPreview();
-            camera.setPreviewCallback(null);
-            camera.release();
-            camera=null;
         }
     };
 
@@ -87,8 +95,12 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         return c;
     }
 
-    public  void okClicked(View view){
-        finish();
+    public  void okClicked(View view) {
+        if (filename.equals("")) {
+            Toast.makeText(getApplicationContext(), "Create picture first!", Toast.LENGTH_LONG).show();
+        } else {
+            finish();
+        }
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
@@ -113,7 +125,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        // If your preview can change or rotate, take care of those events here.
+        // IfForInt your preview can change or rotate, take care of those events here.
         // Make sure to stop the preview before resizing or reformatting it.
 
         if (mHolder.getSurface() == null){
