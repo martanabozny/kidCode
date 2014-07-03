@@ -187,14 +187,35 @@
       <file leaf-file-name="Draw.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="205" column="13" selection-start="7021" selection-end="7021" vertical-scroll-proportion="0.67741936" vertical-offset="2013" max-vertical-offset="2790">
+            <state line="125" column="79" selection-start="4196" selection-end="4196" vertical-scroll-proportion="0.69623655" vertical-offset="806" max-vertical-offset="2550">
               <folding>
                 <element signature="method#getButton#0;class#Draw#0" expanded="false" />
-                <element signature="e#1825#1833#0" expanded="true" />
-                <element signature="class#2518:2949" expanded="false" />
-                <element signature="class#2998:3353" expanded="false" />
-                <element signature="e#3939#4301#0" expanded="true" />
-                <element signature="e#4286#4287#0" expanded="true" />
+                <element signature="e#1851#1859#0" expanded="true" />
+                <element signature="class#2544:2975" expanded="false" />
+                <element signature="class#3024:3379" expanded="false" />
+                <element signature="e#3965#4327#0" expanded="true" />
+                <element signature="e#4312#4313#0" expanded="true" />
+                <element signature="e#7240#7256#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="20" selection-start="928" selection-end="928" vertical-scroll-proportion="-7.96" vertical-offset="386" max-vertical-offset="855">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="End.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="46" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="690">
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,7 +224,7 @@
       <file leaf-file-name="Foto.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="32" selection-start="3647" selection-end="3647" vertical-scroll-proportion="0.0" vertical-offset="1208" max-vertical-offset="2340">
+            <state line="183" column="17" selection-start="6203" selection-end="6306" vertical-scroll-proportion="0.0" vertical-offset="1935" max-vertical-offset="2340">
               <folding>
                 <element signature="e#2277#2438#0" expanded="true" />
                 <element signature="e#2427#2428#0" expanded="true" />
@@ -218,7 +239,7 @@
       <file leaf-file-name="Camera.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Camera.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="2100">
+            <state line="70" column="0" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.0" vertical-offset="1620" max-vertical-offset="2100">
               <folding>
                 <element signature="e#1039#1225#0" expanded="true" />
                 <element signature="e#1214#1215#0" expanded="true" />
@@ -312,7 +333,6 @@
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/If.java" />
         <option value="$PROJECT_DIR$/res/layout/ifXml.xml" />
         <option value="$PROJECT_DIR$/res/layout/end.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForString.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Camera.java" />
@@ -340,6 +360,7 @@
         <option value="$PROJECT_DIR$/res/layout/codeactivity.xml" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java" />
         <option value="$PROJECT_DIR$/res/layout/draw.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java" />
       </list>
     </option>
@@ -446,6 +467,10 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -462,6 +487,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kidcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kidcode3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -960,15 +999,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="46" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="690">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Empty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="20" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="690">
@@ -1021,13 +1051,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/JsonToStrip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="49" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="675">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="33" selection-start="907" selection-end="907" vertical-scroll-proportion="0.3923241" vertical-offset="386" max-vertical-offset="855">
           <folding />
         </state>
       </provider>
@@ -1163,29 +1186,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/draw.xml">
-      <provider editor-type-id="text-editor">
-        <state line="24" column="47" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="32" selection-start="3647" selection-end="3647" vertical-scroll-proportion="0.0" vertical-offset="1118" max-vertical-offset="2340">
-          <folding>
-            <element signature="e#2277#2438#0" expanded="true" />
-            <element signature="e#2427#2428#0" expanded="true" />
-            <element signature="class#2484:2915" expanded="false" />
-            <element signature="e#5076#5419#0" expanded="true" />
-            <element signature="e#5400#5401#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Camera.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="0" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="2100">
@@ -1196,16 +1196,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="17" selection-start="6203" selection-end="6306" vertical-scroll-proportion="0.0" vertical-offset="1935" max-vertical-offset="2340">
+          <folding>
+            <element signature="e#2277#2438#0" expanded="true" />
+            <element signature="e#2427#2428#0" expanded="true" />
+            <element signature="class#2484:2915" expanded="false" />
+            <element signature="e#5076#5419#0" expanded="true" />
+            <element signature="e#5400#5401#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="46" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="690">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="20" selection-start="928" selection-end="928" vertical-scroll-proportion="-7.96" vertical-offset="386" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/draw.xml">
+      <provider editor-type-id="text-editor">
+        <state line="24" column="47" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="13" selection-start="7021" selection-end="7021" vertical-scroll-proportion="0.67741936" vertical-offset="2013" max-vertical-offset="2790">
+        <state line="125" column="79" selection-start="4196" selection-end="4196" vertical-scroll-proportion="0.69623655" vertical-offset="806" max-vertical-offset="2550">
           <folding>
             <element signature="method#getButton#0;class#Draw#0" expanded="false" />
-            <element signature="e#1825#1833#0" expanded="true" />
-            <element signature="class#2518:2949" expanded="false" />
-            <element signature="class#2998:3353" expanded="false" />
-            <element signature="e#3939#4301#0" expanded="true" />
-            <element signature="e#4286#4287#0" expanded="true" />
+            <element signature="e#1851#1859#0" expanded="true" />
+            <element signature="class#2544:2975" expanded="false" />
+            <element signature="class#3024:3379" expanded="false" />
+            <element signature="e#3965#4327#0" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="true" />
+            <element signature="e#7240#7256#0" expanded="true" />
           </folding>
         </state>
       </provider>

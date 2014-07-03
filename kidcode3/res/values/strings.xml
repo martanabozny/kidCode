@@ -37,7 +37,7 @@
     </string-array>
 
     <string-array name="figures">
-        <item>eclipse</item>
+        <item>circle</item>
         <item>triangle</item>
         <item>rectangle</item>
     </string-array>

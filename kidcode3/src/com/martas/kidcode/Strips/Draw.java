@@ -35,6 +35,7 @@ public class Draw extends FunctionStrip {
     private String figureText = "";
     private String colorText = "";
     View view;
+    String filename = "";
 
 
     public ImageButton getButton(final Context context) {
@@ -160,16 +161,15 @@ public class Draw extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
-        String filename = "";
+
+        Canvas canvas =new Canvas();
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStrokeWidth(2);
+        paint.setColor(Color.parseColor(colorText));
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setAntiAlias(true);
 
         if (figureText.contains("triangle")) {
-            Canvas canvas =new Canvas();
-            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-            paint.setStrokeWidth(2);
-            paint.setColor(Color.parseColor(colorText));
-            paint.setStyle(Paint.Style.FILL_AND_STROKE);
-            paint.setAntiAlias(true);
 
             Point point1_draw = new Point(0,0);
             Point point2_draw = new Point(0,100);
@@ -184,51 +184,35 @@ public class Draw extends FunctionStrip {
             path.close();
 
             canvas.drawPath(path, paint);
-            Bitmap bitmap = Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
-            File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
+        } else if (figureText.contains("rectangle")) {
+            canvas.drawRect(100, 100, 200, 200, paint);
 
-            if (!f.exists()) {
-                f.mkdir();
-            }
-
-            try {
-                Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-
-                filename = "kidcode-" + sdf.format(cal.getTime());
-                File output = new File(f.getAbsolutePath() + "/" + filename + ".jpg");
-                output.createNewFile();
-                FileOutputStream fos = new FileOutputStream(output);
-                fos.write(bitmap);
-                fos.close();
-            } catch (Exception e) {
-                Log.e("kidcode", Log.getStackTraceString(e));
-            }
-
-
-
+        } else if (figureText.contains("circle")) {
+            canvas.drawCircle(100,100, 80,paint);
         }
-//        String result = "";
-//        String var = previousVariables.get(newText);
-//        if (var != null) {
-//            if (functionText.contains("UPPER")){
-//                result = var.toUpperCase();
-//            }else if(functionText.contains("lower")){
-//                result = var.toLowerCase();
-//            }else if(functionText.contains("reverse")){
-//                result = new StringBuilder(var).reverse().toString();
-//            }
-//        } else {
-//            if (functionText.contains("UPPER")){
-//                result = newText.toUpperCase();
-//            }else if(functionText.contains("lower")){
-//                result = newText.toLowerCase();
-//            }else if(functionText.contains("reverse")){
-//                result = new StringBuilder(newText).reverse().toString();
-//            }
-//        }
-//        HashMap<String, String> r = new HashMap<String, String>();
-//        r.put(name, "" + result);
-        return null;
+
+        Bitmap bitmap = Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
+        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
+
+        if (!f.exists()) {
+            f.mkdir();
+        }
+
+        try {
+             Calendar cal = Calendar.getInstance();
+             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+             filename = "kidcode-" + sdf.format(cal.getTime());
+             File output = new File(f.getAbsolutePath() + "/" + filename + ".jpg");
+             output.createNewFile();
+             FileOutputStream fos = new FileOutputStream(output);
+             bitmap.compress(Bitmap.CompressFormat.JPEG, 1, fos);
+             fos.close();
+        } catch (Exception e) {
+            Log.e("kidcode", Log.getStackTraceString(e));
+        }
+
+        HashMap<String, String> r = new HashMap<String, String>();
+        r.put(name, filename);
+        return r;
     }
 }
