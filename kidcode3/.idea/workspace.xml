@@ -184,12 +184,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Draw.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Draw.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="65" selection-start="3642" selection-end="3642" vertical-scroll-proportion="0.42307693" vertical-offset="991" max-vertical-offset="2220">
+            <state line="115" column="0" selection-start="3834" selection-end="3834" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1920">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#getButton#0;class#Draw#0" expanded="false" />
                 <element signature="method#getPreview#0;class#Draw#0" expanded="false" />
                 <element signature="e#1666#1674#0" expanded="true" />
                 <element signature="class#2359:2790" expanded="false" />
@@ -202,7 +202,7 @@
       <file leaf-file-name="IfForInt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="4095">
+            <state line="56" column="46" selection-start="1832" selection-end="1832" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="4110">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#836#844#0" expanded="true" />
@@ -211,19 +211,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Buttons.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Buttons.java">
+      <file leaf-file-name="CodeListAdapter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="9" selection-start="1789" selection-end="2929" vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1140">
+            <state line="86" column="0" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.6751269" vertical-offset="769" max-vertical-offset="1695">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/color/colors.xml">
+      <file leaf-file-name="Buttons.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Buttons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="30" selection-start="595" selection-end="602" vertical-scroll-proportion="-9.6" vertical-offset="0" max-vertical-offset="390">
+            <state line="83" column="9" selection-start="1789" selection-end="2929" vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1140">
               <folding />
             </state>
           </provider>
@@ -300,8 +300,8 @@
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Strings.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/NewVariable.java" />
         <option value="$PROJECT_DIR$/res/layout/codeactivity.xml" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java" />
+        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java" />
       </list>
     </option>
   </component>
@@ -724,7 +724,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2654321" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19598766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35030866" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1107,27 +1107,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1158" selection-end="1367" vertical-scroll-proportion="0.48582995" vertical-offset="360" max-vertical-offset="1695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="31" selection-start="1618" selection-end="1692" vertical-scroll-proportion="0.51619434" vertical-offset="360" max-vertical-offset="3165">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="4095">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#836#844#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1157,14 +1140,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Draw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="65" selection-start="3642" selection-end="3642" vertical-scroll-proportion="0.42307693" vertical-offset="991" max-vertical-offset="2220">
+        <state line="115" column="0" selection-start="3834" selection-end="3834" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1920">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#getButton#0;class#Draw#0" expanded="false" />
             <element signature="method#getPreview#0;class#Draw#0" expanded="false" />
             <element signature="e#1666#1674#0" expanded="true" />
             <element signature="class#2359:2790" expanded="false" />
             <element signature="class#2839:3194" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/IfForInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="46" selection-start="1832" selection-end="1832" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="4110">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#836#844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.6751269" vertical-offset="769" max-vertical-offset="1695">
+          <folding />
         </state>
       </provider>
     </entry>

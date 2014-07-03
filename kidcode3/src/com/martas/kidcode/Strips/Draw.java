@@ -107,19 +107,23 @@ public class Draw extends FunctionStrip {
         }
         public View getView(final int position, View convertView, ViewGroup parent) {
             ImageButton button = new ImageButton(getContext());
-            button.setBackgroundColor(Color.argb(getItem(position)));
+            button.setBackgroundColor(Color.parseColor(getItem(position)));
+            button.setMinimumHeight(80);
 
             button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
                 }
             });
 
-            button.setAdjustViewBounds(false);
-            button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            button.setPadding(5, 5, 5, 5);
+//            button.setAdjustViewBounds(false);
+//            button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+//            button.setPadding(5, 5, 5, 5);
 
             return button;
         }
+    }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();

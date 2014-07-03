@@ -30,6 +30,7 @@ public class IfForInt extends FunctionStrip {
     private String functionText = "";
     ArrayList<String> list = new ArrayList<String>();
     CodeListAdapter adapter;
+    MyAdapter adapter2;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
 
@@ -53,8 +54,8 @@ public class IfForInt extends FunctionStrip {
         layout.addView(view2);
 
         ListView view1 = new ListView(context);
-        //adapter = new MyAdapter(this, list);
-        view1.setAdapter(adapter);
+        adapter2 = new MyAdapter(context, list);
+        view1.setAdapter(adapter2);
         layout.addView(view1);
 
         return view2;

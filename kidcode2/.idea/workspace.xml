@@ -114,32 +114,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="b5004f05-0b30-43cf-a1e5-42a9ec64a408" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/accel_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/bartrack_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/condition_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/foto_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/fotoop_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/if_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/math_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/new_variable_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/newbutton_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/openbutton_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/show_variable_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/stop_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/strings_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-xhdpi/while_background.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Draw.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Draw.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Fotoop.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Fotoop.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForInt.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Math.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Math.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/NewVariable.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/NewVariable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Stop.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Stop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Strings.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Strings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/accelerometerpreview.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/accelerometerpreview.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/codeactivity.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/codeactivity.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" />
     </list>
