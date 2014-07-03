@@ -25,18 +25,12 @@ public class Setup extends Activity {
     FunctionStrip fstrip;
     private SharedPreferences mPrefs;
 
-    public void onPause(){
-        super.onPause();
-        Log.e("kidcode", "pause");
-    }
-
-    public void onResume(){
-        super.onResume();
-
+    public void showStrip() {
         String strip = getIntent().getStringExtra("strip");
         try {
             JSONObject obj = new JSONObject(strip);
             fstrip = JsonToStrip.fromJson(obj);
+            fstrip.fromJson(obj);
 
             FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
             JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
@@ -54,22 +48,7 @@ public class Setup extends Activity {
         setContentView(R.layout.setup);
 
         mPrefs = getSharedPreferences("strips", MODE_PRIVATE);
-
-
-        String strip = getIntent().getStringExtra("strip");
-        try {
-            JSONObject obj = new JSONObject(strip);
-            fstrip = JsonToStrip.fromJson(obj);
-
-            FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
-            JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
-            Log.e("Setup.onCreate", variables.toString());
-            frame.addView(fstrip.getSetup(this, variables));
-        } catch (Exception e) {
-            Log.e("Setup.onCreate", e.toString());
-            Log.e("Setup.onCreate", Log.getStackTraceString(e));
-        }
-
+        showStrip();
     }
     public void  okClicked(View view) {
         Intent intent = new Intent();

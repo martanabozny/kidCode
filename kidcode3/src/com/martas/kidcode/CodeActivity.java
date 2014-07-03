@@ -77,9 +77,11 @@ public class CodeActivity extends Activity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        int position = Integer.parseInt(data.getStringExtra("position"));
-        list.add(position+1, data.getStringExtra("strip"));
-        adapter.notifyDataSetChanged();
+        if (data != null) {
+            int position = Integer.parseInt(data.getStringExtra("position"));
+            list.add(position+1, data.getStringExtra("strip"));
+            adapter.notifyDataSetChanged();
+        }
     }
 
     protected void onPause() {

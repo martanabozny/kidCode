@@ -24,7 +24,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
     private final Context context;
     ArrayList<String> list;
 
-    enum Mode {
+    public enum Mode {
         MODE_NORMAL,
         MODE_ADD,
         MODE_DELETE
