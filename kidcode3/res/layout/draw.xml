@@ -23,9 +23,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/figure" android:layout_weight="1.5"
                 android:entries="@array/figures"/>
-        <ImageView
+        <Button
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/colorPreview" android:layout_weight="0.5"/>
     </LinearLayout>
     <GridView

@@ -2,7 +2,8 @@ package com.martas.kidcode.Strips;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.*;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,8 +19,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
@@ -29,7 +34,8 @@ public class Draw extends FunctionStrip {
 
     private String figureText = "";
     private String colorText = "";
-    
+    View view;
+
 
     public ImageButton getButton(final Context context) {
         ImageButton button = new ImageButton(context);
@@ -116,7 +122,9 @@ public class Draw extends FunctionStrip {
                 @Override
                 public void onClick(View v) {
                     colorText = getItem(position);
-                    ImageView colorPreview = (ImageView)view.findViewById(R.id.colorPreview);
+                    Button colorPreview = (Button)view.findViewById(R.id.colorPreview);
+                    colorPreview.setBackgroundColor(Color.parseColor(getItem(position)));
+
                 }
             });
 
@@ -152,6 +160,54 @@ public class Draw extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
+        String filename = "";
+
+        if (figureText.contains("triangle")) {
+            Canvas canvas =new Canvas();
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+            paint.setStrokeWidth(2);
+            paint.setColor(Color.parseColor(colorText));
+            paint.setStyle(Paint.Style.FILL_AND_STROKE);
+            paint.setAntiAlias(true);
+
+            Point point1_draw = new Point(0,0);
+            Point point2_draw = new Point(0,100);
+            Point point3_draw = new Point(87,50);
+
+            Path path = new Path();
+            path.setFillType(Path.FillType.EVEN_ODD);
+            path.moveTo(point1_draw.x,point1_draw.y);
+            path.lineTo(point2_draw.x,point2_draw.y);
+            path.lineTo(point3_draw.x,point3_draw.y);
+            path.lineTo(point1_draw.x,point1_draw.y);
+            path.close();
+
+            canvas.drawPath(path, paint);
+            Bitmap bitmap = Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
+            File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
+
+            if (!f.exists()) {
+                f.mkdir();
+            }
+
+            try {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+
+                filename = "kidcode-" + sdf.format(cal.getTime());
+                File output = new File(f.getAbsolutePath() + "/" + filename + ".jpg");
+                output.createNewFile();
+                FileOutputStream fos = new FileOutputStream(output);
+                fos.write(bitmap);
+                fos.close();
+            } catch (Exception e) {
+                Log.e("kidcode", Log.getStackTraceString(e));
+            }
+
+
+
+        }
 //        String result = "";
 //        String var = previousVariables.get(newText);
 //        if (var != null) {
