@@ -7,9 +7,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.CodeListAdapter;
+import com.martas.kidcode.JsonToStrip;
 import com.martas.kidcode.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,14 +40,49 @@ public class IfForInt extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-        TextView view = new TextView(context);
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        TextView view2 = new TextView(context);
+        view2.setBackgroundResource(R.drawable.condition_background);
         if(conditionText.contains("check")) {
-        view.setText("" + "if (" + name + "." + functionText + ")");
+        view2.setText("" + "if (" + name + "." + functionText + ")");
         } else if (conditionText.contains("compare")){
-            view.setText("" + "if (" + name + functionText + value2 + ")");
+            view2.setText("" + "if (" + name + functionText + value2 + ")");
+        }
+        layout.addView(view2);
+
+        ListView view1 = new ListView(context);
+        //adapter = new MyAdapter(this, list);
+        view1.setAdapter(adapter);
+        layout.addView(view1);
+
+        return view2;
+    }
+
+    public class MyAdapter extends ArrayAdapter<String> {
+        private final Context context;
+        ArrayList<String> list;
+
+        public MyAdapter(Context context, ArrayList<String> list) {
+            super(context, R.layout.codeactivity, list);
+            this.list = list;
+            this.context = context;
         }
 
-        return view;
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            JSONObject obj;
+            try {
+                obj = new JSONObject(getItem(position));
+            } catch (Exception e) {
+                return  null;
+            }
+
+            FunctionStrip strip = JsonToStrip.fromJson(obj);
+            View prev = strip.getPreview(context);
+            return prev;
+        }
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {

@@ -39,6 +39,7 @@ public class Foto extends FunctionStrip {
     public View getPreview(Context context) {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.HORIZONTAL);
+        layout.setBackgroundResource(R.drawable.foto_background);
 
         TextView tv = new TextView(context);
         tv.setText(name + " = ");

@@ -30,6 +30,7 @@ public class Strings extends FunctionStrip {
 
     public View getPreview(Context context) {
         TextView view = new TextView(context);
+        view.setBackgroundResource(R.drawable.strings_background);
         view.setText("" + name + " = " + newText + "." + functionText);
         return view;
     }

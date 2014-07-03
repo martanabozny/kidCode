@@ -1,6 +1,8 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.*;
 import com.martas.kidcode.Buttons;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
+import com.martas.kidcode.Setup;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,20 +50,19 @@ public class Draw extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         addAutocomplete(context, result, previousVariables);
 
-        ArrayList<View> list = new ArrayList<View>();
+        ArrayList<String> list = new ArrayList<String>();
         GridView colors = (GridView)view.findViewById(R.id.colors);
         ColorsAdapter adapter = new ColorsAdapter(context, list);
         colors.setAdapter(adapter);
         colors.setNumColumns(view.getResources().getDisplayMetrics().widthPixels / 240);
 
-       
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        list.add("#FFFFFF");
+        list.add("#FFFF00");
+        list.add( "#FF0000");
+        list.add("#808080");
+        list.add("#800080");
+        list.add( "#008000");
+        list.add( "#0000FF");
 
         adapter.notifyDataSetChanged();
 
@@ -99,14 +101,25 @@ public class Draw extends FunctionStrip {
         return view;
     }
 
-    public class ColorsAdapter extends ArrayAdapter<View> {
-        public ColorsAdapter(Context context, ArrayList<View> list) {
+    public class ColorsAdapter extends ArrayAdapter<String> {
+        public ColorsAdapter(Context context, ArrayList<String> list) {
             super(context, R.layout.codeactivity, list);
         }
         public View getView(final int position, View convertView, ViewGroup parent) {
-            return getItem(position);
+            ImageButton button = new ImageButton(getContext());
+            button.setBackgroundColor(Color.argb(getItem(position)));
+
+            button.setOnClickListener(new View.OnClickListener() {
+
+                }
+            });
+
+            button.setAdjustViewBounds(false);
+            button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            button.setPadding(5, 5, 5, 5);
+
+            return button;
         }
-    }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();

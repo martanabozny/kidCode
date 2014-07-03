@@ -175,20 +175,24 @@ public class CodeActivity extends Activity {
     @Override
     public void onBackPressed() {
 
-        new AlertDialog.Builder(this)
+        if (list.size()== 1) {
+            finish();
+        } else {
+            new AlertDialog.Builder(this)
                 .setMessage("Save changes?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         save();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton("no", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+        }
     }
 
     public void run(View view) {

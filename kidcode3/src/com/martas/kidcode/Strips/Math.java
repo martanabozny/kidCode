@@ -30,6 +30,7 @@ public class Math extends FunctionStrip {
     }
     public View getPreview(Context context) {
         TextView view = new TextView(context);
+        view.setBackgroundResource(R.drawable.math_background);
         view.setText("" + name + " = " + a + " " + function + " " + b);
         return view;
     }

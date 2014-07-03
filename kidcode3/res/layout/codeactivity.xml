@@ -9,26 +9,33 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:id="@+id/Code" android:layout_weight="1.7"/>
-    <LinearLayout
+    <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="0dp" android:layout_weight="0.3" android:weightSum="3">
+            android:layout_height="0dp" android:layout_weight="0.3">
         <Button
-                android:layout_width="0dp"
+                android:layout_width="80dp"
                 android:layout_height="fill_parent"
                 android:text="-"
                 android:id="@+id/remove" android:onClick="delete" android:background="@drawable/minusbutton_background"
-                android:textColor="#000000" android:layout_weight="0.8"/>
+                android:textColor="#000000" android:layout_gravity="left" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp" android:layout_alignParentTop="false" android:layout_marginTop="0dp"
+                android:textSize="40dp"/>
         <ImageButton
-                android:layout_width="0dp"
+                android:layout_width="120dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/play" android:background="@drawable/play"
-                android:layout_gravity="center_horizontal" android:layout_weight="1.4" android:onClick="run"/>
+                android:layout_gravity="center" android:onClick="run" android:layout_alignParentLeft="false"
+                android:layout_marginLeft="160dp" android:layout_alignParentTop="false" android:layout_marginTop="0dp"
+                android:layout_alignParentBottom="false" android:layout_centerInParent="true"/>
         <Button
-                android:layout_width="0dp"
+                android:layout_width="80dp"
                 android:layout_height="fill_parent"
                 android:text="+"
-                android:id="@+id/add" android:layout_gravity="right" android:onClick="add"
-                android:background="@drawable/plusbutton_background" android:textColor="#000000" android:layout_weight="0.8"/>
-    </LinearLayout>
+                android:id="@+id/add" android:onClick="add"
+                android:background="@drawable/plusbutton_background" android:textColor="#000000"
+                android:layout_gravity="right" android:layout_alignParentLeft="false" android:layout_marginLeft="400dp"
+                android:layout_alignParentTop="false" android:layout_marginTop="0dp"
+                android:layout_alignParentRight="true" android:textSize="40dp"/>
+    </RelativeLayout>
 </LinearLayout>
