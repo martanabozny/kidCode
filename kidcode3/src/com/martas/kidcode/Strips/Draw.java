@@ -29,6 +29,7 @@ public class Draw extends FunctionStrip {
 
     private String figureText = "";
     private String colorText = "";
+    
 
     public ImageButton getButton(final Context context) {
         ImageButton button = new ImageButton(context);
@@ -109,11 +110,13 @@ public class Draw extends FunctionStrip {
             ImageButton button = new ImageButton(getContext());
             button.setBackgroundColor(Color.parseColor(getItem(position)));
             button.setMinimumHeight(80);
+            button.setPadding(20, 20, 20, 20);
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    colorText = getItem(position);
+                    ImageView colorPreview = (ImageView)view.findViewById(R.id.colorPreview);
                 }
             });
 

@@ -58,7 +58,7 @@ public class IfForInt extends FunctionStrip {
         view1.setAdapter(adapter2);
         layout.addView(view1);
 
-        return view2;
+        return layout;
     }
 
     public class MyAdapter extends ArrayAdapter<String> {
@@ -83,6 +83,7 @@ public class IfForInt extends FunctionStrip {
             FunctionStrip strip = JsonToStrip.fromJson(obj);
             View prev = strip.getPreview(context);
             return prev;
+
         }
     }
 
