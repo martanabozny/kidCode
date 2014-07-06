@@ -18,7 +18,9 @@ import java.util.Map;
  * Created by marta on 01.06.14.
  */
 public abstract class FunctionStrip extends Object {
+
     protected String name= "";
+
     protected void addAutocomplete(Context context, AutoCompleteTextView field, JSONArray previousVariables) {
         ArrayList<String> variables = new ArrayList<String>();
         for (int i = 0; i < previousVariables.length(); i++) {

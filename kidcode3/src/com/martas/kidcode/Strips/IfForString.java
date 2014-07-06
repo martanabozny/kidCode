@@ -25,7 +25,7 @@
 //    private String conditionText = "";
 //    private String functionText = "";
 //    ArrayList<String> list = new ArrayList<String>();
-//    CodeListAdapter adapter;
+//    CodeListAdapter codeAdapter;
 //    Boolean addClicked = false;
 //    Boolean deleteClicked = false;
 //
@@ -55,8 +55,8 @@
 //
 //        ListView lv = (ListView) view.findViewById(R.id.list);
 //
-//        adapter = new CodeListAdapter(view.getContext(), list);
-//        lv.setAdapter(adapter);
+//        codeAdapter = new CodeListAdapter(view.getContext(), list);
+//        lv.setAdapter(codeAdapter);
 //
 //        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
 //        final AutoCompleteTextView compareWith = (AutoCompleteTextView)view.findViewById(R.id.compareWith);
@@ -130,18 +130,18 @@
 //    public void add(View view) {
 //        addClicked = !addClicked;
 //        if (addClicked) {
-//            adapter.setMode(CodeListAdapter.Mode.MODE_ADD);
+//            codeAdapter.setMode(CodeListAdapter.Mode.MODE_ADD);
 //        } else {
-//            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
+//            codeAdapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
 //        }
 //    }
 //
 //    public void delete(View view) {
 //        deleteClicked = !deleteClicked;
 //        if (deleteClicked) {
-//            adapter.setMode(CodeListAdapter.Mode.MODE_DELETE);
+//            codeAdapter.setMode(CodeListAdapter.Mode.MODE_DELETE);
 //        } else {
-//            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
+//            codeAdapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
 //        }
 //    }
 //

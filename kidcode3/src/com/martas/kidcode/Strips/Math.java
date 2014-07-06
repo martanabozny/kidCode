@@ -1,6 +1,7 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -32,6 +33,8 @@ public class Math extends FunctionStrip {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.math_background);
         view.setText("" + name + " = " + a + " " + function + " " + b);
+        view.setTextSize(30);
+        view.setTextColor(Color.BLACK);
         return view;
     }
 
@@ -41,6 +44,10 @@ public class Math extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
         AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);
+
+        result.setText(name);
+        a_text.setText(a);
+        b_text.setText(b);
 
         addAutocomplete(context, result, previousVariables);
         addAutocomplete(context, a_text, previousVariables);
@@ -102,8 +109,7 @@ public class Math extends FunctionStrip {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 function = spinner.getSelectedItem().toString();
-                Log.e("kidcode", function);
-                Log.d("Math.itemListener", "Selected function: " + function);
+                 Log.d("Math.itemListener", "Selected function: " + function);
             }
 
             @Override

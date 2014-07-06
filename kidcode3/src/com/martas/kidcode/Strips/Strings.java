@@ -1,6 +1,7 @@
 package com.martas.kidcode.Strips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class Strings extends FunctionStrip {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.strings_background);
         view.setText("" + name + " = " + newText + "." + functionText);
+        view.setTextColor(Color.BLACK);
+        view.setTextSize(25);
         return view;
     }
 

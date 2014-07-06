@@ -55,13 +55,14 @@ public class CodeListAdapter extends ArrayAdapter<String> {
 
         strip.fromJson(obj);
 
-        if (mode == Mode.MODE_ADD) {
+        View preview = strip.getPreview(context);
 
+        if (mode == Mode.MODE_ADD) {
             LinearLayout layout = new LinearLayout(context);
             layout.setOrientation(LinearLayout.VERTICAL);
 
             Button plus = new Button(context);
-            plus.setHeight(90);
+            plus.setHeight(70);
             plus.setWidth(90);
             plus.setBackgroundResource(R.drawable.plusbutton_background);
             plus.setText("+");
@@ -79,12 +80,13 @@ public class CodeListAdapter extends ArrayAdapter<String> {
                         }
                     }
                     intent.putExtra("position", String.valueOf(position));
+                    intent.putExtra("mode", "add");
                     intent.putExtra("variables", variableList.toString());
                     ((Activity)getContext()).startActivityForResult(intent, 1);
                 }
             });
 
-            layout.addView(strip.getPreview(context));
+            layout.addView(preview);
             layout.addView(plus);
             return layout;
 
@@ -93,8 +95,9 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             layout.setOrientation(LinearLayout.HORIZONTAL);
 
             Button remove = new Button(context);
-            remove.setHeight(90);
+            //remove.setHeight(90);
             remove.setWidth(90);
+            remove.setPadding(0, 0, 0, 0);
 
             remove.setBackgroundResource(R.drawable.minusbutton_background);
             remove.setText("-");
@@ -106,16 +109,6 @@ public class CodeListAdapter extends ArrayAdapter<String> {
                 }
             });
 
-
-            View preview = strip.getPreview(context);
-
-            preview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), Setup.class);
-
-                }
-            });
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.weight = 2;
             preview.setLayoutParams(lp);
@@ -125,7 +118,30 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             layout.setWeightSum(2);
             return layout;
         } else {
-            return strip.getPreview(context);
+            preview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e("kidcode", "click");
+                    Intent intent = new Intent(getContext(), Setup.class);
+                    JSONArray variableList = new JSONArray();
+                    for (int i = 0; i <= position; i++) {
+                        try {
+                            JSONObject strip = new JSONObject(getItem(i).toString());
+                            variableList.put(0, strip.getString("name"));
+                        } catch (Exception e) {
+                            Log.e("MySimpleAdapter.getView", e.toString());
+                        }
+                    }
+                    intent.putExtra("position", String.valueOf(position));
+                    intent.putExtra("mode", "edit");
+                    intent.putExtra("strip", getItem(position));
+                    intent.putExtra("variables", variableList.toString());
+                    ((Activity)getContext()).startActivityForResult(intent, 1);
+
+                }
+            });
+
+            return preview;
         }
     }
 }

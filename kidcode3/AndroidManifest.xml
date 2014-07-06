@@ -60,7 +60,7 @@
 
         <activity android:name=".Open"
                   android:label="kidCode"
-                  android:theme="@android:style/Theme.Holo"
+                  android:theme="@android:style/Theme.NoTitleBar"
                   android:screenOrientation="fullSensor">
             <intent-filter>
 

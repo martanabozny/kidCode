@@ -70,6 +70,7 @@ public class Buttons extends Activity {
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), Setup.class);
                     intent.putExtra("variables", getIntent().getStringExtra("variables"));
+                    intent.putExtra("mode", getIntent().getStringExtra("mode"));
                     intent.putExtra("position", getIntent().getStringExtra("position"));
                     intent.putExtra("strip", getItem(position).toJson().toString());
                     startActivityForResult(intent, 1);

@@ -33,6 +33,7 @@ public class NewVariable extends FunctionStrip {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.new_variable_background);
         view.setText("" + kind + " " + name + " = " + valueText);
+        view.setTextSize(20);
         return view;
     }
 

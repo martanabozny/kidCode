@@ -45,14 +45,22 @@ public class Draw extends FunctionStrip {
     }
 
     public View getPreview(Context context) {
-        TextView view = new TextView(context);
-        view.setText("" + name + " = " + colorText + " " + figureText);
+
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.drawpreview, null);
+        TextView result = (TextView)view.findViewById(R.id.result);
+        result.setText(name);
+        TextView figure = (TextView)view.findViewById(R.id.figure);
+        figure.setText(figureText);
+        Button button = (Button)view.findViewById(R.id.colorPreview);
+        button.setBackgroundColor(Color.parseColor(colorText));
+
         return view;
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.draw, null);
+        view = inflater.inflate(R.layout.draw, null);
         Button button = null;
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
@@ -161,8 +169,9 @@ public class Draw extends FunctionStrip {
         }
     }
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
+        Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888);
 
-        Canvas canvas =new Canvas();
+        Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStrokeWidth(2);
         paint.setColor(Color.parseColor(colorText));
@@ -171,9 +180,9 @@ public class Draw extends FunctionStrip {
 
         if (figureText.contains("triangle")) {
 
-            Point point1_draw = new Point(0,0);
-            Point point2_draw = new Point(0,100);
-            Point point3_draw = new Point(87,50);
+            Point point1_draw = new Point(50, 50);
+            Point point2_draw = new Point(50,250);
+            Point point3_draw = new Point(200, 150);
 
             Path path = new Path();
             path.setFillType(Path.FillType.EVEN_ODD);
@@ -191,7 +200,6 @@ public class Draw extends FunctionStrip {
             canvas.drawCircle(100,100, 80,paint);
         }
 
-        Bitmap bitmap = Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
         File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
 
         if (!f.exists()) {
@@ -201,11 +209,11 @@ public class Draw extends FunctionStrip {
         try {
              Calendar cal = Calendar.getInstance();
              SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-             filename = "kidcode-" + sdf.format(cal.getTime());
-             File output = new File(f.getAbsolutePath() + "/" + filename + ".jpg");
+             filename = f.getAbsolutePath() + "/kidcode-" + sdf.format(cal.getTime()) + ".jpg";
+             File output = new File(filename);
              output.createNewFile();
              FileOutputStream fos = new FileOutputStream(output);
-             bitmap.compress(Bitmap.CompressFormat.JPEG, 1, fos);
+             bitmap.compress(Bitmap.CompressFormat.JPEG, 99, fos);
              fos.close();
         } catch (Exception e) {
             Log.e("kidcode", Log.getStackTraceString(e));

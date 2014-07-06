@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.text.Editable;
@@ -42,7 +43,9 @@ public class Foto extends FunctionStrip {
         layout.setBackgroundResource(R.drawable.foto_background);
 
         TextView tv = new TextView(context);
-        tv.setText(name + " = ");
+        tv.setText(name + " " + " = " + " ");
+        tv.setTextSize(20);
+        tv.setTextColor(Color.BLACK);
 
         layout.addView(tv);
         try {

@@ -35,7 +35,9 @@ public class Fotoop extends FunctionStrip {
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.fotoop_background);
-        view.setText("" + name + " = " + variableText + "." + functionText);
+        view.setText("" + name + " = " + variableText + "." +  " " + functionText);
+        view.setTextColor(Color.BLACK);
+        view.setTextSize(20);
         return view;
     }
 

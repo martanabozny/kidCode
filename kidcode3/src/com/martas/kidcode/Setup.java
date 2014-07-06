@@ -27,6 +27,7 @@ public class Setup extends Activity {
 
     public void showStrip() {
         String strip = getIntent().getStringExtra("strip");
+        Log.e("kidcode", strip);
         try {
             JSONObject obj = new JSONObject(strip);
             fstrip = JsonToStrip.fromJson(obj);
@@ -34,11 +35,10 @@ public class Setup extends Activity {
 
             FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
             JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
-            Log.e("Setup.onCreate", variables.toString());
+            Log.e("kidcode", variables.toString());
             frame.addView(fstrip.getSetup(this, variables));
         } catch (Exception e) {
-            Log.e("Setup.onCreate", e.toString());
-            Log.e("Setup.onCreate", Log.getStackTraceString(e));
+            Log.e("kidcode", Log.getStackTraceString(e));
         }
     }
 
@@ -53,6 +53,7 @@ public class Setup extends Activity {
     public void  okClicked(View view) {
         Intent intent = new Intent();
         intent.putExtra("position", getIntent().getStringExtra("position"));
+        intent.putExtra("mode", getIntent().getStringExtra("mode"));
         intent.putExtra("strip", fstrip.toJson().toString());
         setResult(1, intent);
         finish();

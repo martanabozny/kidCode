@@ -8,13 +8,13 @@
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/result" android:layout_weight="0.3"/>
+            android:id="@+id/result" android:layout_weight="0.5" android:textColor="#000000" android:textSize="25dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:text="="/>
+            android:id="@+id/editText" android:text="=" android:textSize="30dp" android:textColor="#000000"/>
     <SeekBar
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/value" android:layout_weight="1.7" android:max="100"/>
+            android:id="@+id/value" android:layout_weight="1.5" android:max="100"/>
 </LinearLayout>

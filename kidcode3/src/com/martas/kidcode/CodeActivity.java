@@ -78,8 +78,14 @@ public class CodeActivity extends Activity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null) {
+
             int position = Integer.parseInt(data.getStringExtra("position"));
-            list.add(position+1, data.getStringExtra("strip"));
+            if (data.getStringExtra("mode").equals("edit")) {
+                list.remove(position);
+                list.add(position, data.getStringExtra("strip"));
+            } else if (data.getStringExtra("mode").equals("add")) {
+                list.add(position+1, data.getStringExtra("strip"));
+            }
             adapter.notifyDataSetChanged();
         }
     }
@@ -220,7 +226,7 @@ public class CodeActivity extends Activity {
                 break;
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Something is wrong!", Toast.LENGTH_LONG).show();
-                Log.e("CodeActivity.run", e.toString());
+                Log.e("kidcode", Log.getStackTraceString(e));
                 break;
             }
         }

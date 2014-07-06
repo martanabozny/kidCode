@@ -2,6 +2,7 @@ package com.martas.kidcode.Strips;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -29,8 +30,8 @@ public class IfForInt extends FunctionStrip {
     private String conditionText = "";
     private String functionText = "";
     ArrayList<String> list = new ArrayList<String>();
-    CodeListAdapter adapter;
-    MyAdapter adapter2;
+    CodeListAdapter codeAdapter;
+    PreviewAdapter previewAdapter;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
 
@@ -43,47 +44,50 @@ public class IfForInt extends FunctionStrip {
     public View getPreview(Context context) {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setBackgroundResource(R.drawable.condition_background);
 
-        TextView view2 = new TextView(context);
-        view2.setBackgroundResource(R.drawable.condition_background);
+        TextView condition = new TextView(context);
+        condition.setTextSize(20);
+        condition.setTextColor(Color.BLACK);
+        //view2.setBackgroundResource(R.drawable.condition_background);
         if(conditionText.contains("check")) {
-        view2.setText("" + "if (" + name + "." + functionText + ")");
+            condition.setText("" + "if (" + name + "." + functionText + ")");
         } else if (conditionText.contains("compare")){
-            view2.setText("" + "if (" + name + functionText + value2 + ")");
+            condition.setText("" + "if (" + name + functionText + value2 + ")");
         }
-        layout.addView(view2);
+        layout.addView(condition);
 
-        ListView view1 = new ListView(context);
-        adapter2 = new MyAdapter(context, list);
-        view1.setAdapter(adapter2);
-        layout.addView(view1);
+        ListView stripList = new ListView(context);
+        layout.addView(stripList);
+        previewAdapter = new PreviewAdapter(context, list);
+        stripList.setAdapter(previewAdapter);
+        previewAdapter.notifyDataSetChanged();
+
+        Log.e("kidcode", "getPreview: " + list.size());
 
         return layout;
     }
 
-    public class MyAdapter extends ArrayAdapter<String> {
-        private final Context context;
-        ArrayList<String> list;
-
-        public MyAdapter(Context context, ArrayList<String> list) {
+    public class PreviewAdapter extends ArrayAdapter<String> {
+        public PreviewAdapter(Context context, ArrayList<String> list) {
             super(context, R.layout.codeactivity, list);
-            this.list = list;
-            this.context = context;
         }
 
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Log.e("kidcode", "Adding: " + getItem(position) + " at position " + position);
+
             JSONObject obj;
             try {
                 obj = new JSONObject(getItem(position));
+                FunctionStrip strip = JsonToStrip.fromJson(obj);
+                View prev = strip.getPreview(getContext());
+                Log.e("kidcode", "return prev;");
+                return prev;
             } catch (Exception e) {
+                Log.e("kidcode", "return null;");
                 return  null;
             }
-
-            FunctionStrip strip = JsonToStrip.fromJson(obj);
-            View prev = strip.getPreview(context);
-            return prev;
-
         }
     }
 
@@ -92,8 +96,8 @@ public class IfForInt extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.ifxml, null);
 
-        final String[] functions = {"is odd", "is even"};
-        final String[] functions2 = {"==", "!=", "<", ">"};
+        final String[] functions_check = {"is odd", "is even"};
+        final String[] functions_compare = {"==", "!=", "<", ">"};
 
 
         Button addButton = (Button)view.findViewById(R.id.add);
@@ -156,16 +160,16 @@ public class IfForInt extends FunctionStrip {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 1){
 
-                    if (functions != null){
-                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions);
+                    if (functions_check != null){
+                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions_check);
                         function.setAdapter(arrayAdapter);
                         conditionText = "check";
                         arrayAdapter.notifyDataSetChanged();
                         function.setVisibility(View.VISIBLE);
                     }
                 } else if (i == 2){
-                    if (functions2 != null){
-                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions2);
+                    if (functions_compare != null){
+                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions_compare);
                         function.setAdapter(arrayAdapter);
                         conditionText = "compare";
                         arrayAdapter.notifyDataSetChanged();
@@ -193,29 +197,28 @@ public class IfForInt extends FunctionStrip {
             }
         });
 
-        adapter = new CodeListAdapter(view.getContext(), list);
+        codeAdapter = new CodeListAdapter(view.getContext(), list);
         ListView lv = (ListView) view.findViewById(R.id.list);
-        lv.setAdapter(adapter);
+        lv.setAdapter(codeAdapter);
 
         return view;
     }
 
     public void add() {
-        Log.e("kidcode", "" + list.size());
         addClicked = !addClicked;
         if (addClicked) {
-            adapter.setMode(CodeListAdapter.Mode.MODE_ADD);
+            codeAdapter.setMode(CodeListAdapter.Mode.MODE_ADD);
         } else {
-            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
+            codeAdapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
         }
     }
 
     public void delete() {
         deleteClicked = !deleteClicked;
         if (deleteClicked) {
-            adapter.setMode(CodeListAdapter.Mode.MODE_DELETE);
+            codeAdapter.setMode(CodeListAdapter.Mode.MODE_DELETE);
         } else {
-            adapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
+            codeAdapter.setMode(CodeListAdapter.Mode.MODE_NORMAL);
         }
     }
 
@@ -231,6 +234,7 @@ public class IfForInt extends FunctionStrip {
             JSONArray strips = new JSONArray();
             for (int i = 1; i < list.size(); i++) {
                 strips.put(list.get(i));
+                Log.e("kidcode", "toJson: " + list.get(i));
             }
             object.put("strips", strips.toString());
         } catch (JSONException e) {
@@ -246,14 +250,16 @@ public class IfForInt extends FunctionStrip {
             name = object.get("name").toString();
 
 
+            list.clear();
             Empty empty = new Empty();
             list.add(empty.toJson().toString());
             JSONArray strips = new JSONArray(object.getString("strips"));
             for (int i = 0; i < strips.length(); i++) {
                 list.add(strips.getString(i));
+                Log.e("kidcode", "fromJson: " + strips.getString(i));
             }
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
+            if (codeAdapter != null) {
+                codeAdapter.notifyDataSetChanged();
             }
         } catch (JSONException e) {
 
@@ -271,8 +277,8 @@ public class IfForInt extends FunctionStrip {
         if (intent != null) {
             int position = Integer.parseInt(intent.getStringExtra("position"));
             list.add(position+1, intent.getStringExtra("strip"));
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
+            if (codeAdapter != null) {
+                codeAdapter.notifyDataSetChanged();
             }
         }
     }
