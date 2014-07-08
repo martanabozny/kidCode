@@ -33,10 +33,15 @@ public class CodeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.codeactivity);
 
-        Intent myIntent = new Intent();
-        myIntent.setClass(this, AccelerometerService.class);
-        startService(myIntent);
-        Log.e("service", "start");
+
+        try {
+            Intent myIntent = new Intent();
+            myIntent.setClass(this, AccelerometerService.class);
+            startService(myIntent);
+            Log.e("service", "start");
+        } catch (Exception e) {
+            Log.e("service", Log.getStackTraceString(e));
+        }
 
 
         mPrefs = getSharedPreferences("strips", MODE_PRIVATE);
@@ -108,6 +113,7 @@ public class CodeActivity extends Activity {
 
         ed.putString("strips", jarray.toString());
         ed.commit();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

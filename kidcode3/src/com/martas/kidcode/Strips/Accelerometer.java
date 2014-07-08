@@ -45,6 +45,7 @@ public class Accelerometer extends FunctionStrip {
     };
 
 
+
     public ImageButton getButton(final Context context) {
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.accel);
@@ -64,7 +65,7 @@ public class Accelerometer extends FunctionStrip {
         view = inflater.inflate(R.layout.accelerometerpreview, null);
 
         SeekBar value = (SeekBar)view.findViewById(R.id.value);
-        if(accel.equals("x")) {
+        if (accel.equals("x")) {
             value.setProgress(mService.returnX());
         } else if (accel.equals("y")) {
             value.setProgress(mService.returnY());
@@ -116,6 +117,7 @@ public class Accelerometer extends FunctionStrip {
             context.bindService(intent, mConnection, context.BIND_AUTO_CREATE);
             isConnection = true;
             Log.e("service", "isConnection =" + isConnection);
+            Log.e("service", ""+ mConnection);
         }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -127,10 +129,14 @@ public class Accelerometer extends FunctionStrip {
         SeekBar z = (SeekBar) view.findViewById(R.id.z);
 
         if (mService != null){
-            x.setProgress(mService.returnX());
-            y.setProgress(mService.returnY());
-            z.setProgress(mService.returnZ());
+            while(true){
+                x.setProgress(mService.returnX());
+                y.setProgress(mService.returnY());
+                z.setProgress(mService.returnZ());
+            }
         }
+
+
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         addAutocomplete(context, result, previousVariables);

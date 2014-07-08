@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3"
+                  android:id="@+id/linearLayout" android:layout_marginBottom="70dp">
+        <AutoCompleteTextView android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/result"
+                              android:layout_weight="1"/>
+        <EditText android:layout_width="30dp" android:layout_height="wrap_content" android:id="@+id/sign"
+                  android:text="=" android:textColor="#fffede" android:enabled="false"/>
+        <AutoCompleteTextView android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/text"
+                              android:layout_weight="1"/>
+        <Spinner android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/function"
+                 android:layout_weight="1" android:entries="@array/string_functions"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:weightSum="3">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:id="@+id/textView" android:textColor="#ffffff" android:textSize="30dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="lower"
+                    android:id="@+id/textView2"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TEXT"
+                    android:id="@+id/textView3" android:textColor="#ffffff" android:textSize="30dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="upper"
+                    android:id="@+id/textView4"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="txet"
+                    android:id="@+id/reverse" android:textColor="#ffffff" android:textSize="30dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="reverse"
+                    android:id="@+id/textView6"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

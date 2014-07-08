@@ -79,6 +79,8 @@ public class Draw extends FunctionStrip {
         list.add("#800080");
         list.add( "#008000");
         list.add( "#0000FF");
+        list.add("#00FFFF");
+        list.add("#FFC0CB");
 
         adapter.notifyDataSetChanged();
 
@@ -125,7 +127,8 @@ public class Draw extends FunctionStrip {
             ImageButton button = new ImageButton(getContext());
             button.setBackgroundColor(Color.parseColor(getItem(position)));
             button.setMinimumHeight(80);
-            button.setPadding(20, 20, 20, 20);
+            button.setAdjustViewBounds(true);
+            button.setPadding(5, 5, 5, 5);
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -40,13 +40,16 @@ public class Strings extends FunctionStrip {
 
     public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.strings, null);
+        View view = inflater.inflate(R.layout.strings2, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
 
         addAutocomplete(context, result, previousVariables);
         addAutocomplete(context, text, previousVariables);
+
+        TextView reverse = (TextView)view.findViewById(R.id.reverse);
+
 
         final Spinner function = (Spinner)view.findViewById(R.id.function);
         functionText = function.getSelectedItem().toString();

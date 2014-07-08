@@ -12,7 +12,7 @@
         <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/result" android:layout_weight="1"/>
+                android:id="@+id/result" android:layout_weight="1" android:hint="variable name..."/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,8 +28,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/colorPreview" android:layout_weight="0.5"/>
     </LinearLayout>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose figure's color:"
+            android:id="@+id/textView2" android:layout_marginBottom="15dp"/>
     <GridView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
             android:id="@+id/colors"/>
 </LinearLayout>
