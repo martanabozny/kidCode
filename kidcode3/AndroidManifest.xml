@@ -68,6 +68,11 @@
             </intent-filter>
         </activity>
 
+        <service
+                android:enabled="true"
+                android:name=".AccelerometerService">
+        </service>
+
         <activity android:name=".Save"
                   android:label="kidCode"
                   android:theme="@android:style/Theme.Holo"

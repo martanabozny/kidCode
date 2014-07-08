@@ -1,13 +1,18 @@
 package com.martas.kidcode.Strips;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.*;
+import android.os.IBinder;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import com.martas.kidcode.AccelerometerService;
 import com.martas.kidcode.FunctionStrip;
 import com.martas.kidcode.R;
 import org.json.JSONArray;
@@ -19,21 +24,34 @@ import java.util.HashMap;
 /**
  * Created by marta on 01.06.14.
  */
-public class Accelerometer extends FunctionStrip implements SensorEventListener {
-    private String accel = "x";
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    int x_,y_,z_;
+public class Accelerometer extends FunctionStrip {
+
+    String accel = "";
     View view;
     boolean has_result = false;
+    int x_,y_,z_;
+    boolean isConnection = false;
+    //enum Mode {
+        //SETUP,
+        //PREVIEW,
+        //HIDDEN,
+    //}
 
-    enum Mode {
-        SETUP,
-        PREVIEW,
-        HIDDEN,
-    }
+    //Mode mode = Mode.HIDDEN;
 
-    Mode mode = Mode.HIDDEN;
+    public AccelerometerService mService;
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            AccelerometerService.LocalBinder binder = (AccelerometerService.LocalBinder) service;
+            mService = binder.getService();
+        }
+        public void onServiceDisconnected(ComponentName className) {
+            mService = null;
+        }
+    };
+
 
     public ImageButton getButton(final Context context) {
         ImageButton button = new ImageButton(context);
@@ -42,62 +60,85 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public View getPreview(Context context) {
-        mode = Mode.PREVIEW;
+
+        if (isConnection = false){
+            Intent intent = new Intent(context, AccelerometerService.class);
+            context.bindService(intent, mConnection, context.BIND_AUTO_CREATE);
+            isConnection = true;
+            Log.e("service", "isConnection =" + isConnection);
+        }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.accelerometerpreview, null);
 
+        SeekBar value = (SeekBar)view.findViewById(R.id.value);
+        if(accel.equals("x")) {
+            value.setProgress(x_);
+        } else if (accel.equals("y")) {
+            value.setProgress(y_);
+        } else if (accel.equals("z")) {
+            value.setProgress(z_);
+        }
         TextView result = (TextView)view.findViewById(R.id.result);
         result.setText(name);
-
-        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
         return view;
     }
 
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
-    public void onSensorChanged(SensorEvent event) {
-        x_ = (int)(event.values[0]*5 + 50);
-        y_ = (int)(event.values[1]*5 + 50);
-        z_ = (int)(event.values[2]*5 + 50);
-
-        has_result = true;
-
-        if (mode == Mode.SETUP) {
-            Spinner spinner = (Spinner)view.findViewById(R.id.accels);
-            SeekBar x = (SeekBar) view.findViewById(R.id.x);
-            SeekBar y = (SeekBar) view.findViewById(R.id.y);
-            SeekBar z = (SeekBar) view.findViewById(R.id.z);
-
-            x.setProgress(x_);
-            y.setProgress(y_);
-            z.setProgress(z_);
-        } else if (mode == Mode.PREVIEW) {
-            SeekBar value = (SeekBar)view.findViewById(R.id.value);
-            if(accel.equals("x")) {
-                value.setProgress(x_);
-            } else if (accel.equals("y")) {
-                value.setProgress(y_);
-            } else if (accel.equals("z")) {
-                value.setProgress(z_);
-            }
-        }
-    }
+//    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+//
+//    }
+//
+//    public void onSensorChanged(SensorEvent event) {
+//        x_ = (int)(event.values[0]*5 + 50);
+//        y_ = (int)(event.values[1]*5 + 50);
+//        z_ = (int)(event.values[2]*5 + 50);
+//
+//        has_result = true;
+//
+//        if (mode == Mode.SETUP) {
+//            Spinner spinner = (Spinner)view.findViewById(R.id.accels);
+//            SeekBar x = (SeekBar) view.findViewById(R.id.x);
+//            SeekBar y = (SeekBar) view.findViewById(R.id.y);
+//            SeekBar z = (SeekBar) view.findViewById(R.id.z);
+//
+//            x.setProgress(x_);
+//            y.setProgress(y_);
+//            z.setProgress(z_);
+//        } else if (mode == Mode.PREVIEW) {
+//            SeekBar value = (SeekBar)view.findViewById(R.id.value);
+//            if(accel.equals("x")) {
+//                value.setProgress(x_);
+//            } else if (accel.equals("y")) {
+//                value.setProgress(y_);
+//            } else if (accel.equals("z")) {
+//                value.setProgress(z_);
+//            }
+//        }
+//    }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-        mode = Mode.SETUP;
+
+        if (isConnection = false){
+            Intent intent = new Intent(context, AccelerometerService.class);
+            context.bindService(intent, mConnection, context.BIND_AUTO_CREATE);
+            isConnection = true;
+            Log.e("service", "isConnection =" + isConnection);
+        }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.accelerometer, null);
+        Spinner spinner = (Spinner)view.findViewById(R.id.accels);
 
-        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        SeekBar x = (SeekBar) view.findViewById(R.id.x);
+        SeekBar y = (SeekBar) view.findViewById(R.id.y);
+        SeekBar z = (SeekBar) view.findViewById(R.id.z);
+
+        if (mService != null){
+            x.setProgress(mService.returnX());
+            y.setProgress(mService.returnY());
+            z.setProgress(mService.returnZ());
+        }
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         addAutocomplete(context, result, previousVariables);
@@ -183,4 +224,6 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
 
         return r;
     }
+
+
 }

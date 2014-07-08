@@ -33,6 +33,12 @@ public class CodeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.codeactivity);
 
+        Intent myIntent = new Intent();
+        myIntent.setClass(this, AccelerometerService.class);
+        startService(myIntent);
+        Log.e("service", "start");
+
+
         mPrefs = getSharedPreferences("strips", MODE_PRIVATE);
         if (mPrefs != null) {
             list.clear();
