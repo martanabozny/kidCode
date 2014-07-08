@@ -28,17 +28,9 @@ public class Accelerometer extends FunctionStrip {
 
     String accel = "";
     View view;
-    boolean has_result = false;
     int x_,y_,z_;
+    boolean has_result = false;
     boolean isConnection = false;
-    //enum Mode {
-        //SETUP,
-        //PREVIEW,
-        //HIDDEN,
-    //}
-
-    //Mode mode = Mode.HIDDEN;
-
     public AccelerometerService mService;
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -61,7 +53,7 @@ public class Accelerometer extends FunctionStrip {
 
     public View getPreview(Context context) {
 
-        if (isConnection = false){
+        if (isConnection == false){
             Intent intent = new Intent(context, AccelerometerService.class);
             context.bindService(intent, mConnection, context.BIND_AUTO_CREATE);
             isConnection = true;
@@ -73,11 +65,11 @@ public class Accelerometer extends FunctionStrip {
 
         SeekBar value = (SeekBar)view.findViewById(R.id.value);
         if(accel.equals("x")) {
-            value.setProgress(x_);
+            value.setProgress(mService.returnX());
         } else if (accel.equals("y")) {
-            value.setProgress(y_);
+            value.setProgress(mService.returnY());
         } else if (accel.equals("z")) {
-            value.setProgress(z_);
+            value.setProgress(mService.returnZ());
         }
         TextView result = (TextView)view.findViewById(R.id.result);
         result.setText(name);
@@ -119,7 +111,7 @@ public class Accelerometer extends FunctionStrip {
 
     public View getSetup(Context context, JSONArray previousVariables) {
 
-        if (isConnection = false){
+        if (isConnection == false){
             Intent intent = new Intent(context, AccelerometerService.class);
             context.bindService(intent, mConnection, context.BIND_AUTO_CREATE);
             isConnection = true;
