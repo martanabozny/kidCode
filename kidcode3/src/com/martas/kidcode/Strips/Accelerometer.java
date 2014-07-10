@@ -49,9 +49,9 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public View getPreview(Context context) {
-//        mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
-//        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         mode = Mode.PREVIEW;
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -104,9 +104,9 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-//        mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
-//        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         mode = Mode.SETUP;
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -190,31 +190,26 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
 //        }
 
         HashMap<String, String> r = new HashMap<String, String>();
-        r.put(name, "" + accelint);
-//        if(accel.equals("x")) {
-//            r.put(name, "" + x_);
-//        } else if (accel.equals("y")) {
-//            r.put(name, "" + y_);
-//        } else if (accel.equals("z")) {
-//            r.put(name, "" + z_);
-//        }
-//
-//        Log.e("Accel.run", r.get(name));
+
+        if(accel.equals("x")) {
+            r.put(name, "" + x_);
+        } else if (accel.equals("y")) {
+            r.put(name, "" + y_);
+        } else if (accel.equals("z")) {
+            r.put(name, "" + z_);
+        }
+
+        Log.e("Accel.run", r.get(name));
 
         return r;
     }
 
-    public int accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x,int y, int z) {
         x_ = x;
         y_ = y;
         z_ = z;
-        if(accel.equals("x")) {
-            accelint = x;
-        } else if (accel.equals("y")) {
-            accelint = y;
-        } else if (accel.equals("z")) {
-           accelint = z;
-        }
-        return accelint;
+
+        Log.e("Accel.run","" + x_+ " " + y_ + " " + z_);
     }
+
 }

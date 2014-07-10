@@ -6,6 +6,7 @@ import android.content.*;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -32,12 +33,16 @@ public class CodeActivity extends Activity implements SensorEventListener {
     Boolean addClicked = false;
     Boolean deleteClicked = false;
     int x_,y_,z_;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.codeactivity);
-
+        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
         try {
             Intent myIntent = new Intent();
@@ -83,6 +88,8 @@ public class CodeActivity extends Activity implements SensorEventListener {
         x_ = (int)(event.values[0]*5 + 50);
         y_ = (int)(event.values[1]*5 + 50);
         z_ = (int)(event.values[2]*5 + 50);
+
+        //Log.e("Accel.run","" + x_+ " " + y_ + " " + z_);
     }
 
     public void add(View view) {

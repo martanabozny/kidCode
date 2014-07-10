@@ -45,7 +45,7 @@ public class Empty extends FunctionStrip {
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         return null;
     }
-    public int accelerometerVariable(int x,int y, int z) {
-        return 0;
+    public void accelerometerVariable(int x,int y, int z) {
+
     }
 }

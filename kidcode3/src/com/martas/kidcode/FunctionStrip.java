@@ -65,6 +65,6 @@ public abstract class FunctionStrip extends Object {
         }
     }
 
-    public abstract int accelerometerVariable(int x, int y, int z);
+    public abstract void accelerometerVariable(int x, int y, int z);
 
 }

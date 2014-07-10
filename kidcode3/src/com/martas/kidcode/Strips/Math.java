@@ -166,7 +166,6 @@ public class Math extends FunctionStrip {
         return r;
     }
 
-    public int accelerometerVariable(int x,int y, int z) {
-        return 0;
+    public void accelerometerVariable(int x,int y, int z) {
     }
 }
