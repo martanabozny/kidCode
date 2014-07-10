@@ -238,21 +238,13 @@ public class CodeActivity extends Activity implements SensorEventListener {
 
     public void run(View view) {
 
-        for(int i =0; i<list.size(); i++) {
-            try{
-                JSONObject strip = new JSONObject(list.get(i));
-                FunctionStrip fstrip = JsonToStrip.fromJson(strip);
-                fstrip.accelerometerVariable(x_, y_, z_);
-
-            }catch (Exception e) {}
-        }
-
         HashMap<String,String> results = new HashMap<String, String>();
         for(int i =0; i<list.size(); i++) {
             try {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                 fstrip.fromJson(strip);
+                fstrip.accelerometerVariable(x_, y_, z_);
                 HashMap<String,String> result = fstrip.run(this, results);
                 if (result != null) {
                     results.putAll(result);

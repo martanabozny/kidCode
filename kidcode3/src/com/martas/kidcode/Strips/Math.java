@@ -24,10 +24,16 @@ public class Math extends FunctionStrip {
     private String function = "+";
 
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.math);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("math");
+        layout.addView(text);
+        return layout;
     }
     public View getPreview(Context context) {
         TextView view = new TextView(context);

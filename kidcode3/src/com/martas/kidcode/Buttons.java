@@ -64,7 +64,7 @@ public class Buttons extends Activity {
             super(context, R.layout.codeactivity, list);
         }
         public View getView(final int position, View convertView, ViewGroup parent) {
-            ImageButton button = getItem(position).getButton(getContext());
+            LinearLayout button = getItem(position).getButton(getContext());
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,8 +77,8 @@ public class Buttons extends Activity {
                 }
             });
 
-            button.setAdjustViewBounds(false);
-            button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            //button.setAdjustViewBounds(false);
+            //button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             button.setPadding(5, 5, 5, 5);
 
             return button;

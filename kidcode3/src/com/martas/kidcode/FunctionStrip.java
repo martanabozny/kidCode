@@ -39,7 +39,7 @@ public abstract class FunctionStrip extends Object {
 
     }
 
-    public abstract ImageButton getButton(Context context);
+    public abstract LinearLayout getButton(Context context);
     public abstract View getPreview(Context context);
     public abstract View getSetup(Context context, JSONArray previousVariables);
     public abstract JSONObject toJson();

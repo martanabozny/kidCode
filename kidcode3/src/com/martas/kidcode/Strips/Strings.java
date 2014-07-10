@@ -23,10 +23,16 @@ public class Strings extends FunctionStrip {
     private String newText = "";
     private String functionText = "";
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.string);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("strings");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {

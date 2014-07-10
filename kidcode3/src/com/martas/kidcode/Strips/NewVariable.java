@@ -23,10 +23,16 @@ public class NewVariable extends FunctionStrip {
     private String kind = "";
 
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.new_variable);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("new variable");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {

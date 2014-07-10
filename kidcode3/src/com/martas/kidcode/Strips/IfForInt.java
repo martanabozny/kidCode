@@ -35,10 +35,16 @@ public class IfForInt extends FunctionStrip {
     Boolean addClicked = false;
     Boolean deleteClicked = false;
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.condition);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("if for numbers");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {

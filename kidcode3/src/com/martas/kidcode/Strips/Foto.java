@@ -31,10 +31,16 @@ public class Foto extends FunctionStrip {
     String path = "";
     View view;
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.foto);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("camera");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {

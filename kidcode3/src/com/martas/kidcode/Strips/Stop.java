@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.martas.kidcode.*;
 import org.json.JSONArray;
@@ -21,10 +22,16 @@ import java.util.HashMap;
 public class Stop extends FunctionStrip {
 
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.stop);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("stop programm");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {

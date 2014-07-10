@@ -29,6 +29,7 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     String accel = "";
     View view;
     int x_,y_,z_;
+    int xCode, yCode, zCode;
     volatile boolean has_result = false;
     int accelint;
 
@@ -42,10 +43,16 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
     Mode mode = Mode.HIDDEN;
 
-    public ImageButton getButton(final Context context) {
+    public LinearLayout getButton(final Context context) {
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
         button.setBackgroundResource(R.drawable.accel);
-        return button;
+        layout.addView(button);
+        TextView text = new TextView(context);
+        text.setText("accelerometer");
+        layout.addView(text);
+        return layout;
     }
 
     public View getPreview(Context context) {
@@ -192,11 +199,11 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         HashMap<String, String> r = new HashMap<String, String>();
 
         if(accel.equals("x")) {
-            r.put(name, "" + x_);
+            r.put(name, "" + xCode);
         } else if (accel.equals("y")) {
-            r.put(name, "" + y_);
+            r.put(name, "" + yCode);
         } else if (accel.equals("z")) {
-            r.put(name, "" + z_);
+            r.put(name, "" + zCode);
         }
 
         Log.e("Accel.run", r.get(name));
@@ -205,9 +212,9 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public void accelerometerVariable(int x,int y, int z) {
-        x_ = x;
-        y_ = y;
-        z_ = z;
+        xCode = x;
+        yCode = y;
+        zCode = z;
 
         Log.e("Accel.run","" + x_+ " " + y_ + " " + z_);
     }
