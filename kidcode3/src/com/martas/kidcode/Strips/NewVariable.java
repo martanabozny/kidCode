@@ -112,4 +112,8 @@ public class NewVariable extends FunctionStrip {
         r.put(name, "" + valueText);
         return r;
     }
+
+    public int accelerometerVariable(int x,int y, int z) {
+        return 0;
+    }
 }

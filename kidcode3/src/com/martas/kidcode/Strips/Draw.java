@@ -226,4 +226,8 @@ public class Draw extends FunctionStrip {
         r.put(name, filename);
         return r;
     }
+
+    public int accelerometerVariable(int x,int y, int z) {
+        return 0;
+    }
 }

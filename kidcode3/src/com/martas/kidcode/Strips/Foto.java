@@ -186,4 +186,8 @@ public class Foto extends FunctionStrip {
         r.put(name, path);
         return r;
     }
+
+    public int accelerometerVariable(int x,int y, int z) {
+        return 0;
+    }
 }

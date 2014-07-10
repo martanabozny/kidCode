@@ -13,5 +13,5 @@
     <AutoCompleteTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/autoCompleteTextView" android:hint="variable name..." android:layout_weight="1"/>
+            android:id="@+id/result" android:hint="variable name..." android:layout_weight="1"/>
 </LinearLayout>

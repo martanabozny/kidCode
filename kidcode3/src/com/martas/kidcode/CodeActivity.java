@@ -3,6 +3,9 @@ package com.martas.kidcode;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.*;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -21,12 +24,14 @@ import java.util.HashMap;
 /**
  * Created by marta on 01.06.14.
  */
-public class CodeActivity extends Activity {
+public class CodeActivity extends Activity implements SensorEventListener {
+
     private SharedPreferences mPrefs;
     ArrayList<String> list = new ArrayList<String>();
     CodeListAdapter adapter;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
+    int x_,y_,z_;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,17 @@ public class CodeActivity extends Activity {
 
         adapter = new CodeListAdapter(this, list);
         lv.setAdapter(adapter);
+    }
+
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    public void onSensorChanged(SensorEvent event) {
+
+        x_ = (int)(event.values[0]*5 + 50);
+        y_ = (int)(event.values[1]*5 + 50);
+        z_ = (int)(event.values[2]*5 + 50);
     }
 
     public void add(View view) {
@@ -214,13 +230,23 @@ public class CodeActivity extends Activity {
     }
 
     public void run(View view) {
+
+        for(int i =0; i<list.size(); i++) {
+            try{
+                JSONObject strip = new JSONObject(list.get(i));
+                FunctionStrip fstrip = JsonToStrip.fromJson(strip);
+                fstrip.accelerometerVariable(x_, y_, z_);
+
+            }catch (Exception e) {}
+        }
+
         HashMap<String,String> results = new HashMap<String, String>();
         for(int i =0; i<list.size(); i++) {
             try {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                 fstrip.fromJson(strip);
-                HashMap<String,String> result = fstrip.run(getApplicationContext(), results);
+                HashMap<String,String> result = fstrip.run(this, results);
                 if (result != null) {
                     results.putAll(result);
                 }

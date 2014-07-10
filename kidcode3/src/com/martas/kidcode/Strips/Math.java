@@ -165,4 +165,8 @@ public class Math extends FunctionStrip {
         r.put(name, "" + result);
         return r;
     }
+
+    public int accelerometerVariable(int x,int y, int z) {
+        return 0;
+    }
 }
