@@ -65,17 +65,20 @@ public class Buttons extends Activity {
         }
         public View getView(final int position, View convertView, ViewGroup parent) {
             LinearLayout button = getItem(position).getButton(getContext());
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), Setup.class);
-                    intent.putExtra("variables", getIntent().getStringExtra("variables"));
-                    intent.putExtra("mode", getIntent().getStringExtra("mode"));
-                    intent.putExtra("position", getIntent().getStringExtra("position"));
-                    intent.putExtra("strip", getItem(position).toJson().toString());
-                    startActivityForResult(intent, 1);
-                }
-            });
+            for (int i = 0; i < button.getChildCount(); i++) {
+                View child = button.getChildAt(i);
+                child.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Setup.class);
+                        intent.putExtra("variables", getIntent().getStringExtra("variables"));
+                        intent.putExtra("mode", getIntent().getStringExtra("mode"));
+                        intent.putExtra("position", getIntent().getStringExtra("position"));
+                        intent.putExtra("strip", getItem(position).toJson().toString());
+                        startActivityForResult(intent, 1);
+                    }
+                });
+            }
 
             //button.setAdjustViewBounds(false);
             //button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);

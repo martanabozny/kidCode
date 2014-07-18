@@ -64,13 +64,15 @@ public class IfForInt extends FunctionStrip {
         layout.addView(condition);
 
         ListView stripList = new ListView(context);
-        layout.addView(stripList);
         previewAdapter = new PreviewAdapter(context, list);
         stripList.setAdapter(previewAdapter);
+        stripList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.FILL_PARENT, 1));
+        layout.addView(stripList);
         previewAdapter.notifyDataSetChanged();
 
         Log.e("kidcode", "getPreview: " + list.size());
-
+        layout.setWeightSum(1);
+        layout.setMinimumHeight(300);
         return layout;
     }
 

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,11 +132,16 @@ public class Save extends ListActivity {
         }
 
         if (kidCodeDir != null) {
+            Log.e("kidcode", kidCodeDir.toString());
+
             list.clear();
-            for (File f : kidCodeDir.listFiles()) {
-                if (f.isFile()){
-                    String name = f.getName();
-                    list.add(name);
+            File[] files = kidCodeDir.listFiles();
+            if (files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    if (files[i].isFile()) {
+                        String name = files[i].getName();
+                        list.add(name);
+                    }
                 }
             }
             adapter.notifyDataSetChanged();
