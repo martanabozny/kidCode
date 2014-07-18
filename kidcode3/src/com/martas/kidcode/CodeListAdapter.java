@@ -57,6 +57,29 @@ public class CodeListAdapter extends ArrayAdapter<String> {
 
         View preview = strip.getPreview(context);
 
+        preview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("kidcode", "click");
+                Intent intent = new Intent(getContext(), Setup.class);
+                JSONArray variableList = new JSONArray();
+                for (int i = 0; i <= position; i++) {
+                    try {
+                        JSONObject strip = new JSONObject(getItem(i).toString());
+                        variableList.put(0, strip.getString("name"));
+                    } catch (Exception e) {
+                        Log.e("MySimpleAdapter.getView", e.toString());
+                    }
+                }
+                intent.putExtra("position", String.valueOf(position));
+                intent.putExtra("mode", "edit");
+                intent.putExtra("strip", getItem(position));
+                intent.putExtra("variables", variableList.toString());
+                Log.e("kidcode", getItem(position));
+                ((Activity)getContext()).startActivityForResult(intent, 1);
+            }
+        });
+
         if (mode == Mode.MODE_ADD) {
             LinearLayout layout = new LinearLayout(context);
             layout.setOrientation(LinearLayout.VERTICAL);
@@ -74,6 +97,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
                     for (int i = 0; i <= position; i++) {
                         try {
                             JSONObject strip = new JSONObject(getItem(i).toString());
+                            Log.e("kidcode", strip.toString());
                             variableList.put(0, strip.getString("name"));
                         } catch (Exception e) {
                             Log.e("MySimpleAdapter.getView", e.toString());
@@ -95,9 +119,11 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             layout.setOrientation(LinearLayout.HORIZONTAL);
 
             Button remove = new Button(context);
-            //remove.setHeight(90);
+            remove.setHeight(90);
             remove.setWidth(90);
-            remove.setPadding(0, 0, 0, 0);
+
+
+            remove.setPadding(0,0,0,10);
 
             remove.setBackgroundResource(R.drawable.minusbutton_background);
             remove.setText("-");
@@ -111,6 +137,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.weight = 2;
+            lp.setMargins(0,5,0,5);
             preview.setLayoutParams(lp);
 
             layout.addView(preview);
@@ -118,29 +145,6 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             layout.setWeightSum(2);
             return layout;
         } else {
-            preview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.e("kidcode", "click");
-                    Intent intent = new Intent(getContext(), Setup.class);
-                    JSONArray variableList = new JSONArray();
-                    for (int i = 0; i <= position; i++) {
-                        try {
-                            JSONObject strip = new JSONObject(getItem(i).toString());
-                            variableList.put(0, strip.getString("name"));
-                        } catch (Exception e) {
-                            Log.e("MySimpleAdapter.getView", e.toString());
-                        }
-                    }
-                    intent.putExtra("position", String.valueOf(position));
-                    intent.putExtra("mode", "edit");
-                    intent.putExtra("strip", getItem(position));
-                    intent.putExtra("variables", variableList.toString());
-                    ((Activity)getContext()).startActivityForResult(intent, 1);
-
-                }
-            });
-
             return preview;
         }
     }

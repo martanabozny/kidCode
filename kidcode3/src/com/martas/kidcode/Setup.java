@@ -35,7 +35,6 @@ public class Setup extends Activity {
 
             FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
             JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
-            Log.e("kidcode", variables.toString());
             frame.addView(fstrip.getSetup(this, variables));
         } catch (Exception e) {
             Log.e("kidcode", Log.getStackTraceString(e));
@@ -50,6 +49,7 @@ public class Setup extends Activity {
         mPrefs = getSharedPreferences("strips", MODE_PRIVATE);
         showStrip();
     }
+
     public void  okClicked(View view) {
         Intent intent = new Intent();
         intent.putExtra("position", getIntent().getStringExtra("position"));

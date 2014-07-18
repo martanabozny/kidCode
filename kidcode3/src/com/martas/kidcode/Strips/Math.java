@@ -35,6 +35,7 @@ public class Math extends FunctionStrip {
         layout.addView(text);
         return layout;
     }
+
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.math_background);
@@ -60,6 +61,7 @@ public class Math extends FunctionStrip {
         addAutocomplete(context, b_text, previousVariables);
 
         final Spinner spinner = (Spinner)view.findViewById(R.id.function);
+
         result.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -123,6 +125,7 @@ public class Math extends FunctionStrip {
 
             }
         });
+
         return view;
     }
 
@@ -170,8 +173,5 @@ public class Math extends FunctionStrip {
         HashMap<String, String> r = new HashMap<String, String>();
         r.put(name, "" + result);
         return r;
-    }
-
-    public void accelerometerVariable(int x,int y, int z) {
     }
 }

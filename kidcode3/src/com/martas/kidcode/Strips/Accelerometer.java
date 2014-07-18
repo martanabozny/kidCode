@@ -29,7 +29,6 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     String accel = "";
     View view;
     int x_,y_,z_;
-    int xCode, yCode, zCode;
     volatile boolean has_result = false;
     int accelint;
 
@@ -199,11 +198,11 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         HashMap<String, String> r = new HashMap<String, String>();
 
         if(accel.equals("x")) {
-            r.put(name, "" + xCode);
+            r.put(name, "" + x_);
         } else if (accel.equals("y")) {
-            r.put(name, "" + yCode);
+            r.put(name, "" + y_);
         } else if (accel.equals("z")) {
-            r.put(name, "" + zCode);
+            r.put(name, "" + z_);
         }
 
         Log.e("Accel.run", r.get(name));
@@ -212,11 +211,8 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
     }
 
     public void accelerometerVariable(int x,int y, int z) {
-        xCode = x;
-        yCode = y;
-        zCode = z;
-
-        Log.e("Accel.run","" + x_+ " " + y_ + " " + z_);
+        x_ = x;
+        y_ = y;
+        z_ = z;
     }
-
 }

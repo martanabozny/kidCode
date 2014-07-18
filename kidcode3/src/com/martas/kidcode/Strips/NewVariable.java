@@ -3,6 +3,7 @@ package com.martas.kidcode.Strips;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -49,8 +50,11 @@ public class NewVariable extends FunctionStrip {
 
         EditText result = (EditText)view.findViewById(R.id.result);
         EditText value = (EditText)view.findViewById(R.id.value);
-        Spinner function = (Spinner)view.findViewById(R.id.kind);
-        kind = function.getSelectedItem().toString();
+
+        result.setText(name);
+        value.setText(valueText);
+
+        final Spinner function = (Spinner)view.findViewById(R.id.kind);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -82,6 +86,19 @@ public class NewVariable extends FunctionStrip {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        function.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                kind = function.getSelectedItem().toString();
+                Log.d("Math.itemListener", "Selected function: " + function);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });

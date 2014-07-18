@@ -20,8 +20,6 @@ import java.util.HashMap;
  * Created by marta on 01.06.14.
  */
 public class Stop extends FunctionStrip {
-
-
     public LinearLayout getButton(final Context context) {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -47,6 +45,7 @@ public class Stop extends FunctionStrip {
         View view = inflater.inflate(R.layout.stop, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        result.setText(name);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -81,9 +80,7 @@ public class Stop extends FunctionStrip {
     }
     public void fromJson(JSONObject object) {
         try {
-
             name = object.get("name").toString();
-
         } catch (JSONException e) {
 
         }

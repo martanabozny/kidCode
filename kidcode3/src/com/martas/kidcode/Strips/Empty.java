@@ -33,7 +33,6 @@ public class Empty extends FunctionStrip {
         JSONObject object = new JSONObject();
         try {
             object.put("type", "Empty");
-
         } catch (JSONException e) {
 
         }

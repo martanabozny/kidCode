@@ -112,7 +112,6 @@ public class CodeActivity extends Activity implements SensorEventListener {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null) {
-
             int position = Integer.parseInt(data.getStringExtra("position"));
             if (data.getStringExtra("mode").equals("edit")) {
                 list.remove(position);

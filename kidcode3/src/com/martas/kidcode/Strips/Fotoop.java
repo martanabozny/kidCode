@@ -131,6 +131,7 @@ public class Fotoop extends FunctionStrip {
         } else if(functionText.contains("get weight")){
             result = "" + bitmap.getWidth();
         }else if(functionText.contains("convert to black and white")) {
+            variableText.toString();
             ColorMatrix colorMatrix = new ColorMatrix();
             colorMatrix.setSaturation(0);
             ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);

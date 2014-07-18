@@ -10,10 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.martas.kidcode.FunctionStrip;
-import com.martas.kidcode.CodeListAdapter;
-import com.martas.kidcode.JsonToStrip;
-import com.martas.kidcode.R;
+import com.martas.kidcode.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,14 +23,15 @@ import java.util.HashMap;
 */
 public class IfForInt extends FunctionStrip {
 
+    private  String value1 = "";
     private String value2 = "";
-    private String conditionText = "";
     private String functionText = "";
     ArrayList<String> list = new ArrayList<String>();
     CodeListAdapter codeAdapter;
     PreviewAdapter previewAdapter;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
+    int x_, y_, z_;
 
     public LinearLayout getButton(final Context context) {
         LinearLayout layout = new LinearLayout(context);
@@ -55,12 +53,8 @@ public class IfForInt extends FunctionStrip {
         TextView condition = new TextView(context);
         condition.setTextSize(20);
         condition.setTextColor(Color.BLACK);
-        //view2.setBackgroundResource(R.drawable.condition_background);
-        if(conditionText.contains("check")) {
-            condition.setText("" + "if (" + name + "." + functionText + ")");
-        } else if (conditionText.contains("compare")){
-            condition.setText("" + "if (" + name + functionText + value2 + ")");
-        }
+        condition.setText(" " + "if (" + value1 + " " + functionText + " " + value2 + ")");
+
         layout.addView(condition);
 
         ListView stripList = new ListView(context);
@@ -70,7 +64,6 @@ public class IfForInt extends FunctionStrip {
         layout.addView(stripList);
         previewAdapter.notifyDataSetChanged();
 
-        Log.e("kidcode", "getPreview: " + list.size());
         layout.setWeightSum(1);
         layout.setMinimumHeight(300);
         return layout;
@@ -83,30 +76,25 @@ public class IfForInt extends FunctionStrip {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Log.e("kidcode", "Adding: " + getItem(position) + " at position " + position);
-
             JSONObject obj;
             try {
                 obj = new JSONObject(getItem(position));
                 FunctionStrip strip = JsonToStrip.fromJson(obj);
+                strip.fromJson(obj);
                 View prev = strip.getPreview(getContext());
-                Log.e("kidcode", "return prev;");
                 return prev;
             } catch (Exception e) {
-                Log.e("kidcode", "return null;");
                 return  null;
             }
         }
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-        Log.e("kidcode", "getSetup: " + list.size());
+        Log.e("kidcode", "Value1: " + value1);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.ifxml, null);
 
-        final String[] functions_check = {"is odd", "is even"};
-        final String[] functions_compare = {"==", "!=", "<", ">"};
-
+        final String[] functions = {" > 0", " < 0", "==", "!=", "<", ">"};
 
         Button addButton = (Button)view.findViewById(R.id.add);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -126,8 +114,17 @@ public class IfForInt extends FunctionStrip {
 
         final AutoCompleteTextView variable = (AutoCompleteTextView)view.findViewById(R.id.variable);
         final AutoCompleteTextView compareWith = (AutoCompleteTextView)view.findViewById(R.id.compareWith);
-        Spinner condition = (Spinner)view.findViewById(R.id.condition);
+
+        variable.setText(value1);
+        compareWith.setText(value2);
+
         final Spinner function = (Spinner)view.findViewById(R.id.function);
+
+        if (functions != null){
+            ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions);
+            function.setAdapter(arrayAdapter);
+            arrayAdapter.notifyDataSetChanged();
+        }
 
         variable.addTextChangedListener(new TextWatcher() {
             @Override
@@ -137,7 +134,7 @@ public class IfForInt extends FunctionStrip {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                name = charSequence.toString();
+                value1 = charSequence.toString();
             }
 
             @Override
@@ -163,40 +160,16 @@ public class IfForInt extends FunctionStrip {
             }
         });
 
-        condition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i == 1){
-
-                    if (functions_check != null){
-                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions_check);
-                        function.setAdapter(arrayAdapter);
-                        conditionText = "check";
-                        arrayAdapter.notifyDataSetChanged();
-                        function.setVisibility(View.VISIBLE);
-                    }
-                } else if (i == 2){
-                    if (functions_compare != null){
-                        ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions_compare);
-                        function.setAdapter(arrayAdapter);
-                        conditionText = "compare";
-                        arrayAdapter.notifyDataSetChanged();
-                        function.setVisibility(View.VISIBLE);
-                        compareWith.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
         function.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 functionText = function.getSelectedItem().toString();
+                if (i == 2 || i == 3 || i == 4 || i == 5) {
+                    compareWith.setVisibility(View.VISIBLE);
+                } else {
+                    compareWith.setVisibility(View.INVISIBLE);
+                    value2 = "";
+                }
             }
 
             @Override
@@ -233,11 +206,10 @@ public class IfForInt extends FunctionStrip {
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("compareWith", value2);
+            object.put("value1", value1);
+            object.put("value2", value2);
             object.put("functionText", functionText);
-            object.put("conditionText", conditionText);
             object.put("type", "IfForInt");
-            object.put("name", name);
 
             JSONArray strips = new JSONArray();
             for (int i = 1; i < list.size(); i++) {
@@ -250,13 +222,18 @@ public class IfForInt extends FunctionStrip {
         }
         return object;
     }
+
+    public void accelerometerVariable(int x,int y, int z) {
+        x_ = x;
+        y_ = y;
+        z_ = z;
+    }
+
     public void fromJson(JSONObject object) {
         try {
-            value2 = object.get("compareWith").toString();
+            value1 = object.get("value1").toString();
+            value2 = object.get("value2").toString();
             functionText = object.get("functionText").toString();
-            conditionText = object.get("conditionText").toString();
-            name = object.get("name").toString();
-
 
             list.clear();
             Empty empty = new Empty();
@@ -273,25 +250,60 @@ public class IfForInt extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
-        if(functionText.contains("is odd")) {
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException,VariableLackException {
+        boolean result = false;
+        int value1Int = variableToInt(value1, previousVariables);
 
+        if(functionText.contains("> 0")) {
+            result = value1Int > 0;
+        } else if (functionText.contains("< 0")) {
+            result = value1Int < 0;
+        } else if (functionText.contains("==")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int == value2Int);
+        }else if (functionText.contains("!=")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int != value2Int);
+        }else if (functionText.contains(">")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int > value2Int);
+        } else if (functionText.contains("<")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int < value2Int);
+        }
+
+        if (result == true) {
+            HashMap<String,String> results = new HashMap<String, String>();
+            results.putAll(previousVariables);
+            for (int i =0; i < list.size(); i++) {
+                try {
+                    JSONObject strip = new JSONObject(list.get(i));
+                    FunctionStrip fstrip = JsonToStrip.fromJson(strip);
+                    fstrip.fromJson(strip);
+                    fstrip.accelerometerVariable(x_, y_, z_);
+                    HashMap<String,String> strip_result = fstrip.run(context, results);
+                    if (strip_result != null) {
+                        results.putAll(strip_result);
+                    }
+                } catch (JSONException e) {
+
+                }
+            }
         }
 
         return  null;
     }
 
-    public void onActivityResult(Intent intent) {
-        if (intent != null) {
-            int position = Integer.parseInt(intent.getStringExtra("position"));
-            list.add(position+1, intent.getStringExtra("strip"));
-            if (codeAdapter != null) {
-                codeAdapter.notifyDataSetChanged();
+    public void onActivityResult(Intent data) {
+        if (data != null) {
+            int position = Integer.parseInt(data.getStringExtra("position"));
+            if (data.getStringExtra("mode").equals("edit")) {
+                list.remove(position);
+                list.add(position, data.getStringExtra("strip"));
+            } else if (data.getStringExtra("mode").equals("add")) {
+                list.add(position+1, data.getStringExtra("strip"));
             }
+            codeAdapter.notifyDataSetChanged();
         }
-    }
-
-    public void accelerometerVariable(int x,int y, int z) {
-
     }
 }

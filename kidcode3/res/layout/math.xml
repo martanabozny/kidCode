@@ -10,7 +10,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/result"
             android:layout_weight="1"
-            android:autoText="true"/>
+            android:autoText="true" android:hint="variable name..."/>
     <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"

@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public abstract class FunctionStrip extends Object {
 
-    protected String name= "";
+    protected String name = "";
 
     protected void addAutocomplete(Context context, AutoCompleteTextView field, JSONArray previousVariables) {
         ArrayList<String> variables = new ArrayList<String>();
@@ -51,20 +51,23 @@ public abstract class FunctionStrip extends Object {
             int v = Integer.valueOf(variable);
             return v;
         } catch(Exception e) {
-            Log.e("FunctionStrip.variableToInt", "Cannot convert " + variable + " to int");
+            Log.e("kidcode", "Cannot convert " + variable + " to int. Trying to find variable...");
             String var = map.get(variable);
             if (var == null) {
+                Log.e("kidcode", "Cannot find variable named " + variable);
                 throw new VariableLackException();
             }
             try {
                 int v = Integer.valueOf(var);
                 return v;
             } catch (Exception x) {
+                Log.e("kidcode", "Found variable, but cannot be converted to int");
                 throw new ConvertException();
             }
         }
     }
 
-    public abstract void accelerometerVariable(int x, int y, int z);
+    public void accelerometerVariable(int x, int y, int z) {
 
+    }
 }
