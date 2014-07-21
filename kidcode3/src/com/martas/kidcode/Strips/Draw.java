@@ -33,7 +33,7 @@ import java.util.HashMap;
 public class Draw extends FunctionStrip {
 
     private String figureText = "";
-    private String colorText = "";
+    private String colorText = "#FFFFFF";
     View view;
     String filename = "";
 
@@ -70,6 +70,11 @@ public class Draw extends FunctionStrip {
         Button button = null;
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        //Button color = (Button)view.findViewById(R.id.colorPreview);
+
+        result.setText(name);
+        //color.setBackgroundColor(Color.parseColor(colorText));
+
         addAutocomplete(context, result, previousVariables);
 
         ArrayList<String> list = new ArrayList<String>();

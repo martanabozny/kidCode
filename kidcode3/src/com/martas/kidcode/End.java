@@ -1,8 +1,12 @@
 package com.martas.kidcode;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -33,8 +37,15 @@ public class End extends Activity {
         if (f.exists()) {
             if (value.endsWith(".jpg") || value.endsWith(".JPG")) {
                 ImageView img = (ImageView)findViewById(R.id.image);
+              
                 img.setImageURI(Uri.fromFile(f));
+//                Bitmap bmp = BitmapFactory.decodeFile(f.getAbsolutePath());
+//                img.setMinimumHeight(100);
+//                img.setMinimumWidth(100);
+//                img.setImageBitmap(bmp);
             }
+        } else {
+            Log.e("kidcode", "File " + value + "does not exist");
         }
     }
 }

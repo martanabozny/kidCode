@@ -8,7 +8,7 @@
     <Spinner
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/kind" android:layout_weight="1"
+            android:id="@+id/kind" android:layout_weight="0.8"
             android:entries="@array/variable_types"/>/>
     <EditText
             android:layout_width="0dp"
@@ -17,9 +17,10 @@
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:text="="/>
+            android:id="@+id/editText" android:text="=" android:editable="false" android:enabled="false"
+            android:textColor="#ffffff"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/value" android:layout_weight="1"/>
+            android:id="@+id/value" android:layout_weight="1.2"/>
 </LinearLayout>

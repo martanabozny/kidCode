@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class NewVariable extends FunctionStrip {
 
     private String valueText = "";
-    private String kind = "";
+    private String kindText = "";
 
 
     public LinearLayout getButton(final Context context) {
@@ -39,7 +39,7 @@ public class NewVariable extends FunctionStrip {
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.new_variable_background);
-        view.setText("" + kind + " " + name + " = " + valueText);
+        view.setText("" + kindText + " " + name + " = " + valueText);
         view.setTextSize(20);
         return view;
     }
@@ -49,12 +49,12 @@ public class NewVariable extends FunctionStrip {
         View view = inflater.inflate(R.layout.new_variable, null);
 
         EditText result = (EditText)view.findViewById(R.id.result);
-        EditText value = (EditText)view.findViewById(R.id.value);
+        final EditText value = (EditText)view.findViewById(R.id.value);
 
         result.setText(name);
         value.setText(valueText);
 
-        final Spinner function = (Spinner)view.findViewById(R.id.kind);
+        final Spinner kind = (Spinner)view.findViewById(R.id.kind);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,11 +90,15 @@ public class NewVariable extends FunctionStrip {
             }
         });
 
-        function.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        kind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                kind = function.getSelectedItem().toString();
-                Log.d("Math.itemListener", "Selected function: " + function);
+                kindText = kind.getSelectedItem().toString();
+                if (i == 0) {
+                    value.setHint("write word");
+                } else if (i == 1) {
+                    value.setHint("write number");
+                }
             }
 
             @Override
@@ -110,7 +114,7 @@ public class NewVariable extends FunctionStrip {
         JSONObject object = new JSONObject();
         try {
             object.put("value", valueText);
-            object.put("kind", kind);
+            object.put("kind", kindText);
             object.put("type", "NewVariable");
             object.put("name", name);
 
@@ -122,7 +126,7 @@ public class NewVariable extends FunctionStrip {
     public void fromJson(JSONObject object) {
         try {
             valueText = object.get("value").toString();
-            kind = object.get("kind").toString();
+            kindText = object.get("kind").toString();
             name = object.get("name").toString();
 
         } catch (JSONException e) {

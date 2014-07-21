@@ -22,6 +22,7 @@ public class Math extends FunctionStrip {
     private String a = "0";
     private String b ="0";
     private String function = "+";
+    private int functionInt = 0;
 
 
     public LinearLayout getButton(final Context context) {
@@ -48,19 +49,20 @@ public class Math extends FunctionStrip {
     public View getSetup(Context context, JSONArray previousVariables) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.math, null);
+
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
         AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);
+        final Spinner spinner = (Spinner)view.findViewById(R.id.function);
 
         result.setText(name);
         a_text.setText(a);
         b_text.setText(b);
+        spinner.setSelection(functionInt);
 
         addAutocomplete(context, result, previousVariables);
         addAutocomplete(context, a_text, previousVariables);
         addAutocomplete(context, b_text, previousVariables);
-
-        final Spinner spinner = (Spinner)view.findViewById(R.id.function);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -117,7 +119,7 @@ public class Math extends FunctionStrip {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 function = spinner.getSelectedItem().toString();
-                 Log.d("Math.itemListener", "Selected function: " + function);
+                functionInt = i;
             }
 
             @Override

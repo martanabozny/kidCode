@@ -89,6 +89,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             plus.setWidth(90);
             plus.setBackgroundResource(R.drawable.plusbutton_background);
             plus.setText("+");
+            plus.setTextColor(Color.BLACK);
             plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -127,6 +128,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
 
             remove.setBackgroundResource(R.drawable.minusbutton_background);
             remove.setText("-");
+            remove.setTextColor(Color.BLACK);
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

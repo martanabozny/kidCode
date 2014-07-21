@@ -75,8 +75,15 @@ public class Foto extends FunctionStrip {
         view = inflater.inflate(R.layout.foto, null);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        TextView pathText = (TextView)view.findViewById(R.id.path);
         GridView fotos = (GridView)view.findViewById(R.id.fotos);
         Button takePicture = (Button)view.findViewById(R.id.newPicture);
+
+        result.setText(name);
+        pathText.setText(path);
+
+        addAutocomplete(context, result, previousVariables);
+
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

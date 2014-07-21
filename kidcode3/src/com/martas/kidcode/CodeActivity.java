@@ -223,6 +223,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         save();
+                        finish();
                     }
                 })
                 .setNegativeButton("no", new DialogInterface.OnClickListener() {
@@ -253,19 +254,22 @@ public class CodeActivity extends Activity implements SensorEventListener {
                 intent.putExtra("result", e.result);
                 intent.putExtra("value", e.value);
                 startActivity(intent);
-                break;
+                return;
+
             } catch (VariableLackException e){
                 Toast.makeText(getApplicationContext(), "No variable!", Toast.LENGTH_LONG).show();
-                break;
+                return;
             } catch(ConvertException e) {
                 Toast.makeText(getApplicationContext(), "Cannot convert variable!", Toast.LENGTH_LONG).show();
-                break;
+               return;
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Something is wrong!", Toast.LENGTH_LONG).show();
                 Log.e("kidcode", Log.getStackTraceString(e));
-                break;
+                return;
             }
         }
+
+        Toast.makeText(getApplicationContext(), "Code is compiled. To show result select stop button first", Toast.LENGTH_LONG).show();
     }
 
 }

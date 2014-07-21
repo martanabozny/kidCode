@@ -46,6 +46,7 @@ public class Stop extends FunctionStrip {
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         result.setText(name);
+        addAutocomplete(context, result, previousVariables);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override

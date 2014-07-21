@@ -120,9 +120,11 @@ public class Accelerometer extends FunctionStrip implements SensorEventListener 
         Spinner spinner = (Spinner)view.findViewById(R.id.accels);
 
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        addAutocomplete(context, result, previousVariables);
-
         final Spinner acceles = (Spinner)view.findViewById(R.id.accels);
+
+        result.setText(name);
+
+        addAutocomplete(context, result, previousVariables);
 
         acceles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

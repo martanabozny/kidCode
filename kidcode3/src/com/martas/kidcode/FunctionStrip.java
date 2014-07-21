@@ -2,6 +2,8 @@ package com.martas.kidcode;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +67,32 @@ public abstract class FunctionStrip extends Object {
                 Log.e("kidcode", "Found variable, but cannot be converted to int");
                 throw new ConvertException();
             }
+        }
+    }
+
+    public Bitmap variableToBitmap(String variable, HashMap<String, String> map) throws ConvertException {
+        File file = new File(variable);
+
+        if (!file.exists()) {
+            String value = map.get(variable);
+            if (value == null) {
+                throw new ConvertException();
+            } else {
+                file = new File(value);
+                if (!file.exists()) {
+                    throw new ConvertException();
+                }
+            }
+        }
+
+        try {
+            Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath());
+            if (bmp == null) {
+                throw new ConvertException();
+            }
+            return bmp;
+        } catch (Exception e) {
+            throw new ConvertException();
         }
     }
 

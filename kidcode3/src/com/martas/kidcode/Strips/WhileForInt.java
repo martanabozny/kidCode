@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
 * Created by marta on 01.06.14.
 */
-public class IfForString extends FunctionStrip {
+public class WhileForInt extends FunctionStrip {
 
     private  String value1 = "";
     private String value2 = "";
@@ -37,10 +37,10 @@ public class IfForString extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.condition);
+        button.setBackgroundResource(R.drawable.loop);
         layout.addView(button);
         TextView text = new TextView(context);
-        text.setText("words condition");
+        text.setText("loop for numbers");
         layout.addView(text);
         return layout;
     }
@@ -53,7 +53,7 @@ public class IfForString extends FunctionStrip {
         TextView condition = new TextView(context);
         condition.setTextSize(20);
         condition.setTextColor(Color.BLACK);
-        condition.setText(" " + "if (" + value1 + " " + functionText + " " + value2 + ")");
+        condition.setText(" " + "while (" + value1 + " " + functionText + " " + value2 + ")");
 
         layout.addView(condition);
 
@@ -90,11 +90,11 @@ public class IfForString extends FunctionStrip {
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-
+        Log.e("kidcode", "Value1: " + value1);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.ifxmlstring, null);
+        View view = inflater.inflate(R.layout.whilexmlint, null);
 
-        final String[] functions = {" is lower ", " is upper ", " equals ", " contains ", " longer "};
+        final String[] functions = {" > 0", " < 0", "==", "!=", "<", ">"};
 
         Button addButton = (Button)view.findViewById(R.id.add);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +167,7 @@ public class IfForString extends FunctionStrip {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 functionText = function.getSelectedItem().toString();
-                if (i == 2 || i == 3 || i == 4) {
+                if (i == 2 || i == 3 || i == 4 || i == 5) {
                     compareWith.setVisibility(View.VISIBLE);
                 } else {
                     compareWith.setVisibility(View.INVISIBLE);
@@ -212,7 +212,7 @@ public class IfForString extends FunctionStrip {
             object.put("value1", value1);
             object.put("value2", value2);
             object.put("functionText", functionText);
-            object.put("type", "IfForString");
+            object.put("type", "WhileForInt");
 
             JSONArray strips = new JSONArray();
             for (int i = 1; i < list.size(); i++) {
@@ -257,19 +257,26 @@ public class IfForString extends FunctionStrip {
         boolean result = false;
         int value1Int = variableToInt(value1, previousVariables);
 
-        if(functionText.contains("is upper")) {
-            result = value1.equals(value1.toLowerCase());
-        } else if (functionText.contains("is upper")) {
-            result = value1.equals(value1.toLowerCase());
-        } else if (functionText.contains("equals")) {
-            result = value1.equals(value2);
-        }else if (functionText.contains("contains")) {
-            result = value1.contains(value2);
-        }else if (functionText.contains("longer")) {
-            result = value1.length() == value2.length();
+        if(functionText.contains("> 0")) {
+            result = value1Int > 0;
+        } else if (functionText.contains("< 0")) {
+            result = value1Int < 0;
+        } else if (functionText.contains("==")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int == value2Int);
+        }else if (functionText.contains("!=")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int != value2Int);
+        }else if (functionText.contains(">")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int > value2Int);
+        } else if (functionText.contains("<")) {
+            int value2Int = variableToInt(value2, previousVariables);
+            result = (value1Int < value2Int);
         }
 
-        if (result == true) {
+        int g = 0;
+        while (result == true && g < 10) {
             HashMap<String,String> results = new HashMap<String, String>();
             results.putAll(previousVariables);
             for (int i =0; i < list.size(); i++) {

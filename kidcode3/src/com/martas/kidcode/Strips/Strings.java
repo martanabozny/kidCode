@@ -51,6 +51,9 @@ public class Strings extends FunctionStrip {
         AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
         AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
 
+        result.setText(name);
+        text.setText(newText);
+
         addAutocomplete(context, result, previousVariables);
         addAutocomplete(context, text, previousVariables);
 

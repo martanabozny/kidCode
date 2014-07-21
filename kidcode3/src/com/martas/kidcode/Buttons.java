@@ -46,6 +46,9 @@ public class Buttons extends Activity {
         list.add(new Strings());
         list.add(new IfForInt());
         list.add(new Draw());
+        list.add(new IfForString());
+        list.add(new WhileForInt());
+        list.add(new WhileForString());
 
         adapter.notifyDataSetChanged();
 

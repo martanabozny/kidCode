@@ -31,6 +31,12 @@ public class JsonToStrip {
                 return new IfForInt();
             } else if (type.equals("Draw")) {
                 return new Draw();
+            } else if (type.equals("IfForString")) {
+                return new IfForString();
+            } else if (type.equals("WhileForInt")) {
+                return new WhileForInt();
+            } else if (type.equals("WhileForString")) {
+                return new WhileForString();
             } else {
                 return null;
             }

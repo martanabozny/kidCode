@@ -9,11 +9,11 @@
                   android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3"
                   android:id="@+id/linearLayout" android:layout_marginBottom="70dp">
         <AutoCompleteTextView android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/result"
-                              android:layout_weight="1"/>
+                              android:layout_weight="1" android:hint="variable name..."/>
         <EditText android:layout_width="30dp" android:layout_height="wrap_content" android:id="@+id/sign"
                   android:text="=" android:textColor="#fffede" android:enabled="false"/>
         <AutoCompleteTextView android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/text"
-                              android:layout_weight="1"/>
+                              android:layout_weight="1" android:hint="word or variable name..."/>
         <Spinner android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/function"
                  android:layout_weight="1" android:entries="@array/string_functions"/>
     </LinearLayout>

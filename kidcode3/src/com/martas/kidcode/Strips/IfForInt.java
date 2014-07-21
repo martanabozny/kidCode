@@ -118,6 +118,9 @@ public class IfForInt extends FunctionStrip {
         variable.setText(value1);
         compareWith.setText(value2);
 
+        addAutocomplete(context, variable, previousVariables);
+        addAutocomplete(context, compareWith, previousVariables);
+
         final Spinner function = (Spinner)view.findViewById(R.id.function);
 
         if (functions != null){

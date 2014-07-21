@@ -12,15 +12,16 @@
         <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/result" android:layout_weight="1"/>
+                android:id="@+id/result" android:layout_weight="1" android:hint="variable name..."/>
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText" android:text="="/>
+                android:id="@+id/editText" android:text="=" android:editable="false" android:enabled="false"
+                android:textColor="#ffffff"/>
         <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/variable" android:layout_weight="1"/>
+                android:id="@+id/variable" android:layout_weight="1" android:hint="path or variable name..."/>
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
