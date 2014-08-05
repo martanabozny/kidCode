@@ -37,10 +37,10 @@ public class IfForString extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.condition);
+        button.setBackgroundResource(R.drawable.ifstring);
         layout.addView(button);
         TextView text = new TextView(context);
-        text.setText("words condition");
+        text.setText("if for strings");
         layout.addView(text);
         return layout;
     }

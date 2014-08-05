@@ -85,7 +85,7 @@
 
         <activity android:name=".End"
                   android:label="kidCode"
-                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:theme="@android:style/Theme.Holo.NoActionBar"
                   android:screenOrientation="fullSensor">
             <intent-filter>
 

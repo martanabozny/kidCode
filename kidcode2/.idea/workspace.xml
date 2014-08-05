@@ -114,36 +114,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="b5004f05-0b30-43cf-a1e5-42a9ec64a408" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForInt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForString.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/colorbutton_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/ifxmlstring.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/whilexmlint.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/whilexmlstring.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Accelerometer.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Accelerometer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/draw.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/ifint.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/ifstring.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/loopint.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/res/drawable-hdpi/loopstring.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../kidcode3/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Buttons.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Buttons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeListAdapter.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeListAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Draw.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Draw.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/End.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/End.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Fotoop.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Fotoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/FunctionStrip.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/FunctionStrip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForInt.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForInt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForString.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/IfForString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/JsonToStrip.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/JsonToStrip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Math.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Math.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/NewVariable.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/NewVariable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Open.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Open.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Save.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Save.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Stop.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Stop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Strings.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Strings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/accelerometer.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/accelerometer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/drawpreview.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/drawpreview.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/end.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/end.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/fotoop.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/fotoop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/new_variable.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/new_variable.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/stop.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/stop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/res/layout/strings2.xml" afterPath="$PROJECT_DIR$/../kidcode3/res/layout/strings2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForInt.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForInt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForString.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/WhileForString.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" />
     </list>
@@ -222,7 +209,7 @@
       <file leaf-file-name="IfStrip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/IfStrip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="1" selection-start="1662" selection-end="1662" vertical-scroll-proportion="0.0" vertical-offset="644" max-vertical-offset="1185">
+            <state line="51" column="1" selection-start="1662" selection-end="1662" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1275">
               <folding />
             </state>
           </provider>
@@ -231,7 +218,7 @@
       <file leaf-file-name="WhileStrip.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/WhileStrip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="1.9131238" vertical-offset="0" max-vertical-offset="1290">
+            <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="0.67652494" vertical-offset="669" max-vertical-offset="1290">
               <folding />
             </state>
           </provider>
@@ -240,7 +227,7 @@
       <file leaf-file-name="CodeActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/CodeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="22" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="3885">
+            <state line="16" column="22" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="4200">
               <folding />
             </state>
           </provider>
@@ -249,10 +236,8 @@
       <file leaf-file-name="VarString.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="62" selection-start="1061" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1185">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state line="40" column="62" selection-start="1061" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1290">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -592,19 +577,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -630,6 +602,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -772,7 +757,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="743" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -791,7 +776,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2485294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2485294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1136,9 +1121,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Variables/VarString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="62" selection-start="1061" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1185">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1151,7 +1134,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/WhileStrip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="1.9131238" vertical-offset="0" max-vertical-offset="1290">
+        <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="0.67652494" vertical-offset="669" max-vertical-offset="1290">
           <folding />
         </state>
       </provider>

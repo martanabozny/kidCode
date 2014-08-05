@@ -3,6 +3,7 @@ package com.martas.kidcode;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,9 +38,11 @@ public class End extends Activity {
         if (f.exists()) {
             if (value.endsWith(".jpg") || value.endsWith(".JPG")) {
                 ImageView img = (ImageView)findViewById(R.id.image);
-              
-                img.setImageURI(Uri.fromFile(f));
-//                Bitmap bmp = BitmapFactory.decodeFile(f.getAbsolutePath());
+                Drawable d = Drawable.createFromPath(f.getAbsolutePath());
+                img.setImageDrawable(d);
+                //img.setImageBitmap(BitmapFactory.decodeFile(f.getAbsolutePath()));
+                //img.setImageURI(Uri.fromFile(f));
+                //Bitmap bmp = BitmapFactory.decodeFile(f.getAbsolutePath());
 //                img.setMinimumHeight(100);
 //                img.setMinimumWidth(100);
 //                img.setImageBitmap(bmp);

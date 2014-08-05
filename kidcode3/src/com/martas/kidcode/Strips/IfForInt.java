@@ -37,7 +37,7 @@ public class IfForInt extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.condition);
+        button.setBackgroundResource(R.drawable.ifint);
         layout.addView(button);
         TextView text = new TextView(context);
         text.setText("if for numbers");

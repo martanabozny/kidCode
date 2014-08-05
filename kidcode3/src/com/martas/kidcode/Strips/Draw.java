@@ -42,7 +42,7 @@ public class Draw extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.math);
+        button.setBackgroundResource(R.drawable.draw);
         layout.addView(button);
         TextView text = new TextView(context);
         text.setText("draw");

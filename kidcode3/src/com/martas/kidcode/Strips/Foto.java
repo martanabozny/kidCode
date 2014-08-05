@@ -9,6 +9,7 @@ import android.media.ExifInterface;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import java.util.HashMap;
 public class Foto extends FunctionStrip {
     String path = "";
     View view;
+    int ICON_WIDTH = 200;
 
     public LinearLayout getButton(final Context context) {
         LinearLayout layout = new LinearLayout(context);
@@ -107,29 +109,31 @@ public class Foto extends FunctionStrip {
 
             }
         });
-        addAutocomplete(context, result, previousVariables);
 
         ArrayList<String> list = new ArrayList<String>();
         ImagesAdapter adapter = new ImagesAdapter(context, list);
         fotos.setAdapter(adapter);
-        fotos.setNumColumns(context.getResources().getDisplayMetrics().widthPixels / 200);
+        fotos.setNumColumns(context.getResources().getDisplayMetrics().widthPixels / ICON_WIDTH);
 
         File kidcode_files = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
         File camera_files = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera");
-        if (kidcode_files != null && kidcode_files.exists()) {
-            for (File f : kidcode_files.listFiles()) {
-                if (f.isFile()){
-                    String name = f.getName();
-                    list.add(0, kidcode_files.getAbsolutePath() + "/" + name);
-                }
-            }
-        }
+
+
 
         if (camera_files != null && camera_files.exists()) {
             for (File f : camera_files.listFiles()) {
                 if (f.isFile()){
                     String name = f.getName();
                     list.add(camera_files.getAbsolutePath() + "/" + name);
+                }
+            }
+        }
+
+        if (kidcode_files != null && kidcode_files.exists()) {
+            for (File f : kidcode_files.listFiles()) {
+                if (f.isFile()){
+                    String name = f.getName();
+                    list.add(0, kidcode_files.getAbsolutePath() + "/" + name);
                 }
             }
         }
@@ -148,27 +152,33 @@ public class Foto extends FunctionStrip {
         }
 
         public View getView(final int position, View convertView, final ViewGroup parent) {
+            final ImageView image = new ImageView(getContext());
+            image.setPadding(5, 5, 5, 5);
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    path = getItem(position);
+                    TextView pathname = (TextView)view.findViewById(R.id.path);
+                    pathname.setText(getItem(position));
+                }
+            });
+
             try {
                 ExifInterface exif = new ExifInterface(getItem(position));
                 byte[] imageData = exif.getThumbnail();
-                Bitmap thumbnail= BitmapFactory.decodeByteArray(imageData,0,imageData.length);
 
-                final ImageView image = new ImageView(getContext());
-                image.setImageBitmap(thumbnail);
-                image.setPadding(5, 5, 5, 5);
-
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        path = getItem(position);
-                        TextView pathname = (TextView)view.findViewById(R.id.path);
-                        pathname.setText(getItem(position));
-                    }
-                });
+                if (imageData != null) {
+                    Bitmap thumbnail= BitmapFactory.decodeByteArray(imageData,0,imageData.length);
+                    image.setImageBitmap(thumbnail);
+                } else {
+                    Bitmap thumbnail = BitmapFactory.decodeFile(getItem(position));
+                    image.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, ICON_WIDTH, ICON_WIDTH*thumbnail.getHeight()/thumbnail.getWidth(), false));
+                }
 
                 return image;
             } catch (Exception e) {
                 TextView tv = new TextView(getContext());
+                tv.setText(e.toString());
                 return tv;
             }
         }

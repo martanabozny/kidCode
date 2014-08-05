@@ -109,6 +109,7 @@ public class Open extends ListActivity {
             });
 
             Button delete = (Button) rowView.findViewById(R.id.delete);
+
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -119,6 +120,7 @@ public class Open extends ListActivity {
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             deleteStrips(getItem(position));
+                            updateList();
                         }
                     });
 

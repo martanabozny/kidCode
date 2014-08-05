@@ -37,10 +37,10 @@ public class WhileForString extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.loop);
+        button.setBackgroundResource(R.drawable.loopstring);
         layout.addView(button);
         TextView text = new TextView(context);
-        text.setText("loop for strings");
+        text.setText("while for strings");
         layout.addView(text);
         return layout;
     }

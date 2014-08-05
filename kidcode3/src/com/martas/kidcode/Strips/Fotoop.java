@@ -18,6 +18,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
@@ -169,17 +171,28 @@ public class Fotoop extends FunctionStrip {
 
             }
         } else if (functionText.contains("negative")) {
-            ColorMatrix negativeMatrix =new ColorMatrix();
+            Bitmap copy = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+            ColorMatrix colorMatrix = new ColorMatrix();
             float[] negMat={-1, 0, 0, 0, 255, 0, -1, 0, 0, 255, 0, 0, -1, 0, 255, 0, 0, 0, 1, 0 };
-            negativeMatrix.set(negMat);
-            final ColorMatrixColorFilter colorFilter= new ColorMatrixColorFilter(negativeMatrix);
-            Bitmap rBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-            Paint paint=new Paint();
-            paint.setColorFilter(colorFilter);
-            Canvas myCanvas =new Canvas(rBitmap);
-            myCanvas.drawBitmap(rBitmap, 0, 0, paint);
-            //return rBitmap;
-            return null;
+            colorMatrix.set(negMat);
+            ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
+            Paint paint = new Paint();
+            paint.setColorFilter(colorMatrixFilter);
+            Canvas canvas = new Canvas(copy);
+            canvas.drawBitmap(bitmap, 0, 0, paint);
+
+            File kidcode_files = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
+            try {
+                FileOutputStream fos = new FileOutputStream(kidcode_files.getAbsolutePath() + "/" + name + ".jpg");
+                copy.compress(Bitmap.CompressFormat.JPEG, 50, fos);
+
+                fos.flush();
+                fos.close();
+                result = kidcode_files.getAbsolutePath() + "/" + name + ".jpg";
+            } catch (Exception e) {
+
+            }
+
         }
 
         if (result != null) {

@@ -37,10 +37,10 @@ public class WhileForInt extends FunctionStrip {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         ImageButton button = new ImageButton(context);
-        button.setBackgroundResource(R.drawable.loop);
+        button.setBackgroundResource(R.drawable.loopint);
         layout.addView(button);
         TextView text = new TextView(context);
-        text.setText("loop for numbers");
+        text.setText("while for numbers");
         layout.addView(text);
         return layout;
     }

@@ -35,7 +35,7 @@ public class Stop extends FunctionStrip {
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.stop_background);
-        view.setText("Show as program result:" + " " +  name );
+        view.setText("Show variable:" + " " +  name );
         view.setTextSize(20);
         return view;
     }
