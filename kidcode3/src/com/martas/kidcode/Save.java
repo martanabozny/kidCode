@@ -47,34 +47,22 @@ public class Save extends ListActivity {
         updateList();
 
         EditText name = (EditText)findViewById(R.id.name);
-
         name.addTextChangedListener(new TextWatcher() {
-
-
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {  }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 EditText textname = (EditText)findViewById(R.id.name);
-                Drawable originalDrawable = textname.getBackground();
 
-                if (!charSequence.toString().matches("^[a-zA-Z].*")) {
+                if (!charSequence.toString().matches("^[a-zA-Z0-9_\\-+]+$")) {
                     textname.setBackgroundColor(Color.RED);
                 } else {
-                    textname.setBackground(originalDrawable);
+                    textname.setBackgroundColor(android.R.drawable.btn_default);
                 }
             }
             @Override
             public void afterTextChanged(Editable editable) {
-                EditText textname = (EditText)findViewById(R.id.name);
-                Drawable originalDrawable = textname.getBackground();
-
-                if (!editable.toString().matches(" ^[a-zA-Z].* ")) {
-                    textname.setBackgroundColor(Color.RED);
-                } else {
-                    textname.setBackground(originalDrawable);
-                }
             }
         });
 
