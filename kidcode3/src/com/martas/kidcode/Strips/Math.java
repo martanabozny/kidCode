@@ -20,7 +20,7 @@ import java.util.HashMap;
  */
 public class Math extends FunctionStrip {
     private String a = "0";
-    private String b ="0";
+    private String b = "0";
     private String function = "+";
     private int functionInt = 0;
 
@@ -50,10 +50,10 @@ public class Math extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.math, null);
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        AutoCompleteTextView a_text = (AutoCompleteTextView)view.findViewById(R.id.a);
-        AutoCompleteTextView b_text = (AutoCompleteTextView)view.findViewById(R.id.b);
-        final Spinner spinner = (Spinner)view.findViewById(R.id.function);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
+        AutoCompleteTextView a_text = (AutoCompleteTextView) view.findViewById(R.id.a);
+        AutoCompleteTextView b_text = (AutoCompleteTextView) view.findViewById(R.id.b);
+        final Spinner spinner = (Spinner) view.findViewById(R.id.function);
 
         result.setText(name);
         a_text.setText(a);
@@ -145,6 +145,7 @@ public class Math extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             a = object.getString("a");
@@ -156,7 +157,8 @@ public class Math extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws ConvertException,VariableLackException{
+
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws ConvertException, VariableLackException {
         int aint = variableToInt(a, previousVariables);
         int bint = variableToInt(b, previousVariables);
         Log.e("Math.run", "a: " + aint);

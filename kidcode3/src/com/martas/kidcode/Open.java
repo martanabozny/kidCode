@@ -43,7 +43,7 @@ public class Open extends ListActivity {
         setListAdapter(adapter);
         updateList();
 
-        EditText search = (EditText)findViewById(R.id.search);
+        EditText search = (EditText) findViewById(R.id.search);
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,7 +75,7 @@ public class Open extends ListActivity {
         if (kidCodeDir != null) {
             list.clear();
             for (File f : kidCodeDir.listFiles()) {
-                if (f.isFile()){
+                if (f.isFile()) {
                     String name = f.getName();
                     list.add(name);
                 }
@@ -143,13 +143,13 @@ public class Open extends ListActivity {
             String strips = "";
             File input = new File(path + filename);
             FileInputStream inputStream = new FileInputStream(input);
-            if ( inputStream != null ) {
+            if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
 
-                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                while ((receiveString = bufferedReader.readLine()) != null) {
                     stringBuilder.append(receiveString);
                 }
 
@@ -159,7 +159,7 @@ public class Open extends ListActivity {
 
 
             SharedPreferences.Editor ed = mPrefs.edit();
-            ed.putString("name",filename);
+            ed.putString("name", filename);
             ed.putString("strips", strips);
             ed.commit();
 

@@ -19,14 +19,15 @@ public class Empty extends FunctionStrip {
         LinearLayout text = new LinearLayout(context);
         return text;
     }
+
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         return view;
     }
 
     public View getSetup(Context context, JSONArray previousVariables) {
-       TextView text = new TextView(context);
-       return text;
+        TextView text = new TextView(context);
+        return text;
     }
 
     public JSONObject toJson() {
@@ -38,13 +39,16 @@ public class Empty extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
 
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         return null;
     }
-    public void accelerometerVariable(int x,int y, int z) {
+
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

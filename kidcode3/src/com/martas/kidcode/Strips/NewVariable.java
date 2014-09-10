@@ -48,13 +48,13 @@ public class NewVariable extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.new_variable, null);
 
-        EditText result = (EditText)view.findViewById(R.id.result);
-        final EditText value = (EditText)view.findViewById(R.id.value);
+        EditText result = (EditText) view.findViewById(R.id.result);
+        final EditText value = (EditText) view.findViewById(R.id.value);
 
         result.setText(name);
         value.setText(valueText);
 
-        final Spinner kind = (Spinner)view.findViewById(R.id.kind);
+        final Spinner kind = (Spinner) view.findViewById(R.id.kind);
 
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -123,6 +123,7 @@ public class NewVariable extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             valueText = object.get("value").toString();
@@ -133,6 +134,7 @@ public class NewVariable extends FunctionStrip {
 
         }
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
 
         HashMap<String, String> r = new HashMap<String, String>();
@@ -140,7 +142,7 @@ public class NewVariable extends FunctionStrip {
         return r;
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

@@ -32,7 +32,6 @@ public class Fotoop extends FunctionStrip {
     Bitmap newFoto;
 
 
-
     public LinearLayout getButton(final Context context) {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -48,7 +47,7 @@ public class Fotoop extends FunctionStrip {
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.fotoop_background);
-        view.setText("" + name + " = " + variableText + "." +  " " + functionText);
+        view.setText("" + name + " = " + variableText + "." + " " + functionText);
         view.setTextColor(Color.BLACK);
         view.setTextSize(20);
         return view;
@@ -58,9 +57,9 @@ public class Fotoop extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.fotoop, null);
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        AutoCompleteTextView variable = (AutoCompleteTextView)view.findViewById(R.id.variable);
-        final Spinner function = (Spinner)view.findViewById(R.id.function);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
+        AutoCompleteTextView variable = (AutoCompleteTextView) view.findViewById(R.id.variable);
+        final Spinner function = (Spinner) view.findViewById(R.id.function);
         functionText = function.getSelectedItem().toString();
 
         result.setText(name);
@@ -131,6 +130,7 @@ public class Fotoop extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             functionText = object.get("function").toString();
@@ -141,6 +141,7 @@ public class Fotoop extends FunctionStrip {
 
         }
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws ConvertException {
         Bitmap bitmap = variableToBitmap(variableText, previousVariables);
 
@@ -148,7 +149,7 @@ public class Fotoop extends FunctionStrip {
 
         if (functionText.contains("get height")) {
             result = "" + bitmap.getHeight();
-        } else if (functionText.contains("get weight")){
+        } else if (functionText.contains("get weight")) {
             result = "" + bitmap.getWidth();
         } else if (functionText.contains("convert to black and white")) {
             Bitmap copy = bitmap.copy(Bitmap.Config.ARGB_8888, true);
@@ -173,7 +174,7 @@ public class Fotoop extends FunctionStrip {
         } else if (functionText.contains("negative")) {
             Bitmap copy = bitmap.copy(Bitmap.Config.ARGB_8888, true);
             ColorMatrix colorMatrix = new ColorMatrix();
-            float[] negMat={-1, 0, 0, 0, 255, 0, -1, 0, 0, 255, 0, 0, -1, 0, 255, 0, 0, 0, 1, 0 };
+            float[] negMat = {-1, 0, 0, 0, 255, 0, -1, 0, 0, 255, 0, 0, -1, 0, 255, 0, 0, 0, 1, 0};
             colorMatrix.set(negMat);
             ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
             Paint paint = new Paint();
@@ -204,7 +205,7 @@ public class Fotoop extends FunctionStrip {
         }
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

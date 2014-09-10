@@ -22,7 +22,7 @@ public class AccelerometerService extends Service implements SensorEventListener
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-    int x_,y_,z_;
+    int x_, y_, z_;
 
     private final IBinder mBinder = new LocalBinder();
 
@@ -42,7 +42,7 @@ public class AccelerometerService extends Service implements SensorEventListener
         Log.e("service", "wlaczony");
         super.onCreate();
 
-        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
     }
@@ -55,17 +55,19 @@ public class AccelerometerService extends Service implements SensorEventListener
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        x_ = (int)(event.values[0]*5 + 50);
-        y_ = (int)(event.values[1]*5 + 50);
-        z_ = (int)(event.values[2]*5 + 50);
+        x_ = (int) (event.values[0] * 5 + 50);
+        y_ = (int) (event.values[1] * 5 + 50);
+        z_ = (int) (event.values[2] * 5 + 50);
     }
 
     public int returnX() {
         return x_;
     }
+
     public int returnY() {
         return y_;
     }
+
     public int returnZ() {
         return z_;
     }
@@ -78,5 +80,6 @@ public class AccelerometerService extends Service implements SensorEventListener
 
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
 }

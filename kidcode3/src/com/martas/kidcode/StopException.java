@@ -6,7 +6,8 @@ package com.martas.kidcode;
 public class StopException extends Exception {
     String result = "";
     String value = "";
-    public StopException(String result, String value){
+
+    public StopException(String result, String value) {
         this.result = result;
         this.value = value;
     }

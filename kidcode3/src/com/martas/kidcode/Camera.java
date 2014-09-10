@@ -33,7 +33,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera);
 
-        SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
+        SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
         frame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +49,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         Intent intent = getIntent();
     }
 
-    android.hardware.Camera.PictureCallback myPictureCallback = new android.hardware.Camera.PictureCallback(){
+    android.hardware.Camera.PictureCallback myPictureCallback = new android.hardware.Camera.PictureCallback() {
 
         public void onPictureTaken(byte[] bytes, android.hardware.Camera arg1) {
             Bitmap bitmapPicture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -74,9 +74,9 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
                 fos.write(bytes);
                 fos.close();
 
-                SurfaceView frame = (SurfaceView)findViewById(R.id.frame);
+                SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
                 frame.setVisibility(View.GONE);
-                ImageView img = (ImageView)findViewById(R.id.preview);
+                ImageView img = (ImageView) findViewById(R.id.preview);
                 img.setVisibility(View.VISIBLE);
                 img.setImageBitmap(picture);
             } catch (Exception e) {
@@ -85,7 +85,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         }
     };
 
-    public static android.hardware.Camera getCameraInstance(){
+    public static android.hardware.Camera getCameraInstance() {
         android.hardware.Camera c = null;
         try {
             c = android.hardware.Camera.open();
@@ -95,7 +95,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         return c;
     }
 
-    public  void okClicked(View view) {
+    public void okClicked(View view) {
         if (filename.equals("")) {
             Toast.makeText(getApplicationContext(), "Create picture first!", Toast.LENGTH_LONG).show();
         } else {
@@ -106,7 +106,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         try {
-            if (camera != null){
+            if (camera != null) {
                 camera.setPreviewDisplay(holder);
                 camera.startPreview();
             }
@@ -116,11 +116,11 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-        if (camera != null){
+        if (camera != null) {
             camera.stopPreview();
             camera.setPreviewCallback(null);
             camera.release();
-            camera=null;
+            camera = null;
         }
     }
 
@@ -128,7 +128,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         // IfForInt your preview can change or rotate, take care of those events here.
         // Make sure to stop the preview before resizing or reformatting it.
 
-        if (mHolder.getSurface() == null){
+        if (mHolder.getSurface() == null) {
             // preview surface does not exist
             return;
         }
@@ -137,7 +137,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         try {
             camera.stopPreview();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // ignore: tried to stop a non-existent preview
         }
 
@@ -148,7 +148,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
         try {
             camera.setPreviewDisplay(mHolder);
             camera.startPreview();
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
     }

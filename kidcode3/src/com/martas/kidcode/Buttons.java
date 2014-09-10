@@ -66,6 +66,7 @@ public class Buttons extends Activity {
         public ButtonAdapter(Context context, ArrayList<FunctionStrip> list) {
             super(context, R.layout.codeactivity, list);
         }
+
         public View getView(final int position, View convertView, ViewGroup parent) {
             LinearLayout button = getItem(position).getButton(getContext());
             for (int i = 0; i < button.getChildCount(); i++) {

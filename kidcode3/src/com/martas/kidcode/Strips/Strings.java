@@ -48,8 +48,8 @@ public class Strings extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.strings2, null);
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        AutoCompleteTextView text = (AutoCompleteTextView)view.findViewById(R.id.text);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
+        AutoCompleteTextView text = (AutoCompleteTextView) view.findViewById(R.id.text);
 
         result.setText(name);
         text.setText(newText);
@@ -57,10 +57,10 @@ public class Strings extends FunctionStrip {
         addAutocomplete(context, result, previousVariables);
         addAutocomplete(context, text, previousVariables);
 
-        TextView reverse = (TextView)view.findViewById(R.id.reverse);
+        TextView reverse = (TextView) view.findViewById(R.id.reverse);
 
 
-        final Spinner function = (Spinner)view.findViewById(R.id.function);
+        final Spinner function = (Spinner) view.findViewById(R.id.function);
         functionText = function.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
@@ -125,6 +125,7 @@ public class Strings extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             newText = object.get("text").toString();
@@ -135,23 +136,24 @@ public class Strings extends FunctionStrip {
 
         }
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         String result = "";
         String var = previousVariables.get(newText);
         if (var != null) {
-            if (functionText.contains("UPPER")){
+            if (functionText.contains("UPPER")) {
                 result = var.toUpperCase();
-            }else if(functionText.contains("lower")){
+            } else if (functionText.contains("lower")) {
                 result = var.toLowerCase();
-            }else if(functionText.contains("reverse")){
+            } else if (functionText.contains("reverse")) {
                 result = new StringBuilder(var).reverse().toString();
             }
         } else {
-            if (functionText.contains("UPPER")){
+            if (functionText.contains("UPPER")) {
                 result = newText.toUpperCase();
-            }else if(functionText.contains("lower")){
+            } else if (functionText.contains("lower")) {
                 result = newText.toLowerCase();
-            }else if(functionText.contains("reverse")){
+            } else if (functionText.contains("reverse")) {
                 result = new StringBuilder(newText).reverse().toString();
             }
         }
@@ -160,7 +162,7 @@ public class Strings extends FunctionStrip {
         return r;
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

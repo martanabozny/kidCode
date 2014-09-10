@@ -35,7 +35,7 @@ public class Stop extends FunctionStrip {
     public View getPreview(Context context) {
         TextView view = new TextView(context);
         view.setBackgroundResource(R.drawable.stop_background);
-        view.setText("Show variable:" + " " +  name );
+        view.setText("Show variable:" + " " + name);
         view.setTextSize(20);
         return view;
     }
@@ -44,7 +44,7 @@ public class Stop extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.stop, null);
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
         result.setText(name);
         addAutocomplete(context, result, previousVariables);
 
@@ -62,7 +62,8 @@ public class Stop extends FunctionStrip {
             @Override
             public void afterTextChanged(Editable editable) {
 
-            }});
+            }
+        });
         return view;
     }
 
@@ -79,6 +80,7 @@ public class Stop extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             name = object.get("name").toString();
@@ -86,7 +88,8 @@ public class Stop extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException,VariableLackException {
+
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, VariableLackException {
         String value = previousVariables.get(name);
         if (value == null) {
             throw new VariableLackException();
@@ -94,7 +97,7 @@ public class Stop extends FunctionStrip {
         throw new StopException(name, value);
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

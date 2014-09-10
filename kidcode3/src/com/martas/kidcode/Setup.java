@@ -33,7 +33,7 @@ public class Setup extends Activity {
             fstrip = JsonToStrip.fromJson(obj);
             fstrip.fromJson(obj);
 
-            FrameLayout frame = (FrameLayout)findViewById(R.id.strip_setup);
+            FrameLayout frame = (FrameLayout) findViewById(R.id.strip_setup);
             JSONArray variables = new JSONArray(getIntent().getStringExtra("variables"));
             frame.addView(fstrip.getSetup(this, variables));
         } catch (Exception e) {
@@ -50,7 +50,7 @@ public class Setup extends Activity {
         showStrip();
     }
 
-    public void  okClicked(View view) {
+    public void okClicked(View view) {
         Intent intent = new Intent();
         intent.putExtra("position", getIntent().getStringExtra("position"));
         intent.putExtra("mode", getIntent().getStringExtra("mode"));

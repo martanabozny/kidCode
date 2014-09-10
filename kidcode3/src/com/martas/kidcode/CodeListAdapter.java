@@ -29,6 +29,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
         MODE_ADD,
         MODE_DELETE
     }
+
     private Mode mode = Mode.MODE_NORMAL;
 
     public CodeListAdapter(Context context, ArrayList<String> list) {
@@ -48,7 +49,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
         try {
             obj = new JSONObject(getItem(position));
         } catch (Exception e) {
-            return  null;
+            return null;
         }
 
         FunctionStrip strip = JsonToStrip.fromJson(obj);
@@ -76,7 +77,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
                 intent.putExtra("strip", getItem(position));
                 intent.putExtra("variables", variableList.toString());
                 Log.e("kidcode", getItem(position));
-                ((Activity)getContext()).startActivityForResult(intent, 1);
+                ((Activity) getContext()).startActivityForResult(intent, 1);
             }
         });
 
@@ -107,7 +108,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
                     intent.putExtra("position", String.valueOf(position));
                     intent.putExtra("mode", "add");
                     intent.putExtra("variables", variableList.toString());
-                    ((Activity)getContext()).startActivityForResult(intent, 1);
+                    ((Activity) getContext()).startActivityForResult(intent, 1);
                 }
             });
 
@@ -124,7 +125,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
             remove.setWidth(90);
 
 
-            remove.setPadding(0,0,0,10);
+            remove.setPadding(0, 0, 0, 10);
 
             remove.setBackgroundResource(R.drawable.minusbutton_background);
             remove.setText("-");
@@ -139,7 +140,7 @@ public class CodeListAdapter extends ArrayAdapter<String> {
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.weight = 2;
-            lp.setMargins(0,5,0,5);
+            lp.setMargins(0, 5, 0, 5);
             preview.setLayoutParams(lp);
 
             layout.addView(preview);

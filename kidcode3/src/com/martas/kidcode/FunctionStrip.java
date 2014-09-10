@@ -43,17 +43,22 @@ public abstract class FunctionStrip extends Object {
     }
 
     public abstract LinearLayout getButton(Context context);
-    public abstract View getPreview(Context context);
-    public abstract View getSetup(Context context, JSONArray previousVariables);
-    public abstract JSONObject toJson();
-    public abstract void fromJson(JSONObject object);
-    public abstract HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException,VariableLackException,ConvertException;
 
-    public int variableToInt(String variable, HashMap<String,String> map) throws  VariableLackException,ConvertException {
+    public abstract View getPreview(Context context);
+
+    public abstract View getSetup(Context context, JSONArray previousVariables);
+
+    public abstract JSONObject toJson();
+
+    public abstract void fromJson(JSONObject object);
+
+    public abstract HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, VariableLackException, ConvertException;
+
+    public int variableToInt(String variable, HashMap<String, String> map) throws VariableLackException, ConvertException {
         try {
             int v = Integer.valueOf(variable);
             return v;
-        } catch(Exception e) {
+        } catch (Exception e) {
             Log.e("kidcode", "Cannot convert " + variable + " to int. Trying to find variable...");
             String var = map.get(variable);
             if (var == null) {

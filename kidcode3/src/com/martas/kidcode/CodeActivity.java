@@ -32,7 +32,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
     CodeListAdapter adapter;
     Boolean addClicked = false;
     Boolean deleteClicked = false;
-    int x_,y_,z_;
+    int x_, y_, z_;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
 
@@ -40,7 +40,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.codeactivity);
-        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -67,7 +67,8 @@ public class CodeActivity extends Activity implements SensorEventListener {
                 for (int i = 0; i < jarray.length(); i++) {
                     list.add(jarray.getString(i));
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         } else {
             Empty empty = new Empty();
             list.add(empty.toJson().toString());
@@ -85,9 +86,9 @@ public class CodeActivity extends Activity implements SensorEventListener {
 
     public void onSensorChanged(SensorEvent event) {
 
-        x_ = (int)(event.values[0]*5 + 50);
-        y_ = (int)(event.values[1]*5 + 50);
-        z_ = (int)(event.values[2]*5 + 50);
+        x_ = (int) (event.values[0] * 5 + 50);
+        y_ = (int) (event.values[1] * 5 + 50);
+        z_ = (int) (event.values[2] * 5 + 50);
 
         //Log.e("Accel.run","" + x_+ " " + y_ + " " + z_);
     }
@@ -117,7 +118,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
                 list.remove(position);
                 list.add(position, data.getStringExtra("strip"));
             } else if (data.getStringExtra("mode").equals("add")) {
-                list.add(position+1, data.getStringExtra("strip"));
+                list.add(position + 1, data.getStringExtra("strip"));
             }
             adapter.notifyDataSetChanged();
         }
@@ -151,7 +152,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
         if (item.getTitle().toString().equals("Save")) {
             save();
             return true;
-        } else if (item.getTitle().toString().equals("Save as")){
+        } else if (item.getTitle().toString().equals("Save as")) {
             JSONArray jarray = new JSONArray();
             for (int i = 1; i < list.size(); i++) {
                 jarray.put(list.get(i));
@@ -163,17 +164,17 @@ public class CodeActivity extends Activity implements SensorEventListener {
             Intent intent = new Intent(CodeActivity.this, Save.class);
             startActivity(intent);
             return true;
-        }else if (item.getTitle().toString().equals("clear")){
+        } else if (item.getTitle().toString().equals("clear")) {
             list.clear();
             return true;
-        } else if (item.getTitle().toString().equals("files")){
+        } else if (item.getTitle().toString().equals("files")) {
             startActivity(new Intent(CodeActivity.this, Open.class));
             return true;
-        }else if (item.getTitle().toString().equals("help")){
+        } else if (item.getTitle().toString().equals("help")) {
             return true;
-        }else
+        } else
             return super.onOptionsItemSelected(item);
-        }
+    }
 
     public void save() {
         JSONArray jarray = new JSONArray();
@@ -215,37 +216,37 @@ public class CodeActivity extends Activity implements SensorEventListener {
     @Override
     public void onBackPressed() {
 
-        if (list.size()== 1) {
+        if (list.size() == 1) {
             finish();
         } else {
             new AlertDialog.Builder(this)
-                .setMessage("Save changes?")
-                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        save();
-                        finish();
-                    }
-                })
-                .setNegativeButton("no", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                    .setMessage("Save changes?")
+                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            save();
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
         }
     }
 
     public void run(View view) {
 
-        HashMap<String,String> results = new HashMap<String, String>();
-        for(int i =0; i<list.size(); i++) {
+        HashMap<String, String> results = new HashMap<String, String>();
+        for (int i = 0; i < list.size(); i++) {
             try {
                 JSONObject strip = new JSONObject(list.get(i));
                 FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                 fstrip.fromJson(strip);
                 fstrip.accelerometerVariable(x_, y_, z_);
-                HashMap<String,String> result = fstrip.run(this, results);
+                HashMap<String, String> result = fstrip.run(this, results);
                 if (result != null) {
                     results.putAll(result);
                 }
@@ -256,12 +257,12 @@ public class CodeActivity extends Activity implements SensorEventListener {
                 startActivity(intent);
                 return;
 
-            } catch (VariableLackException e){
+            } catch (VariableLackException e) {
                 Toast.makeText(getApplicationContext(), "No variable!", Toast.LENGTH_LONG).show();
                 return;
-            } catch(ConvertException e) {
+            } catch (ConvertException e) {
                 Toast.makeText(getApplicationContext(), "Cannot convert variable!", Toast.LENGTH_LONG).show();
-               return;
+                return;
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Something is wrong!", Toast.LENGTH_LONG).show();
                 Log.e("kidcode", Log.getStackTraceString(e));

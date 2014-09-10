@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
-* Created by marta on 01.06.14.
-*/
+ * Created by marta on 01.06.14.
+ */
 public class WhileForInt extends FunctionStrip {
 
-    private  String value1 = "";
+    private String value1 = "";
     private String value2 = "";
     private String functionText = "";
     ArrayList<String> list = new ArrayList<String>();
@@ -84,7 +84,7 @@ public class WhileForInt extends FunctionStrip {
                 View prev = strip.getPreview(getContext());
                 return prev;
             } catch (Exception e) {
-                return  null;
+                return null;
             }
         }
     }
@@ -96,7 +96,7 @@ public class WhileForInt extends FunctionStrip {
 
         final String[] functions = {" > 0", " < 0", "==", "!=", "<", ">"};
 
-        Button addButton = (Button)view.findViewById(R.id.add);
+        Button addButton = (Button) view.findViewById(R.id.add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +104,7 @@ public class WhileForInt extends FunctionStrip {
             }
         });
 
-        Button deleteButton = (Button)view.findViewById(R.id.delete);
+        Button deleteButton = (Button) view.findViewById(R.id.delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,8 +112,8 @@ public class WhileForInt extends FunctionStrip {
             }
         });
 
-        final AutoCompleteTextView variable = (AutoCompleteTextView)view.findViewById(R.id.variable);
-        final AutoCompleteTextView compareWith = (AutoCompleteTextView)view.findViewById(R.id.compareWith);
+        final AutoCompleteTextView variable = (AutoCompleteTextView) view.findViewById(R.id.variable);
+        final AutoCompleteTextView compareWith = (AutoCompleteTextView) view.findViewById(R.id.compareWith);
 
         variable.setText(value1);
         compareWith.setText(value2);
@@ -121,9 +121,9 @@ public class WhileForInt extends FunctionStrip {
         addAutocomplete(context, variable, previousVariables);
         addAutocomplete(context, compareWith, previousVariables);
 
-        final Spinner function = (Spinner)view.findViewById(R.id.function);
+        final Spinner function = (Spinner) view.findViewById(R.id.function);
 
-        if (functions != null){
+        if (functions != null) {
             ArrayAdapter arrayAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, functions);
             function.setAdapter(arrayAdapter);
             arrayAdapter.notifyDataSetChanged();
@@ -226,7 +226,7 @@ public class WhileForInt extends FunctionStrip {
         return object;
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
         x_ = x;
         y_ = y;
         z_ = z;
@@ -253,21 +253,22 @@ public class WhileForInt extends FunctionStrip {
 
         }
     }
-    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException,VariableLackException {
+
+    public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException, VariableLackException {
         boolean result = false;
         int value1Int = variableToInt(value1, previousVariables);
 
-        if(functionText.contains("> 0")) {
+        if (functionText.contains("> 0")) {
             result = value1Int > 0;
         } else if (functionText.contains("< 0")) {
             result = value1Int < 0;
         } else if (functionText.contains("==")) {
             int value2Int = variableToInt(value2, previousVariables);
             result = (value1Int == value2Int);
-        }else if (functionText.contains("!=")) {
+        } else if (functionText.contains("!=")) {
             int value2Int = variableToInt(value2, previousVariables);
             result = (value1Int != value2Int);
-        }else if (functionText.contains(">")) {
+        } else if (functionText.contains(">")) {
             int value2Int = variableToInt(value2, previousVariables);
             result = (value1Int > value2Int);
         } else if (functionText.contains("<")) {
@@ -277,15 +278,15 @@ public class WhileForInt extends FunctionStrip {
 
         int g = 0;
         while (result == true && g < 10) {
-            HashMap<String,String> results = new HashMap<String, String>();
+            HashMap<String, String> results = new HashMap<String, String>();
             results.putAll(previousVariables);
-            for (int i =0; i < list.size(); i++) {
+            for (int i = 0; i < list.size(); i++) {
                 try {
                     JSONObject strip = new JSONObject(list.get(i));
                     FunctionStrip fstrip = JsonToStrip.fromJson(strip);
                     fstrip.fromJson(strip);
                     fstrip.accelerometerVariable(x_, y_, z_);
-                    HashMap<String,String> strip_result = fstrip.run(context, results);
+                    HashMap<String, String> strip_result = fstrip.run(context, results);
                     if (strip_result != null) {
                         results.putAll(strip_result);
                     }
@@ -295,7 +296,7 @@ public class WhileForInt extends FunctionStrip {
             }
         }
 
-        return  null;
+        return null;
     }
 
     public void onActivityResult(Intent data) {
@@ -305,7 +306,7 @@ public class WhileForInt extends FunctionStrip {
                 list.remove(position);
                 list.add(position, data.getStringExtra("strip"));
             } else if (data.getStringExtra("mode").equals("add")) {
-                list.add(position+1, data.getStringExtra("strip"));
+                list.add(position + 1, data.getStringExtra("strip"));
             }
             codeAdapter.notifyDataSetChanged();
         }

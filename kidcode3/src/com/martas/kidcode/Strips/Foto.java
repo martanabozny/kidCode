@@ -59,7 +59,7 @@ public class Foto extends FunctionStrip {
         try {
             ExifInterface exif = new ExifInterface(path);
             byte[] imageData = exif.getThumbnail();
-            Bitmap thumbnail= BitmapFactory.decodeByteArray(imageData,0,imageData.length);
+            Bitmap thumbnail = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 
             final ImageView image = new ImageView(context);
             image.setImageBitmap(thumbnail);
@@ -76,10 +76,10 @@ public class Foto extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.foto, null);
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
-        TextView pathText = (TextView)view.findViewById(R.id.path);
-        GridView fotos = (GridView)view.findViewById(R.id.fotos);
-        Button takePicture = (Button)view.findViewById(R.id.newPicture);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
+        TextView pathText = (TextView) view.findViewById(R.id.path);
+        GridView fotos = (GridView) view.findViewById(R.id.fotos);
+        Button takePicture = (Button) view.findViewById(R.id.newPicture);
 
         result.setText(name);
         pathText.setText(path);
@@ -119,10 +119,9 @@ public class Foto extends FunctionStrip {
         File camera_files = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera");
 
 
-
         if (camera_files != null && camera_files.exists()) {
             for (File f : camera_files.listFiles()) {
-                if (f.isFile()){
+                if (f.isFile()) {
                     String name = f.getName();
                     list.add(camera_files.getAbsolutePath() + "/" + name);
                 }
@@ -131,7 +130,7 @@ public class Foto extends FunctionStrip {
 
         if (kidcode_files != null && kidcode_files.exists()) {
             for (File f : kidcode_files.listFiles()) {
-                if (f.isFile()){
+                if (f.isFile()) {
                     String name = f.getName();
                     list.add(0, kidcode_files.getAbsolutePath() + "/" + name);
                 }
@@ -158,7 +157,7 @@ public class Foto extends FunctionStrip {
                 @Override
                 public void onClick(View v) {
                     path = getItem(position);
-                    TextView pathname = (TextView)view.findViewById(R.id.path);
+                    TextView pathname = (TextView) view.findViewById(R.id.path);
                     pathname.setText(getItem(position));
                 }
             });
@@ -168,11 +167,11 @@ public class Foto extends FunctionStrip {
                 byte[] imageData = exif.getThumbnail();
 
                 if (imageData != null) {
-                    Bitmap thumbnail= BitmapFactory.decodeByteArray(imageData,0,imageData.length);
+                    Bitmap thumbnail = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
                     image.setImageBitmap(thumbnail);
                 } else {
                     Bitmap thumbnail = BitmapFactory.decodeFile(getItem(position));
-                    image.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, ICON_WIDTH, ICON_WIDTH*thumbnail.getHeight()/thumbnail.getWidth(), false));
+                    image.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, ICON_WIDTH, ICON_WIDTH * thumbnail.getHeight() / thumbnail.getWidth(), false));
                 }
 
                 return image;
@@ -204,13 +203,14 @@ public class Foto extends FunctionStrip {
 
         }
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         HashMap<String, String> r = new HashMap<String, String>();
         r.put(name, path);
         return r;
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }

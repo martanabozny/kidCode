@@ -27,7 +27,7 @@ public class MyMenu extends Activity {
             if (mPrefs != null) {
                 SharedPreferences.Editor ed = mPrefs.edit();
                 ed.putString("name", "");
-                ed.putString("strips","");
+                ed.putString("strips", "");
                 ed.commit();
                 startActivity(new Intent(MyMenu.this, CodeActivity.class));
             }
@@ -43,7 +43,6 @@ public class MyMenu extends Activity {
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
-
 
 
 }

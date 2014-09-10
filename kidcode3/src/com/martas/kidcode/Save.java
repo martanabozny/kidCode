@@ -46,14 +46,15 @@ public class Save extends ListActivity {
         setListAdapter(adapter);
         updateList();
 
-        EditText name = (EditText)findViewById(R.id.name);
+        EditText name = (EditText) findViewById(R.id.name);
         name.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {  }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                EditText textname = (EditText)findViewById(R.id.name);
+                EditText textname = (EditText) findViewById(R.id.name);
 
                 if (!charSequence.toString().matches("^[a-zA-Z0-9_\\-+]+$")) {
                     textname.setBackgroundColor(Color.RED);
@@ -61,12 +62,14 @@ public class Save extends ListActivity {
                     textname.setBackgroundColor(android.R.drawable.btn_default);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
         });
 
     }
+
     public void savefile(String filename, String contains) {
         String eol = System.getProperty("line.separator");
         FileOutputStream fos = null;
@@ -91,19 +94,19 @@ public class Save extends ListActivity {
     public void okClicked(View view) {
         final String contains = mPrefs.getString("strips", "");
         final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/";
-        EditText textname = (EditText)findViewById(R.id.name);
+        EditText textname = (EditText) findViewById(R.id.name);
         final String name = textname.getText().toString();
         File file = new File(path + name);
 
         if (!file.exists()) {
-            savefile(path+name, contains);
+            savefile(path + name, contains);
             finish();
         } else {
             new AlertDialog.Builder(this)
                     .setMessage("File already exist. Should be ovveride?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            savefile(path+name, contains);
+                            savefile(path + name, contains);
                             finish();
                         }
                     })
@@ -170,7 +173,7 @@ public class Save extends ListActivity {
     }
 
     public void saveStrips(String filename) {
-        EditText textname = (EditText)findViewById(R.id.name);
+        EditText textname = (EditText) findViewById(R.id.name);
         textname.setText(filename);
     }
 }

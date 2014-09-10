@@ -27,17 +27,17 @@ public class End extends Activity {
         String name = getIntent().getStringExtra("result");
         String value = getIntent().getStringExtra("value");
 
-        EditText name_ = (EditText)findViewById(R.id.name);
+        EditText name_ = (EditText) findViewById(R.id.name);
         name_.setKeyListener(null);
         name_.setText(name);
-        EditText value_ = (EditText)findViewById(R.id.value);
+        EditText value_ = (EditText) findViewById(R.id.value);
         value_.setKeyListener(null);
         value_.setText(value);
 
         File f = new File(value);
         if (f.exists()) {
             if (value.endsWith(".jpg") || value.endsWith(".JPG")) {
-                ImageView img = (ImageView)findViewById(R.id.image);
+                ImageView img = (ImageView) findViewById(R.id.image);
                 Drawable d = Drawable.createFromPath(f.getAbsolutePath());
                 img.setImageDrawable(d);
                 //img.setImageBitmap(BitmapFactory.decodeFile(f.getAbsolutePath()));

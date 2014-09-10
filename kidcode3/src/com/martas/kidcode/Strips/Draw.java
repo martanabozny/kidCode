@@ -28,8 +28,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 /**
-* Created by marta on 01.06.14.
-*/
+ * Created by marta on 01.06.14.
+ */
 public class Draw extends FunctionStrip {
 
     private String figureText = "";
@@ -54,11 +54,11 @@ public class Draw extends FunctionStrip {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.drawpreview, null);
-        TextView result = (TextView)view.findViewById(R.id.result);
+        TextView result = (TextView) view.findViewById(R.id.result);
         result.setText(name);
-        TextView figure = (TextView)view.findViewById(R.id.figure);
+        TextView figure = (TextView) view.findViewById(R.id.figure);
         figure.setText(figureText);
-        Button button = (Button)view.findViewById(R.id.colorPreview);
+        Button button = (Button) view.findViewById(R.id.colorPreview);
         button.setBackgroundColor(Color.parseColor(colorText));
 
         return view;
@@ -69,7 +69,7 @@ public class Draw extends FunctionStrip {
         view = inflater.inflate(R.layout.draw, null);
         Button button = null;
 
-        AutoCompleteTextView result = (AutoCompleteTextView)view.findViewById(R.id.result);
+        AutoCompleteTextView result = (AutoCompleteTextView) view.findViewById(R.id.result);
         //Button color = (Button)view.findViewById(R.id.colorPreview);
 
         result.setText(name);
@@ -78,24 +78,24 @@ public class Draw extends FunctionStrip {
         addAutocomplete(context, result, previousVariables);
 
         ArrayList<String> list = new ArrayList<String>();
-        GridView colors = (GridView)view.findViewById(R.id.colors);
+        GridView colors = (GridView) view.findViewById(R.id.colors);
         ColorsAdapter adapter = new ColorsAdapter(context, list);
         colors.setAdapter(adapter);
         colors.setNumColumns(view.getResources().getDisplayMetrics().widthPixels / 240);
 
         list.add("#FFFFFF");
         list.add("#FFFF00");
-        list.add( "#FF0000");
+        list.add("#FF0000");
         list.add("#808080");
         list.add("#800080");
-        list.add( "#008000");
-        list.add( "#0000FF");
+        list.add("#008000");
+        list.add("#0000FF");
         list.add("#00FFFF");
         list.add("#FFC0CB");
 
         adapter.notifyDataSetChanged();
 
-        final Spinner figure = (Spinner)view.findViewById(R.id.figure);
+        final Spinner figure = (Spinner) view.findViewById(R.id.figure);
         figureText = figure.getSelectedItem().toString();
 
         result.addTextChangedListener(new TextWatcher() {
@@ -134,6 +134,7 @@ public class Draw extends FunctionStrip {
         public ColorsAdapter(Context context, ArrayList<String> list) {
             super(context, R.layout.codeactivity, list);
         }
+
         public View getView(final int position, View convertView, ViewGroup parent) {
             ImageButton button = new ImageButton(getContext());
             button.setBackgroundColor(Color.parseColor(getItem(position)));
@@ -145,7 +146,7 @@ public class Draw extends FunctionStrip {
                 @Override
                 public void onClick(View v) {
                     colorText = getItem(position);
-                    Button colorPreview = (Button)view.findViewById(R.id.colorPreview);
+                    Button colorPreview = (Button) view.findViewById(R.id.colorPreview);
                     colorPreview.setBackgroundColor(Color.parseColor(getItem(position)));
 
                 }
@@ -172,6 +173,7 @@ public class Draw extends FunctionStrip {
         }
         return object;
     }
+
     public void fromJson(JSONObject object) {
         try {
             figureText = object.get("figure").toString();
@@ -182,6 +184,7 @@ public class Draw extends FunctionStrip {
 
         }
     }
+
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) {
         Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888);
 
@@ -195,15 +198,15 @@ public class Draw extends FunctionStrip {
         if (figureText.contains("triangle")) {
 
             Point point1_draw = new Point(50, 50);
-            Point point2_draw = new Point(50,250);
+            Point point2_draw = new Point(50, 250);
             Point point3_draw = new Point(200, 150);
 
             Path path = new Path();
             path.setFillType(Path.FillType.EVEN_ODD);
-            path.moveTo(point1_draw.x,point1_draw.y);
-            path.lineTo(point2_draw.x,point2_draw.y);
-            path.lineTo(point3_draw.x,point3_draw.y);
-            path.lineTo(point1_draw.x,point1_draw.y);
+            path.moveTo(point1_draw.x, point1_draw.y);
+            path.lineTo(point2_draw.x, point2_draw.y);
+            path.lineTo(point3_draw.x, point3_draw.y);
+            path.lineTo(point1_draw.x, point1_draw.y);
             path.close();
 
             canvas.drawPath(path, paint);
@@ -211,7 +214,7 @@ public class Draw extends FunctionStrip {
             canvas.drawRect(100, 100, 200, 200, paint);
 
         } else if (figureText.contains("circle")) {
-            canvas.drawCircle(100,100, 80,paint);
+            canvas.drawCircle(100, 100, 80, paint);
         }
 
         File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode-pictures/");
@@ -221,14 +224,14 @@ public class Draw extends FunctionStrip {
         }
 
         try {
-             Calendar cal = Calendar.getInstance();
-             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-             filename = f.getAbsolutePath() + "/kidcode-" + sdf.format(cal.getTime()) + ".jpg";
-             File output = new File(filename);
-             output.createNewFile();
-             FileOutputStream fos = new FileOutputStream(output);
-             bitmap.compress(Bitmap.CompressFormat.JPEG, 99, fos);
-             fos.close();
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+            filename = f.getAbsolutePath() + "/kidcode-" + sdf.format(cal.getTime()) + ".jpg";
+            File output = new File(filename);
+            output.createNewFile();
+            FileOutputStream fos = new FileOutputStream(output);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 99, fos);
+            fos.close();
         } catch (Exception e) {
             Log.e("kidcode", Log.getStackTraceString(e));
         }
@@ -238,7 +241,7 @@ public class Draw extends FunctionStrip {
         return r;
     }
 
-    public void accelerometerVariable(int x,int y, int z) {
+    public void accelerometerVariable(int x, int y, int z) {
 
     }
 }
