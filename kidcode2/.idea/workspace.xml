@@ -114,10 +114,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="b5004f05-0b30-43cf-a1e5-42a9ec64a408" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/tests/src/com/martas/kidcode/MathTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/src/src.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/tests/tests.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/.idea/modules.xml" afterPath="$PROJECT_DIR$/../kidcode3/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/tests/src/com/martas/kidcode/AccelTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/tests/src/com/martas/kidcode/IfNumbersTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kidcode3/tests/src/com/martas/kidcode/StringTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/CodeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/End.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/End.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Strips/Foto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Save.java" afterPath="$PROJECT_DIR$/../kidcode3/src/com/martas/kidcode/Save.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kidcode3/.idea/workspace.xml" />
     </list>
@@ -205,7 +208,7 @@
       <file leaf-file-name="WhileStrip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/kidcode2/Strips/WhileStrip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="0.0" vertical-offset="669" max-vertical-offset="1290">
+            <state line="76" column="26" selection-start="2527" selection-end="2527" vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="1395">
               <folding />
             </state>
           </provider>
@@ -214,7 +217,7 @@
       <file leaf-file-name="CodeUnitTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/com/example/kidcode2/CodeUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+            <state line="11" column="13" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
@@ -223,7 +226,7 @@
       <file leaf-file-name="AccelerometerTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/src/com/example/kidcode2/AccelerometerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="712" selection-end="712" vertical-scroll-proportion="0.65340906" vertical-offset="0" max-vertical-offset="690">
+            <state line="41" column="0" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.8806818" vertical-offset="135" max-vertical-offset="690">
               <folding />
             </state>
           </provider>
@@ -371,6 +374,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -540,7 +544,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -560,7 +563,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kidcode3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -1179,7 +1182,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/src/com/example/kidcode2/AccelerometerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="712" selection-end="712" vertical-scroll-proportion="0.65340906" vertical-offset="0" max-vertical-offset="690">
+        <state line="41" column="0" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.8806818" vertical-offset="135" max-vertical-offset="690">
           <folding />
         </state>
       </provider>

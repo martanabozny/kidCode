@@ -166,6 +166,10 @@ public class CodeActivity extends Activity implements SensorEventListener {
             return true;
         } else if (item.getTitle().toString().equals("clear")) {
             list.clear();
+            Empty empty = new Empty();
+            list.add(empty.toJson().toString());
+            adapter.notifyDataSetChanged();
+
             return true;
         } else if (item.getTitle().toString().equals("files")) {
             startActivity(new Intent(CodeActivity.this, Open.class));

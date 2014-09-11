@@ -1,15 +1,20 @@
 package com.martas.kidcode;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.net.URI;
@@ -38,14 +43,9 @@ public class End extends Activity {
         if (f.exists()) {
             if (value.endsWith(".jpg") || value.endsWith(".JPG")) {
                 ImageView img = (ImageView) findViewById(R.id.image);
-                Drawable d = Drawable.createFromPath(f.getAbsolutePath());
-                img.setImageDrawable(d);
-                //img.setImageBitmap(BitmapFactory.decodeFile(f.getAbsolutePath()));
-                //img.setImageURI(Uri.fromFile(f));
-                //Bitmap bmp = BitmapFactory.decodeFile(f.getAbsolutePath());
-//                img.setMinimumHeight(100);
-//                img.setMinimumWidth(100);
-//                img.setImageBitmap(bmp);
+
+                Bitmap thumbnail = BitmapFactory.decodeFile(f.getAbsolutePath());
+                img.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, 400, 400 * thumbnail.getHeight() / thumbnail.getWidth(), false));
             }
         } else {
             Log.e("kidcode", "File " + value + "does not exist");

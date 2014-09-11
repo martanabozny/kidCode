@@ -1,0 +1,51 @@
+package com.martas.kidcode;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.widget.ImageButton;
+
+/**
+ * Created by marta on 12.05.14.
+ */
+public class StringTest extends android.test.ActivityUnitTestCase<CodeActivity> {
+
+    private CodeActivity activity;
+
+    public StringTest() {
+        super(CodeActivity.class);
+    }
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+
+        Intent intent = new Intent(getInstrumentation().getTargetContext(), CodeActivity.class);
+        String json = "[\"{\\\"type\\\":\\\"NewVariable\\\",\\\"value\\\":\\\"ala\\\",\\\"kind\\\":\\\"String\\\",\\\"name\\\":\\\"c\\\"}\",\"{\\\"type\\\":\\\"Strings\\\",\\\"functionText\\\":\\\"UPPER\\\",\\\"text\\\":\\\"c\\\",\\\"name\\\":\\\"h\\\"}\",\"{\\\"type\\\":\\\"Stop\\\",\\\"name\\\":\\\"h\\\"}\"]";
+
+        SharedPreferences mPrefs = getInstrumentation().getTargetContext().getSharedPreferences("strips", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor ed = mPrefs.edit();
+        ed.putString("name", "test");
+        ed.putString("strips", json);
+        ed.commit();
+
+        startActivity(intent, null, null);
+        activity = getActivity();
+    }
+
+    public void testLayout() {
+        ImageButton play = (ImageButton) activity.findViewById(R.id.play);
+        play.performClick();
+
+        Intent triggeredIntent = getStartedActivityIntent();
+        assertNotNull("Intent was null", triggeredIntent);
+
+        String name = triggeredIntent.getExtras().getString("result");
+        String value = triggeredIntent.getExtras().getString("value");
+
+        assertEquals(name, "h");
+        assertEquals(value, "ALA");
+
+    }
+}

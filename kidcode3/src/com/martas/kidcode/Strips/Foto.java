@@ -1,12 +1,15 @@
 package com.martas.kidcode.Strips;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.ExifInterface;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -57,12 +60,10 @@ public class Foto extends FunctionStrip {
 
         layout.addView(tv);
         try {
-            ExifInterface exif = new ExifInterface(path);
-            byte[] imageData = exif.getThumbnail();
-            Bitmap thumbnail = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
-
             final ImageView image = new ImageView(context);
-            image.setImageBitmap(thumbnail);
+
+            Bitmap thumbnail = BitmapFactory.decodeFile(path);
+            image.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, ICON_WIDTH, ICON_WIDTH * thumbnail.getHeight() / thumbnail.getWidth(), false));
 
             layout.addView(image);
         } catch (Exception e) {
@@ -177,7 +178,7 @@ public class Foto extends FunctionStrip {
                 return image;
             } catch (Exception e) {
                 TextView tv = new TextView(getContext());
-                tv.setText(e.toString());
+                tv.setText("");
                 return tv;
             }
         }

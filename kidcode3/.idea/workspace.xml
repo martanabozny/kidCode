@@ -244,58 +244,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Fotoop.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Fotoop.java">
+      <file leaf-file-name="Foto.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="0" selection-start="6869" selection-end="6869" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="3255">
+            <state line="63" column="0" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0" vertical-offset="503" max-vertical-offset="2835">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Camera.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Camera.java">
+      <file leaf-file-name="End.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="54" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="2415">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Save.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Save.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="70" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2310">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MathTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/src/com/martas/kidcode/MathTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="9" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.719697" vertical-offset="225" max-vertical-offset="795">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Open.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Open.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="24" selection-start="5295" selection-end="5452" vertical-scroll-proportion="0.0" vertical-offset="1646" max-vertical-offset="2430">
-              <folding>
-                <element signature="e#3113#3299#0" expanded="true" />
-                <element signature="e#3284#3285#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="29" selection-start="8416" selection-end="8416" vertical-scroll-proportion="0.0" vertical-offset="3251" max-vertical-offset="3840">
+            <state line="47" column="73" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.69425285" vertical-offset="148" max-vertical-offset="645">
               <folding />
             </state>
           </provider>
@@ -311,9 +272,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/setup.xml" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/MySimpleArrayAdapter.java" />
-        <option value="$PROJECT_DIR$/res/color/colors.xml" />
         <option value="$PROJECT_DIR$/res/layout/codeactivity.xml" />
         <option value="$PROJECT_DIR$/res/drawable-hdpi/minusbutton_background.xml" />
         <option value="$PROJECT_DIR$/res/drawable-hdpi/plusbutton_background.xml" />
@@ -345,7 +303,6 @@
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Strings.java" />
         <option value="$PROJECT_DIR$/res/layout/strings2.xml" />
         <option value="$PROJECT_DIR$/res/layout/fotoop.xml" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/drawpreview.xml" />
         <option value="$PROJECT_DIR$/res/drawable-hdpi/colorbutton_background.xml" />
         <option value="$PROJECT_DIR$/res/layout/end.xml" />
@@ -355,19 +312,23 @@
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/WhileForInt.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/WhileForString.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/End.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Stop.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Open.java" />
         <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Fotoop.java" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java" />
-        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Save.java" />
         <option value="$PROJECT_DIR$/tests/src/com/martas/kidcode/MathTest.java" />
+        <option value="$PROJECT_DIR$/tests/src/com/martas/kidcode/AccelTest.java" />
+        <option value="$PROJECT_DIR$/tests/src/com/martas/kidcode/StringTest.java" />
+        <option value="$PROJECT_DIR$/tests/src/com/martas/kidcode/IfNumbersTest.java" />
+        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Save.java" />
+        <option value="$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java" />
+        <option value="$PROJECT_DIR$/src/com/martas/kidcode/End.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1366" />
-    <option name="height" value="743" />
+    <option name="height" value="736" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -395,8 +356,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -493,6 +454,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kidcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Strips" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kidcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kidcode3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -529,14 +512,14 @@
     <property name="recentsLimit" value="5" />
     <property name="SearchEverywhereHistory" value="Fram" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kidcode2" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.martas.kidcode.Strips" />
       <recent name="com.martas.kidcode" />
+      <recent name="com.martas.kidcode.Strips" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/src/com/martas/kidcode" />
@@ -545,15 +528,15 @@
       <recent name="$PROJECT_DIR$/res/drawable-xhdpi" />
       <recent name="$PROJECT_DIR$/res" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.martas.kidcode" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res/color" />
       <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.martas.kidcode" />
-    </key>
   </component>
-  <component name="RunManager" selected="Android Tests.tests">
+  <component name="RunManager" selected="Android Application.kidcode3">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -588,6 +571,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -613,19 +609,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -748,7 +731,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="743" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -762,15 +745,15 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38580248" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42438272" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38533542" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27925116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2492647" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3271605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21029411" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18564743" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -800,16 +783,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/color/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="516" selection-end="523" vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="390" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/stop_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="573" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/strings.xml">
       <provider editor-type-id="text-editor">
         <state line="2" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="285">
@@ -1027,16 +1000,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/end.xml">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/fotoop.xml">
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
@@ -1096,39 +1059,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="54" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="2415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="143" selection-start="6239" selection-end="6239" vertical-scroll-proportion="-0.6576577" vertical-offset="1614" max-vertical-offset="2115" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="19" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.17630059" vertical-offset="554" max-vertical-offset="900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Fotoop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="0" selection-start="6869" selection-end="6869" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="3255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Save.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="70" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2310">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/codeactivity.xml">
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
@@ -1139,26 +1069,89 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Open.java">
+    <entry file="file://$PROJECT_DIR$/tests/src/com/martas/kidcode/AccelTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="24" selection-start="5295" selection-end="5452" vertical-scroll-proportion="0.0" vertical-offset="1646" max-vertical-offset="2430">
-          <folding>
-            <element signature="e#3113#3299#0" expanded="true" />
-            <element signature="e#3284#3285#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="29" selection-start="8416" selection-end="8416" vertical-scroll-proportion="0.0" vertical-offset="3251" max-vertical-offset="3840">
+        <state line="46" column="29" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="795">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/src/com/martas/kidcode/MathTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="9" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.719697" vertical-offset="225" max-vertical-offset="795">
+        <state line="48" column="8" selection-start="1616" selection-end="1642" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/com/martas/kidcode/StringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="32" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="810">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/com/martas/kidcode/IfNumbersTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="29" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Save.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="19" selection-start="3165" selection-end="3165" vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="2370">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/end.xml">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/CodeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="0" selection-start="5435" selection-end="5435" vertical-scroll-proportion="0.5827703" vertical-offset="1920" max-vertical-offset="3900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Open.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="24" selection-start="5295" selection-end="5452" vertical-scroll-proportion="0.0" vertical-offset="1646" max-vertical-offset="2430">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="54" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.9628378" vertical-offset="0" max-vertical-offset="2025">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Fotoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="0" selection-start="6869" selection-end="6869" vertical-scroll-proportion="0.7627907" vertical-offset="2341" max-vertical-offset="2955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/Strips/Foto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0" vertical-offset="503" max-vertical-offset="2835">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/martas/kidcode/End.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="73" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.69425285" vertical-offset="148" max-vertical-offset="645">
           <folding />
         </state>
       </provider>

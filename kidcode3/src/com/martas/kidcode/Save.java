@@ -98,6 +98,10 @@ public class Save extends ListActivity {
         final String name = textname.getText().toString();
         File file = new File(path + name);
 
+        if(name.equals("")){
+            return;
+        }
+
         if (!file.exists()) {
             savefile(path + name, contains);
             finish();
