@@ -255,31 +255,38 @@ public class WhileForInt extends FunctionStrip {
     }
 
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException, VariableLackException {
-        boolean result = false;
-        int value1Int = variableToInt(value1, previousVariables);
+        boolean result = true;
 
-        if (functionText.contains("> 0")) {
-            result = value1Int > 0;
-        } else if (functionText.contains("< 0")) {
-            result = value1Int < 0;
-        } else if (functionText.contains("==")) {
-            int value2Int = variableToInt(value2, previousVariables);
-            result = (value1Int == value2Int);
-        } else if (functionText.contains("!=")) {
-            int value2Int = variableToInt(value2, previousVariables);
-            result = (value1Int != value2Int);
-        } else if (functionText.contains(">")) {
-            int value2Int = variableToInt(value2, previousVariables);
-            result = (value1Int > value2Int);
-        } else if (functionText.contains("<")) {
-            int value2Int = variableToInt(value2, previousVariables);
-            result = (value1Int < value2Int);
-        }
+        HashMap<String, String> results = new HashMap<String, String>();
+        results.putAll(previousVariables);
 
         int g = 0;
-        while (result == true && g < 10) {
-            HashMap<String, String> results = new HashMap<String, String>();
-            results.putAll(previousVariables);
+        while (g < 100) {
+            int value1Int = variableToInt(value1, results);
+
+            if (functionText.contains("> 0")) {
+                result = value1Int > 0;
+            } else if (functionText.contains("< 0")) {
+                result = value1Int < 0;
+            } else if (functionText.contains("==")) {
+                int value2Int = variableToInt(value2, results);
+                result = (value1Int == value2Int);
+            } else if (functionText.contains("!=")) {
+                int value2Int = variableToInt(value2, results);
+                result = (value1Int != value2Int);
+            } else if (functionText.contains(">")) {
+                int value2Int = variableToInt(value2, results);
+                result = (value1Int > value2Int);
+            } else if (functionText.contains("<")) {
+                int value2Int = variableToInt(value2, results);
+                result = (value1Int < value2Int);
+            }
+            Log.e("kidcode", "" + value1Int);
+
+            if (result == false) {
+                break;
+            }
+
             for (int i = 0; i < list.size(); i++) {
                 try {
                     JSONObject strip = new JSONObject(list.get(i));
@@ -294,9 +301,11 @@ public class WhileForInt extends FunctionStrip {
 
                 }
             }
+
+            g++;
         }
 
-        return null;
+        return results;
     }
 
     public void onActivityResult(Intent data) {

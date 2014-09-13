@@ -256,24 +256,28 @@ public class WhileForString extends FunctionStrip {
 
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException, VariableLackException {
         boolean result = false;
-        int value1Int = variableToInt(value1, previousVariables);
 
-        if (functionText.contains("is upper")) {
-            result = value1.equals(value1.toLowerCase());
-        } else if (functionText.contains("is upper")) {
-            result = value1.equals(value1.toLowerCase());
-        } else if (functionText.contains("equals")) {
-            result = value1.equals(value2);
-        } else if (functionText.contains("contains")) {
-            result = value1.contains(value2);
-        } else if (functionText.contains("longer")) {
-            result = value1.length() == value2.length();
-        }
+        HashMap<String, String> results = new HashMap<String, String>();
+        results.putAll(previousVariables);
 
         int g = 0;
-        while (result == true && g < 10) {
-            HashMap<String, String> results = new HashMap<String, String>();
-            results.putAll(previousVariables);
+        while (g < 100) {
+            if (functionText.contains("is upper")) {
+                result = value1.equals(value1.toLowerCase());
+            } else if (functionText.contains("is upper")) {
+                result = value1.equals(value1.toLowerCase());
+            } else if (functionText.contains("equals")) {
+                result = value1.equals(value2);
+            } else if (functionText.contains("contains")) {
+                result = value1.contains(value2);
+            } else if (functionText.contains("longer")) {
+                result = value1.length() == value2.length();
+            }
+
+            if (result == true) {
+                break;
+            }
+
             for (int i = 0; i < list.size(); i++) {
                 try {
                     JSONObject strip = new JSONObject(list.get(i));
@@ -288,9 +292,10 @@ public class WhileForString extends FunctionStrip {
 
                 }
             }
+            g++;
         }
 
-        return null;
+        return results;
     }
 
     public void onActivityResult(Intent data) {

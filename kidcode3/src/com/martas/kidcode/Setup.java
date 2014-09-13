@@ -59,6 +59,10 @@ public class Setup extends Activity {
         finish();
     }
 
+    public void cancelClicked(View view) {
+        finish();
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         fstrip.onActivityResult(data);
     }

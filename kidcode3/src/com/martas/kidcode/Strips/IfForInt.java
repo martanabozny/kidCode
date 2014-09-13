@@ -293,6 +293,8 @@ public class IfForInt extends FunctionStrip {
 
                 }
             }
+
+            return results;
         }
 
         return null;
