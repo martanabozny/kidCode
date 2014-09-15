@@ -94,7 +94,7 @@ public class WhileForString extends FunctionStrip {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.whilexmlstring, null);
 
-        final String[] functions = {"is lower", "is upper", "equals", "contains", "longer"};
+        final String[] functions = {"is lower", "is upper", "=", "contains", "is longer than"};
 
         Button addButton = (Button) view.findViewById(R.id.add);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -266,12 +266,12 @@ public class WhileForString extends FunctionStrip {
                 result = value1.equals(value1.toLowerCase());
             } else if (functionText.contains("is upper")) {
                 result = value1.equals(value1.toLowerCase());
-            } else if (functionText.contains("equals")) {
+            } else if (functionText.contains("=")) {
                 result = value1.equals(value2);
             } else if (functionText.contains("contains")) {
                 result = value1.contains(value2);
-            } else if (functionText.contains("longer")) {
-                result = value1.length() == value2.length();
+            } else if (functionText.contains("is longer than")) {
+                result = value1.length() > value2.length();
             }
 
             if (result == true) {

@@ -274,7 +274,7 @@ public class CodeActivity extends Activity implements SensorEventListener {
             }
         }
 
-        Toast.makeText(getApplicationContext(), "Code is compiled. To show result select stop button first", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Your program is done. To show result add STOP button", Toast.LENGTH_LONG).show();
     }
 
 }
