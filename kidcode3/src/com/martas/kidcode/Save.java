@@ -70,12 +70,11 @@ public class Save extends ListActivity {
 
     }
 
-    public void savefile(String filename, String contains) {
-        String eol = System.getProperty("line.separator");
+    public void savefile(String filename, String content) {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(filename);
-            fos.write(contains.getBytes());
+            fos.write(content.getBytes());
 
         } catch (Exception e) {
             // e.printStackTrace();

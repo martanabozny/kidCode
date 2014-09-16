@@ -75,6 +75,15 @@ public abstract class FunctionStrip extends Object {
         }
     }
 
+    public String variableToString(String variable, HashMap<String, String> map) {
+        String var = map.get(variable);
+        if (var == null) {
+            return variable;
+        } else {
+            return var;
+        }
+    }
+
     public Bitmap variableToBitmap(String variable, HashMap<String, String> map) throws ConvertException {
         File file = new File(variable);
 

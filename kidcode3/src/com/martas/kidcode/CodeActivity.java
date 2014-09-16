@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -197,18 +198,17 @@ public class CodeActivity extends Activity implements SensorEventListener {
             startActivity(intent);
         } else {
             String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/kidCode/";
-            String eol = System.getProperty("line.separator");
-            BufferedWriter writer = null;
+            FileOutputStream fos = null;
             try {
-                writer = new BufferedWriter(new OutputStreamWriter(openFileOutput(path + name, Context.MODE_PRIVATE)));
-                writer.write(newJson);
+                fos = new FileOutputStream(path + name);
+                fos.write(newJson.getBytes());
 
             } catch (Exception e) {
-                e.printStackTrace();
+                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
             } finally {
-                if (writer != null) {
+                if (fos != null) {
                     try {
-                        writer.close();
+                        fos.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -234,6 +234,10 @@ public class CodeActivity extends Activity implements SensorEventListener {
                     .setNegativeButton("no", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
+                        }
+                    })
+                    .setNeutralButton("cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)

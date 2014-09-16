@@ -256,17 +256,21 @@ public class IfForString extends FunctionStrip {
 
     public HashMap<String, String> run(Context context, HashMap<String, String> previousVariables) throws StopException, ConvertException, VariableLackException {
         boolean result = false;
+        String v1 = variableToString(value1, previousVariables);
 
         if (functionText.contains("is lower")) {
-            result = value1.equals(value1.toLowerCase());
+            result = v1.equals(v1.toLowerCase());
         } else if (functionText.contains("is upper")) {
-            result = value1.equals(value1.toUpperCase());
+            result = v1.equals(v1.toUpperCase());
         } else if (functionText.contains("=")) {
-            result = value1.equals(value2);
+            String v2 = variableToString(value2, previousVariables);
+            result = v1.equals(v2);
         } else if (functionText.contains("contains")) {
-            result = value1.contains(value2);
+            String v2 = variableToString(value2, previousVariables);
+            result = v1.contains(v2);
         } else if (functionText.contains("is longer than")) {
-            result = value1.length() > value2.length();
+            String v2 = variableToString(value2, previousVariables);
+            result = v1.length() > v2.length();
         }
 
         if (result == true) {
