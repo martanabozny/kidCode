@@ -31,6 +31,7 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("kidcode", "Camera constructor");
         setContentView(R.layout.camera);
 
         SurfaceView frame = (SurfaceView) findViewById(R.id.frame);
@@ -40,13 +41,18 @@ public class Camera extends Activity implements SurfaceHolder.Callback {
                 camera.takePicture(null, null, myPictureCallback);
             }
         });
+
+        Log.e("kidcode", "mholder");
         mHolder = frame.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
+        Log.e("kidcode", "getcamerainstance");
         camera = getCameraInstance();
 
+        Log.e("kidcode", "getintent");
         Intent intent = getIntent();
+        Toast.makeText(getApplicationContext(), "To make photo touch the screen", Toast.LENGTH_LONG).show();
     }
 
     android.hardware.Camera.PictureCallback myPictureCallback = new android.hardware.Camera.PictureCallback() {
